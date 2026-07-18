@@ -1,0 +1,152 @@
+                                                                                 Q3-1
+Theory
+
+
+
+                                                                                             English (Official)
+
+Water and Objects (10 pt)
+In this problem, we consider the phenomena caused by the interaction between water and objects, re-
+lated to surface tension. Part A treats motion, while Parts B and C are regarding static situations.
+If necessary, you can use the fact that if the function 𝑦(𝑥) satisfies
+                                                                  √    the differential
+                                                                             √          equation 𝑦″ (𝑥) = 𝑎𝑦(𝑥)
+(𝑎 is a positive constant), then its general solution is 𝑦(𝑥) = 𝐴𝑒 𝑎𝑥 + 𝐵𝑒− 𝑎𝑥 , where 𝐴 and 𝐵 are arbitrary
+constants.
+
+Part A. Merger of water drops (2.0 points)
+As shown in Fig.1, we consider two stationary, spherical water drops on the surface of a super-
+hydrophobic material, i.e., very strong repulsive force exists between material and water.
+Initially neighboring two identical spherical water drops are placed on the surface; then these two drops
+are merged after touching each other and form a larger spherical water drop, which suddenly jumps up.
+
+     A.1     The radius 𝑎 of both water drops before the merger is 100 𝜇m. The density of            2.0pt
+             water 𝜌 is 1.00 × 103 kg/m3 . The surface tension 𝛾 is 7.27 × 10−2 J/m2 .
+             A portion 𝑘 of the difference of the surface energy before and after the merger,
+             ΔE, is transformed into the kinetic energy of the jumped water drop. Then, de-
+             termine the initial jump-up velocity, 𝑣, of the merged water drop in two signifi-
+             cant digits under the following assumptions:
+                 • 𝑘 = 0.06
+                 • Before and after merger, the total volume of water is conserved.
+
+
+
+
+                 Fig. 1: Merger of two water drops and jump of the merged water drop.
+
+
+
+Part B. A vertically placed board (4.5 points)
+A flat board is immersed vertically in water. Figures 2(a) and 2(b) respectively show water surface forms
+for the hydrophilic (attractive) and hydrophobic board materials. We neglect the thickness of the board.
+The board surface is on the 𝑦𝑧 plane, and the horizontal water surface far away from the board is on
+the 𝑥𝑦 plane with 𝑧 = 0. The surface shape does not depend on the 𝑦-coordinate. Let 𝜃(𝑥) be the angle
+between the water surface and the horizontal plane at a point (𝑥, 𝑧) on the water surface in the 𝑥𝑧 plane.
+Here 𝜃(𝑥) is measured with respect to the positive 𝑥 axis and the counterclockwise rotation is taken as
+positive. Let 𝜃(𝑥) be 𝜃0 at the point of contact between the board and the water surface (𝑥 = 0). In the
+following, 𝜃0 is fixed by the properties of the board material.
+Water density 𝜌 is constant and water surface tension 𝛾 is uniform. The gravitational acceleration con-
+stant is given by 𝑔. The atmospheric pressure, 𝑃0 , is assumed to be always uniform. Let us determine
+the water surface form in the following steps. Note that the unit of surface tension is J/m2 as well as N/m.
+                                                                            Q3-2
+Theory
+
+
+
+                                                                                       English (Official)
+
+
+
+
+  Fig. 2: Boards vertically immersed in the water. (a) hydrophilic board case;
+  (b) hydrophobic board case.
+
+
+  B.1    We consider a hydrophilic board case, as shown in Fig.2(a). We note that the          0.6pt
+         water pressure, 𝑃 , satisfies the conditions 𝑃 < 𝑃0 for 𝑧 > 0 and 𝑃 = 𝑃0 for
+         𝑧 = 0. Then, express 𝑃 at 𝑧 in terms of 𝜌, 𝑔, 𝑧, and 𝑃0 .
+
+
+  B.2    We consider a water block whose cutout is shown as shaded in Fig.3(a). Its 𝑥𝑧         0.8pt
+         plane cross-section is shown in a hatched area in Fig.3(b). Let 𝑧1 and 𝑧2 respec-
+         tively be the left and right edge coordinates of the boundary (water surface)
+         between the water block and the air.
+         Obtain a horizontal component (𝑥 component) of the net force per unit length
+         along the 𝑦-axis, 𝑓𝑥 , which is exerted on the water block due to the pressure, in
+         terms of 𝜌, 𝑔, 𝑧1 , and 𝑧2 . Note that 𝑃0 results in no net horizontal force on the
+         water block.
+                                                                                Q3-3
+Theory
+
+
+
+                                                                                            English (Official)
+
+
+
+
+     Fig. 3: Cutout form of water block on the water surface. (a) Bird's eye view and (b) cross-
+     sectional view.
+
+
+    B.3     Surface tension acting on the water block is balanced with the force 𝑓𝑥 discussed       0.8pt
+            in B.2. We respectively define 𝜃1 and 𝜃2 as the angles between the water surface
+            and the horizontal plane at the left and right edges. Express 𝑓𝑥 in terms of 𝛾,
+            𝜃1 , and 𝜃2 .
+
+
+    B.4     The following equation holds at an arbitrary point (𝑥, 𝑧) on the water surface,         0.8pt
+                                     1 𝑧 𝑎
+                                       ( ) + cos 𝜃(𝑥) = constant.                      (1)
+                                     2 ℓ
+            Determine the exponent 𝑎 and express the constant ℓ in terms of 𝛾 and 𝜌. Note
+            that this equation holds regardless of hydrophilic or hydrophobic board mate-
+            rials.
+
+
+    B.5     In Eq. (1) in B.4, we assume that variation of the water surface is slow, i.e.,         1.5pt
+            |𝑧′ (𝑥)| ≪ 1, so that we can expand cos 𝜃(𝑥) with respect to 𝑧 ′ (𝑥) up to the second
+            order. Then, differentiating the resultant equation with respect to 𝑥, we obtain
+            the differential equation satisfied by 𝑧(𝑥). Solve this differential equation and
+            determine 𝑧(𝑥) for 𝑥 ≥ 0 in terms of tan 𝜃0 and ℓ. Note that the vertical directions
+            of Figs. 2 and 3 are exaggerated for better view and they do not satisfy the
+            condition, |𝑧 ′ (𝑥)| ≪ 1.
+
+
+Part C. Interaction between two rods (3.5 points)
+The identical rods A and B made of the same material floating in parallel on the water surface are placed
+at the same distance away from the 𝑦-axis (Fig.4).
+                                                                              Q3-4
+Theory
+
+
+
+                                                                                          English (Official)
+
+
+
+
+                      Fig. 4: Two rods A and B floating on the water surface.
+
+
+  C.1    At the contact points of the rod B and the water surface, we define the 𝑧-               1.0pt
+         coordinates 𝑧a and 𝑧b , and the angles 𝜃a and 𝜃b , as shown in Fig.5. Determine
+         the horizontal force component, 𝐹𝑥 , on the rod B per unit length along the 𝑦-axis
+         in terms of 𝜃a , 𝜃b , 𝑧a , 𝑧b , 𝜌, 𝑔, and 𝛾.
+
+
+
+
+         Fig. 5: Vertical cross-sectional view of two rods floating on the water surface.
+
+
+  C.2    We define the 𝑧-coordinate of the water surface, 𝑧0 , at the midpoint of two rods        1.5pt
+         in the 𝑥𝑧 plane. Express the force 𝐹𝑥 obtained in C.1 without using 𝜃a , 𝜃b , 𝑧a , and
+         𝑧b .
+
+
+  C.3    Let 𝑥a be the 𝑥-coordinate of the contact point between the water surface and            1.0pt
+         the left side of the rod B. Using the differential equation obtained in B.5, express
+         the water level coordinate 𝑧0 of the midpoint of these two rods A and B in terms
+         of 𝑥a and 𝑧a . You can use the constant ℓ introduced in B.4.
+

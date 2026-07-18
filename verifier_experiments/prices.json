@@ -1,0 +1,22 @@
+{
+  "_comment": "OpenAI price table, USD per 1,000,000 tokens. Pinned from https://developers.openai.com/api/docs/pricing and per-model pages. See '_retrieved'. 'in'=uncached input, 'cached_in'=cached input, 'out'=output (reasoning tokens are billed as output). 'batch_*' are the Batch API (async, ~50% discount) rates.",
+  "_retrieved": "2026-07-18",
+  "_source": "https://developers.openai.com/api/docs/pricing",
+  "models": {
+    "gpt-5": {
+      "in": 1.25, "cached_in": 0.125, "out": 10.0,
+      "batch_in": 0.625, "batch_cached_in": 0.0625, "batch_out": 5.0,
+      "tier": "strong", "snapshot": "gpt-5-2025-08-07"
+    },
+    "gpt-5-mini": {
+      "in": 0.25, "cached_in": 0.025, "out": 2.0,
+      "batch_in": 0.125, "batch_cached_in": 0.0125, "batch_out": 1.0,
+      "tier": "mid", "snapshot": "gpt-5-mini-2025-08-07"
+    },
+    "gpt-5-nano": {
+      "in": 0.05, "cached_in": 0.005, "out": 0.4,
+      "batch_in": 0.025, "batch_cached_in": 0.0025, "batch_out": 0.2,
+      "tier": "nano", "snapshot": "gpt-5-nano-2025-08-07"
+    }
+  }
+}

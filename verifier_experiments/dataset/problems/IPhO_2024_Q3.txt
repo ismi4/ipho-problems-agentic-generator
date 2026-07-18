@@ -1,0 +1,265 @@
+Points: 30                                                                                                        Time: 5.0 Hours
+
+
+
+                                            Black Widow Pulsar
+A signi cant number of the observed stars are binaries. One or both of the stars may be neutron stars
+rotating with a high angular velocity and emitting electromagnetic waves; such stars are called pulsars.
+Sometimes a companion star is an expansive mass of gas that gradually falls down onto the neutron star
+and causes its mass to increase (Figure 1-a). In this way, a neutron star gradually swallows up a portion
+of the mass of its companion star. For this reason, the neutron star has been compared to a black widow
+(or redback spider), a female spider which eats its mate after mating. The heating of the gas falling down
+onto the black widow generates radiation which can be observed. The heaviest neutron stars often are
+black widows and they serve as natural laboratories for testing fundamental physics. Figure 1-b shows
+the picture of the companion of the neutron star PSR J2215+5135, taken by the 3.4-meter optical
+telescope of the Iranian National Observatory. No neutron star can be seen in this image and the
+observed light is due to its companion.
+
+
+
+
+    Figure 1 - (a) The falling gases of the companion star onto the neutron star - (b) The companion of the neutron star PSR J2215+5135
+
+
+
+    A. A Binary System
+Consider a simple model in which the black widow and its companion star, are represented by two
+                  M           M
+point masses 1 and 2 moving on a circular orbit around their center of mass. To investigate the
+dynamics of this system, consider a rotating coordinate system in which the two bodies are
+stationary. Take the center of mass to be the origin of the coordinate system. Assume that the two
+                                 x
+point masses lie on the -axis on both sides of the origin at a distance from each other, and that   a
+M                                    x                                        xy
+   1 lies on the negative -axis. At an arbitrary point ( , ) in the plane of motion, the e ective
+            φxy
+potential ( , ) for a unit test mass is the sum of the gravitational potentials of the two point
+masses plus the centrifugal potential.
+
+
+    A-1        Write    φ(x, y) in terms of M , M , G, and a.
+                                                       1     2                                                                 1.0 pt
+
+
+IPhO 2024                                                                                                               Page 12 of 16
+Theory, English (Official)
+Points: 30                                                                                Time: 5.0 Hours
+
+
+
+    A-2       AssumingM > M , plot the function φ(x, 0) qualitatively.
+                             1       2                                                     0.7 pt
+
+Suppose (just for task A-3) M = M /3 and assume that M is surrounded by a rare ed gas of
+                                 2        1                        2
+very low density. The mass of this gas is insigni cant and we ignore its gravitational e ects. If the
+size of this gas envelope becomes greater than a speci c limit, the gas will over ow onto M .
+Suppose the over ow occurs through x = x on the x-axis.
+                                                                                                            1
+                                                0
+
+                                          x
+              Find the numerical value of a0 , up to two signi cant gures. You may use
+    A-3                                                                                            0.5 pt
+              the calculator.
+
+
+                                                                                  P
+Take the rotational period of the stars around their center of mass to be . Assume that mass ows
+      M M
+from 2 to 1 at a very small rate of        dM dt β
+                                           1/   = . This rate is so small that in each period of
+rotation, the distance between the two stars can be assumed to be constant. However, after a long
+period of time, the distance between the two stars changes, while the motion remains circular.
+
+
+    A-4
+                                                a
+              Calculate the rate of change of and       P in terms of β, M , M , G, and a.
+                                                                          1       2
+                                                                                                   0.6 pt
+
+
+                             M                                 M
+The gas separated from 2 forms a disk rotating around 1 and heats up due to friction (Figure
+                                                              M
+1-a). As the gas loses energy, it spirals inward toward 1 and nally falls onto it. In the steady
+                                                    β     M
+state, the mass ows at the constant rate of , from 2 to the disc and from the disc onto 1. At        M
+the same time, the heated disk emits thermal radiation as a blackbody. This disk forms very close
+                                                         M
+to the neutron star so the gravitational pull of the 2 star can be ignored for the analysis of the
+disk’s motion. Also, ignore the heat capacity of the gas.
+
+                                                                    r
+              Determine the temperature of the disc at distance from the center of the
+    A-5
+                   M                     βM G
+              star 1 in terms of , 1, , and σ (Stefan-Boltzmann constant).
+                                                                                                   1.0 pt
+
+
+                                                                                  M
+In the binary system PSR J2215+5135, the mass of the neutron star is NS = 2. 27 ⊙ and the     M
+                                     M          M             M
+mass of its companion star is S = 0. 33 ⊙, where ⊙ = 1. 98 × 1030 kg is the mass of the
+Sun. The rotational period is              P
+                                      = 4. 14 hr, and the Stefan-Boltzmann constant is
+σ              −8      2 4
+  = 5. 67 × 10 W/m K , and the gravitational constant is                      G            2
+                                                                    = 6. 67 × 10−11 m3/ kgs .
+                                                       .
+                                                           β M
+Assume that the mass ow rate to the neutron star is = NS = 9 × 10−10 ⊙ yr−1.          M
+    A-6       Calculate the temperature of the disc at the radius r     = 10a in kelvins.          0.5 pt
+
+
+
+
+IPhO 2024                                                                                     Page 13 of 16
+Theory, English (Official)
+Points: 30                                                                                           Time: 5.0 Hours
+
+
+                                                      M
+Assume that after a sudden explosion, the 1 star ejects a part of its mass out of the binary system at a very
+                                           M                                                    M
+high speed, and its mass becomes 1′. Take the magnitude of the velocity of 1′ relative to 2 to be ′          M            v
+after the explosion.
+
+                                                          v                    M M G
+              Determine the maximum value of ′, in terms of 1′, 2, , and , that allows      a
+    A-7       the new binary system to stay bounded. Assuming that the explosion is isotropic,                   0.7 pt
+                                                      M
+              what is the minimum value of 1′ for the binary system to remain bounded?
+
+
+   B. Analysis of the Stability of a Star
+In this part we study the stability of a single star. Consider a star containing a speci c kind of
+matter with the equation of state =         p Kρ
+                                          γ where  K                            γ
+                                                      and are constants. Let ( ) and ( ) be the     pr       ρr
+                                              rp ρ
+pressure and density at a distance from the center of the star, respectively. The pressure and
+density at the center of the star are c and c, respectively. In all tasks of the part B, take all
+outward vectors to be positive.
+
+              Determine the gravitational acceleration                 g(r) near the center of the star in
+    B-1
+                        r
+              terms of and the constants and c.       G            ρ                                             0.2 pt
+
+
+                                                                                    ρr
+              Derive a (di erential) equation for determining ( ) at equilibrium, and
+    B-2                                       d
+              write it in the following form: dr
+                                                          dρ
+                                                               h ρr
+                                                 [ 1( , ) dr ] + 2( ) = 0. Find the  h rρ                        0.6 pt
+              functions      h and h .
+                              1       2
+
+
+
+
+    B-3
+                                           r
+              Construct a quantity 0 of the form 0 =               r G p ρ with the dimension of
+                                                                           l
+                                                                               c
+                                                                                m n
+                                                                                  c
+                                                                                                                 0.4 pt
+              length.
+
+
+
+
+              Rewrite the (di erential) equation of task B-2 in the following form:
+    B-4                                   A (u, x) ] + A (x)u(x) = 0,
+                                           d
+                                          dx [   1
+                                                              du
+                                                              dx       2
+                                                                                                                 0.3 pt
+
+              where   x=      r
+                              r0   and u = . Find the functions A (u, x) and A (x).
+                                                 ρ
+                                                 ρc                                 1           2
+
+
+
+
+    B-5       For   γ = 2 one nds u(x) =              f (x)
+                                                        x . Determine          f (x).                            0.6 pt
+
+
+
+IPhO 2024                                                                                                Page 14 of 16
+Theory, English (Official)
+Points: 30                                                                               Time: 5.0 Hours
+
+
+Assume that for a particular star du                           x
+                                  dx , as a function of , is given by the curve given in Figure 2.
+
+
+
+
+                                             Figure 2 - The plot of du
+                                                                    dx
+
+
+
+
+              Use the behavior of the curve in Figure 2, in the vicinity of the point   x = 0,
+    B-6
+                      γ
+              to nd up to 3 signi cant gures. Use the given ruler if necessary.
+                                                                                                  0.8 pt
+
+
+To analyze the stability of the system, we assume that the star deviates slightly from its equilibrium
+                                                                                    r
+state: we assume that the spherical shell, which was in equilibrium at radius , now has a radius ,         r̃
+                             gp ρ                        g̃ p̃ ρ̃
+similarly the parameters , , and have changed to , , and respectively. For convenience, we
+                                r
+shall only consider small ’s near the center of the star, for which we can assume that
+r̃ r         εt           εt
+  = (1 + ( )), where ( ) ≪ 1.
+
+
+    B-7      Find ρ̃ and g̃ in terms of ρ and g to the rst order in ε.                            0.9 pt
+
+
+              Using Newton's equation of motion for the spherical layer with the
+    B-8                             r    d2r̃
+                                                                    g̃ ρ̃ K γ
+                                                                          ∂ ρ̃
+              equilibrium radius of nd dt2 in terms of , , , , and ∂r̃ (By ∂r̃
+                                                                                 ∂ ρ̃
+                                                                                                  0.6 pt
+                                        ρ̃                    r̃
+               we mean derivative of with respect to at constant .)             t
+IPhO 2024                                                                                    Page 15 of 16
+Theory, English (Official)
+Points: 30                                                                        Time: 5.0 Hours
+
+
+
+                        2
+                                    ε
+              Obtain ddtε2 in terms of and the constants given in the problem. Find the
+    B-9                         γ
+              minimum value of for a stable equilibrium, and nd the oscillation's              0.6 pt
+              angular frequency of the star.
+
+
+
+
+IPhO 2024                                                                                 Page 16 of 16
+Theory, English (Official)
+
