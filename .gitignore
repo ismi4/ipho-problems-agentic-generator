@@ -15,10 +15,6 @@ env/
 .ruff_cache/
 *.egg-info/
 
-# Experiment run artifacts (raw usage logs, generated outputs)
-verifier_experiments/runs/
-verifier_experiments/results/
-verifier_experiments/dataset/problems/*.pdf
 
 # OS / editor
 .DS_Store
