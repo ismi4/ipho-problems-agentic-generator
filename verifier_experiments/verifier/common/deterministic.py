@@ -98,8 +98,14 @@ def numeric_ok(ref: dict[str, Any], cand: dict[str, Any]) -> tuple[bool, str]:
     return True, "numeric within tolerance, units consistent"
 
 
-def check_subpart(subpart: dict[str, Any], cand_answer: dict[str, Any]) -> CheckResult:
-    """Run the deterministic Tier-0/1 stack on one sub-part."""
+def check_subpart(
+    subpart: dict[str, Any], cand_answer: dict[str, Any], tier0_only: bool = False
+) -> CheckResult:
+    """Run the deterministic stack on one sub-part.
+
+    tier0_only=True restricts to Tier-0 falsifiers (Pint units/dimension +
+    numeric tolerance); symbolic sub-parts then ESCALATE (Tier-1 SymPy skipped).
+    """
     t0 = time.process_time()
     ref = subpart["answer"]
     sid = subpart["id"]
@@ -115,6 +121,10 @@ def check_subpart(subpart: dict[str, Any], cand_answer: dict[str, Any]) -> Check
                            time.process_time() - t0)
 
     if ref["type"] == "symbolic":
+        if tier0_only:
+            return CheckResult(sid, ESCALATE, "tier0",
+                               "symbolic form deferred to Tier-1/LLM",
+                               time.process_time() - t0)
         if cand_answer.get("type") != "symbolic":
             return CheckResult(sid, FAIL, "sympy", "candidate not symbolic",
                                time.process_time() - t0)

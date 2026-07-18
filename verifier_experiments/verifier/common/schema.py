@@ -41,13 +41,36 @@ VERDICT_JSON_SCHEMA: dict[str, Any] = {
                 "type": ["string", "null"],
                 "description": "Sub-part id or short phrase where the solution first fails; null if ACCEPT.",
             },
+            "confidence": {
+                "type": "number",
+                "description": "Verifier self-reported confidence in [0,1] (used by cascade routing).",
+            },
         },
         "required": [
             "verdict",
             "quality_score",
             "per_subpart",
             "first_point_of_failure",
+            "confidence",
         ],
+    },
+}
+
+
+# Per-sub-part schema (Solution C: one call per sub-part).
+SUBPART_JSON_SCHEMA: dict[str, Any] = {
+    "name": "subpart_verdict",
+    "strict": True,
+    "schema": {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "passed": {"type": "boolean"},
+            "points_est": {"type": "number"},
+            "reason": {"type": "string"},
+            "confidence": {"type": "number"},
+        },
+        "required": ["passed", "points_est", "reason", "confidence"],
     },
 }
 
@@ -66,6 +89,7 @@ class Verdict:
     quality_score: float
     per_subpart: list[SubpartVerdict] = field(default_factory=list)
     first_point_of_failure: str | None = None
+    confidence: float = 1.0
 
     @staticmethod
     def from_dict(d: dict[str, Any]) -> "Verdict":
@@ -79,11 +103,17 @@ class Verdict:
         except (TypeError, ValueError):
             qs = 0.0
         qs = max(0.0, min(1.0, qs))
+        conf = d.get("confidence", 1.0)
+        try:
+            conf = max(0.0, min(1.0, float(conf)))
+        except (TypeError, ValueError):
+            conf = 1.0
         return Verdict(
             verdict=v,
             quality_score=qs,
             per_subpart=subs,
             first_point_of_failure=d.get("first_point_of_failure"),
+            confidence=conf,
         )
 
     def to_dict(self) -> dict[str, Any]:
