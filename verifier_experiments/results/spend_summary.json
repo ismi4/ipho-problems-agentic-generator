@@ -1,0 +1,28 @@
+{
+  "total_openai_spend_usd_all_runs": 6.8327,
+  "reported_sweep_spend_usd": 5.4785,
+  "note": "all_runs includes dev/tuning/smoke/aborted; reported_sweep is the 10 configs in results/raw_results.jsonl",
+  "hard_cap_per_run_usd": 8.0,
+  "global_cap_usd": 10.0,
+  "n_calls_all_runs": 2609,
+  "reasoning_tokens_total": 523200,
+  "cached_tokens_total": 31744,
+  "by_model_usd": {
+    "deterministic": 0.0,
+    "gpt-5": 6.7847,
+    "gpt-5-nano": 0.048
+  },
+  "by_config_usd": {
+    "B.V1": 0.5799,
+    "A.V0": 1.299,
+    "C.V0": 1.1294,
+    "B.V2": 0.0025,
+    "A.V1": 0.5763,
+    "C.V1": 0.8912,
+    "A.V2": 0.2227,
+    "C.V2": 0.5587,
+    "composed": 0.069,
+    "B.V0": 1.5018,
+    "tune": 0.0021
+  }
+}

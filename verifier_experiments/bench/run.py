@@ -26,7 +26,7 @@ RAW_OUT = os.path.join(RESULTS_DIR, "raw_results.jsonl")
 
 
 def load_instances(split: str) -> list[dict]:
-    insts = [json.loads(l) for l in open(DATASET)]
+    insts = [json.loads(line) for line in open(DATASET)]
     if split == "all":
         return insts
     return [i for i in insts if i["split"] == split]

@@ -18,7 +18,7 @@ RAW = os.path.join(RESULTS_DIR, "raw_results.jsonl")
 
 
 def load_rows(path: str = RAW) -> list[dict]:
-    return [json.loads(l) for l in open(path)]
+    return [json.loads(line) for line in open(path)]
 
 
 def per_instance_cost(rows: list[dict]) -> dict[tuple[str, str], float]:

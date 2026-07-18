@@ -15,7 +15,7 @@ import time
 
 from verifier.common.base import aggregate_subparts, run_full_solution, run_subpart
 from verifier.common.client import STRONG_MODEL, NANO_MODEL
-from verifier.common.deterministic import check_subpart, FAIL, PASS, ESCALATE
+from verifier.common.deterministic import check_subpart, FAIL, PASS
 from verifier.common.schema import Verdict
 
 

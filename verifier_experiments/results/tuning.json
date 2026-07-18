@@ -1,0 +1,56 @@
+{
+  "A.V1": {
+    "conf_threshold": 0.5
+  },
+  "A.V2": {
+    "conf_threshold": 0.5
+  },
+  "composed": {
+    "conf_threshold": 0.9
+  },
+  "_dev_records": [
+    {
+      "id": "cox_timepiece_2025__05",
+      "conf": 0.65,
+      "pred": "REJECT",
+      "gold": "REJECT",
+      "correct": true
+    },
+    {
+      "id": "cox_timepiece_2025__07",
+      "conf": 0.62,
+      "pred": "REJECT",
+      "gold": "REJECT",
+      "correct": true
+    },
+    {
+      "id": "black_widow_pulsar_2024__04",
+      "conf": 0.65,
+      "pred": "REJECT",
+      "gold": "REJECT",
+      "correct": true
+    },
+    {
+      "id": "black_widow_pulsar_2024__07",
+      "conf": 0.72,
+      "pred": "REJECT",
+      "gold": "REJECT",
+      "correct": true
+    },
+    {
+      "id": "water_and_objects_2023__01",
+      "conf": 0.74,
+      "pred": "REJECT",
+      "gold": "REJECT",
+      "correct": true
+    },
+    {
+      "id": "water_and_objects_2023__07",
+      "conf": 0.75,
+      "pred": "REJECT",
+      "gold": "REJECT",
+      "correct": true
+    }
+  ],
+  "_note": "Threshold = lowest dev confidence at which all early-exit nano verdicts were correct. Dev split only; never used for reporting."
+}

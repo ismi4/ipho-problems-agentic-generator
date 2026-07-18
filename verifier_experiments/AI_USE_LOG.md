@@ -19,7 +19,7 @@ decisions fixed by the specs.
 | Verifier configs (A/B/C V0–V2 + composed) | AI-led | Agent implemented all 10 configurations. |
 | Cost/usage logging + spend tracker | AI-led | Agent implemented real-usage accounting from OpenAI responses. |
 | Threshold tuning on dev split | AI-led | Agent ran nano on dev and picked the threshold. |
-| Running the benchmark (real OpenAI calls) | AI-led | ~x calls, logged to `runs/`. |
+| Running the benchmark (real OpenAI calls) | AI-led | ~1.9k OpenAI calls total (incl. dev/smoke); ~0.9k in the final sweep, all logged to `runs/`. |
 | Analysis, plots, CIs | AI-led | Agent implemented `score.py`/`cost.py`/`report.py`. |
 | Report, decision log, deck | AI-led | Agent authored all write-ups from the measured results. |
 | Intellectual-honesty checks (negative results, threats to validity) | joint | Spec mandated them; agent identified and reported the specific ones. |

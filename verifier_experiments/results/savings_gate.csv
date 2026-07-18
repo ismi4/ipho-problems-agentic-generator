@@ -1,0 +1,10 @@
+solution,problem,v0_cost,v2_cost,reduction_pct,pass_50pct
+A,cox_timepiece_2025,0.021418,0.005748,73.2,True
+A,black_widow_pulsar_2024,0.010128,0.003280,67.6,True
+A,water_and_objects_2023,0.009474,0.000253,97.3,True
+B,cox_timepiece_2025,0.024480,0.000088,99.6,True
+B,black_widow_pulsar_2024,0.016272,0.000000,100.0,True
+B,water_and_objects_2023,0.012341,0.000000,100.0,True
+C,cox_timepiece_2025,0.026547,0.007447,71.9,True
+C,black_widow_pulsar_2024,0.022629,0.007940,64.9,True
+C,water_and_objects_2023,0.020267,0.007612,62.4,True

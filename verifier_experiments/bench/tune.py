@@ -22,7 +22,7 @@ OUT = os.path.join(RESULTS_DIR, "tuning.json")
 
 def main() -> None:
     rubrics = json.load(open(RUBRICS))
-    dev = [json.loads(l) for l in open(DATASET) if json.loads(l)["split"] == "dev"]
+    dev = [json.loads(line) for line in open(DATASET) if json.loads(line)["split"] == "dev"]
     cli = LLMClient(run_tag="tune_dev", config="tune")
 
     records = []

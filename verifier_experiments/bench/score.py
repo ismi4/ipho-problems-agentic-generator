@@ -22,7 +22,7 @@ DATASET = os.path.join(HERE, "..", "dataset", "instances.jsonl")
 
 
 def _instances():
-    return {i["id"]: i for i in (json.loads(l) for l in open(DATASET))}
+    return {i["id"]: i for i in (json.loads(line) for line in open(DATASET))}
 
 
 def reference_quality_fraction(inst: dict) -> float:
@@ -37,7 +37,7 @@ def reference_quality_fraction(inst: dict) -> float:
 
 
 def load_rows(path: str = RAW) -> list[dict]:
-    return [json.loads(l) for l in open(path)]
+    return [json.loads(line) for line in open(path)]
 
 
 def per_instance_pred(rows: list[dict]):
