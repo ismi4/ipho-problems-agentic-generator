@@ -1,0 +1,27 @@
+# Secrets / env
+.env
+.env.*
+*.key
+**/prices.local.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Experiment run artifacts (raw usage logs, generated outputs)
+verifier_experiments/runs/
+verifier_experiments/results/
+verifier_experiments/dataset/problems/*.pdf
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
