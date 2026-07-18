@@ -9,9 +9,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from verifier.common import client as client_mod
 from verifier.common.client import BudgetExceeded, LLMClient, SPEND
 from verifier.registry import ALL_CONFIGS, build_registry
 
@@ -40,10 +41,15 @@ def main() -> None:
     ap.add_argument("--hard-cap", type=float, default=None, help="override spend cap USD")
     ap.add_argument("--out", default=RAW_OUT)
     ap.add_argument("--append", action="store_true")
+    ap.add_argument("--workers", type=int, default=6, help="concurrent verify() workers")
+    ap.add_argument("--prior-spend", type=float, default=0.0,
+                    help="seed cumulative spend from earlier runs so the cap is global")
     args = ap.parse_args()
 
     if args.hard_cap is not None:
         SPEND.hard_cap_usd = args.hard_cap
+    if args.prior_spend:
+        SPEND.total_usd = args.prior_spend
 
     rubrics = json.load(open(RUBRICS))
     instances = load_instances(args.split)
@@ -55,50 +61,53 @@ def main() -> None:
     os.makedirs(RESULTS_DIR, exist_ok=True)
     mode = "a" if args.append else "w"
     out = open(args.out, mode)
+    out_lock = threading.Lock()
+    counter = {"n": 0}
+    stop = threading.Event()
 
-    n_written = 0
+    def task(cfg_name, verifier, cli, inst, rep):
+        if stop.is_set():
+            return
+        problem = PROBLEMS[inst["problem"]]
+        rubric = rubrics[inst["problem"]]
+        cli.begin_scope()
+        t0 = time.time()
+        try:
+            v = verifier.verify(cli, inst, problem, rubric)
+        except BudgetExceeded as e:
+            stop.set()
+            print(f"\n[BUDGET STOP] {e}")
+            return
+        wall = time.time() - t0
+        cost = cli.end_scope()
+        row = {
+            "config": cfg_name, "instance_id": inst["id"], "problem": inst["problem"],
+            "rep": rep, "label": inst["label"], "injected_fault": inst["injected_fault"],
+            "pred_verdict": v.verdict, "pred_quality": v.quality_score,
+            "confidence": v.confidence, "cost_usd": cost, "wall_s": wall,
+        }
+        with out_lock:
+            out.write(json.dumps(row) + "\n")
+            out.flush()
+            counter["n"] += 1
+            print(f"{cfg_name:9s} {inst['id']:34s} rep{rep} "
+                  f"pred={v.verdict:6s} gold={inst['label']:6s} "
+                  f"${cost:.5f}  cum=${SPEND.total_usd:.4f}")
+
     try:
         for cfg_name in args.configs:
             verifier = registry[cfg_name]()
             cli = LLMClient(run_tag=cfg_name.replace(".", "_"), config=cfg_name)
-            for inst in instances:
-                problem = PROBLEMS[inst["problem"]]
-                rubric = rubrics[inst["problem"]]
-                for rep in range(args.reps):
-                    before = SPEND.total_usd
-                    t0 = time.time()
-                    try:
-                        v = verifier.verify(cli, inst, problem, rubric)
-                    except BudgetExceeded as e:
-                        print(f"\n[BUDGET STOP] {e}")
-                        out.flush()
-                        out.close()
-                        _summary(n_written)
-                        return
-                    wall = time.time() - t0
-                    cost = SPEND.total_usd - before
-                    row = {
-                        "config": cfg_name,
-                        "instance_id": inst["id"],
-                        "problem": inst["problem"],
-                        "rep": rep,
-                        "label": inst["label"],
-                        "injected_fault": inst["injected_fault"],
-                        "pred_verdict": v.verdict,
-                        "pred_quality": v.quality_score,
-                        "confidence": v.confidence,
-                        "cost_usd": cost,
-                        "wall_s": wall,
-                    }
-                    out.write(json.dumps(row) + "\n")
-                    out.flush()
-                    n_written += 1
-                    print(f"{cfg_name:9s} {inst['id']:34s} rep{rep} "
-                          f"pred={v.verdict:6s} gold={inst['label']:6s} "
-                          f"${cost:.5f}  cum=${SPEND.total_usd:.4f}")
+            with ThreadPoolExecutor(max_workers=args.workers) as ex:
+                futs = [ex.submit(task, cfg_name, verifier, cli, inst, rep)
+                        for inst in instances for rep in range(args.reps)]
+                for _ in as_completed(futs):
+                    pass
+            if stop.is_set():
+                break
     finally:
         out.close()
-    _summary(n_written)
+    _summary(counter["n"])
 
 
 def _summary(n_written: int) -> None:

@@ -63,7 +63,11 @@ class BV2:
     solution, version = "B", "V2"
 
     def verify(self, client, instance, problem, rubric) -> Verdict:
-        t0 = time.process_time()
+        # Deterministic Tier-0/1 resolves every machine-checkable sub-part; the LLM
+        # (nano) is invoked ONLY on the qualitative escalation set. We check ALL
+        # sub-parts (no early return) so the instance still gets a proper partial
+        # scoring signal even when it is rejected (acceptance gate vs scoring signal
+        # are distinct, per DEFINITION.MD).
         subpart_results: dict[str, dict] = {}
         escalate = []
         for sp in problem["subparts"]:
@@ -75,14 +79,15 @@ class BV2:
                                        "reason": r.detail},
             )
             if r.outcome == FAIL:
-                return Verdict.reject(f"Deterministic falsifier: {sp['id']} {r.detail}")
-            if r.outcome == PASS:
+                subpart_results[sp["id"]] = {
+                    "passed": False, "points_est": 0.0,
+                    "reason": f"deterministic {r.method}: {r.detail}", "confidence": 1.0}
+            elif r.outcome == PASS:
                 subpart_results[sp["id"]] = {
                     "passed": True, "points_est": sp["points"],
                     "reason": f"deterministic {r.method}: {r.detail}", "confidence": 1.0}
-            else:  # ESCALATE
+            else:  # ESCALATE (qualitative)
                 escalate.append(sp)
-        # LLM only on the Tier-2 escalation set (cheapest adequate model = nano).
         for sp in escalate:
             cand = instance["subpart_answers"][sp["id"]]
             subpart_results[sp["id"]] = run_subpart(

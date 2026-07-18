@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import os
+import threading
 import time
 from dataclasses import dataclass, field
 from typing import Any
@@ -35,26 +36,33 @@ class BudgetExceeded(RuntimeError):
 
 @dataclass
 class SpendTracker:
-    """Process-wide accumulator of real spend, with a hard kill-switch."""
+    """Process-wide accumulator of real spend, with a hard kill-switch.
+
+    Thread-safe: `record`/`check_before` take a lock so concurrent verify()
+    calls cannot race past the budget cap.
+    """
 
     hard_cap_usd: float = DEFAULT_HARD_CAP_USD
     total_usd: float = 0.0
     n_calls: int = 0
     by_model: dict[str, float] = field(default_factory=dict)
     by_config: dict[str, float] = field(default_factory=dict)
+    _lock: threading.Lock = field(default_factory=threading.Lock)
 
     def check_before(self, projected_next: float = 0.0) -> None:
-        if self.total_usd + projected_next > self.hard_cap_usd:
-            raise BudgetExceeded(
-                f"Spend guard: total ${self.total_usd:.4f} + projected "
-                f"${projected_next:.4f} would exceed cap ${self.hard_cap_usd:.2f}."
-            )
+        with self._lock:
+            if self.total_usd + projected_next > self.hard_cap_usd:
+                raise BudgetExceeded(
+                    f"Spend guard: total ${self.total_usd:.4f} + projected "
+                    f"${projected_next:.4f} would exceed cap ${self.hard_cap_usd:.2f}."
+                )
 
     def record(self, cost: float, model: str, config: str) -> None:
-        self.total_usd += cost
-        self.n_calls += 1
-        self.by_model[model] = self.by_model.get(model, 0.0) + cost
-        self.by_config[config] = self.by_config.get(config, 0.0) + cost
+        with self._lock:
+            self.total_usd += cost
+            self.n_calls += 1
+            self.by_model[model] = self.by_model.get(model, 0.0) + cost
+            self.by_config[config] = self.by_config.get(config, 0.0) + cost
 
     def summary(self) -> dict[str, Any]:
         return {
@@ -87,10 +95,19 @@ class LLMClient:
         self.prices = load_prices()
         os.makedirs(RUNS_DIR, exist_ok=True)
         self._log_path = os.path.join(RUNS_DIR, f"{run_tag}.jsonl")
+        self._log_lock = threading.Lock()
+        self._scope = threading.local()  # per-thread cost accumulator
+
+    def begin_scope(self) -> None:
+        self._scope.cost = 0.0
+
+    def end_scope(self) -> float:
+        return getattr(self._scope, "cost", 0.0)
 
     def _log(self, record: dict[str, Any]) -> None:
-        with open(self._log_path, "a") as f:
-            f.write(json.dumps(record) + "\n")
+        with self._log_lock:
+            with open(self._log_path, "a") as f:
+                f.write(json.dumps(record) + "\n")
 
     def chat(
         self,
@@ -139,6 +156,8 @@ class LLMClient:
         usage = usage_from_response(resp, model=model, batch=False)
         cost = cost_of(usage, self.prices)
         SPEND.record(cost, model=model, config=self.config)
+        if hasattr(self._scope, "cost"):
+            self._scope.cost += cost
 
         text = resp.choices[0].message.content or ""
         self._log(

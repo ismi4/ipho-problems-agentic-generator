@@ -7,8 +7,6 @@ A: on that set, verify cheap-first (nano) and escalate to strong only on low
 """
 from __future__ import annotations
 
-import time
-
 from verifier.common.base import aggregate_subparts, run_subpart
 from verifier.common.client import STRONG_MODEL, NANO_MODEL
 from verifier.common.deterministic import check_subpart, FAIL, PASS
@@ -23,7 +21,6 @@ class Composed:
         self.conf_threshold = conf_threshold
 
     def verify(self, client, instance, problem, rubric) -> Verdict:
-        t0 = time.process_time()
         results: dict[str, dict] = {}
         escalate = []
         for sp in problem["subparts"]:
@@ -34,8 +31,9 @@ class Composed:
                 cpu_s=r.cpu_s, detail={"outcome": r.outcome, "reason": r.detail},
             )
             if r.outcome == FAIL:
-                return Verdict.reject(f"Deterministic falsifier: {sp['id']} {r.detail}")
-            if r.outcome == PASS:
+                results[sp["id"]] = {"passed": False, "points_est": 0.0,
+                                     "reason": f"deterministic {r.method}", "confidence": 1.0}
+            elif r.outcome == PASS:
                 results[sp["id"]] = {"passed": True, "points_est": sp["points"],
                                      "reason": f"deterministic {r.method}", "confidence": 1.0}
             else:

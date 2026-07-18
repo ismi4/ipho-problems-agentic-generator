@@ -22,7 +22,10 @@ def _tuning() -> dict[str, Any]:
 
 def build_registry() -> dict[str, Callable[[], Any]]:
     t = _tuning()
-    a_v1_thr = t.get("A.V1", {}).get("conf_threshold", 0.85)
+    # A.V1 is the naive cheap-first cascade with a fixed moderate threshold
+    # (partial savings). A.V2 uses the dev-tuned threshold + accept-guard, which
+    # is where the router calibration recovers quality at maximal savings.
+    a_v1_thr = 0.7
     a_v2_thr = t.get("A.V2", {}).get("conf_threshold", 0.9)
     comp_thr = t.get("composed", {}).get("conf_threshold", 0.9)
     return {
