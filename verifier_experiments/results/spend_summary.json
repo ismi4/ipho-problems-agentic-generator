@@ -1,16 +1,16 @@
 {
-  "total_openai_spend_usd_all_runs": 6.8327,
+  "total_openai_spend_usd_all_runs": 6.8401,
   "reported_sweep_spend_usd": 5.4785,
-  "note": "all_runs includes dev/tuning/smoke/aborted; reported_sweep is the 10 configs in results/raw_results.jsonl",
+  "note": "all_runs includes dev/tuning/smoke/aborted/demo; reported_sweep is the 10 configs in results/raw_results.jsonl",
   "hard_cap_per_run_usd": 8.0,
   "global_cap_usd": 10.0,
-  "n_calls_all_runs": 2609,
-  "reasoning_tokens_total": 523200,
+  "n_calls_all_runs": 2627,
+  "reasoning_tokens_total": 523584,
   "cached_tokens_total": 31744,
   "by_model_usd": {
     "deterministic": 0.0,
-    "gpt-5": 6.7847,
-    "gpt-5-nano": 0.048
+    "gpt-5": 6.7919,
+    "gpt-5-nano": 0.0483
   },
   "by_config_usd": {
     "B.V1": 0.5799,
@@ -21,7 +21,7 @@
     "C.V1": 0.8912,
     "A.V2": 0.2227,
     "C.V2": 0.5587,
-    "composed": 0.069,
+    "composed": 0.0765,
     "B.V0": 1.5018,
     "tune": 0.0021
   }
