@@ -1,0 +1,207 @@
+{
+  "system": "S3",
+  "problem_id": "2024_Q3",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A-3",
+      "judge": {
+        "subpart_id": "A-3",
+        "answer_type": "other",
+        "governing_law_identified": "Gas overflow begins at the inner collinear Lagrange point, determined by dφ(x,0)/dx = 0 in the corotating effective potential.",
+        "regime_assumed": "M2 = M1/3, with M1 at x/a = -1/4 and M2 at x/a = 3/4; the relevant point is the stationary point between the two masses.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "The relevant stationary point is the inner Lagrange point L1,  -1/4 < x/a < 3/4.",
+          "For the stated overflow from the envelope around M2 toward M1, the root is on the positive-x side, 0 < x/a < 3/4."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": true,
+        "escalate_reason": "The requested result is a bare dimensionless geometric factor. Direct substitution into dφ/d(x/a) = 0 gives x/a ≈ 0.3607, consistent with 0.36 to two significant figures."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: x/a is dimensionless",
+          "stationarity residual: d[-(3/4)/(u+1/4)-(1/4)/(3/4-u)-u^2/2]/du=0 gives u=0.36074",
+          "BC/root-branch: selected root satisfies 0<u<3/4, i.e. lies between COM and M2 (the relevant L1 point)",
+          "limiting/geometry: M1 at u=-1/4 and M2 at u=3/4, consistent with M2=M1/3",
+          "symbol-whitelist/faithfulness: uses only quantities and effective-potential condition supplied by P"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0565475
+    },
+    {
+      "id": "A-5",
+      "judge": {
+        "subpart_id": "A-5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Keplerian orbital-energy change combined with Stefan-Boltzmann radiation from both faces of an annular disk element.",
+        "regime_assumed": "Newtonian, geometrically thin, optically thick Keplerian disk; steady mass flux beta; local blackbody emission; negligible heat storage. The reference additionally and unstatedly neglects energy transport by viscous torques between annuli.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Reference's advective-energy-only approximation: T^4 = GM1 beta/(8 pi sigma r^3).",
+          "Standard steady viscous Keplerian disk with a zero-torque inner edge rin: T^4 = [3 GM1 beta/(8 pi sigma r^3)] [1 - sqrt(rin/r)]."
+        ],
+        "refutation": "A standard steady thin viscous disk satisfies the stated conditions but has local dissipation from both the inward mass-energy flux and the outward viscous-torque energy flux. For a zero-torque inner boundary rin, its temperature is T^4 = (3GM1 beta/(8 pi sigma r^3))(1-sqrt(rin/r)), not the reference result. In particular, for r much larger than rin, the reference underestimates T^4 by a factor of 3.",
+        "first_point_of_failure": "The annular energy balance omits the mechanical-energy flux transported across the annulus by viscous torque, which is essential for a frictional accretion disk.",
+        "verdict": "FAIL",
+        "confidence": 0.88,
+        "escalate": true,
+        "escalate_reason": "The numerical geometric prefactor and even the radial profile depend on an unstated angular-momentum-transport and inner-boundary prescription; the problem statement does not justify the reference's advective-energy-only approximation."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: simplify((G*M1*beta/(sigma*r**3)).dims) -> Theta**4; pass",
+          "limiting_case: T_ref ~ r**(-3/4), but standard steady Keplerian viscous disk gives T^4/T_ref^4 -> 3 for r/rin -> oo",
+          "conservation_residual: include torque energy flux Omega*Gvisc; standard steady-disk balance returns F_one_face=3*G*M1*beta/(8*pi*r**3)*(1-sqrt(rin/r)), not reference F=G*M1*beta/(8*pi*r**3)",
+          "BC/root_branch: standard solution requires inner-boundary torque (e.g. rin); P supplies none, so local temperature prefactor/profile is not uniquely fixed",
+          "symbol_whitelist: reference uses only requested M1,beta,G,sigma,r and constants; pass",
+          "faithfulness_to_P: P states frictional inward spiralling disk, which entails angular-momentum transport/viscous torque; reference silently deletes its inter-annulus mechanical-energy flux"
+        ],
+        "refutation": "The annular balance treats the difference of advected Kepler-orbit energies as the complete local heat release. In a frictional steady accretion disk, viscous torque transports energy outward across annulus boundaries. With the usual zero-torque inner edge rin, two-face blackbody emission obeys sigma*T^4 = [3*G*M1*beta/(8*pi*r**3)]*[1-sqrt(rin/r)], rather than G*M1*beta/(8*pi*r**3). Since P gives no torque/boundary prescription, the reference result is not uniquely implied; under the standard disk model it is wrong, asymptotically by a factor 3 in T^4.",
+        "verdict": "FAIL",
+        "confidence": 0.9,
+        "first_point_of_failure": "The sentence equating the annulus's local radiation solely to GM1*beta*dr/(2*r**2) omits the viscous-torque mechanical-energy flux through the annulus boundaries.",
+        "fault_type_guess": "missing conservation flux / unstated boundary-condition approximation"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The sentence equating the annulus's local radiation solely to GM1*beta*dr/(2*r**2) omits the viscous-torque mechanical-energy flux through the annulus boundaries.",
+      "cost_usd": 0.07662
+    },
+    {
+      "id": "A-6",
+      "judge": {
+        "subpart_id": "A.6",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Kepler's third law for the binary separation, together with the steady thin-disc blackbody relation T^4 = GM_NS beta/(8 pi sigma r^3).",
+        "regime_assumed": "Conservative slow mass transfer; circular binary orbit; r = 10a; disc luminosity radiated from both faces as used in A-5.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Using P = 4.14 h, M_NS + M_S = 2.60 M_sun gives a = [GP^2(M_NS+M_S)/(4pi^2)]^(1/3) = 1.25e9 m. Thus r = 1.25e10 m and beta = 9e-10 M_sun/yr = 5.65e13 kg/s. Substitution into T = [GM_NS beta/(8pi sigma r^3)]^(1/4) gives T = 2.8e2 K, not 9e3 K. Equivalently, eliminating a gives T^4 = pi M_NS beta/[2000 sigma P^2(M_NS+M_S)], whereas S uses a coefficient 500pi, larger by 10^6 in T^4.",
+        "first_point_of_failure": "Incorrect substitution of r = 10a into the A-5 temperature formula: the factor r^3 = 1000a^3 is mishandled, producing a factor-of-10^6 error in T^4.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Incorrect substitution of r = 10a into the A-5 temperature formula: the factor r^3 = 1000a^3 is mishandled, producing a factor-of-10^6 error in T^4.",
+      "cost_usd": 0.03245
+    },
+    {
+      "id": "B-1",
+      "judge": {
+        "subpart_id": "B.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Newtonian gravity with spherical symmetry: g(r) = -G M(r)/r^2, where M(r) = 4π∫_0^r ρ(r')r'^2 dr'.",
+        "regime_assumed": "Near the stellar center, with finite smooth density so that ρ(r) ≈ ρc.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.022765
+    },
+    {
+      "id": "B-7",
+      "judge": {
+        "subpart_id": "B.7",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of mass for a homologous radial perturbation, together with Newtonian gravity g=-GM(r)/r^2 for a fixed enclosed mass shell.",
+        "regime_assumed": "Infinitesimal, spatially homologous perturbation \\(\\tilde r=(1+\\epsilon)r\\), retaining only first-order terms in \\(\\epsilon\\); comparison is between the same Lagrangian mass shell before and after perturbation.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.96,
+        "escalate": true,
+        "escalate_reason": "The result depends on dimensionless first-order geometric coefficients (3 from volume scaling and 2 from inverse-square gravity), though the derivation is physically correct."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "sympy: r_tilde=(1+eps)*r; simplify((r/r_tilde)**2/(1+eps)) -> (1+eps)**(-3); series(eps,0,2) -> 1-3*eps",
+          "sympy: simplify((r/r_tilde)**2) -> (1+eps)**(-2); series(eps,0,2) -> 1-2*eps",
+          "mass-shell conservation residual: 4*pi*r_tilde**2*rho_tilde*dr_tilde - 4*pi*r**2*rho*dr = 0 after rho_tilde=rho*(1+eps)**(-3)",
+          "limiting case: eps->0 gives rho_tilde=rho and g_tilde=g",
+          "BC/root-branch: no roots or boundary-condition branch; requires comparison of the same Lagrangian enclosed-mass shell",
+          "symbol-whitelist/faithfulness: uses only perturbation variables and conservation/Newtonian gravity implicit in B-7; notation in the displayed integral is mildly garbled but does not change the result"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.05219
+    }
+  ],
+  "escalated_subparts": [
+    "A-3",
+    "A-5",
+    "B-7"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A-5",
+    "A-6"
+  ],
+  "cost_usd": 0.240573,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "F2024-1": {
+        "subpart": "A-3",
+        "caught": false,
+        "caught_at": null,
+        "type": "wrong_root"
+      },
+      "F2024-2": {
+        "subpart": "A-6",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "wrong_numeric"
+      }
+    },
+    "faults_caught": 1,
+    "faults_total": 2
+  },
+  "wall_s": 60.13289761543274,
+  "problem_name": "Black Widow Pulsar"
+}

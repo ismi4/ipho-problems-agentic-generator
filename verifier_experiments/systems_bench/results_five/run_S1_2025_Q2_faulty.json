@@ -1,0 +1,160 @@
+{
+  "system": "S1",
+  "problem_id": "2025_Q2",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and vertical force equilibrium",
+        "regime_assumed": "Configuration 2(b), with the tube top at altitude h above the bath surface and negligible vapor-pressure effects",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Case b"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0047335
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "other",
+        "governing_law_identified": "Hydrostatic equilibrium gives the mercury column height z_l = P_0/(rho g); m_add is the mass of mercury located above the bath level z = 0.",
+        "regime_assumed": "P_a = P_0, P_sat = 0, incompressible mercury, and h_t ranges from -H_b to H_t with the tube initially completely submerged.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "−H_b <= h_t <= 0: m_add = rho S_b(h_t + H_b)",
+          "0 <= h_t <= z_l − H_b: m_add = rho(S_b H_b + S_t h_t)",
+          "z_l − H_b <= h_t <= z_l: m_add = rho[S_t h_t + S_b(z_l − h_t)]",
+          "z_l <= h_t <= H_t: m_add = rho S_t z_l"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.82,
+        "escalate": true,
+        "escalate_reason": "The requested deliverable is a qualitative piecewise graph, and the supplied reference excerpt does not include the full B.2 solution for direct verification."
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0085355
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and static force equilibrium",
+        "regime_assumed": "Incompressible liquid, atmospheric pressure P0 at z=0, no vaporization or surface-tension effects",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0046265
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law, P_w = P_0 - rho g h, and vertical force equilibrium on the tube",
+        "regime_assumed": "The tube contains liquid water with no vapor formation; configuration b has 0 <= h <= H and the top remains below the vaporization threshold",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0043895
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and vertical force equilibrium",
+        "regime_assumed": "Static equilibrium; incompressible liquid; atmospheric pressure P_a=P_0; tube configuration b with 0≤h≤H",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0037865
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.026072,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": false,
+    "false_reject": false,
+    "false_accept": true,
+    "fault_hits": {
+      "F2025-1": {
+        "subpart": "C.1",
+        "caught": false,
+        "caught_at": null,
+        "type": "dropped_factor"
+      },
+      "F2025-2": {
+        "subpart": "C.3",
+        "caught": false,
+        "caught_at": null,
+        "type": "dropped_factor"
+      }
+    },
+    "faults_caught": 0,
+    "faults_total": 2
+  },
+  "wall_s": 27.40379285812378,
+  "problem_name": "Cox's Timepiece"
+}

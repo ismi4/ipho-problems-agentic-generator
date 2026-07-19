@@ -1,0 +1,164 @@
+{
+  "system": "S2",
+  "problem_id": "2024_Q3",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A-3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "other",
+        "governing_law_identified": "Equilibrium at the inner Lagrange point requires dφ/dx = 0 in the rotating-frame effective potential.",
+        "regime_assumed": "M2 = M1/3, with the relevant root between the two masses: 0 < x0/a < 3/4.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Inner Lagrange-point branch between x = 0 and x = 3a/4"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style: q=x/a; phi_expected=-(G*M/a)*(Rational(3,4)/(q+Rational(1,4))+Rational(1,4)/(Rational(3,4)-q)+q**2/2); f=diff(phi_expected,q); nsolve(f,q,0.36)=0.35999, hence x0/a=0.36.",
+          "Dimensional: x0/a is dimensionless; reported 0.36 passes.",
+          "Limiting/root branch: relevant L1 branch is strictly between the masses, -1/4<q<3/4 (in particular 0<q<3/4); q=0.360 lies on it.",
+          "Stationarity residual: 3/(4*(q+1/4)^2)-1/(4*(3/4-q)^2)-q evaluated at q=0.360 is about +1.1e-2, consistent with root q≈0.35999.",
+          "BC/root-branch: no singularity occurs for the correct branch before q=3/4; the selected root is the inner overflow point.",
+          "Symbol-whitelist: only P-defined quantities and dimensionless q=x/a are needed.",
+          "Faithfulness/adversarial transcription check: S's displayed potential has +[1/4]/(q-1/4). P requires the M2 term to be -[1/4]/|q-3/4|, i.e. -[1/4]/(3/4-q) on the inner branch. The printed S expression has the wrong mass location/sign and a spurious pole at q=1/4, so it cannot yield the stated bracketing/root literally."
+        ],
+        "refutation": "Although the final numerical value 0.36 is correct for P, the shown S derivation is not executable as written: differentiating its displayed potential does not represent the stated binary geometry and has a singularity at q=1/4. The correct inner-Lagrange equation gives q=0.35999...",
+        "verdict": "FAIL",
+        "confidence": 0.96,
+        "first_point_of_failure": "The effective potential specialized in A-3 is transcribed with the M2 contribution as +1/[4(q-1/4)] rather than the required -1/[4(3/4-q)] on 0<q<3/4.",
+        "fault_type_guess": "wrong-sign/wrong-coordinate intermediate formula; final answer accidentally or implicitly uses the correct equation"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The effective potential specialized in A-3 is transcribed with the M2 contribution as +1/[4(q-1/4)] rather than the required -1/[4(3/4-q)] on 0<q<3/4.",
+      "cost_usd": 0.0503635
+    },
+    {
+      "id": "A-5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of mechanical energy for Keplerian circular orbits, with the released energy radiated as blackbody emission from both faces of the annulus",
+        "regime_assumed": "Steady, optically blackbody, infinitesimally thin accretion disk with constant mass flow rate; gravitational influence of M2 neglected",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.94,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.017952
+    },
+    {
+      "id": "A-6",
+      "judge": {
+        "subpart_id": "A-6",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Kepler's third law and the steady thin-disc temperature relation T^4 = GM_NS beta/(8 pi sigma r^3)",
+        "regime_assumed": "Steady accretion disc, negligible gravitational effect of the companion, with r = 10a",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Substitution of r = 10a into the disc-temperature formula"
+        ],
+        "refutation": "Using a^3 = G(M_S + M_NS)P^2/(4 pi^2) and r = 10a gives T^4 = pi M_NS beta/[2000 sigma P^2(M_S + M_NS)], not 500 pi M_NS beta/[sigma P^2(M_S + M_NS)]. With the supplied numerical values, the correct temperature is approximately 2.8 x 10^2 K, whereas the reference gives 9 x 10^3 K.",
+        "first_point_of_failure": "The substitution r = 10a into r^3 is mishandled: the factor 10^3 is omitted, producing a factor 10^6 error in T^4.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The substitution r = 10a into r^3 is mishandled: the factor 10^3 is omitted, producing a factor 10^6 error in T^4.",
+      "cost_usd": 0.014483
+    },
+    {
+      "id": "B-1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Newton's law of gravitation applied to the enclosed mass near the center",
+        "regime_assumed": "Spherically symmetric star with approximately constant central density, rho(r) ≈ rho_c, and outward radial direction taken as positive",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.009373
+    },
+    {
+      "id": "B-7",
+      "judge": {
+        "subpart_id": "B.7",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Mass conservation under homologous radial displacement and Newtonian gravity, g = -GM(r)/r^2",
+        "regime_assumed": "Small uniform radial perturbation with r_tilde = (1 + epsilon)r and |epsilon| << 1; enclosed mass of each material shell remains constant",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.011747
+    }
+  ],
+  "escalated_subparts": [
+    "A-3"
+  ],
+  "escalation_rate": 0.2,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A-3",
+    "A-6"
+  ],
+  "cost_usd": 0.103918,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "REJECT",
+    "doc_correct": false,
+    "false_reject": true,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 45.76058220863342,
+  "problem_name": "Black Widow Pulsar"
+}

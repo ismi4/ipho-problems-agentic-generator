@@ -1,23 +1,17 @@
-# Five-problem experiment results (partial)
+# Five-problem experiment results (complete)
 
-**Status:** ABORTED — OpenAI `insufficient_quota` after $1.1382 / $25.00 (40 calls).
+**Spend (this process):** $2.4647 / $9.50 hard cap  
+**Prior partial (quota-aborted attempt):** $1.1382  
+**Total OpenAI for five-problem effort:** $3.6028  
+**Calls (this process):** 161 · **Matrix:** 30/30 complete
 
-## Corpus ready
-Five mechanics problems with clean + faulty solutions (see `INJECTED_ERRORS_FIVE.md`).
+## Cost / quality
 
-## Completed cells (5)
-- S3 `2020_Q2/clean`: verdict=REJECT correct=False faults=0/0 $0.2147
-- S3 `2020_Q2/faulty`: verdict=REJECT correct=True faults=3/3 $0.2048
-- S3 `2021_Q1/clean`: verdict=ACCEPT correct=True faults=0/0 $0.2168
-- S3 `2021_Q1/faulty`: verdict=REJECT correct=True faults=4/5 $0.2778
-- S3 `2023_Q3/clean`: verdict=ACCEPT correct=True faults=0/0 $0.1312
+| System | Mean $/sol | vs S3 | Clean accept | Faulty reject | Faults localized |
+|---|---|---|---|---|---|
+| S3 | $0.2093 | baseline | 40% | 100% | 14/17 |
+| S2 | $0.1155 | −44.8% | 60% | 100% | 12/17 |
+| S1 | $0.0262 | −87.5% | 60% | 80% | 10/17 |
 
-## Missing
-25 cells (remaining S3 + all S2/S1).
-
-## Resume
-```bash
-cd verifier_experiments
-python -m systems_bench.run_five_problems --hard-cap 25 --resume
-python -m systems_bench.build_submission_report
-```
+## Verdict
+S2 ≈ **44.8% cheaper** than S3 at equal (100%) faulty-document reject rate, with fewer false rejects on cleans. S1 is cheapest but false-accepted 2025 faulty.

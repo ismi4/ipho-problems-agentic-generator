@@ -1,0 +1,211 @@
+{
+  "system": "S2",
+  "problem_id": "2020_Q2",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "The friction power magnitude is |P| = mgv(μx cos²α + μy sin²α), which is maximized along the axis with the larger friction coefficient.",
+        "regime_assumed": "Sliding with v > 0, N = mg, μx = 0.75 > μy = 0.50.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "α = 0 mod π (velocity along the ±X axis)"
+        ],
+        "refutation": "At α = 0, |P| = 0.75mgv, whereas at α = π/2, |P| = 0.50mgv; therefore α = π/2 gives the minimum, not the maximum.",
+        "first_point_of_failure": "The stated final answer α = π/2 contradicts the preceding conclusion α = 0 and the maximization of the correct power expression.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: |P|=mg*v*(mu_x*cos(alpha)^2+mu_y*sin(alpha)^2) has units W",
+          "limiting-case: alpha=0 => |P|=0.75mgv; alpha=pi/2 => |P|=0.50mgv",
+          "symbolic-max: d/dalpha[mu_x*cos(alpha)^2+mu_y*sin(alpha)^2]=2*(mu_y-mu_x)*sin(alpha)*cos(alpha); with mu_x>mu_y, maxima are alpha=0 mod pi",
+          "conservation-residual: not applicable; dissipative friction intentionally gives P<0",
+          "BC/root-branch: angle to X axis permits both directions, so alpha=0 mod pi; if alpha is restricted to [0,pi/2], alpha=0",
+          "symbol-whitelist: uses only P-defined symbols mu_x, mu_y, m, g, v, alpha",
+          "faithfulness-to-P: P specifies mu_x=0.75>mu_y=0.50 and asks maximum absolute friction power"
+        ],
+        "refutation": "SymPy-style: f=mu_x*cos(alpha)**2+mu_y*sin(alpha)**2; subs({mu_x:0.75,mu_y:0.50,alpha:0})=0.75, while subs(...,alpha:pi/2)=0.50. Thus the solution's displayed reasoning correctly identifies alpha=0, but its final answer alpha=pi/2 is the minimum-power direction.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "The final stated answer alpha=pi/2 contradicts both the preceding sentence ('maximum ... alpha=0') and direct evaluation of the stated power formula.",
+        "fault_type_guess": "final-answer transcription/axis-swap error"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The final stated answer alpha=pi/2 contradicts both the preceding sentence ('maximum ... alpha=0') and direct evaluation of the stated power formula.",
+      "cost_usd": 0.0227025
+    },
+    {
+      "id": "A3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Anisotropic friction gives dvx/dt = -μx g vx/v and dvy/dt = -μy g vy/v. Dividing yields dvx/vx = (μx/μy) dvy/vy, hence vx = vy^(μx/μy) for the given initial components.",
+        "regime_assumed": "Horizontal sliding with both velocity components positive until vy decreases from 1 m/s to 0.25 m/s; μx = 0.75 and μy = 0.50.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Positive-component branch: vx = (vy)^(μx/μy) m/s when numerical velocities are expressed in m/s"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.007344
+    },
+    {
+      "id": "A4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The normal component of anisotropic friction provides the centripetal acceleration: v^2/R = g(μx−μy)sinα cosα, using its absolute value for curvature.",
+        "regime_assumed": "Velocity direction is taken in the first quadrant (0≤α≤π/2), with μx=0.75>μy=0.50; equivalent angles modulo π/2 give the same minimum curvature.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Maximum |sinα cosα| occurs at α=π/4 (and equivalent directions α=π/4+kπ/2).",
+          "Rmin=2v^2/[g(μx−μy)]=0.816 m for v=1.0 m/s."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.008172
+    },
+    {
+      "id": "C2",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "C2"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "symbol_whitelist: used only m,g,L,mu_x,mu_y,v0,phi,T",
+          "dimensional: v0_max=sqrt(mu_y*g*L) has units m/s",
+          "BC/root_branch: at phi=0 rod force on resting mass is T=m*v0^2/L along Y; static threshold is mu_y*m*g, giving physical positive root v0_max=sqrt(mu_y*g*L)",
+          "limiting/conservation: for mu_x>mu_y and the relevant initial arc, moving mass slows and the required tension does not exceed its initial value; the static-force capacity increases away from the Y direction, so phi=0 is limiting",
+          "numerical: sqrt(0.5*9.8*1)=2.21 m/s",
+          "faithfulness_to_P_and_S: supplied S excerpt contains C1 only and is truncated before any C2 derivation or answer"
+        ],
+        "refutation": "No C2 answer is present in the supplied reference-solution text, so it cannot substantiate or be verified against the required result v0max=sqrt(mu_y g L)=2.21 m/s.",
+        "verdict": "FAIL",
+        "confidence": 0.98,
+        "first_point_of_failure": "The provided S ends during C1 and never states or derives the C2 maximum initial velocity.",
+        "fault_type_guess": "missing_subpart_solution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The provided S ends during C1 and never states or derives the C2 maximum initial velocity.",
+      "cost_usd": 0.045451
+    },
+    {
+      "id": "C3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Tangential work-energy relation: d(v^2)/dφ = -2gL(μx cos^2φ + μy sin^2φ), with distance s = Lφ.",
+        "regime_assumed": "The second mass remains at rest; the moving mass follows a circular arc of radius L. Using v0max^2 = μy gL for μx = 0.75 > μy = 0.50 and L = 1 m.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For μx > μy, the limiting static-friction condition occurs initially at φ = 0.",
+          "Positive rotation from the initial configuration."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.9,
+        "escalate": true,
+        "escalate_reason": "Circular-motion result requires plug-back into the anisotropic friction and static-friction conditions; the supplied solution excerpt does not visibly include the C.3 derivation or numerical result."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style energy/root check: solve(Eq(0.5,1.25*phi+0.25*sin(2*phi)),phi) on (0,pi/2) gives phi_stop≈0.290 mrad, hence s=L*phi_stop≈0.290 m for L=1 m.",
+          "Dimensional check: v0max^2=mu_y*g*L has units m^2/s^2; s=L*phi is length.",
+          "Limiting/static-BC check: at phi=0 the rod force requirement is T=mv0^2/L, while the available Y static-friction bound is mu_y*m*g; thus v0max=sqrt(mu_y*g*L).",
+          "Conservation residual: v^2/(gL)=0.5-1.25*phi-0.25*sin(2*phi); substituting phi_stop makes this zero.",
+          "Static-contact residual/branch check: T/(mg)=0.5-1.25*phi-0.75*sin(phi)*cos(phi), and |T| remains below 1/sqrt(sin(phi)^2/mu_x^2+cos(phi)^2/mu_y^2) for 0<=phi<=phi_stop, with equality only initially.",
+          "Faithfulness/symbol check: the supplied S excerpt ends during C.1 and contains no C.3 distance, root equation, or numerical answer to verify."
+        ],
+        "refutation": "C.3 is absent from the supplied solution excerpt. The required result, under the stated C.1/C.2 branch, is s≈0.290 m, but S supplies no corresponding claim or derivation.",
+        "verdict": "FAIL",
+        "confidence": 0.98,
+        "first_point_of_failure": "No C.3 answer is present in S; therefore its numerical distance-to-stop result cannot be verified.",
+        "fault_type_guess": "missing_subpart_answer"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "No C.3 answer is present in S; therefore its numerical distance-to-stop result cannot be verified.",
+      "cost_usd": 0.056155
+    }
+  ],
+  "escalated_subparts": [
+    "A1",
+    "C2",
+    "C3"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A1",
+    "C2",
+    "C3"
+  ],
+  "cost_usd": 0.139824,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "F2020-1": {
+        "subpart": "A1",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "wrong_extremum"
+      },
+      "F2020-2": {
+        "subpart": "A3",
+        "caught": false,
+        "caught_at": null,
+        "type": "dropped_factor"
+      },
+      "F2020-3": {
+        "subpart": "C2",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "wrong_parameter"
+      }
+    },
+    "faults_caught": 2,
+    "faults_total": 3
+  },
+  "wall_s": 92.83892035484314,
+  "problem_name": "Anisotropic Friction"
+}

@@ -1,0 +1,208 @@
+{
+  "system": "S3",
+  "problem_id": "2025_Q2",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure relation in the connected liquid, combined with vertical force equilibrium of the tube.",
+        "regime_assumed": "Quasistatic equilibrium; the tube remains connected to the bath through its open lower end; no gas or vapour is present in the tube; its top is at height h above the bath surface.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: Pw=P0-rho*g*h has pressure units; (m+rho*S*h)*g has force units",
+          "limiting-case: h=0 gives Pw=P0 and required upward pull F=m*g*uz, consistent with zero pressure resultant",
+          "conservation_residual: vertical equilibrium residual m*(-g*uz)+(Pw-P0)*S*uz+F vanishes after Pw-P0=-rho*g*h and F=(m+rho*S*h)*g*uz",
+          "BC/root-branch: connected hydrostatic liquid with free bath surface z=0 fixes Pw=P0-rho*g*h uniquely; no branch/root choice in A.1",
+          "symbol-whitelist: final expressions use only P0,rho,m,S,h,g,uz (and Pw/F as requested); intermediate Pa is explicitly set equal to P0",
+          "faithfulness-to-P: uses case-b geometry, pressure at top height h, atmospheric pressure P0 at bath surface, and upward applied-force convention"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.040285
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "other",
+        "governing_law_identified": "Hydrostatic equilibrium with a vacuum above the mercury column: the free-surface altitude is z0 = P0/(rho g). The added mass is rho times the mercury volume located above the external bath level.",
+        "regime_assumed": "Quasistatic lifting, Psat = 0, mercury incompressible, with the mercury level initially reaching the tube top and subsequently pinned at z0 once a vacuum region forms.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Let z0 = P0/(rho g). For -Hb <= ht <= 0: madd = rho Sb(ht + Hb).",
+          "For 0 <= ht <= z0 - Hb: madd = rho[Sb Hb + St ht].",
+          "For z0 - Hb <= ht <= z0: madd = rho[St ht + Sb(z0 - ht)].",
+          "For z0 <= ht <= Ht: madd = rho St z0 = P0 St/g."
+        ],
+        "refutation": null,
+        "first_point_of_failure": "The supplied solution excerpt is truncated before the actual B.2 solution/graph, so there is no B.2 claim in S available to test against these branches.",
+        "verdict": "UNCERTAIN",
+        "confidence": 0.23,
+        "escalate": true,
+        "escalate_reason": "B.2 is a qualitative graph with multiple regime boundaries, and the relevant reference-solution content is absent from the supplied excerpt."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: z0=P0/(rho*g) has length; each madd=rho*area*length has mass",
+          "limiting-case: madd(-Hb)=0; madd is continuous at ht=0, z0-Hb, z0; madd(ht>=z0)=P0*St/g",
+          "conservation-residual: each branch equals rho times the mercury volume above the bath level, consistent with the added-load term",
+          "BC/root-branch: hydrostatic free level z0=P0/(rho*g); filled-to-top branches apply while ht+Hb<=z0, then the meniscus lies in the bulb for z0-Hb<=ht<=z0, then in the narrow tube",
+          "symbol-whitelist: P0,rho,g,St,Sb,Hb,Ht,ht are sufficient; z0 is only a defined shorthand",
+          "faithfulness-to-P: the supplied S terminates before any B.2 sketch, formulas, or branch boundaries are given"
+        ],
+        "refutation": "The supplied reference solution contains no B.2 answer to verify. The required B.2 result is a four-branch graph with breakpoints ht=0, ht=z0-Hb, and ht=z0, where z0=P0/(rho*g): rho*Sb*(ht+Hb); rho*(Sb*Hb+St*ht); rho*(St*ht+Sb*(z0-ht)); and rho*St*z0, respectively. No corresponding content appears in S.",
+        "verdict": "FAIL",
+        "confidence": 0.98,
+        "first_point_of_failure": "B.2 reference-solution content is absent: S ends at the beginning of Part B/equation (1), before the requested madd(ht) graph and expressions.",
+        "fault_type_guess": "truncated_or_missing_reference_solution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "B.2 reference-solution content is absent: S ends at the beginning of Part B/equation (1), before the requested madd(ht) graph and expressions.",
+      "cost_usd": 0.0796375
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "C.1",
+        "answer_type": "other",
+        "governing_law_identified": "Unavailable: the supplied excerpt for the requested sub-part is truncated before Part C / C.1.",
+        "regime_assumed": "Unknown.",
+        "dimensional_check": "unknown",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "C.1 statement and its corresponding reference-solution content are not present in the supplied material.",
+        "verdict": "UNCERTAIN",
+        "confidence": 0.0,
+        "escalate": true,
+        "escalate_reason": "The requested sub-part cannot be evaluated because both its prompt and solution excerpt are missing/truncated."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "faithfulness_to_P: FAIL — supplied Problem P ends during Part B.2 and contains no Part C or C.1 statement",
+          "reference_presence: FAIL — supplied Solution S is truncated during Part B and contains no C.1 reference answer",
+          "dimensional_check: not executable; no C.1 expression is available",
+          "limiting_case_check: not executable; no C.1 regime/result is available",
+          "conservation_residual_check: not executable; no C.1 governing equation is available",
+          "BC/root_branch_check: not executable; no C.1 boundary conditions or branches are available",
+          "symbol_whitelist_check: not executable; no proposed C.1 answer is available"
+        ],
+        "refutation": "C.1 cannot be verified from the supplied record: neither its prompt nor its corresponding reference-solution content appears. Any claimed C.1 verification would require inventing missing physical assumptions, equations, and symbols.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Input completeness: the provided excerpts terminate before Part C/C.1.",
+        "fault_type_guess": "missing_or_truncated_subpart_and_reference_solution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Input completeness: the provided excerpts terminate before Part C/C.1.",
+      "cost_usd": 0.0388575
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "other",
+        "governing_law_identified": "Cannot determine: the actual C.2 prompt and the corresponding portion of solution S are absent from the supplied material.",
+        "regime_assumed": "unknown",
+        "dimensional_check": "unknown",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "The provided SUB-PART UNDER TEST content is truncated before C.2, so no claimed result or derivation is available to test.",
+        "verdict": "UNCERTAIN",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "Insufficient source content: neither C.2 nor its reference-solution answer is visible."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "source-availability check",
+          "faithfulness-to-P check",
+          "symbol-whitelist check"
+        ],
+        "refutation": "C.2's actual prompt and the corresponding reference-solution content are not present in the supplied excerpts; the SUB-PART C.2 block is truncated during Part A. Therefore no C.2 claim, symbols, boundary conditions, branch/root choice, conservation equation, dimensions, or limiting cases can be tested.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Missing/truncated source material before the C.2 statement and solution result.",
+        "fault_type_guess": "insufficient_source_content"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Missing/truncated source material before the C.2 statement and solution result.",
+      "cost_usd": 0.036555
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "other",
+        "governing_law_identified": "Cannot determine: the statement and reference-solution content for C.3 are absent from the supplied material.",
+        "regime_assumed": "Unknown.",
+        "dimensional_check": "unknown",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "C.3 problem statement and corresponding solution are not available in the provided excerpt, so no physics-based verification is possible.",
+        "verdict": "UNCERTAIN",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "Insufficient source content: both the requested sub-part and its proposed reference answer are truncated or omitted."
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "UNCERTAIN",
+      "first_point_of_failure": "C.3 problem statement and corresponding solution are not available in the provided excerpt, so no physics-based verification is possible.",
+      "cost_usd": 0.0193225
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "B.2",
+    "C.1",
+    "C.2"
+  ],
+  "escalation_rate": 0.8,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "B.2",
+    "C.1",
+    "C.2"
+  ],
+  "cost_usd": 0.214657,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "REJECT",
+    "doc_correct": false,
+    "false_reject": true,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 60.33845782279968,
+  "problem_name": "Cox's Timepiece"
+}

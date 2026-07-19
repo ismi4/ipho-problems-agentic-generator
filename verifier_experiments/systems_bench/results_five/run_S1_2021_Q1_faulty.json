@@ -1,0 +1,180 @@
+{
+  "system": "S1",
+  "problem_id": "2021_Q1",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure integration on the two sides of the plate",
+        "regime_assumed": "Incompressible fluids, negligible surface tension, atmospheric pressure at free surfaces, and oil-water interface at the lower edges of the plates",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "If the oil-water interface reaches the lower edges at depth h, pressure continuity at that interface requires rho_oil g h' = rho_0 g h, so h' = (rho_0/rho_oil)h rather than h. Since rho_oil < rho_0, the oil free surface is above the water surface; thus the asserted h'=h and resulting force are not hydrostatically consistent.",
+        "first_point_of_failure": "The statement that the oil free surface is level with the water surface, hence h'=h.",
+        "verdict": "FAIL",
+        "confidence": 0.86,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The statement that the oil free surface is level with the water surface, hence h'=h.",
+      "cost_usd": 0.0087935
+    },
+    {
+      "id": "A.4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure integration to obtain the resultant horizontal pressure force",
+        "regime_assumed": "Small positive k with D = (2h/k)(1 - rho0/rho1), and pressure referenced consistently",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Using the solution's own integrated expression with p(0,0)=p(infinity,0)=0 gives F = L rho1 g (h+D)^2/2 - L rho0 g h^2/2. Since D is proportional to 1/k, this contains a leading term proportional to D^2, hence proportional to 1/k^2, not the claimed 1/k result. For example, taking h=L=g=1, rho1=2rho0, and k=0.01 gives D=100; the integrated expression is approximately 10200 rho0, whereas the stated answer is 200 rho0.",
+        "first_point_of_failure": "The assertion that the term proportional to hD is leading is false: the displayed term (h+D)^2 contains a D^2 contribution proportional to k^{-2}, which dominates for small k.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The assertion that the term proportional to hD is leading is false: the displayed term (h+D)^2 contains a D^2 contribution proportional to k^{-2}, which dominates for small k.",
+      "cost_usd": 0.009908
+    },
+    {
+      "id": "A.5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Thermal diffusion/conduction timescale, with heat capacity per unit volume rho_1 c and conductivity kappa",
+        "regime_assumed": "One-dimensional conduction across crust thickness D; order-of-magnitude estimate with constant material properties",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "The dimensional-analysis text incorrectly states delta = 3; the displayed equations give delta = 2. The final expression and the independent scale analysis correctly use D^2.",
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": "The dimensional-analysis text incorrectly states delta = 3; the displayed equations give delta = 2. The final expression and the independent scale analysis correctly use D^2.",
+      "cost_usd": 0.005294
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Energy conservation under the ray mapping, ε(x) dx = (E/π) dθ0, with x = 2z0 cot θ0",
+        "regime_assumed": "Two-dimensional downward emission into the full half-plane of directions with positive z-component; waves are fully absorbed at the surface",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Right- and left-going rays are symmetric about x = 0"
+        ],
+        "refutation": "The solution assigns (E/2π)dθ0 to an angular interval, but the waves are emitted into all directions with positive z-component, whose total angular range is π. Therefore the uniform energy per angular interval is E/π, not E/(2π). The stated result integrates over the whole surface to E/2 rather than the total emitted energy E. The correct density is ε(x) = 2Ez0/[π(4z0² + x²)].",
+        "first_point_of_failure": "The normalization statement: '(E/2π) dθ0 is the energy carried by rays emitted within ...'",
+        "verdict": "FAIL",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The normalization statement: '(E/2π) dθ0 is the energy carried by rays emitted within ...'",
+      "cost_usd": 0.0059045
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Ray mapping under repeated surface reflections: the nth surface hit lies at n x1(theta), and adjacent angular-edge intervals overlap when n |dx1/dtheta0| delta_theta0 is comparable to x1(theta0).",
+        "regime_assumed": "Narrow angular distribution with delta_theta0 << theta0 and leading-order expansion in delta_theta0; fully reflecting surface and positive-x propagation.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Positive and negative horizontal directions are symmetric; the stated result applies to the distance along the positive x-axis.",
+          "The leading-order limit delta_theta0 -> 0 is used."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.005576
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A.1",
+    "A.4",
+    "B.2"
+  ],
+  "cost_usd": 0.035476,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "ERR-6": {
+        "subpart": "A.1",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "faithfulness_drift"
+      },
+      "ERR-7": {
+        "subpart": "A.4",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "wrong_retained_order"
+      },
+      "ERR-8": {
+        "subpart": "A.5",
+        "caught": false,
+        "caught_at": null,
+        "type": "provenance"
+      },
+      "ERR-9": {
+        "subpart": "B.2",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "conservation"
+      },
+      "ERR-10": {
+        "subpart": "B.3",
+        "caught": false,
+        "caught_at": null,
+        "type": "completeness"
+      }
+    },
+    "faults_caught": 3,
+    "faults_total": 5
+  },
+  "wall_s": 44.04905319213867,
+  "problem_name": "Planetary Physics"
+}

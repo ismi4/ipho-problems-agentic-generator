@@ -1,0 +1,174 @@
+{
+  "system": "S2",
+  "problem_id": "2025_Q2",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure variation and static force equilibrium: P_w = P_0 - rho g h and 0 = m vector g + (P_w - P_0) S u_z + vector F.",
+        "regime_assumed": "The tube is completely filled with liquid water, with no vapor cavity or surface-tension effects.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "sympy dimensional: [P0]=[rho*g*h]=Pa; [m*g]=[rho*S*h*g]=N",
+          "hydrostatic BC: Pw.subs(h,0)=P0",
+          "force-balance residual: simplify(-m*g*uz + (Pw-P0)*S*uz + (m+rho*S*h)*g*uz)=0",
+          "limiting cases: h->0 gives F=m*g*uz; rho->0 gives F=m*g*uz",
+          "root/branch: no root selection is present in A.1; assumed liquid-filled hydrostatic branch is the stated case-b configuration",
+          "symbol whitelist: only P0,rho,m,S,h,g,uz (and Pw,F as requested outputs) are used",
+          "faithfulness: pressure is evaluated at top altitude h relative to bath surface z=0; upward pulling force correctly includes weight plus pressure-deficit load"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.999,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0291485
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and static force balance on the tube",
+        "regime_assumed": "Incompressible liquid, uniform gravitational field, quasistatic equilibrium, with the tube top at altitude h above the bath surface",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.011773
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and vertical force equilibrium: P_w = P_0 - rho g h; 0 = -m g u_z + (P_w - P_0) S u_z + F.",
+        "regime_assumed": "The tube remains completely filled with liquid, with no vapor formation; the tube is in static equilibrium and atmospheric pressure is P_0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style: Pw = P0 - rho*g*h; assert(dim(Pw)==Pressure).",
+          "Force residual: Rz = -m*g + (Pw-P0)*S + Fz; solve(Rz,Fz) -> g*(m + rho*S*h).",
+          "Limiting case h->0: Pw->P0 and F->m*g, consistent with no pressure difference.",
+          "Branch/BC check: hydrostatic connection to bath surface z=0 fixes Pw=P0-rho*g*h; no alternate root/branch in A.1.",
+          "Symbol whitelist: uses only P0,rho,m,S,h,g,u_z (plus Pw as requested).",
+          "Faithfulness: assumes the stated case-b liquid-filled tube before vapor onset; matches P and S."
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.029884
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic equilibrium, P(z)=P0-rho g z, and vertical force balance on the tube",
+        "regime_assumed": "Configuration b with the tube top at altitude h, atmospheric pressure treated as altitude-independent, and the tube maintained in static equilibrium",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.009961
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and static force equilibrium",
+        "regime_assumed": "Quasi-static equilibrium with a continuous incompressible liquid column; atmospheric pressure is P0 and pressure variation with altitude is neglected outside the liquid",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Configuration b"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.010915
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "C.1"
+  ],
+  "escalation_rate": 0.4,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.091681,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 37.23640823364258,
+  "problem_name": "Cox's Timepiece"
+}

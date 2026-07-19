@@ -663,15 +663,19 @@ def build() -> Path:
         story.append(
             Paragraph(
                 f"On five real IPhO-mechanics problems with injected faults, the S3→S2 cascade "
-                f"(cheapen the bulk judge to <font face='Courier'>luna</font>, keep "
-                f"<font face='Courier'>terra</font> escalation) delivered about "
-                f"<b>{sav:.0f}% lower cost per verification</b> while holding document-level "
-                f"accept/reject quality essentially in line with S3. "
-                "That is the assignment’s 50% target, made concrete: the savings come from not paying "
-                "frontier rates on every sub-part, not from silently dropping checks. "
-                "S1 is cheaper still but removes the escalation residue that DEFINITION.MD marks as "
-                "highest residual risk — fine for offline batch triage, not the default for reference-solution certification. "
-                "Next leverage is tightening when escalation fires, not swapping the bulk model again.",
+                f"(bulk judge <font face='Courier'>luna</font>, escalation still "
+                f"<font face='Courier'>terra</font>) cut mean cost by about "
+                f"<b>{sav:.0f}%</b> (${cq['S2']['mean_cost_usd']:.3f} vs ${cq['S3']['mean_cost_usd']:.3f}). "
+                f"Faulty-document reject rate stayed at 100% for both; clean accept rate was "
+                f"<b>higher</b> on S2 ({cq['S2']['clean_accept_rate']*100:.0f}% vs {cq['S3']['clean_accept_rate']*100:.0f}%), "
+                f"while fine-grained fault localization was slightly lower "
+                f"({cq['S2']['faults_caught_total']}/{cq['S2']['faults_total']} vs "
+                f"{cq['S3']['faults_caught_total']}/{cq['S3']['faults_total']}). "
+                "So the ~50% cost target is essentially met on $/verification with no loss of "
+                "document-level reject reliability — the remaining quality work is reducing false rejects "
+                "and catching the hard residual faults. S1 is far cheaper but false-accepted a faulty 2025 "
+                "solution: that is the expert-residue risk DEFINITION.MD warned about. "
+                "Next leverage is tightening escalation triggers, not another bulk-model swap.",
                 styles["body"],
             )
         )

@@ -1,0 +1,175 @@
+{
+  "system": "S1",
+  "problem_id": "2023_Q3",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.23 m/s; exponent_fingerprint 2/3=True 1/3=False; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "pass",
+        "detail": "f_x = γ cos θ1 − γ cos θ2"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "pass",
+        "detail": "ℓ=√(γ/(ρg)) dimensionally OK"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "pass",
+        "detail": "decaying branch e^{-x/ℓ} retained"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "pass",
+        "detail": "F_x uses z0 only"
+      }
+    ],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Conservation of volume and conversion of a fraction k of the decrease in water-air surface energy into translational kinetic energy",
+        "regime_assumed": "Two identical spherical drops merge into one spherical drop; total volume is conserved; merged-drop mass equals the initial total mass; substrate interaction and other energy losses are neglected except through k",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0043785
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Horizontal force balance on the water block, with surface-tension components at the two boundary edges",
+        "regime_assumed": "Static equilibrium; uniform surface tension; edge orientations as defined in the problem",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0036915
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "Hydrostatic pressure balance combined with horizontal surface-tension force balance, giving (rho g/2) z^2 + gamma cos(theta) = constant",
+        "regime_assumed": "Static water surface with uniform surface tension and hydrostatic pressure; valid for both hydrophilic and hydrophobic boards",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.003869
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Small-slope expansion of the capillary-gravity first integral gives z'' = z/ℓ^2; applying z(∞)=0 and z'(0)=tan θ0 yields the decaying exponential profile.",
+        "regime_assumed": "|z'(x)| ≪ 1, with the physically relevant solution decaying to z=0 as x→∞",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Growing branch Ae^{x/ℓ}",
+          "Decaying branch Be^{-x/ℓ}",
+          "Degenerate constant-slope branch excluded by the far-field boundary condition"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.004841
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of the hydrostatic-capillary quantity (1/2)ρgz^2 + γ cosθ along the water surface, combined with the horizontal force balance from C.1",
+        "regime_assumed": "Static equilibrium with a horizontally symmetric midpoint between the identical rods, so θ = 0 there and at the undisturbed far-field surface",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0052605
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.02204,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 16.044732570648193,
+  "problem_name": "Water and Objects"
+}

@@ -1,0 +1,172 @@
+{
+  "system": "S2",
+  "problem_id": "2020_Q2",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The friction-power magnitude is |P| = mgv(μx cos²α + μy sin²α), which is maximized along the axis with the larger friction coefficient.",
+        "regime_assumed": "Fixed speed v, with μx = 0.75 > μy = 0.50; α is a directed angle in the plane.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "α = 0 mod π, i.e. α = 0 or π in [0, 2π)"
+        ],
+        "refutation": "For α = π, the velocity is antiparallel to the X axis, so cos²α = 1 and sin²α = 0; therefore |P| = mgvμx, equal to the maximum. The reference answer α = 0 omits this equally valid direction.",
+        "first_point_of_failure": "The maximizing condition should be α = 0 mod π, not only α = 0.",
+        "verdict": "FAIL",
+        "confidence": 0.96,
+        "escalate": true,
+        "escalate_reason": "The answer is a bare geometric-angle result and omits the antiparallel branch; angle convention may affect whether this omission is accepted."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "sympy.simplify(-F.dot(v)) -> m*g*v*(mu_x*cos(alpha)**2 + mu_y*sin(alpha)**2)",
+          "diff(mu_x*cos(alpha)**2 + mu_y*sin(alpha)**2, alpha) -> 2*(mu_y-mu_x)*sin(alpha)*cos(alpha); for mu_x>mu_y, maxima occur at alpha = k*pi",
+          "subs(alpha,[0,pi,pi/2]) -> [mu_x,mu_x,mu_y], confirming alpha=pi is an equal maximum",
+          "dimension_check(m*g*v) -> power",
+          "symbol_whitelist: {m,g,v,mu_x,mu_y,alpha} only; faithful to Eq.(1) and P",
+          "branch_convention_check: S itself lists signed/angular branches in A2, so omission of alpha=pi cannot be justified by restricting to the positive X direction"
+        ],
+        "refutation": "The stated power expression is correct, but its maximization is incomplete. Since |P|=mgv(mu_x cos^2(alpha)+mu_y sin^2(alpha)) and mu_x>mu_y, every alpha=k*pi maximizes |P|. In particular alpha=pi (motion along negative X) gives the same maximum as alpha=0. The answer should state alpha=0 mod pi (or 0 and pi over [0,2pi)).",
+        "verdict": "FAIL",
+        "confidence": 0.97,
+        "first_point_of_failure": "The conclusion 'alpha=0' omits the antiparallel X-axis root alpha=pi (and periodic equivalents).",
+        "fault_type_guess": "incomplete root/branch enumeration"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The conclusion 'alpha=0' omits the antiparallel X-axis root alpha=pi (and periodic equivalents).",
+      "cost_usd": 0.0250075
+    },
+    {
+      "id": "A3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "m dv_x/dt = -μ_x mg(v_x/v), m dv_y/dt = -μ_y mg(v_y/v), implying v_x = v_y^(μ_x/μ_y) for the given initial conditions",
+        "regime_assumed": "Sliding motion with v_x,v_y>0 until v_y reaches 0.25 m/s; μ_x=0.75 and μ_y=0.50",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Positive-velocity branch: v_x = (0.25)^(0.75/0.50) = 0.125 m/s"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.007373
+    },
+    {
+      "id": "A4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The normal component of anisotropic friction provides centripetal acceleration: mv^2/R = mg|mu_x - mu_y| |sin(alpha) cos(alpha)|.",
+        "regime_assumed": "Sliding motion with v = 1.0 m/s, mu_x = 0.75, mu_y = 0.50, and alpha measured in the plane; curvature radius uses the magnitude of the normal friction component.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "The minimum radius occurs when |sin(2alpha)| = 1, i.e. alpha = pi/4 + k*pi/2.",
+          "For the stated coefficients, R_min = 2v^2/[g(mu_x - mu_y)] = 0.816 m."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.97,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.008169
+    },
+    {
+      "id": "C2",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "C2"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "symbol_whitelist: C2-specific derivation/result is absent from supplied S",
+          "faithfulness_to_P: C2 asks for v0max such that the second mass remains at rest; supplied text stops during C1 integration",
+          "dimensional/limiting/conservation/BC-root: cannot be executed because no candidate C2 expression, inequality, or branch is provided"
+        ],
+        "refutation": "The supplied reference solution contains no answer or derivation for sub-part C2. It ends in the middle of C1 ('Integrating this equ...'), so no claimed v0max can be verified against the static-body condition.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "C2: missing candidate result and missing condition for the force on the nominally stationary mass to remain within its friction limit.",
+        "fault_type_guess": "truncated_or_missing_reference_solution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "C2: missing candidate result and missing condition for the force on the nominally stationary mass to remain within its friction limit.",
+      "cost_usd": 0.031473
+    },
+    {
+      "id": "C3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Tangential work-energy equation for the moving mass: v^2 = v0^2 - 2gL[(mu_x+mu_y)phi/2 + (mu_x-mu_y)sin(2phi)/4], with v0max^2 = mu_y gL; the traveled distance is s = L phi_stop.",
+        "regime_assumed": "The second mass remains at rest, the initial speed is v0max, and the moving mass stops at the first positive root of mu_y = (mu_x+mu_y)phi_stop + (mu_x-mu_y)sin(2phi_stop)/2.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Stop occurs at the first positive angular root",
+          "For mu_x=0.75, mu_y=0.50, L=1 m: phi_stop is approximately 0.338 rad"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.82,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.017836
+    }
+  ],
+  "escalated_subparts": [
+    "A1",
+    "C2"
+  ],
+  "escalation_rate": 0.4,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A1",
+    "C2"
+  ],
+  "cost_usd": 0.089859,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "REJECT",
+    "doc_correct": false,
+    "false_reject": true,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 62.99184465408325,
+  "problem_name": "Anisotropic Friction"
+}

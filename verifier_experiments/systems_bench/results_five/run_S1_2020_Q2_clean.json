@@ -1,0 +1,157 @@
+{
+  "system": "S1",
+  "problem_id": "2020_Q2",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The friction-power magnitude is |P| = mgv(μx cos²α + μy sin²α); for fixed speed it is maximized along the axis with the larger friction coefficient.",
+        "regime_assumed": "Given μx = 0.75 > μy = 0.50, with fixed velocity magnitude and N = mg.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For μx > μy: velocity along the X axis, α = 0 (or π for the opposite direction)",
+          "For μx = μy: all directions give the same power magnitude",
+          "For μx < μy: velocity along the Y axis"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.003249
+    },
+    {
+      "id": "A3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Anisotropic friction gives m dvx/dt = -mu_x m g vx/v and m dvy/dt = -mu_y m g vy/v; hence vx = v0x (vy/v0y)^(mu_x/mu_y).",
+        "regime_assumed": "Body is sliding with positive vx and vy throughout the interval; mu_x = 0.75 and mu_y = 0.50.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For the stated positive initial velocity components, vx = (0.25)^(0.75/0.50) = 0.125 m/s.",
+          "Therefore v = sqrt(vx^2 + vy^2) = sqrt(0.125^2 + 0.25^2) approximately 0.280 m/s."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0032905
+    },
+    {
+      "id": "A4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The curvature is determined by the velocity-normal friction component: R = v^2/|a_perpendicular| = v^2/[g|μx−μy||sin α cos α|].",
+        "regime_assumed": "Sliding motion with v = 1.0 m/s, μx = 0.75, μy = 0.50, and nonzero velocity; angle taken in the first quadrant (equivalent minima occur at α = π/4 + kπ/2).",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Use the absolute value of the normal acceleration when defining the radius.",
+          "For μx ≠ μy, the minimum occurs when |sin α cos α| = 1/2.",
+          "For the specified μx > μy, α = π/4 in the first quadrant and Rmin = 2v^2/[g(μx−μy)] ≈ 0.816 m."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0039585
+    },
+    {
+      "id": "C2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The stationary mass remains at rest only if the rod force can be balanced by anisotropic static friction. At the initial orientation, the rod force is perpendicular to the initial velocity and has magnitude m v_0^2/L along the Y axis, so m v_0^2/L <= mu_y m g. Hence v_0max = sqrt(mu_y g L) = 2.21 m/s.",
+        "regime_assumed": "The second mass remains stationary, the rod transmits only its axial force, and the limiting condition is reached initially through the Y-direction static-friction threshold; mu_x > mu_y as specified.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For the specified coefficients mu_x > mu_y, the initial Y-direction condition is limiting.",
+          "At equality, the second mass is at the threshold of motion."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.91,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.007472
+    },
+    {
+      "id": "C3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Tangential work-energy relation: v^2(φ)=v_0^2-2gL∫_0^φ[μ_x cos^2θ+μ_y sin^2θ]dθ, with v_0,max^2=μ_y gL and stopping condition v(φ_stop)=0.",
+        "regime_assumed": "The second mass remains at rest throughout; the limiting condition is reached initially when the rod force on it is along the Y axis, giving v_0,max^2=μ_y gL. Kinetic anisotropic friction acts on the moving mass.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For the specified coefficients μ_x=0.75 and μ_y=0.50, the stopping angle satisfies 1.25φ_stop+0.125 sin(2φ_stop)=0.50.",
+          "The traveled distance is s=Lφ_stop≈0.3375 m for L=1 m."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.87,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.005858
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.023828,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 35.00942087173462,
+  "problem_name": "Anisotropic Friction"
+}

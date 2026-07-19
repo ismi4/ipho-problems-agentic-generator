@@ -1,0 +1,37 @@
+{
+  "hard_cap_usd": 9.5,
+  "spent_usd": 2.464669,
+  "remaining_usd": 7.035331,
+  "n_calls": 161,
+  "by_model_usd": {
+    "gpt-5.6-terra": 1.570419,
+    "gpt-5.6-luna": 0.894251
+  },
+  "by_purpose_usd": {
+    "S3.judge.2023_Q3": 0.114043,
+    "S3.escalate.2023_Q3": 0.024505,
+    "S3.judge.2024_Q3": 0.313437,
+    "S3.escalate.2024_Q3": 0.168235,
+    "S3.judge.2025_Q2": 0.25788,
+    "S3.escalate.2025_Q2": 0.169375,
+    "S2.judge.2020_Q2": 0.119578,
+    "S2.escalate.2020_Q2": 0.110105,
+    "S2.judge.2021_Q1": 0.150694,
+    "S2.escalate.2021_Q1": 0.15989,
+    "S2.judge.2023_Q3": 0.10568,
+    "S2.escalate.2023_Q3": 0.07431,
+    "S2.judge.2024_Q3": 0.132923,
+    "S2.escalate.2024_Q3": 0.071662,
+    "S2.judge.2025_Q2": 0.12315,
+    "S2.escalate.2025_Q2": 0.106975,
+    "S1.judge.2020_Q2": 0.046685,
+    "S1.judge.2021_Q1": 0.066263,
+    "S1.judge.2023_Q3": 0.045385,
+    "S1.judge.2024_Q3": 0.055923,
+    "S1.judge.2025_Q2": 0.04797
+  },
+  "input_tokens": 993991,
+  "cached_tokens": 11984,
+  "output_tokens": 133573,
+  "reasoning_tokens": 94323
+}

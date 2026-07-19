@@ -1,0 +1,381 @@
+Hard cap $9.50 | problems=5 | systems=['S3', 'S2', 'S1']
+  loaded 2020_Q2: P=4818 S=19224 F=19349
+  loaded 2021_Q1: P=8494 S=15448 F=14326
+  loaded 2023_Q3: P=7601 S=12400 F=12470
+  loaded 2024_Q3: P=14101 S=16242 F=16247
+  loaded 2025_Q2: P=19175 S=55854 F=55913
+  wrote ingestion_note.json
+  skip existing run_S3_2020_Q2_clean.json
+  skip existing run_S3_2020_Q2_faulty.json
+  skip existing run_S3_2021_Q1_clean.json
+  skip existing run_S3_2021_Q1_faulty.json
+  skip existing run_S3_2023_Q3_clean.json
+
+>>> S3 2023_Q3 faulty | spent $0.0000 remaining $9.5000
+  wrote run_S3_2023_Q3_faulty.json
+    REJECT (exp REJECT) ok=True faults=5/5 esc=0.20 $0.1385
+
+>>> S3 2024_Q3 clean | spent $0.1385 remaining $9.3615
+  wrote run_S3_2024_Q3_clean.json
+    REJECT (exp ACCEPT) ok=False faults=0/0 esc=0.60 $0.2411
+
+>>> S3 2024_Q3 faulty | spent $0.3796 remaining $9.1204
+  wrote run_S3_2024_Q3_faulty.json
+    REJECT (exp REJECT) ok=True faults=1/2 esc=0.60 $0.2406
+
+>>> S3 2025_Q2 clean | spent $0.6202 remaining $8.8798
+  wrote run_S3_2025_Q2_clean.json
+    REJECT (exp ACCEPT) ok=False faults=0/0 esc=0.80 $0.2147
+
+>>> S3 2025_Q2 faulty | spent $0.8349 remaining $8.6651
+  wrote run_S3_2025_Q2_faulty.json
+    REJECT (exp REJECT) ok=True faults=1/2 esc=0.80 $0.2126
+
+>>> S2 2020_Q2 clean | spent $1.0475 remaining $8.4525
+  wrote run_S2_2020_Q2_clean.json
+    REJECT (exp ACCEPT) ok=False faults=0/0 esc=0.40 $0.0899
+
+>>> S2 2020_Q2 faulty | spent $1.1373 remaining $8.3627
+  wrote run_S2_2020_Q2_faulty.json
+    REJECT (exp REJECT) ok=True faults=2/3 esc=0.60 $0.1398
+
+>>> S2 2021_Q1 clean | spent $1.2772 remaining $8.2228
+  wrote run_S2_2021_Q1_clean.json
+    ACCEPT (exp ACCEPT) ok=True faults=0/0 esc=0.60 $0.1506
+
+>>> S2 2021_Q1 faulty | spent $1.4278 remaining $8.0722
+  wrote run_S2_2021_Q1_faulty.json
+    REJECT (exp REJECT) ok=True faults=3/5 esc=0.60 $0.1599
+
+>>> S2 2023_Q3 clean | spent $1.5877 remaining $7.9123
+  wrote run_S2_2023_Q3_clean.json
+    ACCEPT (exp ACCEPT) ok=True faults=0/0 esc=0.20 $0.0701
+
+>>> S2 2023_Q3 faulty | spent $1.6579 remaining $7.8421
+  wrote run_S2_2023_Q3_faulty.json
+    REJECT (exp REJECT) ok=True faults=5/5 esc=0.40 $0.1099
+
+>>> S2 2024_Q3 clean | spent $1.7677 remaining $7.7323
+  wrote run_S2_2024_Q3_clean.json
+    REJECT (exp ACCEPT) ok=False faults=0/0 esc=0.20 $0.1039
+
+>>> S2 2024_Q3 faulty | spent $1.8717 remaining $7.6283
+  wrote run_S2_2024_Q3_faulty.json
+    REJECT (exp REJECT) ok=True faults=1/2 esc=0.20 $0.1007
+
+>>> S2 2025_Q2 clean | spent $1.9723 remaining $7.5277
+  wrote run_S2_2025_Q2_clean.json
+    ACCEPT (exp ACCEPT) ok=True faults=0/0 esc=0.40 $0.0917
+
+>>> S2 2025_Q2 faulty | spent $2.0640 remaining $7.4360
+  wrote run_S2_2025_Q2_faulty.json
+    REJECT (exp REJECT) ok=True faults=1/2 esc=0.60 $0.1384
+
+>>> S1 2020_Q2 clean | spent $2.2024 remaining $7.2976
+  wrote run_S1_2020_Q2_clean.json
+    ACCEPT (exp ACCEPT) ok=True faults=0/0 esc=0.00 $0.0238
+
+>>> S1 2020_Q2 faulty | spent $2.2263 remaining $7.2737
+  wrote run_S1_2020_Q2_faulty.json
+    REJECT (exp REJECT) ok=True faults=1/3 esc=0.00 $0.0229
+
+>>> S1 2021_Q1 clean | spent $2.2491 remaining $7.2509
+  wrote run_S1_2021_Q1_clean.json
+    UNCERTAIN (exp ACCEPT) ok=False faults=0/0 esc=0.00 $0.0308
+
+>>> S1 2021_Q1 faulty | spent $2.2799 remaining $7.2201
+  wrote run_S1_2021_Q1_faulty.json
+    REJECT (exp REJECT) ok=True faults=3/5 esc=0.00 $0.0355
+
+>>> S1 2023_Q3 clean | spent $2.3154 remaining $7.1846
+  wrote run_S1_2023_Q3_clean.json
+    ACCEPT (exp ACCEPT) ok=True faults=0/0 esc=0.00 $0.0220
+
+>>> S1 2023_Q3 faulty | spent $2.3374 remaining $7.1626
+  wrote run_S1_2023_Q3_faulty.json
+    REJECT (exp REJECT) ok=True faults=5/5 esc=0.00 $0.0233
+
+>>> S1 2024_Q3 clean | spent $2.3608 remaining $7.1392
+  wrote run_S1_2024_Q3_clean.json
+    ACCEPT (exp ACCEPT) ok=True faults=0/0 esc=0.00 $0.0279
+
+>>> S1 2024_Q3 faulty | spent $2.3887 remaining $7.1113
+  wrote run_S1_2024_Q3_faulty.json
+    REJECT (exp REJECT) ok=True faults=1/2 esc=0.00 $0.0280
+
+>>> S1 2025_Q2 clean | spent $2.4167 remaining $7.0833
+  wrote run_S1_2025_Q2_clean.json
+    UNCERTAIN (exp ACCEPT) ok=False faults=0/0 esc=0.00 $0.0219
+
+>>> S1 2025_Q2 faulty | spent $2.4386 remaining $7.0614
+  wrote run_S1_2025_Q2_faulty.json
+    ACCEPT (exp REJECT) ok=False faults=0/2 esc=0.00 $0.0261
+  wrote systems_runs.json
+  wrote summary.json
+  wrote spend_summary.json
+
+=== SUMMARY ===
+{
+  "S3": {
+    "mean_cost_usd": 0.2092747,
+    "n_instances": 10,
+    "clean_accept_rate": 0.4,
+    "faulty_reject_rate": 1.0,
+    "false_rejects": 3,
+    "false_accepts": 0,
+    "faults_caught_total": 14,
+    "faults_total": 17,
+    "mean_escalation_rate": 0.54,
+    "per_problem": {
+      "2020_Q2/clean": {
+        "verdict": "REJECT",
+        "correct": false,
+        "cost": 0.214672,
+        "faults": "0/0"
+      },
+      "2020_Q2/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.204772,
+        "faults": "3/3"
+      },
+      "2021_Q1/clean": {
+        "verdict": "ACCEPT",
+        "correct": true,
+        "cost": 0.216803,
+        "faults": "0/0"
+      },
+      "2021_Q1/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.277785,
+        "faults": "4/5"
+      },
+      "2023_Q3/clean": {
+        "verdict": "ACCEPT",
+        "correct": true,
+        "cost": 0.13124,
+        "faults": "0/0"
+      },
+      "2023_Q3/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.138548,
+        "faults": "5/5"
+      },
+      "2024_Q3/clean": {
+        "verdict": "REJECT",
+        "correct": false,
+        "cost": 0.2411,
+        "faults": "0/0"
+      },
+      "2024_Q3/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.240573,
+        "faults": "1/2"
+      },
+      "2025_Q2/clean": {
+        "verdict": "REJECT",
+        "correct": false,
+        "cost": 0.214657,
+        "faults": "0/0"
+      },
+      "2025_Q2/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.212597,
+        "faults": "1/2"
+      }
+    },
+    "cost_vs_S3": 1.0,
+    "savings_vs_S3": 0.0
+  },
+  "S2": {
+    "mean_cost_usd": 0.1154965,
+    "n_instances": 10,
+    "clean_accept_rate": 0.6,
+    "faulty_reject_rate": 1.0,
+    "false_rejects": 2,
+    "false_accepts": 0,
+    "faults_caught_total": 12,
+    "faults_total": 17,
+    "mean_escalation_rate": 0.42000000000000004,
+    "per_problem": {
+      "2020_Q2/clean": {
+        "verdict": "REJECT",
+        "correct": false,
+        "cost": 0.089859,
+        "faults": "0/0"
+      },
+      "2020_Q2/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.139824,
+        "faults": "2/3"
+      },
+      "2021_Q1/clean": {
+        "verdict": "ACCEPT",
+        "correct": true,
+        "cost": 0.150645,
+        "faults": "0/0"
+      },
+      "2021_Q1/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.159939,
+        "faults": "3/5"
+      },
+      "2023_Q3/clean": {
+        "verdict": "ACCEPT",
+        "correct": true,
+        "cost": 0.070129,
+        "faults": "0/0"
+      },
+      "2023_Q3/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.10986,
+        "faults": "5/5"
+      },
+      "2024_Q3/clean": {
+        "verdict": "REJECT",
+        "correct": false,
+        "cost": 0.103918,
+        "faults": "0/0"
+      },
+      "2024_Q3/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.100667,
+        "faults": "1/2"
+      },
+      "2025_Q2/clean": {
+        "verdict": "ACCEPT",
+        "correct": true,
+        "cost": 0.091681,
+        "faults": "0/0"
+      },
+      "2025_Q2/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.138443,
+        "faults": "1/2"
+      }
+    },
+    "cost_vs_S3": 0.5518894543869851,
+    "savings_vs_S3": 0.4481105456130149
+  },
+  "S1": {
+    "mean_cost_usd": 0.026222600000000002,
+    "n_instances": 10,
+    "clean_accept_rate": 0.6,
+    "faulty_reject_rate": 0.8,
+    "false_rejects": 0,
+    "false_accepts": 1,
+    "faults_caught_total": 10,
+    "faults_total": 17,
+    "mean_escalation_rate": 0.0,
+    "per_problem": {
+      "2020_Q2/clean": {
+        "verdict": "ACCEPT",
+        "correct": true,
+        "cost": 0.023828,
+        "faults": "0/0"
+      },
+      "2020_Q2/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.022857,
+        "faults": "1/3"
+      },
+      "2021_Q1/clean": {
+        "verdict": "UNCERTAIN",
+        "correct": false,
+        "cost": 0.030787,
+        "faults": "0/0"
+      },
+      "2021_Q1/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.035476,
+        "faults": "3/5"
+      },
+      "2023_Q3/clean": {
+        "verdict": "ACCEPT",
+        "correct": true,
+        "cost": 0.02204,
+        "faults": "0/0"
+      },
+      "2023_Q3/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.023345,
+        "faults": "5/5"
+      },
+      "2024_Q3/clean": {
+        "verdict": "ACCEPT",
+        "correct": true,
+        "cost": 0.027902,
+        "faults": "0/0"
+      },
+      "2024_Q3/faulty": {
+        "verdict": "REJECT",
+        "correct": true,
+        "cost": 0.028021,
+        "faults": "1/2"
+      },
+      "2025_Q2/clean": {
+        "verdict": "UNCERTAIN",
+        "correct": false,
+        "cost": 0.021898,
+        "faults": "0/0"
+      },
+      "2025_Q2/faulty": {
+        "verdict": "ACCEPT",
+        "correct": false,
+        "cost": 0.026072,
+        "faults": "0/2"
+      }
+    },
+    "cost_vs_S3": 0.1253022940661246,
+    "savings_vs_S3": 0.8746977059338754
+  }
+}
+Spend: {
+  "hard_cap_usd": 9.5,
+  "spent_usd": 2.464669,
+  "remaining_usd": 7.035331,
+  "n_calls": 161,
+  "by_model_usd": {
+    "gpt-5.6-terra": 1.570419,
+    "gpt-5.6-luna": 0.894251
+  },
+  "by_purpose_usd": {
+    "S3.judge.2023_Q3": 0.114043,
+    "S3.escalate.2023_Q3": 0.024505,
+    "S3.judge.2024_Q3": 0.313437,
+    "S3.escalate.2024_Q3": 0.168235,
+    "S3.judge.2025_Q2": 0.25788,
+    "S3.escalate.2025_Q2": 0.169375,
+    "S2.judge.2020_Q2": 0.119578,
+    "S2.escalate.2020_Q2": 0.110105,
+    "S2.judge.2021_Q1": 0.150694,
+    "S2.escalate.2021_Q1": 0.15989,
+    "S2.judge.2023_Q3": 0.10568,
+    "S2.escalate.2023_Q3": 0.07431,
+    "S2.judge.2024_Q3": 0.132923,
+    "S2.escalate.2024_Q3": 0.071662,
+    "S2.judge.2025_Q2": 0.12315,
+    "S2.escalate.2025_Q2": 0.106975,
+    "S1.judge.2020_Q2": 0.046685,
+    "S1.judge.2021_Q1": 0.066263,
+    "S1.judge.2023_Q3": 0.045385,
+    "S1.judge.2024_Q3": 0.055923,
+    "S1.judge.2025_Q2": 0.04797
+  },
+  "input_tokens": 993991,
+  "cached_tokens": 11984,
+  "output_tokens": 133573,
+  "reasoning_tokens": 94323
+}

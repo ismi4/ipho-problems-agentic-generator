@@ -1,0 +1,243 @@
+{
+  "system": "S3",
+  "problem_id": "2023_Q3",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.31 m/s; exponent_fingerprint 2/3=False 1/3=True; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "fail",
+        "detail": "sign of f_x flipped vs force balance / B.2 leftward"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "fail",
+        "detail": "ℓ=√(γ/ρ) is dimensionally inconsistent (missing g)"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "fail",
+        "detail": "retained growing branch e^{+x/ℓ}; diverges as x→∞, contradicting z(∞)=0"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "fail",
+        "detail": "boxed F_x reintroduces za/xa (violates demanded symbol set; algebraically equivalent trap)"
+      }
+    ],
+    "n_fail": 4,
+    "failed_subparts": [
+      "B.3",
+      "B.4",
+      "B.5",
+      "C.2"
+    ],
+    "verdict_hint": "REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Conservation of water volume determines the merged-drop radius, and a fraction k of the decrease in surface energy is converted to translational kinetic energy: (1/2)Mv^2 = kΔE.",
+        "regime_assumed": "Two initially spherical, identical isolated drops merge into one spherical drop; total volume is conserved; gravitational potential energy and substrate/contact-area effects are neglected.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Merged radius R = 2^(1/3)a from volume conservation."
+        ],
+        "refutation": "For a = 100 μm, the final surface area is 4πR^2 = 4π·2^(2/3)a^2, not 4π·2^(1/3)a^2. Thus ΔE = 4πγa^2[2 - 2^(2/3)], giving v = sqrt{3kγ[2 - 2^(2/3)]/(ρa)} = 0.23 m/s (two significant digits), rather than 0.31 m/s.",
+        "first_point_of_failure": "Equation (S3.2): the final-drop surface-area factor is incorrectly written as 2^(1/3) instead of 2^(2/3).",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style volume conservation: solve(4*pi*R**3/3-2*(4*pi*a**3/3),R) -> R=2**(1/3)*a",
+          "Surface-energy residual: simplify((8*pi*a**2*gamma-4*pi*R**2*gamma).subs(R,2**(1/3)*a)) -> 4*pi*a**2*gamma*(2-2**(2/3))",
+          "Energy-law check: simplify(sqrt(2*k*DeltaE/M)) -> sqrt(3*k*gamma*(2-2**(2/3))/(rho*a))",
+          "Numerical/limiting check: v=0.226... m/s -> 0.23 m/s (two significant digits)",
+          "Dimensional check: gamma/(rho*a) has dimensions m^2/s^2",
+          "Conservation residual: S3.2 uses final area factor 2**(1/3), inconsistent with R**2 and conserved-volume root R=2**(1/3)*a",
+          "BC/root-branch check: positive radius branch R=2**(1/3)*a is physically selected; no ambiguity affects the result",
+          "Symbol-whitelist check: uses only P-defined a,rho,gamma,k and derived M,DeltaE,v",
+          "Faithfulness-to-P check: applies stated spherical-drop and total-volume-conservation assumptions"
+        ],
+        "refutation": "FAIL. With conserved volume, R=2^(1/3)a, hence the final surface area is 4*pi*R^2=4*pi*2^(2/3)*a^2. Therefore DeltaE=4*pi*a^2*gamma*(2-2^(2/3)), not 4*pi*a^2*gamma*(2-2^(1/3)). The correct result is v=sqrt(3*k*gamma*(2-2^(2/3))/(rho*a))=0.23 m/s (two significant digits), rather than 0.31 m/s.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Equation (S3.2): the final merged-drop surface-area factor is 2^(2/3), whereas S uses 2^(1/3).",
+        "fault_type_guess": "volume-to-surface-area exponent error"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Equation (S3.2): the final merged-drop surface-area factor is 2^(2/3), whereas S uses 2^(1/3).",
+      "cost_usd": 0.03629225
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Horizontal static force balance between the pressure resultant from B.2 and the horizontal components of the two surface-tension forces.",
+        "regime_assumed": "Static two-dimensional meniscus; uniform surface tension; force per unit length along the y direction.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Using B.2's stated convention that f_x acts leftward, the pressure force vector is -f_x x-hat, whereas the stated surface-tension resultant is +(gamma cos(theta1)-gamma cos(theta2)) x-hat. Equilibrium therefore requires f_x = gamma[cos(theta1)-cos(theta2)], not gamma[cos(theta2)-cos(theta1)]. For example, theta1=0 and theta2=60 degrees gives a required leftward f_x=+gamma/2, while S gives -gamma/2.",
+        "first_point_of_failure": "The horizontal force-balance equation uses f_x with the opposite sign to the leftward force convention stated in B.2.",
+        "verdict": "FAIL",
+        "confidence": 0.96,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The horizontal force-balance equation uses f_x with the opposite sign to the leftward force convention stated in B.2.",
+      "cost_usd": 0.03259375
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "Static horizontal force balance between hydrostatic pressure and surface tension, giving the first integral (rho g/2) z^2 + gamma cos(theta) = constant.",
+        "regime_assumed": "Static capillary surface with uniform surface tension, incompressible water of constant density, and hydrostatic pressure; applicable to both hydrophilic and hydrophobic boards.",
+        "dimensional_check": "fail",
+        "case_branches_found": [
+          "hydrophilic board",
+          "hydrophobic board"
+        ],
+        "refutation": "The stated ell = sqrt(gamma/rho) has units sqrt((N/m)/(kg/m^3)) = m^(3/2)/s, not length. Dividing the correct first integral by gamma requires z^2/(gamma/(rho g)), hence ell^2 = gamma/(rho g) and ell = sqrt(gamma/(rho g)). The reference result also incorrectly predicts no dependence of the capillary length on gravitational acceleration.",
+        "first_point_of_failure": "The identification of ell after Eq. (S3.8): the factor g is omitted.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The identification of ell after Eq. (S3.8): the factor g is omitted.",
+      "cost_usd": 0.0208225
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Linearized capillary–hydrostatic equilibrium, obtained from the first integral z^2/(2ℓ^2)+cosθ=constant with cosθ≈1−z'^2/2, giving z''=z/ℓ^2.",
+        "regime_assumed": "Small-slope regime |z'(x)|≪1; consequently the imposed contact slope tanθ0 must also be sufficiently small for consistency.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "General solution: z=Ae^(x/ℓ)+Be^(−x/ℓ).",
+          "For x≥0 with z(∞)=0, the growing branch must vanish: A=0.",
+          "The contact-slope condition z'(0)=tanθ0 then gives B=−ℓtanθ0."
+        ],
+        "refutation": "Take any nonzero tanθ0, e.g. tanθ0=0.1. The submitted result z=ℓtanθ0 e^(x/ℓ) diverges as x→∞, so it violates the stated boundary condition z(∞)=0. The correct result is z(x)=−ℓtanθ0 e^(−x/ℓ).",
+        "first_point_of_failure": "The boundary condition z(∞)=0 is applied to the wrong integration constant: it requires A=0, not B=0.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The boundary condition z(∞)=0 is applied to the wrong integration constant: it requires A=0, not B=0.",
+      "cost_usd": 0.024415
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Capillary first integral: (1/2)ρgz^2 + γ cosθ = constant, combined with the pressure and surface-tension force expression from C.1.",
+        "regime_assumed": "Static equilibrium; identical rods in a left-right symmetric configuration about their midpoint; the outer water surface tends to z=0 and θ=0 far from the rods. No small-slope approximation is needed for C.2.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For either sign of z0, the result Fx = -(1/2)ρgz0^2 is non-positive, corresponding to attraction in the stated positive-x convention."
+        ],
+        "refutation": "The boxed final answer is not expressed solely in terms of the permitted remaining variables: it reintroduces za and xa, although C.2 explicitly requires an expression without θa, θb, za, and zb. The derived intermediate result Fx = -(1/2)ρgz0^2 does satisfy the request.",
+        "first_point_of_failure": "The boxed C.2 answer substitutes the later C.3 relation and reintroduces za and xa, violating C.2's required symbol set.",
+        "verdict": "FAIL",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The boxed C.2 answer substitutes the later C.3 relation and reintroduces za and xa, violating C.2's required symbol set.",
+      "cost_usd": 0.024425
+    }
+  ],
+  "escalated_subparts": [
+    "A.1"
+  ],
+  "escalation_rate": 0.2,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A.1",
+    "B.3",
+    "B.4",
+    "B.5",
+    "C.2"
+  ],
+  "cost_usd": 0.138548,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "ERR-1": {
+        "subpart": "A.1",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "dimless_geometric_factor"
+      },
+      "ERR-2": {
+        "subpart": "B.3",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "sign_flip"
+      },
+      "ERR-3": {
+        "subpart": "B.4",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "dimensional"
+      },
+      "ERR-4": {
+        "subpart": "B.5",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "wrong_root_branch"
+      },
+      "ERR-5": {
+        "subpart": "C.2",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "symbol_whitelist"
+      }
+    },
+    "faults_caught": 5,
+    "faults_total": 5
+  },
+  "wall_s": 49.12185549736023,
+  "problem_name": "Water and Objects"
+}
