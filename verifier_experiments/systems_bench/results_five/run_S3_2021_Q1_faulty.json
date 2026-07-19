@@ -1,0 +1,224 @@
+{
+  "system": "S3",
+  "problem_id": "2021_Q1",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance, including continuity of pressure at the oil-water interface, followed by integration of pressure over each face of the right plate.",
+        "regime_assumed": "Static, immiscible fluids; negligible surface tension; oil-water interface is at the lower plate edges; both free surfaces are at atmospheric pressure.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Given branch: rho_oil < rho_0, so the oil free surface lies above the external water free surface.",
+          "Pressure continuity gives rho_oil g h' = rho_0 g h, hence h' = (rho_0/rho_oil) h, not h."
+        ],
+        "refutation": "Take rho_oil = rho_0/2. Pressure balance requires h' = 2h. The oil force is (1/2)(rho_0/2)g(2h)^2 w = rho_0 g h^2 w, whereas the external-water force is (1/2)rho_0 g h^2 w. Thus the net force is +(1/2)rho_0 g h^2 w, to the right. The proposed result gives -(1/4)rho_0 g h^2 w, to the left.",
+        "first_point_of_failure": "The solution incorrectly asserts that the oil free surface is level with the water free surface, h' = h. Hydrostatic equilibrium instead requires h' = rho_0 h/rho_oil.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy.dimensions((rho_oil-rho0)*g*h**2*w/2) -> force: pass",
+          "BC/hydrostatic residual: Eq(rho_oil*g*hprime,rho0*g*h) => hprime=rho0*h/rho_oil, not h",
+          "limiting_case: rho_oil->rho0 gives Fx->0; rho_oil<rho0 gives hprime>h and force must be toward +x",
+          "conservation_residual: pressure mismatch at the oil-water interface if hprime=h is (rho0-rho_oil)*g*h != 0",
+          "symbol_whitelist: rho_oil,rho0,g,h,w,hprime all are defined by P/S",
+          "faithfulness_to_P: P states oil is poured until its lower level reaches the plate bottoms; it does not impose equal oil and external-water free-surface levels"
+        ],
+        "refutation": "The first assertion h'=h violates hydrostatic pressure continuity at the oil-water interface at the lower plate edges. With atmospheric pressure at both free surfaces, rho_oil*g*hprime=rho0*g*h, hence hprime=(rho0/rho_oil)h>h. Therefore Fx=(w/2)[rho_oil*g*hprime**2-rho0*g*h**2]=(rho0*g*h**2*w/2)(rho0/rho_oil-1), directed to the right. For rho_oil=rho0/2, this is +(rho0*g*h^2*w)/2, while S gives -(rho0*g*h^2*w)/4.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "The solution imposes equal free-surface elevations, h'=h, instead of enforcing pressure continuity at the oil-water interface.",
+        "fault_type_guess": "incorrect hydrostatic boundary condition / omitted free-surface-height adjustment"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The solution imposes equal free-surface elevations, h'=h, instead of enforcing pressure continuity at the oil-water interface.",
+      "cost_usd": 0.063865
+    },
+    {
+      "id": "A.4",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "A.4"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: claimed F=2gLh^2(rho1-rho0)/k has force units",
+          "limiting-case/asymptotic: with D=2(1-rho0/rho1)h/k, the displayed preceding expression contains (rho1 g L/2)D^2=O(k^-2), not O(k^-1)",
+          "SymPy-style residual: simplify(F_exact-F_claim) with F_exact=L*(p0*D+rho1*g*(h+D)^2/2-rho0*g*h^2/2) leaves a nonzero leading term 2*L*g*rho1*(1-rho0/rho1)^2*h^2/k^2",
+          "conservation/gauge check: F_exact retains p0*L*D, so the stated pressure-force construction depends on the common pressure p(0,0)=p(infinity,0); a closed-body net force cannot depend on an arbitrary uniform pressure offset",
+          "BC/root-branch: no root/branch choice is involved; hydrostatic relations used are compatible with A.3",
+          "symbol-whitelist: final symbols are all defined in P; p0 is only an introduced intermediate pressure",
+          "faithfulness to P: using A.3 is appropriate, but the claimed leading-order reduction contradicts the solution's own exact integrated expression"
+        ],
+        "refutation": "The step claiming that hD is the leading term is false: D is proportional to k^(-1), hence D^2 in (h+D)^2 is O(k^(-2)) and dominates hD=O(k^(-1)). Direct substitution into the displayed formula cannot yield F≈2gLh^2(rho1-rho0)/k. Moreover, the intermediate force depends on the arbitrary common pressure p(0,0), indicating missing boundary/pressure contributions if it is intended as a physical net force.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "\"Since k << 1, and D ∝ k^−1, the term with hD ∝ k^−1 is of the leading order\"",
+        "fault_type_guess": "asymptotic-order error, with likely missing pressure-boundary contribution in the force construction"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "\"Since k << 1, and D ∝ k^−1, the term with hD ∝ k^−1 is of the leading order\"",
+      "cost_usd": 0.0978225
+    },
+    {
+      "id": "A.5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Thermal diffusion/conduction, with diffusivity alpha = kappa/(rho c), giving a relaxation timescale of order D^2/alpha.",
+        "regime_assumed": "Order-of-magnitude thermal equilibration across a slab of far-distance crust of thickness D, with constant thermal conductivity and specific heat.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "The dimensional-analysis claim delta = 3 is false: with alpha = beta = 1 and gamma = -1, length balance gives -3 + 2 - 1 + delta = 0, hence delta = 2. Indeed rho c D^3/kappa has dimensions T·L, not time.",
+        "first_point_of_failure": "The stated dimensional-analysis solution incorrectly obtains delta = 3, although its displayed final result uses the correct power D^2.",
+        "verdict": "FAIL",
+        "confidence": 0.96,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: solve([-3*a+2*b+g+d, a+g, -2*b-3*g-1, -b-g],[a,b,g,d]) -> {a:1,b:1,g:-1,d:2}; claimed d=3 is inconsistent",
+          "limiting-case: D->0 gives tau->0; kappa->infinity gives tau->0; rho*c->infinity gives tau->infinity, consistent with tau~rho*c*D^2/kappa",
+          "conservation-residual: stored heat ~rho*c*S*D*DeltaT and conducted energy in time tau ~kappa*S*DeltaT*tau/D; residual=0 implies tau~rho*c*D^2/kappa",
+          "BC/root-branch: diffusion across a slab has lowest relaxation mode tau=C*D^2/alpha, C dimensionless and BC-dependent; no branch ambiguity affects scaling",
+          "symbol-whitelist: rho1,c,kappa,D are all given/defined in P; dimensionless prefactor is admissible",
+          "faithfulness-to-P: P requests an estimate and permits dimensional/order analysis; the final scaling satisfies this, but the displayed dimensional-analysis exponent statement does not"
+        ],
+        "refutation": "The first method explicitly states delta=3, but dimensional balance gives delta=2: -3(1)+2(1)-1+delta=0 => delta=2. Thus rho1*c*D^3/kappa has dimensions T*L, not time. The subsequently printed final result rho1*c*D^2/kappa is correct, so S is internally inconsistent.",
+        "verdict": "FAIL",
+        "confidence": 0.98,
+        "first_point_of_failure": "\"This gives alpha = beta = 1, gamma = -1, delta = 3\"; the correct exponent is delta=2.",
+        "fault_type_guess": "algebraic/dimensional-analysis exponent typo or derivation inconsistency"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "\"This gives alpha = beta = 1, gamma = -1, delta = 3\"; the correct exponent is delta=2.",
+      "cost_usd": 0.05586
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of ray energy under the angular-to-surface-coordinate mapping: ε(x)|dx| = (dE/dθ0)|dθ0|.",
+        "regime_assumed": "Geometrical-ray approximation; isotropic uniform emission into the downward half-plane (positive z component); complete absorption at the first return to the surface.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "x > 0 corresponds to initial angles 0 < θ0 < π/2.",
+          "x < 0 corresponds symmetrically to rays emitted toward negative x.",
+          "The stated total energy E is distributed over an angular interval of π, not 2π."
+        ],
+        "refutation": "Integrating the proposed ε(x) over both surface sides gives only E/2: 2∫_0^∞ [E z0/(π(4z0^2+x^2))] dx = E/2, whereas all of the stated P-wave energy E is emitted into and absorbed at the surface. Uniform emission over the downward semicircle requires dE/dθ0 = E/π, not E/(2π).",
+        "first_point_of_failure": "The solution assigns E/(2π) dθ0 to a downward-going angular interval whose total width is π.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The solution assigns E/(2π) dθ0 to a downward-going angular interval whose total width is π.",
+      "cost_usd": 0.0301375
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Geometrical-ray propagation with specular reflection at the surface. A ray launched at angle theta has successive surface encounters at x = n x1(theta), where x1(theta) = A cot(b theta). The angular interval maps at the nth encounter into an interval whose width grows as n |dx1/dtheta| delta_theta0.",
+        "regime_assumed": "delta_theta0 << 1 and delta_theta0 << theta0; leading-order asymptotics in delta_theta0, with the discrete reflection number treated continuously because N is of order 1/delta_theta0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For the stated 0 < theta0 < pi/2, x1(theta) is positive and decreases monotonically with theta, so x_- > x_+.",
+          "Integer-rounding corrections to the first overlapping reflection band change x_max only by order x1, subleading relative to the order x1^2/(|dx1/dtheta| delta_theta0) result."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.97,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0301
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "A.4",
+    "A.5"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A.1",
+    "A.4",
+    "A.5",
+    "B.2"
+  ],
+  "cost_usd": 0.277785,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "ERR-6": {
+        "subpart": "A.1",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "faithfulness_drift"
+      },
+      "ERR-7": {
+        "subpart": "A.4",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "wrong_retained_order"
+      },
+      "ERR-8": {
+        "subpart": "A.5",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "provenance"
+      },
+      "ERR-9": {
+        "subpart": "B.2",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "conservation"
+      },
+      "ERR-10": {
+        "subpart": "B.3",
+        "caught": false,
+        "caught_at": null,
+        "type": "completeness"
+      }
+    },
+    "faults_caught": 4,
+    "faults_total": 5
+  },
+  "wall_s": 100.2761583328247,
+  "problem_name": "Planetary Physics"
+}

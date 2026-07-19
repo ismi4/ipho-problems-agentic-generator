@@ -1,0 +1,198 @@
+{
+  "system": "S3",
+  "problem_id": "2020_Q2",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "The friction power is P = F·v = -mgv(μx cos²α + μy sin²α), so its absolute value is mgv(μx cos²α + μy sin²α).",
+        "regime_assumed": "Given μx = 0.75 > μy = 0.50, with velocity direction allowed relative to the X axis.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For μx > μy, maximum occurs at α = nπ.",
+          "For μy > μx, maximum occurs at α = π/2 + nπ.",
+          "For μx = μy, all angles give the same power magnitude."
+        ],
+        "refutation": "At α = 0, |P| = μx mgv = 0.75mgv; at the stated answer α = π/2, |P| = μy mgv = 0.50mgv. Thus π/2 does not maximize the friction-power magnitude.",
+        "first_point_of_failure": "The displayed final answer α = π/2 contradicts both the preceding reasoning ('α = 0') and the maximization of the stated power expression.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: |P|=mgv(μx cos(alpha)^2+μy sin(alpha)^2) has units of power",
+          "limiting-case: eval(alpha=0)=0.75mgv > eval(alpha=pi/2)=0.50mgv",
+          "conservation-residual: not applicable; dissipative friction means mechanical energy is not conserved",
+          "BC/root-branch: d|P|/dalpha=2mgv(μy-μx)sin(alpha)cos(alpha); for μx>μy, maxima are alpha=n*pi, while pi/2+n*pi are minima",
+          "symbol-whitelist: uses only P,F,v,m,g,μx,μy,alpha from P/S",
+          "faithfulness-to-P: S's displayed formula and sentence 'maximum ... alpha=0' agree with P, but its boxed answer alpha=pi/2 contradicts both"
+        ],
+        "refutation": "SymPy-style: Q=mg*v*(mux*cos(a)**2+muy*sin(a)**2); simplify(Q.subs({mux:Rational(3,4),muy:Rational(1,2),a:0})-Q.subs({mux:Rational(3,4),muy:Rational(1,2),a:pi/2}))=mg*v/4>0. Therefore alpha=pi/2 is not a maximizing direction; the answer is alpha=0 modulo pi (or alpha=0 in the usual principal-angle convention).",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "The final stated answer alpha=pi/2 contradicts the preceding correct maximization statement alpha=0 and gives the minimum rather than maximum friction-power magnitude.",
+        "fault_type_guess": "final-answer transcription/typographical error"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The final stated answer alpha=pi/2 contradicts the preceding correct maximization statement alpha=0 and gives the minimum rather than maximum friction-power magnitude.",
+      "cost_usd": 0.03121
+    },
+    {
+      "id": "A3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "For kinetic anisotropic friction, dvx/dt = -mu_x g vx/v and dvy/dt = -mu_y g vy/v. Hence dvx/dvy = (mu_x vx)/(mu_y vy), giving vx = vx0 (vy/vy0)^(mu_x/mu_y).",
+        "regime_assumed": "Sliding motion with vx>0 and vy>0, before either velocity component reaches zero.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Using mu_x/mu_y = 0.75/0.50 = 3/2 and vx0=vy0=1 m/s, at vy=0.25 m/s one obtains vx=(0.25)^(3/2)=0.125 m/s, not 0.250 m/s as claimed. The stated intermediate value would instead give speed sqrt(0.25^2+0.25^2)=0.354 m/s, not 0.28 m/s.",
+        "first_point_of_failure": "The solution evaluates the integrated relation incorrectly: vx should be 0.125 m/s, not 0.250 m/s.",
+        "verdict": "FAIL",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The solution evaluates the integrated relation incorrectly: vx should be 0.125 m/s, not 0.250 m/s.",
+      "cost_usd": 0.018465
+    },
+    {
+      "id": "A4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The normal component of anisotropic friction is |F_perp| = mg|mu_x-mu_y||sin(alpha)cos(alpha)|, and the curvature relation is mv^2/R = |F_perp|.",
+        "regime_assumed": "Sliding motion with velocity direction alpha; for alpha restricted to the first quadrant, 0 <= alpha <= pi/2.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For unrestricted velocity directions, minimum radius occurs at alpha = pi/4 + k*pi/2, k integer.",
+          "For alpha in the first quadrant, alpha_3 = pi/4."
+        ],
+        "refutation": null,
+        "first_point_of_failure": "The result for the radius is left symbolic despite all numerical data being supplied. It should state R_min = 2(1.0 m/s)^2/[9.8 m/s^2(0.75-0.50)] = 0.816 m (approximately 0.82 m).",
+        "verdict": "FAIL",
+        "confidence": 0.95,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The result for the radius is left symbolic despite all numerical data being supplied. It should state R_min = 2(1.0 m/s)^2/[9.8 m/s^2(0.75-0.50)] = 0.816 m (approximately 0.82 m).",
+      "cost_usd": 0.020385
+    },
+    {
+      "id": "C2",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "C2"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "sympy-style oracle: v0max=sqrt(g*L*(mu_x+mu_y))=sqrt(9.8*1*(0.75+0.50))=3.5 m/s, obtained from the initial-angle static-friction boundary T(0)=m(v0^2/L-g*mu_x)<=m*g*mu_y",
+          "dimensional: g*L*(mu_x+mu_y) has units m^2/s^2, hence v0max has units m/s",
+          "limiting/BC: at v0=v0max, required holding friction at phi=0 equals mu_y*m*g, i.e. the stationary mass is exactly at its static threshold; lower v0 satisfies it",
+          "conservation residual: the C1 tangential work/energy relation must be used to verify holding throughout rotation, but no C2 derivation/result is present to test",
+          "root-branch: physical branch is v0max>0, namely 3.5 m/s",
+          "symbol-whitelist: no C2 expression is supplied, so there are no unsupported symbols but also no answer to validate",
+          "faithfulness to P: supplied S ends during C1 and contains no solution text or numerical answer for requested sub-part C2"
+        ],
+        "refutation": "The supplied reference solution contains no C2 answer. Independent check gives v0max=3.5 m/s (positive root), but S neither states nor derives this result.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "C2 is absent from the provided solution S; the text truncates during C1.",
+        "fault_type_guess": "missing/truncated sub-part solution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "C2 is absent from the provided solution S; the text truncates during C1.",
+      "cost_usd": 0.07572999999999999
+    },
+    {
+      "id": "C3",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "C3"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "faithfulness_to_P: C3 asks distance traveled at v0=v0max, but supplied S contains no C3 derivation or answer",
+          "symbol_whitelist: no C3-specific expression is present to validate",
+          "dimensional/limiting/conservation/BC-root checks: not executable because the alleged reference solution is truncated before C3"
+        ],
+        "refutation": "The provided solution text ends during C1 and supplies neither v0max from C2 nor the distance requested in C3. Therefore it cannot serve as a reference solution for sub-part C3.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Missing C3 solution/answer in S.",
+        "fault_type_guess": "incomplete_or_truncated_reference_solution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Missing C3 solution/answer in S.",
+      "cost_usd": 0.0589825
+    }
+  ],
+  "escalated_subparts": [
+    "A1",
+    "C2",
+    "C3"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A1",
+    "A3",
+    "A4",
+    "C2",
+    "C3"
+  ],
+  "cost_usd": 0.204772,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "F2020-1": {
+        "subpart": "A1",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "wrong_extremum"
+      },
+      "F2020-2": {
+        "subpart": "A3",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "dropped_factor"
+      },
+      "F2020-3": {
+        "subpart": "C2",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "wrong_parameter"
+      }
+    },
+    "faults_caught": 3,
+    "faults_total": 3
+  },
+  "wall_s": 97.10090804100037,
+  "problem_name": "Anisotropic Friction"
+}

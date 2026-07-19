@@ -1,0 +1,302 @@
+{
+  "system": "S1",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.31 m/s; exponent_fingerprint 2/3=False 1/3=True; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "fail",
+        "detail": "sign of f_x flipped vs force balance / B.2 leftward"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "fail",
+        "detail": "ℓ=√(γ/ρ) is dimensionally inconsistent (missing g)"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "fail",
+        "detail": "retained growing branch e^{+x/ℓ}; diverges as x→∞, contradicting z(∞)=0"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "fail",
+        "detail": "boxed F_x reintroduces za/xa (violates demanded symbol set; algebraically equivalent trap)"
+      }
+    ],
+    "n_fail": 4,
+    "failed_subparts": [
+      "B.3",
+      "B.4",
+      "B.5",
+      "C.2"
+    ],
+    "verdict_hint": "REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "A fraction k of the decrease in surface energy is converted into translational kinetic energy, with total volume conserved.",
+        "regime_assumed": "Two identical spherical drops of radius a merge into one spherical drop; gravitational and other energy changes are neglected.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Volume conservation gives the merged radius R = 2^(1/3)a, so its surface area is 4πR^2 = 4π·2^(2/3)a^2. Hence ΔE = 4πa^2γ(2 − 2^(2/3)), leading to v = sqrt[3kγ(2 − 2^(2/3))/(ρa)] = 0.23 m/s, not 0.31 m/s.",
+        "first_point_of_failure": "S3.2: the final surface-area factor should be 2^(2/3), not 2^(1/3); consequently the numerical velocity in S3.4 is incorrect.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "S3.2: the final surface-area factor should be 2^(2/3), not 2^(1/3); consequently the numerical velocity in S3.4 is incorrect.",
+      "cost_usd": 0.0027434
+    },
+    {
+      "id": "B.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic equilibrium: dP/dz = -rho g, with boundary condition P(0) = P0",
+        "regime_assumed": "Static incompressible water with uniform density in a gravitational field; z is measured upward from the far-field water surface",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0036125
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure P = P0 - rho g z; integrate the horizontal pressure component along the boundary, with atmospheric pressure canceling in the net force.",
+        "regime_assumed": "Incompressible static water, uniform density, vertical coordinate z positive upward, and no net horizontal contribution from atmospheric pressure.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0050755
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Horizontal force balance on the water block: f_x + γ cos θ_1 − γ cos θ_2 = 0",
+        "regime_assumed": "Static equilibrium; θ_1 and θ_2 are measured with the stated sign convention",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.95,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "sign of f_x flipped vs force balance / B.2 leftward",
+      "cost_usd": 0.0058375
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "Hydrostatic pressure balance with surface-tension force balance, yielding (1/2)ρgz² + γ cosθ = constant",
+        "regime_assumed": "Static capillary-gravity equilibrium with constant density and uniform surface tension",
+        "dimensional_check": "fail",
+        "case_branches_found": [],
+        "refutation": "The stated ℓ = √(γ/ρ) is not a length: since γ/ρ has units m³/s², its square root has units m^(3/2)/s. The required capillary length is ℓ = √(γ/(ρg)).",
+        "first_point_of_failure": "The expression for ℓ in Eq. (S3.9) omits the gravitational acceleration g when nondimensionalizing (1/2)ρgz²/γ.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The expression for ℓ in Eq. (S3.9) omits the gravitational acceleration g when nondimensionalizing (1/2)ρgz²/γ.",
+      "cost_usd": 0.004253
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Using cos(theta) approximately 1 - (z')^2/2 in Eq. (1) gives z'' = z/l^2, with z' = tan(theta).",
+        "regime_assumed": "Small-slope regime |z'(x)| << 1 for x >= 0, with z(x) approaching 0 as x approaches infinity.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Growing branch A exp(x/l)",
+          "Decaying branch B exp(-x/l)"
+        ],
+        "refutation": "The stated boundary condition z(infinity)=0 eliminates the growing branch, so A=0, not B=0. The correct solution is z(x) = -l tan(theta0) exp(-x/l), whereas the reference retains the divergent growing branch.",
+        "first_point_of_failure": "The boundary-condition step after Eq. (S3.14): z(infinity)=0 implies A=0, not B=0.",
+        "verdict": "FAIL",
+        "confidence": 1.0,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The boundary-condition step after Eq. (S3.14): z(infinity)=0 implies A=0, not B=0.",
+      "cost_usd": 0.004557
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "C.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure force on the rod plus horizontal components of surface-tension forces at the two contact points, with atmospheric-pressure contributions canceling.",
+        "regime_assumed": "Static equilibrium; uniform surface tension; incompressible water; force evaluated per unit length along the y-axis.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0051375
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance combined with the surface-tension invariant, yielding F_x = -\\frac{1}{2}\\rho g z_0^2.",
+        "regime_assumed": "Static water surface with the far-field surface level z=0 and midpoint height z_0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "The boxed result, -2\\rho g z_a^2/[e^{x_a/\\ell}+e^{-x_a/\\ell}]^2, explicitly depends on z_a and x_a, although C.2 requires an expression without z_a, z_b, \\theta_a, or \\theta_b. For fixed z_0, the correct force is solely -\\frac{1}{2}\\rho g z_0^2.",
+        "first_point_of_failure": "The final boxed C.2 answer reintroduces z_a and x_a instead of giving the required variable-free form in terms of z_0.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The final boxed C.2 answer reintroduces z_a and x_a instead of giving the required variable-free form in terms of z_0.",
+      "cost_usd": 0.004816
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "The linearized capillary-surface equation z''(x)=z(x)/ell^2, together with left-right symmetry at the midpoint, z'(0)=0, and the boundary condition z(x_a)=z_a.",
+        "regime_assumed": "Small-slope approximation from B.5 and symmetric water surface about the midpoint between the rods.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0042805
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A.1",
+    "B.3",
+    "B.4",
+    "B.5",
+    "C.2"
+  ],
+  "cost_usd": 0.040313,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "ERR-1": {
+        "subpart": "A.1",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "expected_cheapest": "Tier2"
+      },
+      "ERR-2": {
+        "subpart": "B.3",
+        "caught": true,
+        "caught_at": "deterministic",
+        "expected_cheapest": "Tier0.3"
+      },
+      "ERR-3": {
+        "subpart": "B.4",
+        "caught": true,
+        "caught_at": "deterministic",
+        "expected_cheapest": "Tier0.1"
+      },
+      "ERR-4": {
+        "subpart": "B.5",
+        "caught": true,
+        "caught_at": "deterministic",
+        "expected_cheapest": "Tier1.2"
+      },
+      "ERR-5": {
+        "subpart": "C.2",
+        "caught": true,
+        "caught_at": "deterministic",
+        "expected_cheapest": "Tier0.5"
+      }
+    },
+    "faults_caught": 5,
+    "faults_total": 5
+  },
+  "wall_s": 41.362220287323
+}

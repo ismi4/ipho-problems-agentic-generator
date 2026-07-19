@@ -1,0 +1,193 @@
+{
+  "id": "4",
+  "title": "IPHO solution PDFs with test errors",
+  "source": "4.zip",
+  "model": "claude-opus-4-8",
+  "messages": [
+    {
+      "role": "user",
+      "text": "there are i believe 5 ipho solution pdfs (if not download pdfs), as we need for testing our system 2 pdf solutions w/ errors in them - take 10 different types of errors (based on our definition of correctness in definition md) and edit two pdf solutions so there are actual 10 errors (different types!)\n\nthere are i believe 5 ipho solution pdfs (if not download pdfs), as we need for testing our system 2 pdf solutions w/ errors in them - take 10 different types of errors (based on our definition of correctness in definition md) and edit two pdf solutions so there are actual 10 errors (different types!), and document in md file what you did",
+      "ts": "2026-07-19T19:58:55.590Z"
+    },
+    {
+      "role": "assistant",
+      "text": "I'll start by looking at the repo state and the definition doc.",
+      "ts": "2026-07-19T19:58:58.464Z"
+    },
+    {
+      "role": "user",
+      "text": "Continue from where you left off.",
+      "ts": "2026-07-18T08:46:58.789Z"
+    },
+    {
+      "role": "assistant",
+      "text": "No response requested.",
+      "ts": "2026-07-18T08:46:58.789Z"
+    },
+    {
+      "role": "user",
+      "text": "there are i believe 5 ipho solution pdfs (if not download pdfs), as we need for testing our system 2 pdf solutions w/ errors in them - take 10 different types of errors (based on our definition of correctness in definition md) and edit two pdf solutions so there are actual 10 errors (different types!), and document in md file",
+      "ts": "2026-07-18T08:47:00.751Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Found the right URL path (`pdf/…`) and a real Python install.",
+      "ts": "2026-07-18T08:47:57.079Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Bash cwd persisted; using absolute paths. Installing PDF tooling in parallel.",
+      "ts": "2026-07-18T08:48:17.730Z"
+    },
+    {
+      "role": "assistant",
+      "text": "All 12 PDFs downloaded. `pikepdf` dragged in `lxml`, which won't build on Python 3.15 beta — installing `pymupdf` alone.",
+      "ts": "2026-07-18T08:49:44.939Z"
+    },
+    {
+      "role": "assistant",
+      "text": "pymupdf works. Now let me read the two purest mechanics anchors — 2020 S2 (Anisotropic Friction) and 2023 S3 (Water and Objects).",
+      "ts": "2026-07-18T08:50:06.371Z"
+    },
+    {
+      "role": "assistant",
+      "text": "2023 S3 and 2021 S1 are clean official LaTeX PDFs with excellent text extraction — the best candidates. Let me read 2021 S1 in full plus both problem statements (needed to design faithfulness errors).",
+      "ts": "2026-07-18T08:51:19.983Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Now the problem statements, which I need to design faithfulness errors and check symbol whitelists.",
+      "ts": "2026-07-18T08:52:09.700Z"
+    },
+    {
+      "role": "assistant",
+      "text": "2021 Q1 gives me explicit symbol whitelists (A.3, A.4) — useful. Now 2023 Q3.",
+      "ts": "2026-07-18T08:52:25.306Z"
+    },
+    {
+      "role": "assistant",
+      "text": "I have everything I need. Let me finalize the design and probe the PDF internals for how to edit them.\n\n**The 10 error types** (spanning the DEFINITION.MD conditions — note (I) well-posedness is excluded by construction, since it's a property of `P`, and we're editing only `S`):\n\n| # | Doc | Part | Error type | Condition | Cheapest catching check |\n|---|---|---|---|---|---|\n| 1 | 2023 S3 | A.1 | Dimensionless geometric factor | III | Tier 2 (dim-blind) |\n| 2 | 2023 S3 | B.3 | Sign/direction | III | Tier 0.3 |\n| 3 | 2023 S3 | B.4 | Dimensional inconsistency | III | Tier 0.1 |\n| 4 | 2023 S3 | B.5 | Wrong BC / root branch | III | Tier 1.2 |\n| 5 | 2023 S3 | C.2 | Symbol-whitelist violation | V | Tier 0.5 |\n| 6 | 2021 S1 | A.1 | Faithfulness drift P→S | IV | Tier 2.5 |\n| 7 | 2021 S1 | A.4 | Wrong retained order | II | Tier 2.4 |\n| 8 | 2021 S1 | A.5 | Right-answer-wrong-reasoning | III | Tier 2.1 |\n| 9 | 2021 S1 | B.2 | Conservation/energy-budget violation | II | Tier 1.3 |\n| 10 | 2021 S1 | B.3 | Completeness — answer not delivered | V | checklist |",
+      "ts": "2026-07-18T08:55:23.422Z"
+    },
+    {
+      "role": "assistant",
+      "text": "2023 S3 uses Latin Modern Math in Identity‑H CID subsets, so byte-level stream swaps aren't practical. I'll use redact-and-reinsert with Cambria Math. Let me verify glyph coverage first.",
+      "ts": "2026-07-18T08:55:58.928Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Cambria covers all the math-italic glyphs. Now let me locate the exact text lines to edit.",
+      "ts": "2026-07-18T08:56:32.204Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Char-level surgery will preserve superscripts. Let me get the finer structure for the A.1 numeric.",
+      "ts": "2026-07-18T08:57:37.308Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Now I'll write the injection engine and apply the five 2023 S3 errors.",
+      "ts": "2026-07-18T08:58:21.612Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Now let me verify the injected text extracts correctly and inspect the rendering.",
+      "ts": "2026-07-18T09:01:35.746Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Two real problems: PyMuPDF mangled the astral-plane math italics (`ᶘᶄ²` for `𝜌𝑔²`), and inserted text lands at the end of the content stream. Let me fix the glyph encoding with `TextWriter` and check whether geometric sorting restores order.",
+      "ts": "2026-07-18T09:02:42.756Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Two bugs: non-adjacent multi-char matches were wiping intervening text, and PyMuPDF writes a broken ToUnicode for supplementary-plane math italics. Fixing both — single-char edits, and BMP-only replacement text.",
+      "ts": "2026-07-18T09:04:13.683Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Glyphs are correct now. ERR-2's subscript edits scramble reading order, so I'll redraw those three lines whole (they're single-baseline, unlike the stacked fractions).",
+      "ts": "2026-07-18T09:05:55.226Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Two fixes: my redaction rect bled into the next line, and the PNG path needs Windows form.",
+      "ts": "2026-07-18T09:06:42.853Z"
+    },
+    {
+      "role": "assistant",
+      "text": "The two lines' bboxes overlap vertically, so whole-line blanking is unsafe. Since `γcos θ2 −γcos θ1` is a contiguous match, I can replace just that span with a tight rect.",
+      "ts": "2026-07-18T09:07:56.142Z"
+    },
+    {
+      "role": "assistant",
+      "text": "All five S3 errors extract cleanly. Let me visually verify the rendering.",
+      "ts": "2026-07-18T09:08:44.647Z"
+    },
+    {
+      "role": "assistant",
+      "text": "S3 renders correctly. Now let me locate the 2021 S1 targets.",
+      "ts": "2026-07-18T09:09:43.125Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Now let me map the stacked-fraction regions in S1 that I'll need to blank and redraw.",
+      "ts": "2026-07-18T09:11:18.554Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Now I have the full map. Let me add line-art removal (for fraction bars) and write the S1 injections.",
+      "ts": "2026-07-18T09:12:55.185Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Two replacement strings still used supplementary-plane math italics. Fixing those.",
+      "ts": "2026-07-18T09:13:53.570Z"
+    },
+    {
+      "role": "assistant",
+      "text": "All ten errors now extract cleanly. Let me visually verify the two most heavily rewritten pages.",
+      "ts": "2026-07-18T09:14:21.453Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Page 4 renders cleanly. Let me organize the deliverables and verify the final state.",
+      "ts": "2026-07-18T09:14:59.196Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Now the documentation.",
+      "ts": "2026-07-18T09:15:49.078Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Final verification — running the documented reproduction command and asserting all ten errors are present.",
+      "ts": "2026-07-18T09:17:11.082Z"
+    },
+    {
+      "role": "assistant",
+      "text": "All 20 assertions pass and the reproduction command works from a clean checkout.\n\n## What I did\n\n**PDFs**: the repo had no IPhO PDFs (just a 2.3 KB `test.pdf`), so I downloaded 12 from the archive in `DEFINITION.MD` — 6 solutions **plus their 6 problem statements**, since faithfulness (condition IV) can only be judged against `P`. Note the doc's stated URL pattern is slightly off: files live under `/pdf/`, not the root.\n\n**Documents chosen**: 2023 S3 (Water and Objects) and 2021 S1 (Planetary Physics) — the only two anchors that are official LaTeX-set with clean text extraction. The 2020 solution is an HTML print with MathJax fragments already scrambled, and 2024 is Word-set.\n\n**The ten errors**, five per document, spanning conditions II×2, III×5, IV×1, V×2:\n\n| # | Part | Type | Cheapest check that fires |\n|---|---|---|---|\n| 1 | S3 A.1 | dimensionless geometric factor (`2^(2/3)`→`2^(1/3)`) | Tier 2 only |\n| 2 | S3 B.3 | sign/direction flip | Tier 0.3 |\n| 3 | S3 B.4 | dimensional inconsistency (`ℓ=√(γ/ρ)`) | Tier 0.1 |\n| 4 | S3 B.5 | wrong root branch (keeps growing exponential) | Tier 1.2 |\n| 5 | S3 C.2 | symbol-whitelist violation | Tier 0.5 |\n| 6 | S1 A.1 | faithfulness drift `P→S` | Tier 2.5 only |\n| 7 | S1 A.4 | wrong retained order | Tier 2.4 only |\n| 8 | S1 A.5 | right-answer-wrong-reasoning | Tier 2.1 only |\n| 9 | S1 B.2 | conservation/energy-budget violation | Tier 1.3 |\n| 10 | S1 B.3 | completeness — answer never delivered | checklist |\n\nFive are cheap-detectable; **five defeat the cheap core entirely**, deliberately exercising the §7 caveats. Two are worth calling out: **ERR-5** is *algebraically correct* (it's `−½ρgz₀²` with `z₀` substituted in) and fails only the demanded-form constraint — so a verifier grading value-equivalence alone will score it correct. **ERR-8** leaves the delivered answer correct and corrupts only the derivation that produced it.\n\n**Deliverables**: `verifier_experiments/INJECTED_ERRORS.md` (full ground-truth labels), `pdfs/faulty/`, and `inject_errors/` for regeneration.\n\n## Two things to flag\n\n**Condition (I) is unrepresented, by design.** Well-posedness is a property of `P`, and I only edited solutions — an `ILL-POSED` fixture needs the `Q` PDFs edited instead. That's a separate exercise if you want the fault set to cover all five conditions.\n\n**Extraction must use geometric sorting** (`get_text(sort=True)` or `pdftotext`). Replacement glyphs append to the content stream, so raw stream-order extraction puts edited fragments out of sequence. I verified sorted extraction and visual rendering page-by-page for every edit, but if your verifier ingests PDFs with unsorted extraction, it'll see scrambling that isn't a physics error — worth checking before you run this set through it.",
+      "ts": "2026-07-18T09:17:50.472Z"
+    },
+    {
+      "role": "user",
+      "text": "there are i believe 5 ipho solution pdfs (if not download pdfs), as we need for testing our system 2 pdf solutions w/ errors in them - take 10 different types of errors (based on our definition of correctness in definition md) and edit two pdf solutions so there are actual 10 errors (different types!)\n\nthere are i believe 5 ipho solution pdfs (if not download pdfs), as we need for testing our system 2 pdf solutions w/ errors in them - take 10 different types of errors (based on our definition of correctness in definition md) and edit two pdf solutions so there are actual 10 errors (different types!), and document in md file what you did",
+      "ts": "2026-07-18T09:34:42.931Z"
+    },
+    {
+      "role": "assistant",
+      "text": "This request is already complete — I finished it in the previous turn. Let me verify the deliverables are still on disk rather than redo the work.",
+      "ts": "2026-07-18T09:35:09.373Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Everything is in place — this looks like a duplicate send of the same message. All deliverables from the previous turn are on disk, so I haven't redone anything.",
+      "ts": "2026-07-18T09:35:31.674Z"
+    },
+    {
+      "role": "assistant",
+      "text": "**Already done.** Recap of what's on disk:\n\n- **`pdfs/`** — 12 PDFs downloaded from the archive (the repo had none, just a 2.3 KB `test.pdf`). 6 solutions **plus their 6 problem statements**, since faithfulness can only be checked against `P`.\n- **`pdfs/faulty/IPhO_2023_S3_FAULTY.pdf`** — errors 1–5\n- **`pdfs/faulty/IPhO_2021_S1_FAULTY.pdf`** — errors 6–10\n- **`INJECTED_ERRORS.md`** — ground-truth labels for all ten\n- **`inject_errors/`** — scripts to regenerate from the pristine originals\n\nThe ten distinct types, keyed to `DEFINITION.MD`, span conditions II×2, III×5, IV×1, V×2: geometric factor, sign/direction, dimensional inconsistency, wrong root branch, symbol-whitelist, faithfulness drift, wrong retained order, right-answer-wrong-reasoning, conservation violation, completeness. Five are cheap-detectable; five defeat the Tier 0/1 core entirely.\n\nAll 20 verification assertions passed and both PDFs regenerate cleanly from the documented command.\n\nTwo caveats I flagged last turn and that still stand:\n\n**Condition (I) is unrepresented, deliberately** — well-posedness is a property of `P`, and I only edited solutions. An `ILL-POSED` fixture needs the `Q` PDFs edited instead.\n\n**Extraction must use geometric sorting** (`get_text(sort=True)` or `pdftotext`). Replacement glyphs append to the content stream, so unsorted extraction scrambles edited fragments — that would look like noise rather than a physics error when you run the set through your verifier.\n\nIf the resend was because something specific was off — a different pair of documents, different error types, or a different fault-injection style — tell me which and I'll adjust rather than rebuild.",
+      "ts": "2026-07-18T09:35:53.099Z"
+    }
+  ]
+}
