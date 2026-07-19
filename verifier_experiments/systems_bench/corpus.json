@@ -1,0 +1,76 @@
+{
+  "problems": [
+    {
+      "id": "2020_Q2",
+      "name": "Anisotropic Friction",
+      "year": 2020,
+      "problem_pdf": "IPhO_2020_Q2.pdf",
+      "clean_pdf": "IPhO_2020_S2.pdf",
+      "faulty_pdf": "faulty/IPhO_2020_S2_FAULTY.pdf",
+      "subparts": ["A1", "A3", "A4", "C2", "C3"],
+      "injected_faults": [
+        {"id": "F2020-1", "subpart": "A1", "type": "wrong_extremum", "summary": "α=0 → α=π/2 for power maximum"},
+        {"id": "F2020-2", "subpart": "A3", "type": "dropped_factor", "summary": "vx 0.125→0.250"},
+        {"id": "F2020-3", "subpart": "C2", "type": "wrong_parameter", "summary": "v0max 2.2→3.1 (μx vs μy)"}
+      ]
+    },
+    {
+      "id": "2021_Q1",
+      "name": "Planetary Physics",
+      "year": 2021,
+      "problem_pdf": "IPhO_2021_Q1.pdf",
+      "clean_pdf": "IPhO_2021_S1.pdf",
+      "faulty_pdf": "faulty/IPhO_2021_S1_FAULTY.pdf",
+      "subparts": ["A.1", "A.4", "A.5", "B.2", "B.3"],
+      "injected_faults": [
+        {"id": "ERR-6", "subpart": "A.1", "type": "faithfulness_drift", "summary": "oil fill condition h'=h instead of lower-edge condition"},
+        {"id": "ERR-7", "subpart": "A.4", "type": "wrong_retained_order", "summary": "kept hD ~ k^-1 instead of D^2 ~ k^-2"},
+        {"id": "ERR-8", "subpart": "A.5", "type": "provenance", "summary": "δ=3 claimed but answer uses δ=2"},
+        {"id": "ERR-9", "subpart": "B.2", "type": "conservation", "summary": "E/2π instead of E/π energy density"},
+        {"id": "ERR-10", "subpart": "B.3", "type": "completeness", "summary": "x_max never delivered in closed form"}
+      ]
+    },
+    {
+      "id": "2023_Q3",
+      "name": "Water and Objects",
+      "year": 2023,
+      "problem_pdf": "IPhO_2023_Q3.pdf",
+      "clean_pdf": "IPhO_2023_S3.pdf",
+      "faulty_pdf": "faulty/IPhO_2023_S3_FAULTY.pdf",
+      "subparts": ["A.1", "B.3", "B.4", "B.5", "C.2"],
+      "injected_faults": [
+        {"id": "ERR-1", "subpart": "A.1", "type": "dimless_geometric_factor", "summary": "2^(2/3)→2^(1/3)"},
+        {"id": "ERR-2", "subpart": "B.3", "type": "sign_flip", "summary": "f_x sign reversed"},
+        {"id": "ERR-3", "subpart": "B.4", "type": "dimensional", "summary": "ℓ=√(γ/ρ) missing g"},
+        {"id": "ERR-4", "subpart": "B.5", "type": "wrong_root_branch", "summary": "growing e^{+x/ℓ}"},
+        {"id": "ERR-5", "subpart": "C.2", "type": "symbol_whitelist", "summary": "F_x reintroduces za/xa"}
+      ]
+    },
+    {
+      "id": "2024_Q3",
+      "name": "Black Widow Pulsar",
+      "year": 2024,
+      "problem_pdf": "IPhO_2024_Q3.pdf",
+      "clean_pdf": "IPhO_2024_S3.pdf",
+      "faulty_pdf": "faulty/IPhO_2024_S3_FAULTY.pdf",
+      "subparts": ["A-3", "A-5", "A-6", "B-1", "B-7"],
+      "injected_faults": [
+        {"id": "F2024-1", "subpart": "A-3", "type": "wrong_root", "summary": "Lagrange x̄0 0.36→0.25"},
+        {"id": "F2024-2", "subpart": "A-6", "type": "wrong_numeric", "summary": "T 9×10^3→9×10^2 K"}
+      ]
+    },
+    {
+      "id": "2025_Q2",
+      "name": "Cox's Timepiece",
+      "year": 2025,
+      "problem_pdf": "IPhO_2025_Q2.pdf",
+      "clean_pdf": "IPhO_2025_S2.pdf",
+      "faulty_pdf": "faulty/IPhO_2025_S2_FAULTY.pdf",
+      "subparts": ["A.1", "B.2", "C.1", "C.2", "C.3"],
+      "injected_faults": [
+        {"id": "F2025-1", "subpart": "C.1", "type": "dropped_factor", "summary": "ξ⋆=2→1"},
+        {"id": "F2025-2", "subpart": "C.3", "type": "dropped_factor", "summary": "regime boundary 2→1"}
+      ]
+    }
+  ]
+}
