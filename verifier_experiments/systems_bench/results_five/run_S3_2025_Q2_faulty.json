@@ -1,0 +1,224 @@
+{
+  "system": "S3",
+  "problem_id": "2025_Q2",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law in the connected liquid, followed by vertical force equilibrium of the tube.",
+        "regime_assumed": "Tube bottom remains submerged and open to the bath; the tube contains liquid with no gas/vapour cavity; quasi-static equilibrium; h is within the lifting range before the bottom reaches the bath level.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For the depicted case b: Pw = P0 - rho g h and F = (m + rho S h) g uz."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: Pw=P0-rho*g*h has pressure units; (m+rho*S*h)*g has force units",
+          "limiting-case: h->0 gives Pw->P0 and F->m*g*uz",
+          "conservation residual: -m*g*uz+(Pw-P0)*S*uz+(m+rho*S*h)*g*uz simplifies to 0 after Pw=P0-rho*g*h",
+          "BC/root-branch: valid for depicted case b with bottom submerged, liquid column connected to bath, and no vapour cavity",
+          "symbol-whitelist: final expressions use only P0,rho,m,S,h,g,uz plus requested Pw",
+          "faithfulness-to-P: matches hydrostatic reference at bath level z=0 and upward pulling-force convention"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.04074
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic equilibrium gives the barometric height z0 = P0/(rho g). The added mass is rho times the volume of mercury inside the apparatus lying above the bath surface z = 0.",
+        "regime_assumed": "Psat = 0; mercury density rho = 13.5e3 kg m^-3; ht is raised from -Hb to Ht; z0 = P0/(rho g) = 0.756 m, with Hb = 0.200 m and Ht = 0.800 m.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "-Hb <= ht <= 0: madd = rho Sb(ht + Hb)",
+          "0 <= ht <= z0 - Hb: madd = rho[Sb Hb + St ht]",
+          "z0 - Hb <= ht <= z0: madd = rho[St ht + Sb(z0 - ht)]",
+          "z0 <= ht <= Ht: madd = rho St z0"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.97,
+        "escalate": true,
+        "escalate_reason": "The requested deliverable is a qualitative sketch with labeled piecewise branches; graphical interpretation should be checked even though the underlying piecewise physics is consistent."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: assert(dim(rho*Sb*(ht+Hb)) == mass); assert(dim(rho*St*z0) == mass)",
+          "hydrostatic/root: solve(P0-rho*g*z0, z0) -> P0/(rho*g)=0.7559 m; assert(0 < z0-Hb < z0 < Ht)",
+          "branch/BC: madd(-Hb)=0; piecewise joins at ht=0, z0-Hb, z0 have zero residual; madd(z0)=rho*St*z0",
+          "limiting-case: for ht>=z0, free surface lies in lower tube and above-bath mercury volume is constant St*z0",
+          "conservation residual: volume above z=0 equals Sb*(ht+Hb), Sb*Hb+St*ht, St*ht+Sb*(z0-ht), St*z0 in the respective geometric regimes",
+          "symbol-whitelist: only P0,rho,g,z0,Sb,St,Hb,Ht,ht,madd used; z0 explicitly defined",
+          "faithfulness: uses Psat=0, ht domain [-Hb,Ht], and mercury-barometric hydrostatics specified in P"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.07642
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "C.1",
+        "answer_type": "other",
+        "governing_law_identified": "Cannot determine: the statement and reference solution for C.1 are not present in the supplied excerpt.",
+        "regime_assumed": "Unknown.",
+        "dimensional_check": "unknown",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "C.1 prompt and its proposed solution are absent/truncated, so no physics claim can be tested.",
+        "verdict": "UNCERTAIN",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "The requested sub-part C.1 is unavailable in the provided material; verification would require its full problem statement and corresponding solution."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "faithfulness/completeness check: supplied SUB-PART C.1 is truncated at the beginning of A.1 and contains neither the C.1 prompt nor a corresponding proposed/reference solution",
+          "symbol-whitelist check: no C.1 expression is available to inspect",
+          "dimensional, limiting-case, conservation-residual, and BC/root-branch checks cannot be instantiated without a C.1 claim"
+        ],
+        "refutation": "C.1 cannot be verified: the provided material contains only an unrelated truncated opening of Part A/A.1, while the actual C.1 statement and its candidate solution are absent.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Input completeness: no testable C.1 solution claim or governing conditions were supplied.",
+        "fault_type_guess": "missing_or_truncated_subpart"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Input completeness: no testable C.1 solution claim or governing conditions were supplied.",
+      "cost_usd": 0.0366125
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "other",
+        "governing_law_identified": "Unknown: the actual C.2 prompt and its corresponding portion of solution S are not present in the supplied material.",
+        "regime_assumed": "Unknown",
+        "dimensional_check": "unknown",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "C.2 is absent/truncated, so no claimed result or derivation can be tested against the physics.",
+        "verdict": "UNCERTAIN",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "Insufficient source content: neither the C.2 question nor the reference answer for C.2 is available."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "source-integrity: C.2 prompt is truncated/absent",
+          "reference-integrity: corresponding C.2 solution/result is absent",
+          "dimensional check: not executable without a claimed C.2 expression",
+          "limiting-case check: not executable",
+          "conservation-residual check: not executable",
+          "BC/root-branch check: not executable",
+          "symbol-whitelist check: not executable",
+          "faithfulness-to-P check: impossible because C.2 is not supplied"
+        ],
+        "refutation": "No C.2 question, claimed answer, or relevant reference-solution section is present in the supplied text. Therefore there is no determinate statement to verify against Problem P.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Input truncation occurs before the C.2 sub-part and its reference solution; verification cannot begin.",
+        "fault_type_guess": "missing_or_truncated_source_content"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Input truncation occurs before the C.2 sub-part and its reference solution; verification cannot begin.",
+      "cost_usd": 0.0379275
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "other",
+        "governing_law_identified": "unknown: the visible material does not include the statement or reference-solution response for C.3",
+        "regime_assumed": "unknown",
+        "dimensional_check": "unknown",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "The supplied visible excerpt is truncated before Part C.3 and contains no C.3 reference answer to test.",
+        "verdict": "UNCERTAIN",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "The actual C.3 prompt and solution are unavailable, so no physics-based falsification or validation can be performed."
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "UNCERTAIN",
+      "first_point_of_failure": "The supplied visible excerpt is truncated before Part C.3 and contains no C.3 reference answer to test.",
+      "cost_usd": 0.0208975
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "B.2",
+    "C.1",
+    "C.2"
+  ],
+  "escalation_rate": 0.8,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "C.1",
+    "C.2"
+  ],
+  "cost_usd": 0.212597,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "F2025-1": {
+        "subpart": "C.1",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "dropped_factor"
+      },
+      "F2025-2": {
+        "subpart": "C.3",
+        "caught": false,
+        "caught_at": null,
+        "type": "dropped_factor"
+      }
+    },
+    "faults_caught": 1,
+    "faults_total": 2
+  },
+  "wall_s": 59.59798216819763,
+  "problem_name": "Cox's Timepiece"
+}

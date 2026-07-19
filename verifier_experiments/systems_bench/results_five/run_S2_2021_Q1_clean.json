@@ -1,0 +1,186 @@
+{
+  "system": "S2",
+  "problem_id": "2021_Q1",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance and integration of pressure over the vertical plate surfaces",
+        "regime_assumed": "Incompressible, immiscible fluids in hydrostatic equilibrium; atmospheric pressure cancels; oil-water interface is at the lower plate edges",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style: h0 = solve(rho0*g*h - rhooil*g*h0, h0)[0] = rho0*h/rhooil",
+          "Fx = integrate(rhooil*g*y,(y,0,h0))*w - integrate(rho0*g*y,(y,0,h))*w = rho0*g*h**2*w/2*(rho0/rhooil - 1)",
+          "dimensional: [rho*g*h^2*w] = N",
+          "limiting: rhooil -> rho0 gives Fx -> 0; rhooil < rho0 gives Fx > 0, i.e. rightward",
+          "hydrostatic conservation residual: rhooil*g*h0 - rho0*g*h = 0",
+          "BC/interface check: oil-water interface at the plate lower edge and equal pressure there are correctly imposed",
+          "root/branch: no nontrivial root branch; positive h0 selected",
+          "symbol whitelist: only P/S symbols rho0, rhooil, g, h, w plus auxiliary h0",
+          "faithfulness: pressure integration on opposite faces of the right plate matches the stated geometry"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.995,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.036184
+    },
+    {
+      "id": "A.4",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "A.4"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style dimensional check: dims(2*g*L*h**2*(rho1-rho0)**2/(k**2*rho1)) = (L/T**2)*L*L**2*(M/L**3) = M*L/T**2 = N.",
+          "Substitute A.3: D=2*h*(1-rho0/rho1)/k. Leading term in F_exact is L*rho1*g*D**2/2, giving simplify(...) = 2*g*L*h**2*(rho1-rho0)**2/(k**2*rho1).",
+          "Asymptotic check: p0*D and cross terms rho1*g*h*D are O(k**-1), whereas rho1*g*D**2/2 is O(k**-2); thus retained term is leading for fixed rho1-rho0 != 0.",
+          "Conservation/hydrostatic residual: the A.3 pressure matching at z=h+D and p(0,0)=p(infty,0) is consistent with the pressure profiles used; no unmatched leading-order pressure term remains.",
+          "BC/branch check: D>0 requires rho1>rho0 (the physically relevant mantle-denser-than-water branch); result is nonnegative and has no root/branch ambiguity.",
+          "Symbol whitelist/faithfulness: final expression uses only g,L,h,rho0,rho1,k specified by A.4, and explicitly follows the requested leading-order-in-k approximation."
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0523075
+    },
+    {
+      "id": "A.5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Fourier heat conduction and thermal diffusion, with thermal diffusivity κ/(ρ1 c)",
+        "regime_assumed": "One-dimensional heat conduction through a crustal slab of thickness D, with constant ρ1, c, and κ; order-of-magnitude equilibration time",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: [rho1*c*D^2/kappa]=T; exponent-system residual is zero at (alpha,beta,gamma,delta)=(1,1,-1,2)",
+          "limiting-case: tau→0 for D→0 or kappa→∞; tau increases with rho1, c, and D^2, consistent with thermal diffusion",
+          "conservation-residual: stored excess heat per unit area ~rho1*c*D*DeltaT and conductive power per unit area ~kappa*DeltaT/D give tau~rho1*c*D^2/kappa with DeltaT and area cancelling",
+          "BC/root-branch: no root/branch selection is involved; boundary conditions affect only an order-unity numerical prefactor A",
+          "symbol-whitelist: uses only P-defined rho1,c,kappa,D plus dimensionless A and auxiliary S,DeltaT",
+          "faithfulness-to-P: correctly treats the stated far-distance crust as a constant-property slab and supplies an order-of-magnitude equilibration time independent of initial surface temperatures"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.033627500000000005
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of energy under the ray mapping: ε(x)|dx| = (E/π)|dθ₀|, with x(θ₀) = A cot(bθ₀)",
+        "regime_assumed": "Geometrical-ray propagation in a two-dimensional medium; uniform angular emission over the downward half-plane; complete absorption at the surface",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Positive and negative emission angles map symmetrically to positive and negative surface coordinates",
+          "Use the absolute value of dx/dθ₀ so that ε(x) is nonnegative"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.011268
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Repeated surface reflections map an emission angle to successive surface impact points n x1(theta); the last unreachable gap occurs before neighboring angular-band intervals overlap.",
+        "regime_assumed": "Narrow angular range with δθ0 ≪ 1 and δθ0 ≪ θ0; leading order in δθ0, using x1(θ)=2z0 cotθ.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Positive and negative horizontal propagation directions are symmetric",
+          "Integer/floor effects in the number of reflections are neglected at leading order"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.97,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.017258
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "A.4",
+    "A.5"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.150645,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 67.8015775680542,
+  "problem_name": "Planetary Physics"
+}

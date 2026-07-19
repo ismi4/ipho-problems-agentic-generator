@@ -1,0 +1,193 @@
+{
+  "system": "S3",
+  "problem_id": "2024_Q3",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A-3",
+      "judge": {
+        "subpart_id": "A-3",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "The overflow point is the inner collinear Lagrange point L1, determined by dphi/dx = 0 in the corotating effective potential.",
+        "regime_assumed": "Circular binary orbit; M2 = M1/3; test gas of negligible mass; point masses; the relevant stationary point lies between the center of mass and M2.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "The relevant root is the inner Lagrange point between x/a = 0 and x/a = 3/4, rather than either outer collinear Lagrange point."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "The requested result is a dimensionless geometric numerical factor, which falls under the specified escalation condition."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: define u=x/a; phi=(G(M1+M2)/a)Phi(u), so stationarity and x0/a are dimensionless",
+          "limiting-case: for M2=M1/3, COM locations are x1/a=-1/4 and x2/a=3/4; the stated inner-root interval is physically consistent",
+          "conservation_residual: SymPy-style residual R(u)=diff(-Rational(3,4)/(u+Rational(1,4))-Rational(1,4)/(Rational(3,4)-u)-u**2/2,u)=Rational(3,4)/(u+Rational(1,4))**2-Rational(1,4)/(Rational(3,4)-u)**2-u; nsolve(R(u),0.36)=0.360... and R(root)=0",
+          "BC/root-branch: restrict 0<u<3/4, excluding singular mass locations and both outer collinear roots; the unique inner L1 root is u≈0.36",
+          "symbol-whitelist: uses only G, M1, M2, a, x and the dimensionless substitutions M=M1+M2, u=x/a",
+          "faithfulness_to_P: correctly identifies the gas-overflow saddle toward M1 as the collinear L1 point for M2=M1/3"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.057365
+    },
+    {
+      "id": "A-5",
+      "judge": {
+        "subpart_id": "A-5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Steady accretion-disc energy balance with blackbody emission from both faces of the disc.",
+        "regime_assumed": "Geometrically thin, optically thick, Keplerian viscous disc around M1, with steady accretion rate beta and negligible companion gravity.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Reference implicitly assumes that the radial decrease of advected orbital energy is the entire local dissipation.",
+          "For a physical steady viscous Keplerian disc, angular-momentum transport and the associated viscous torque energy flux must also be included."
+        ],
+        "refutation": "For a standard steady Keplerian viscous disc with a zero-torque inner edge Rin, the one-face radiative flux is F(r)=3GM1 beta[1-sqrt(Rin/r)]/(8 pi r^3). Thus, at r much greater than Rin, T^4=3GM1 beta/(8 pi sigma r^3), not GM1 beta/(8 pi sigma r^3). The reference underestimates the dissipated power by a factor of 3 because it omits energy transported outward by viscous torque.",
+        "first_point_of_failure": "The ring energy balance equates radiation only to the change in advected specific orbital energy, neglecting viscous-torque work required for steady inward spiral and angular-momentum transport.",
+        "verdict": "FAIL",
+        "confidence": 0.9,
+        "escalate": true,
+        "escalate_reason": "The discrepancy is a dimensionless factor of 3 and depends on the disc angular-momentum-transport/boundary model; the problem statement does not explicitly specify an inner-boundary torque condition."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: (GM1*beta/(sigma*r^3))^(1/4) has units K",
+          "limiting-case: T→0 for beta→0 or M1→0; T∝r^(-3/4)",
+          "conservation-residual: d[GM1*beta/(2r)]/dr dr = GM1*beta/(2r^2)dr = 4*pi*r*dr*sigma*T^4",
+          "BC/root-branch: no boundary condition or root branch is introduced by P; positive fourth root is physical",
+          "symbol-whitelist: uses only M1, beta, G, sigma, r, pi",
+          "faithfulness-to-P: P supplies only orbital-energy loss, steady mass flow, blackbody radiation, and negligible heat capacity; it does not supply an inner radius or viscous-torque boundary condition"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.88,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": "The ring energy balance equates radiation only to the change in advected specific orbital energy, neglecting viscous-torque work required for steady inward spiral and angular-momentum transport.",
+      "cost_usd": 0.06625249999999999
+    },
+    {
+      "id": "A-6",
+      "judge": {
+        "subpart_id": "A.6",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Kepler's third law for the binary separation, a^3 = G(M_NS+M_S)P^2/(4π^2), combined with the steady optically thick disc result T^4 = GM_NS β/(8πσr^3).",
+        "regime_assumed": "Circular binary orbit; steady mass transfer; blackbody emission from both faces of a thin disc; local disc dynamics dominated by the neutron star; r = 10a.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Using P = 4.14 h, M_NS = 2.27 M_sun, M_S = 0.33 M_sun gives a ≈ 1.25×10^9 m and hence r = 10a ≈ 1.25×10^10 m. With β = 9×10^-10 M_sun yr^-1 ≈ 5.65×10^13 kg s^-1, T = [GM_NSβ/(8πσr^3)]^(1/4) ≈ 2.8×10^2 K, not 9×10^3 K. The displayed algebraic replacement of r=10a has inverted the factor of 10: it uses the coefficient appropriate to r=a/10, producing a factor 10^6 error in T^4.",
+        "first_point_of_failure": "The substitution r = 10a into r^3 is incorrect: the correct reduced expression is T^4 = π M_NS β/[2000 σ P^2(M_NS+M_S)], whereas S gives 500π M_NS β/[σ P^2(M_NS+M_S)].",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "The failure is a bare geometric factor-of-10 substitution error (r=10a versus a/10), although the numerical refutation is decisive."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: SymPy.dimension(T4_correct)=K**4; S reduced expression is also dimensionally K**4",
+          "limiting-case: T∝r**(-3/4), so imposing r=10*a must reduce T relative to r=a by 10**(-3/4)",
+          "conservation_residual: a**3-G*(M_NS+M_S)*P**2/(4*pi**2)=0; simplify(T4_S/T4_correct)=10**6",
+          "BC/root-branch: physical blackbody temperature uses the positive real fourth root; no alternate root can repair the magnitude",
+          "symbol-whitelist: G,M_NS,M_S,P,beta,sigma,a,r are defined in P; pi is a numerical constant",
+          "faithfulness-to-P: P explicitly specifies r=10*a"
+        ],
+        "refutation": "Executable reduction: a3=G*(M_NS+M_S)*P**2/(4*pi**2); T4=G*M_NS*beta/(8*pi*sigma*(10*a)**3); simplify(T4.subs(a**3,a3))=pi*M_NS*beta/(2000*sigma*P**2*(M_NS+M_S)). S instead gives 500*pi*M_NS*beta/(sigma*P**2*(M_NS+M_S)), larger by 10**6 in T**4. Numerically, a≈1.25e9 m, r≈1.25e10 m, and T≈2.8e2 K, not 9e3 K.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Substitution of r=10a into the A-5 result: r^3 must be 1000*a^3, but S's reduced coefficient corresponds to r=a/10.",
+        "fault_type_guess": "geometric scale substitution / power-of-ten error"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Substitution of r=10a into the A-5 result: r^3 must be 1000*a^3, but S's reduced coefficient corresponds to r=a/10.",
+      "cost_usd": 0.0705475
+    },
+    {
+      "id": "B-1",
+      "judge": {
+        "subpart_id": "B.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Newtonian spherical gravity / shell theorem: g(r) = -G M(r)/r^2, with M(r) = 4π∫_0^r ρ(r')r'^2 dr'.",
+        "regime_assumed": "Near the stellar center, where the density is approximated by its central value, ρ(r) ≈ ρ_c.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0224125
+    },
+    {
+      "id": "B-7",
+      "judge": {
+        "subpart_id": "B.7",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of mass for each Lagrangian spherical shell, together with Newtonian gravity g=-GM(r)/r^2 for unchanged enclosed shell mass.",
+        "regime_assumed": "A homologous infinitesimal radial perturbation r_tilde=(1+epsilon)r, with |epsilon|<<1 and no mass transfer between shells.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0245225
+    }
+  ],
+  "escalated_subparts": [
+    "A-3",
+    "A-5",
+    "A-6"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A-6"
+  ],
+  "cost_usd": 0.2411,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "REJECT",
+    "doc_correct": false,
+    "false_reject": true,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 59.825703859329224,
+  "problem_name": "Black Widow Pulsar"
+}

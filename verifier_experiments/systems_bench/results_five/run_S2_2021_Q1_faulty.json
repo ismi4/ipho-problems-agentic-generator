@@ -1,0 +1,227 @@
+{
+  "system": "S2",
+  "problem_id": "2021_Q1",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure p = rho g depth; integrate the pressure difference over the plate area.",
+        "regime_assumed": "Oil and water are immiscible, static, with equal free-surface elevation and oil occupying the full height h between the plates; atmospheric pressure cancels.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style: p_out(z)=rho0*g*z for 0<=z<=h; hydrostatic interface BC at z=h requires rhooil*g*hprime=rho0*g*h, hence hprime=rho0*h/rhooil>h.",
+          "BC/root-branch: S sets hprime=h, giving pressure residual (rhooil-rho0)*g*h != 0 at the oil-water interface; this violates static-fluid pressure continuity for rhooil<rho0.",
+          "Force re-integration with the valid branch: F_x=w*(rhooil*g*hprime**2/2-rho0*g*h**2/2)=g*w*h**2*rho0*(rho0-rhooil)/(2*rhooil), directed right.",
+          "Dimensional check: both S and corrected force have units N; dimensionality does not rescue S.",
+          "Limiting case: rhooil->rho0 gives F_x->0, while rhooil<rho0 gives a rightward force, opposite to S.",
+          "Faithfulness/symbol whitelist: all symbols are from P; the failure is physical BC handling, not notation."
+        ],
+        "refutation": "The oil free surface is not level with the external water surface. When the oil-water interface reaches the lower plate edges at depth h, hydrostatic pressure continuity requires rhooil*hprime=rho0*h. Since rhooil<rho0, hprime>h. S's assumption hprime=h leaves a nonzero pressure discontinuity at the interface and yields the wrong magnitude and direction.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "“The oil is poured until its free surface is level with the water surface, so that h′=h.”",
+        "fault_type_guess": "incorrect hydrostatic boundary condition / omitted oil-column height adjustment"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "“The oil is poured until its free surface is level with the water surface, so that h′=h.”",
+      "cost_usd": 0.0436675
+    },
+    {
+      "id": "A.4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure p(z)=p(0)+rho g z and integration of pressure forces over the vertical boundaries of the crustal half",
+        "regime_assumed": "Gauge pressure with p(0,0)=p(infinity,0), incompressible hydrostatic mantle and water, small positive k, and D=2(1-rho0/rho1)h/k",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "The stated force expression contains a term rho1 g D^2/2. Since D is proportional to 1/k, this term is proportional to 1/k^2 and dominates the claimed hD term proportional to 1/k. For example, setting rho0/rho1=1/2, h=1, k=0.01 gives D=100; the integrated expression gives F/(rho1 g L) approximately 5100, whereas the reported result gives 100. Thus the asserted leading-order reduction is algebraically inconsistent.",
+        "first_point_of_failure": "The claim that the hD term is leading order: the D^2 term in (h+D)^2/2 scales as k^{-2}, not k^{-1}, and is incorrectly discarded.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The claim that the hD term is leading order: the D^2 term in (h+D)^2/2 scales as k^{-2}, not k^{-1}, and is incorrectly discarded.",
+      "cost_usd": 0.021526
+    },
+    {
+      "id": "A.5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Thermal diffusion timescale from Fourier conduction: tau ~ rho_1 c D^2 / kappa",
+        "regime_assumed": "One-dimensional conduction through a crustal slab of thickness D with constant density, specific heat, and thermal conductivity",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "The intermediate dimensional-analysis statement delta = 3 is an arithmetic error; substituting alpha = beta = 1 and gamma = -1 gives delta = 2. The final expression and independent scale analysis correctly use D^2.",
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: [rho_1 c D^2/kappa]=T; however the displayed exponent solution delta=3 contradicts both the dimensional equations and the final D^2 expression",
+          "limiting-case: tau increases as D^2 and rho_1 c, decreases as kappa, consistent with diffusion",
+          "conservation_residual: thermal-energy scale rho_1 c S D DeltaT divided by Fourier power kappa S DeltaT/D gives tau~rho_1 c D^2/kappa",
+          "BC/root-branch: no root or branch selection applies; insulated-from-exterior slab relaxation is consistent with through-thickness conduction estimate",
+          "symbol-whitelist: uses only P/S quantities rho_1,c,kappa,D and a dimensionless constant",
+          "faithfulness_to_P: directly supplies the requested order-of-magnitude relaxation time and its independence from initial temperature difference"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": "In Method 1, 'delta=3' is an arithmetic/transcription error: alpha=beta=1 and gamma=-1 require delta=2. The final formula and Method 2 are nevertheless correct.",
+        "fault_type_guess": "minor internal exponent typo"
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": "In Method 1, 'delta=3' is an arithmetic/transcription error: alpha=beta=1 and gamma=-1 require delta=2. The final formula and Method 2 are nevertheless correct.",
+      "cost_usd": 0.0351265
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of energy under ray mapping: ε(x) dx = (energy per unit emission angle) dθ0",
+        "regime_assumed": "Geometrical-ray propagation with complete absorption at the surface; both positive- and negative-x rays are included",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "x > 0 and x < 0 give the same even profile",
+          "Normalization depends on whether E denotes the total downward-emitted energy or the total isotropic source energy"
+        ],
+        "refutation": "With the problem's literal wording that E is the total energy released into the crust, the angular energy density over the downward half-plane is E/π, not E/(2π). The reference result integrates to ∫ε(x)dx = E/2, so it accounts for only half of the stated energy. Under the literal interpretation the correct result is ε(x) = 2Ez0/[π(4z0²+x²)].",
+        "first_point_of_failure": "The assertion that (E/2π)dθ0 is the energy carried by rays in an angular interval",
+        "verdict": "FAIL",
+        "confidence": 0.8,
+        "escalate": true,
+        "escalate_reason": "There is a factor-of-two normalization ambiguity between the literal problem wording and the reference solution's apparent convention that E is the total energy over a full 2π angular distribution."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: ε=E/length passes",
+          "limiting-case: ε is finite at x=0 and tends to 0 as |x|→∞",
+          "conservation residual: ∫_{-∞}^{∞} Ez0/[π(4z0²+x²)] dx = E/2, not E",
+          "BC/root-branch: ±x branches are symmetric and together span the downward angular range of width π",
+          "symbol-whitelist: only given symbols plus B.1 intermediates A,b are used",
+          "faithfulness to P: E is stated as total P-wave energy emitted into the crust, i.e. the downward half-plane"
+        ],
+        "refutation": "The first line assigns angular energy density E/(2π), but rays are emitted only into directions with positive z-component, whose angular measure is π. Uniform downward emission therefore gives dE=(E/π)dθ. The reference ε integrates over the whole surface to E/2, violating total-energy conservation. The literal-P result is ε(x)=2Ez0/[π(4z0²+x²)].",
+        "verdict": "FAIL",
+        "confidence": 0.94,
+        "first_point_of_failure": "The assertion '(E/2π)dθ0 is the energy carried by rays emitted within [θ0,θ0+dθ0)'",
+        "fault_type_guess": "factor-of-two angular-normalization / conservation error"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The assertion '(E/2π)dθ0 is the energy carried by rays emitted within [θ0,θ0+dθ0)'",
+      "cost_usd": 0.044987
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Repeated reflected-ray surface intervals, with x1(theta0)=2z0 cot(theta0); adjacent intervals begin to overlap when their separation is comparable to their angular-width spread.",
+        "regime_assumed": "0<theta0<pi/2, delta_theta0 much less than theta0, leading order in delta_theta0, positive x direction, fully reflecting surface.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Positive and negative horizontal propagation directions are symmetric; the solution considers positive x.",
+          "For sufficiently large reflection number, neighboring arrival intervals overlap and all farther surface points are reached."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.014632
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "A.5",
+    "B.2"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A.1",
+    "A.4",
+    "B.2"
+  ],
+  "cost_usd": 0.159939,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "ERR-6": {
+        "subpart": "A.1",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "faithfulness_drift"
+      },
+      "ERR-7": {
+        "subpart": "A.4",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "wrong_retained_order"
+      },
+      "ERR-8": {
+        "subpart": "A.5",
+        "caught": false,
+        "caught_at": null,
+        "type": "provenance"
+      },
+      "ERR-9": {
+        "subpart": "B.2",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "conservation"
+      },
+      "ERR-10": {
+        "subpart": "B.3",
+        "caught": false,
+        "caught_at": null,
+        "type": "completeness"
+      }
+    },
+    "faults_caught": 3,
+    "faults_total": 5
+  },
+  "wall_s": 74.47241139411926,
+  "problem_name": "Planetary Physics"
+}

@@ -1,0 +1,81 @@
+{
+  "clean": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.23 m/s; exponent_fingerprint 2/3=True 1/3=False; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "pass",
+        "detail": "f_x = γ cos θ1 − γ cos θ2"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "pass",
+        "detail": "ℓ=√(γ/(ρg)) dimensionally OK"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "pass",
+        "detail": "decaying branch e^{-x/ℓ} retained"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "pass",
+        "detail": "F_x uses z0 only"
+      }
+    ],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "faulty": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.31 m/s; exponent_fingerprint 2/3=False 1/3=True; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "fail",
+        "detail": "sign of f_x flipped vs force balance / B.2 leftward"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "fail",
+        "detail": "ℓ=√(γ/ρ) is dimensionally inconsistent (missing g)"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "fail",
+        "detail": "retained growing branch e^{+x/ℓ}; diverges as x→∞, contradicting z(∞)=0"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "fail",
+        "detail": "boxed F_x reintroduces za/xa (violates demanded symbol set; algebraically equivalent trap)"
+      }
+    ],
+    "n_fail": 4,
+    "failed_subparts": [
+      "B.3",
+      "B.4",
+      "B.5",
+      "C.2"
+    ],
+    "verdict_hint": "REJECT"
+  }
+}

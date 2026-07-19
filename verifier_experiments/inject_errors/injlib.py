@@ -5,10 +5,20 @@ then re-draw replacement text at the same origin using a Unicode-complete font.
 Redactions for a page must all be applied before any insertion, otherwise the
 freshly inserted glyphs are themselves removed.
 """
+from pathlib import Path
+
 import fitz
 
-CAMBRIA = "C:/Windows/Fonts/cambria.ttc"
-FONTNAME = "cam"
+# Prefer Cambria on Windows; fall back to DejaVu / Liberation on Linux VMs.
+_FONT_CANDIDATES = [
+    Path("C:/Windows/Fonts/cambria.ttc"),
+    Path("/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"),
+    Path("/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"),
+    Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+]
+FONTFILE = next((str(p) for p in _FONT_CANDIDATES if p.exists()), None)
+if FONTFILE is None:
+    raise RuntimeError("No suitable TTF font found for PDF injection")
 
 
 def _int_to_rgb(c):
@@ -21,21 +31,23 @@ def line_chars(page, bi, li):
     out = []
     for s in l["spans"]:
         for c in s["chars"]:
-            out.append({
-                "c": c["c"],
-                "bbox": fitz.Rect(c["bbox"]),
-                "origin": c["origin"],
-                "size": s["size"],
-                "color": _int_to_rgb(s["color"]),
-            })
+            out.append(
+                {
+                    "c": c["c"],
+                    "bbox": fitz.Rect(c["bbox"]),
+                    "origin": c["origin"],
+                    "size": s["size"],
+                    "color": _int_to_rgb(s["color"]),
+                }
+            )
     return out
 
 
 class Editor:
     def __init__(self, path):
         self.doc = fitz.open(path)
-        self.redactions = {}   # pno -> [rect]
-        self.inserts = {}      # pno -> [(point, text, size, color)]
+        self.redactions = {}  # pno -> [rect]
+        self.inserts = {}  # pno -> [(point, text, size, color)]
 
     def _q(self, pno, rects, ins):
         self.redactions.setdefault(pno, []).extend(rects)
@@ -45,8 +57,7 @@ class Editor:
         """Replace `match` (restricted to chars of `size`, if given) with `repl`."""
         page = self.doc[pno]
         chars = line_chars(page, bi, li)
-        idx = [i for i, c in enumerate(chars)
-               if size is None or abs(c["size"] - size) < 0.05]
+        idx = [i for i, c in enumerate(chars) if size is None or abs(c["size"] - size) < 0.05]
         text = "".join(chars[i]["c"] for i in idx)
         starts = []
         p = text.find(match)
@@ -55,7 +66,7 @@ class Editor:
             p = text.find(match, p + 1)
         if len(starts) <= occ:
             raise SystemExit(f"p{pno} b{bi} l{li}: {match!r} occ {occ} not found in {text!r}")
-        sel = [chars[i] for i in idx[starts[occ]: starts[occ] + len(match)]]
+        sel = [chars[i] for i in idx[starts[occ] : starts[occ] + len(match)]]
         rect = sel[0]["bbox"]
         for c in sel[1:]:
             rect |= c["bbox"]
@@ -63,6 +74,24 @@ class Editor:
         pt = fitz.Point(sel[0]["origin"][0] + dx, sel[0]["origin"][1] + dy)
         self._q(pno, [rect], [(pt, repl, sel[0]["size"], sel[0]["color"])])
         return rect
+
+    def replace_search(self, needle: str, repl: str, *, pages=None, occ_global: int = 0, fontsize=None):
+        """Replace the occ_global-th occurrence of needle found via search_for."""
+        hits = []
+        for pno, page in enumerate(self.doc):
+            if pages is not None and pno not in pages:
+                continue
+            for rect in page.search_for(needle):
+                hits.append((pno, rect))
+        if len(hits) <= occ_global:
+            raise SystemExit(f"search {needle!r}: occ {occ_global} not found ({len(hits)} hits)")
+        pno, rect = hits[occ_global]
+        page = self.doc[pno]
+        # origin ≈ bottom-left of rect
+        size = fontsize or max(8.0, rect.height * 0.85)
+        pt = fitz.Point(rect.x0, rect.y1 - 0.15 * rect.height)
+        self._q(pno, [rect], [(pt, repl, size, (0, 0, 0))])
+        return pno, rect
 
     def blank(self, pno, rect):
         self._q(pno, [fitz.Rect(rect)], [])
@@ -75,16 +104,13 @@ class Editor:
             page = self.doc[pno]
             for r in rects:
                 page.add_redact_annot(r, fill=(1, 1, 1))
-            # REMOVE_IF_COVERED drops fraction rules that fall wholly inside a
-            # redaction rect while leaving answer-box borders (which never do).
             page.apply_redactions(
                 images=fitz.PDF_REDACT_IMAGE_NONE,
-                graphics=fitz.PDF_REDACT_LINE_ART_REMOVE_IF_COVERED)
-        font = fitz.Font(fontfile=CAMBRIA)
+                graphics=fitz.PDF_REDACT_LINE_ART_REMOVE_IF_COVERED,
+            )
+        font = fitz.Font(fontfile=FONTFILE)
         for pno, ins in self.inserts.items():
             page = self.doc[pno]
-            # TextWriter maps by glyph id, so astral-plane math italics survive;
-            # page.insert_text() would mangle them through a single-byte encoding.
             tw = fitz.TextWriter(page.rect)
             wrote = False
             for pt, text, size, color in ins:
@@ -94,5 +120,6 @@ class Editor:
                 wrote = True
             if wrote:
                 tw.write_text(page)
+        Path(out).parent.mkdir(parents=True, exist_ok=True)
         self.doc.save(out, garbage=3, deflate=True)
-        print("wrote", out)
+        print("wrote", out, "font=", FONTFILE)

@@ -1,0 +1,172 @@
+{
+  "system": "S2",
+  "problem_id": "2024_Q3",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A-3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "other",
+        "governing_law_identified": "The overflow point is the stationary point of the effective potential in the rotating frame, satisfying dφ/dx = 0.",
+        "regime_assumed": "M2 = M1/3; the inner (middle) stationary point between the two stars is sought.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Inner stationary point between x/a = 0 and x/a = 3/4"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: φ=(GM/a)F(x/a) is dimensionally valid",
+          "root-branch/BC: required inner point lies between primaries x/a∈(-1/4,3/4); numerical root of correct dφ/dx=0 is ≈0.360",
+          "symbol-whitelist: M=M1+M2 was defined previously",
+          "faithfulness-to-P: for M2=M1/3, primary locations are x/a=-1/4 and +3/4",
+          "adversarial residual: displayed A-3 potential uses a second denominator (x̄-1/4), inconsistent with M2's location +3/4 and inconsistent with the claimed 0.36 root"
+        ],
+        "refutation": "The final value x0/a≈0.36 is correct only for φ/(GM/a)=-3/[4(x̄+1/4)]-1/[4(3/4-x̄)]-x̄²/2. The solution as written instead displays the second gravitational denominator as (x̄-1/4). Differentiating that displayed expression does not give a root near 0.36; hence the executable reasoning is internally inconsistent despite the correct final number.",
+        "verdict": "FAIL",
+        "confidence": 0.94,
+        "first_point_of_failure": "The dimensionless effective-potential expression in A-3 places the second mass at x̄=1/4 rather than the required x̄=3/4.",
+        "fault_type_guess": "incorrect denominator/location typo causing root-equation inconsistency"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The dimensionless effective-potential expression in A-3 places the second mass at x̄=1/4 rather than the required x̄=3/4.",
+      "cost_usd": 0.050381999999999996
+    },
+    {
+      "id": "A-5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of energy for Keplerian orbital motion, with specific orbital energy e = -GM1/(2r), and blackbody radiation from both faces of the annulus",
+        "regime_assumed": "Steady, infinitesimally thin disk; constant accretion rate beta; gas moves on circular Keplerian orbits around M1; gravitational effects of M2 and gas heat capacity are neglected; both disk faces radiate as blackbodies",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.011901
+    },
+    {
+      "id": "A-6",
+      "judge": {
+        "subpart_id": "A.6",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Kepler's third law together with the steady thin-disc energy-balance result T = [G M_NS beta/(8 pi sigma r^3)]^(1/4)",
+        "regime_assumed": "The stated radius is interpreted as r = 10^{-1}a, consistent with the reference solution's factor 500 pi; steady thin disc, negligible companion gravity, and mass flow rate beta",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.93,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.01793
+    },
+    {
+      "id": "B-1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Newtonian gravity using the enclosed mass near the center, M(r) ≈ (4π/3)ρ_c r^3",
+        "regime_assumed": "Near the center of the star, with approximately constant density ρ(r) ≈ ρ_c; outward direction is positive",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.009628
+    },
+    {
+      "id": "B-7",
+      "judge": {
+        "subpart_id": "B-7",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Mass conservation under the radial mapping \\tilde r=(1+\\epsilon)r and Newtonian gravity \\tilde g=-GM/\\tilde r^2",
+        "regime_assumed": "Small uniform radial perturbation with |\\epsilon|\\ll 1, comparing corresponding mass shells",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.010826
+    }
+  ],
+  "escalated_subparts": [
+    "A-3"
+  ],
+  "escalation_rate": 0.2,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A-3"
+  ],
+  "cost_usd": 0.100667,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "F2024-1": {
+        "subpart": "A-3",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "wrong_root"
+      },
+      "F2024-2": {
+        "subpart": "A-6",
+        "caught": false,
+        "caught_at": null,
+        "type": "wrong_numeric"
+      }
+    },
+    "faults_caught": 1,
+    "faults_total": 2
+  },
+  "wall_s": 43.169305086135864,
+  "problem_name": "Black Widow Pulsar"
+}

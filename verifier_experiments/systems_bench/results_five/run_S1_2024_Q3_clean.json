@@ -1,0 +1,142 @@
+{
+  "system": "S1",
+  "problem_id": "2024_Q3",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A-3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "The Lagrange point satisfies dφ(x,0)/dx = 0 for the effective gravitational-plus-centrifugal potential.",
+        "regime_assumed": "M2 = M1/3; the point x0 lies between the two masses, with M1 at x/a = -1/4 and M2 at x/a = 3/4.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "The relevant root is the stationary point between the two masses."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0060565
+    },
+    {
+      "id": "A-5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of energy for a steady Keplerian accretion disk; the change in specific orbital energy across an annulus is radiated as blackbody radiation from both disk surfaces.",
+        "regime_assumed": "Infinitesimally thin, steady disk with mass flow rate β, negligible gravitational influence of M2, Keplerian circular motion around M1, and blackbody radiation from both faces.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.005133
+    },
+    {
+      "id": "A-6",
+      "judge": {
+        "subpart_id": "A-6",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Kepler's third law together with the thin-disc blackbody temperature relation T = [G M_NS beta/(8 pi sigma r^3)]^(1/4), evaluated at r = a/10",
+        "regime_assumed": "Circular binary orbit; steady, optically radiating thin accretion disc; gravitational influence of the companion on the disc neglected; mass-transfer rate beta is constant",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0069775
+    },
+    {
+      "id": "B-1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Newtonian gravitational acceleration, g(r) = -G M(r)/r^2, with M(r) ≈ (4π/3)ρ_c r^3 near the center",
+        "regime_assumed": "Near the stellar center, where the density is approximately uniform and equal to ρ_c; outward direction is positive",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0045905
+    },
+    {
+      "id": "B-7",
+      "judge": {
+        "subpart_id": "B.7",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Lagrangian mass conservation for spherical shells and Newtonian gravitational acceleration g = -GM(r)/r^2",
+        "regime_assumed": "Small, uniform homologous radial displacement \\tilde r = r(1+\\epsilon), with |\\epsilon| << 1 and unchanged enclosed mass for each shell",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0051445
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.027902,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 21.89665699005127,
+  "problem_name": "Black Widow Pulsar"
+}

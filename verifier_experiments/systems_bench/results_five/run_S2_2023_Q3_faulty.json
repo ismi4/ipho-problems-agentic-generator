@@ -1,0 +1,250 @@
+{
+  "system": "S2",
+  "problem_id": "2023_Q3",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.31 m/s; exponent_fingerprint 2/3=False 1/3=True; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "fail",
+        "detail": "sign of f_x flipped vs force balance / B.2 leftward"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "fail",
+        "detail": "ℓ=√(γ/ρ) is dimensionally inconsistent (missing g)"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "fail",
+        "detail": "retained growing branch e^{+x/ℓ}; diverges as x→∞, contradicting z(∞)=0"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "fail",
+        "detail": "boxed F_x reintroduces za/xa (violates demanded symbol set; algebraically equivalent trap)"
+      }
+    ],
+    "n_fail": 4,
+    "failed_subparts": [
+      "B.3",
+      "B.4",
+      "B.5",
+      "C.2"
+    ],
+    "verdict_hint": "REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Surface-energy decrease is converted into kinetic energy: Mv^2/2 = kΔE, with volume conservation giving the merged radius R = 2^(1/3)a.",
+        "regime_assumed": "Two identical spherical drops merge into one spherical drop; total volume is conserved; a fraction k of the released surface energy becomes translational kinetic energy.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Using the solution's own formula, v = sqrt([3kγ(2−2^(2/3))]/[ρa]) = sqrt([3(0.06)(7.27×10^−2)(2−2^(2/3))]/[(1.00×10^3)(100×10^−6)]) = 0.232 m/s, which rounds to 0.23 m/s, not 0.31 m/s.",
+        "first_point_of_failure": "Numerical evaluation in Eq. (S3.4); the symbolic energy and mass expressions are correct.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: ΔE~γa^2 and v^2~kγ/(ρa), hence [v]=m s^-1",
+          "limiting-case: k→0 or γ→0 gives v→0; a→∞ gives v→0",
+          "conservation-residual: 2(4πa^3/3)=4πR^3/3 implies R=2^(1/3)a and final area=4π2^(2/3)a^2",
+          "BC/root-branch: kinetic-energy equation requires the positive root v>0",
+          "symbol-whitelist: uses only P-defined a,ρ,γ,k and standard constants π",
+          "faithfulness-to-P: applies the stated conserved-volume and kΔE-to-kinetic-energy assumptions"
+        ],
+        "refutation": "The final merged radius is R=2^(1/3)a, so its surface area is 4πR^2=4π2^(2/3)a^2. Therefore ΔE=4πa^2γ(2-2^(2/3)), not 4πa^2γ(2-2^(1/3)). The correct result is v=sqrt(3kγ(2-2^(2/3))/(ρa))=0.232... m/s=0.23 m/s (two significant digits), rather than 0.31 m/s.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Eq. (S3.2): the post-merger surface-area factor is incorrectly written as 2^(1/3) instead of 2^(2/3); the subsequent numerical value consistently evaluates this incorrect factor.",
+        "fault_type_guess": "volume-to-surface-area exponent error"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Eq. (S3.2): the post-merger surface-area factor is incorrectly written as 2^(1/3) instead of 2^(2/3); the subsequent numerical value consistently evaluates this incorrect factor.",
+      "cost_usd": 0.0366365
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Horizontal vector force balance on the water block, including the signed pressure force and surface-tension forces per unit length.",
+        "regime_assumed": "Static equilibrium with f_x defined in B.2 as a positive magnitude acting leftward.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "If f_x is a signed +x component: f_x + γ(cosθ1 - cosθ2) = 0.",
+          "If f_x is the positive leftward magnitude used in B.2: -f_x + γ(cosθ1 - cosθ2) = 0."
+        ],
+        "refutation": "With θ1 = 0 and θ2 = π/2, the surface-tension force is +γ in the x-direction. Since B.2 states that f_x is a positive leftward force, the correct balance is -f_x + γ = 0, whereas the stated equation gives f_x + γ = 0.",
+        "first_point_of_failure": "The sign convention for f_x is inconsistent: B.2 identifies it as leftward, but B.3 inserts it as a positive +x component.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The sign convention for f_x is inconsistent: B.2 identifies it as leftward, but B.3 inserts it as a positive +x component.",
+      "cost_usd": 0.013564
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance with surface-tension force balance, yielding (1/2)ρgz^2 + γ cosθ = constant",
+        "regime_assumed": "Static water surface with constant density, uniform surface tension, and negligible board thickness",
+        "dimensional_check": "fail",
+        "case_branches_found": [],
+        "refutation": "The stated ℓ = √(γ/ρ) is not a length: [γ/ρ] = m^3/s^2, so its square root has dimensions m^(3/2)/s. The required capillary length is ℓ = √(γ/(ρg)), which has dimensions of length.",
+        "first_point_of_failure": "The expression for ℓ in Eq. (S3.9) omits the gravitational acceleration g.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The expression for ℓ in Eq. (S3.9) omits the gravitational acceleration g.",
+      "cost_usd": 0.008785
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Small-slope capillary equation z''(x) = z(x)/ell^2, with z'(0) = tan(theta0) and z(x) -> 0 as x -> infinity",
+        "regime_assumed": "|z'(x)| << 1; x >= 0; finite surface height with z(infinity) = 0",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Growing branch e^(x/ell), rejected because it diverges as x -> infinity",
+          "Decaying branch e^(-x/ell), required by the boundary condition"
+        ],
+        "refutation": "For any nonzero tan(theta0), the stated result z(x) = ell tan(theta0) e^(x/ell) diverges as x -> infinity and therefore cannot satisfy z(infinity) = 0. The correct result is z(x) = -ell tan(theta0) e^(-x/ell).",
+        "first_point_of_failure": "The boundary condition z(infinity) = 0 is applied to the wrong coefficient: in z = A e^(x/ell) + B e^(-x/ell), it requires A = 0, not B = 0.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The boundary condition z(infinity) = 0 is applied to the wrong coefficient: in z = A e^(x/ell) + B e^(-x/ell), it requires A = 0, not B = 0.",
+      "cost_usd": 0.010924
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Capillary invariant (Eq. S3.8) combined with horizontal force balance from C.1, yielding F_x = -\\frac{1}{2}\\rho g z_0^2.",
+        "regime_assumed": "Static equilibrium, symmetric water surface about the midpoint between the rods, with zero slope at the midpoint and a flat surface at infinity.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "The boxed answer F_x = -2\\rho g z_a^2/[e^{x_a/\\ell}+e^{-x_a/\\ell}]^2 violates the explicit requirement that the result not use \\theta_a, \\theta_b, z_a, or z_b; it also reintroduces z_a and x_a through a later relation. For example, at x_a=\\ell it still explicitly depends on z_a, whereas the required result is solely F_x=-\\frac{1}{2}\\rho g z_0^2.",
+        "first_point_of_failure": "The final boxed expression reintroduces z_a and x_a instead of giving the required expression solely in terms of z_0 and constants.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "The displayed result relies on a later C.3 relation (circular plug-back) and violates the demanded symbol set, despite the preceding derivation correctly obtaining F_x=-\\frac{1}{2}\\rho g z_0^2."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: rho*g*z0**2 -> N/m (force per unit rod length), pass",
+          "conservation_residual: substitute (rho*g*za**2/2 + gamma*cos(theta_a))=(rho*g*z0**2/2+gamma) and (rho*g*zb**2/2+gamma*cos(theta_b))=gamma into C.1; simplify -> Fx + rho*g*z0**2/2 = 0",
+          "BC/root-branch: midpoint symmetry gives theta=0, cos(theta)=1; far-field flat branch also gives cos(theta)=1, consistent",
+          "limiting_case: z0->0 gives Fx->0, as required for restored left-right symmetry",
+          "symbol_whitelist: displayed C.2 answer contains za and xa although P explicitly forbids za, zb, theta_a, theta_b",
+          "faithfulness_to_P: -2*rho*g*za**2/(exp(xa/ell)+exp(-xa/ell))**2 is a C.3-substituted form, not the requested C.2 expression"
+        ],
+        "refutation": "The C.2 derivation correctly yields Fx=-rho*g*z0**2/2. However, the displayed C.2 final answer replaces z0 using the later C.3 relation and contains za and xa, violating C.2's explicit instruction to eliminate za, zb, theta_a, and theta_b. The substituted formula is algebraically equivalent only after invoking C.3, but is not faithful to the requested sub-part answer.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "The final boxed C.2 expression reintroduces za and xa instead of reporting Fx=-rho*g*z0**2/2.",
+        "fault_type_guess": "wrong_final_form / cross-subpart circular substitution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The final boxed C.2 expression reintroduces za and xa instead of reporting Fx=-rho*g*z0**2/2.",
+      "cost_usd": 0.039951
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "C.2"
+  ],
+  "escalation_rate": 0.4,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A.1",
+    "B.3",
+    "B.4",
+    "B.5",
+    "C.2"
+  ],
+  "cost_usd": 0.10986,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "ERR-1": {
+        "subpart": "A.1",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "dimless_geometric_factor"
+      },
+      "ERR-2": {
+        "subpart": "B.3",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "sign_flip"
+      },
+      "ERR-3": {
+        "subpart": "B.4",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "dimensional"
+      },
+      "ERR-4": {
+        "subpart": "B.5",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "wrong_root_branch"
+      },
+      "ERR-5": {
+        "subpart": "C.2",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "symbol_whitelist"
+      }
+    },
+    "faults_caught": 5,
+    "faults_total": 5
+  },
+  "wall_s": 47.65025591850281,
+  "problem_name": "Water and Objects"
+}

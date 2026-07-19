@@ -1,0 +1,145 @@
+{
+  "system": "S1",
+  "problem_id": "2021_Q1",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance and integration of pressure over each side of the vertical plate: p = rho g depth.",
+        "regime_assumed": "Static, incompressible fluids with negligible surface tension; the oil column reaches the lower plate edge and exerts pressure over height h0 = (rho0/rhooil)h.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0052115
+    },
+    {
+      "id": "A.4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure p(z)=p(0)+rho g z and integration of pressure forces over the vertical boundaries of the right half of the crust",
+        "regime_assumed": "Hydrostatic equilibrium; far-field crust thickness D from A.3; leading order in small k, with D proportional to k^{-1}",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.96,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0081235
+    },
+    {
+      "id": "A.5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Thermal diffusion from Fourier's law, with thermal diffusivity proportional to kappa/(rho_1 c)",
+        "regime_assumed": "One-dimensional conductive equilibration across a crustal slab of thickness D; constant rho_1, c, and kappa; insulated boundaries except for internal heat redistribution",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.004917
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of emitted energy under the ray mapping from emission angle to surface position: ε(x) = (E/π)|dθ0/dx|, using x(θ0) = A cot(bθ0).",
+        "regime_assumed": "Uniform angular emission over the π-radian range of directions with positive vertical component; complete absorption at the surface; geometric ray propagation with the B.1 mapping.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Right-hand surface x > 0, with the corresponding left-hand branch obtained by symmetry for x < 0"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.005625
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Repeated surface reflections combined with the ray-return map x1(theta)=2z0 cot(theta); neighboring angular-edge rays generate successive arrival intervals whose widths grow linearly with the reflection number.",
+        "regime_assumed": "0<theta0<pi/2, delta_theta0<<theta0 and delta_theta0<<1; leading order in delta_theta0, with x1(theta) monotonic over the signal's angular interval.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Right-going signal with positive surface distance",
+          "Small angular-width approximation"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "UNCERTAIN",
+        "confidence": 0.65,
+        "escalate": true,
+        "escalate_reason": "The supplied reference solution is truncated before the final derivation and expression for x_max, so its conclusion cannot be directly verified."
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "UNCERTAIN",
+      "first_point_of_failure": null,
+      "cost_usd": 0.00691
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "UNCERTAIN",
+  "failed_subparts": [],
+  "cost_usd": 0.030787,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "UNCERTAIN",
+    "doc_correct": false,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 34.16502046585083,
+  "problem_name": "Planetary Physics"
+}

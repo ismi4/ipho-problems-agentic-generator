@@ -1,0 +1,1625 @@
+{
+  "i1": {
+    "clean": {
+      "rung": "I1",
+      "pdf": "/workspace/verifier_experiments/pdfs/IPhO_2023_S3.pdf",
+      "text": "Solutions to Theory Problems\n\n\n                                                                                                          S3‒1\nTheory Problem 3: Water and Objects (10 points)\nPart A. Merger of water drops (2.0 pt)\nA.1     The surface energy per drop before the merger is\n        𝐸 = 4𝜋𝑎2 𝛾.                                                                                                (S3.1)\nTherefore, the surface energy difference becomes\n        Δ𝐸 = 4𝜋 (2 − 22/3 ) 𝑎2 𝛾.                                                                                  (S3.2)\nThe transfer of surface energy to kinetic energy is represented by\n        𝑀 𝑣2 /2 = 𝑘Δ𝐸,                                                                                             (S3.3)\nwhere 𝑘 = 0.06 and 𝑀 = 4𝜋𝑎3 𝜌/3 × 2 = 8𝜋𝑎3 𝜌/3 is the mass of the drop after the merger. The numerical\ncomputation gives\n\n               2𝑘Δ𝐸                  𝑘𝛾                       0.06 × (7.27 × 10−2 )\n        𝑣=√         = √3 (2 − 22/3 )    = √3 (2 − 22/3 ) ×                              = 0.23\u00012 m/s.              (S3.4)\n                 𝑀                   𝜌𝑎                    (1.0 × 103 ) × (100 × 10−6 )\n\n        ▷ Note: We point out an interesting phenomenon related to this question. On a superhydrophobic sur-\n        face, when small droplets merge, they release surface energy, causing the surface area to shrink. This\n        energy release propels the merged droplet to jump up. This phenomenon mirrors the natural mecha-\n        nism seen in cicadas. Cicadas' wings, which possess superhydrophobic surfaces, facilitate the removal\n        of water droplets upon coalescence. This process serves as a natural self-cleaning system, converting\n        surface energy to kinetic energy, as reported in the following paper: Wisdom et. al., Proc. Natl. Acad. Sci.\n        USA 110, 7992−7997 (2013).\n\n\n  A.1                                                                                                            2.0 pt\n         𝑣 = 0.23 m/s\n\n\n\nPart B. A vertically placed board (4.5 pt)\nB.1\nConsider a vertical upright column-shaped water block as shown in the\nhatched area of Fig. S3-1. The vertical force balance with respect to this\nblock per unit area leads to 𝑃 + 𝜌𝑔𝑧 = 𝑃0 .\n\n\n\n                                                                                                   Fig. S3-1\n\n  B.1                                                                                                            0.6 pt\n         𝑃 = 𝑃0 − 𝜌𝑔𝑧\n\n\nB.2\nBecause the atmospheric pressure 𝑃0 exerts no net horizontal force on the water block, we have\n                𝑧1\n                                1\n        𝑓𝑥 = ∫ (−𝜌𝑔𝑧)𝑑𝑧 =         𝜌𝑔 (𝑧22 − 𝑧12 ) .                                                                (S3.5)\n              𝑧2                2\n\nThis force acts in the leftward direction.\n\n\n                                                             1\n\fSolutions to Theory Problems\n\n\n                                                                                                        S3‒2\n        ▷ Note: The reason why 𝑃0 exerts no net horizontal force is understood as follows. Consider a small\n        area (infinitesimally divided piece) near the surface, which is regarded as a right-angled triangle (see\n        Fig. S3-2).\n\n\n\n\n                                                        Fig. S3‒2\n        The horizontal component of the combined force exerted on the right-angled triangle ABC per unit\n        length along the 𝑦-axis by atmospheric pressure is\n\n                                    AB\n              𝑃0 × AB − 𝑃0 × AC ×      =0\n                                    AC\n        Integrating infinitesimal pieces over a finite domain yields a finite volume of water, while the net force\n        remains zero.\n\n\n  B.2                                                                                                          0.8 pt\n             1\n         𝑓𝑥 = 𝜌𝑔 (𝑧22 − 𝑧12 )\n             2\n\nB.3\nThe horizontal component of the surface tension acting on the water block is 𝛾 cos 𝜃2 − 𝛾 cos 𝜃1 . Thus,\nthe horizontal force balance is expressed as\n\n        𝑓𝑥 + 𝛾 cos 𝜃2 − 𝛾 cos 𝜃1 = 0.                                                                            (S3.6)\n\n\n\n\n  B.3                                                                                                          0.8 pt\n         𝑓𝑥 = 𝛾 cos 𝜃1 − 𝛾 cos 𝜃2\n\n\nB.4\nFrom the results of B.2 and B.3, we have\n        1                   1\n          𝜌𝑔𝑧12 + 𝛾 cos 𝜃1 = 𝜌𝑔𝑧22 + 𝛾 cos 𝜃2 .                                                                  (S3.7)\n        2                   2\nSince this equation holds at an arbitrary point (𝑥, 𝑧) on the water surface, we conclude\n        1\n          𝜌𝑔𝑧 2 + 𝛾 cos 𝜃 = constant,                                                                            (S3.8)\n        2\nwhich is written as\n        1 𝑧 𝑎\n         ( ) + cos 𝜃(𝑥) = constant,                                                                              (S3.9)\n        2 ℓ\n                         𝛾\nwith 𝑎 = 2 and ℓ = √        .\n                         𝜌𝑔\n        ▷ Note: The equaiton (S3.9) is a kind of conservation law. The constant ℓ is called the capillary length.\n\n\n                                                            2\n\fSolutions to Theory Problems\n\n\n                                                                                                    S3‒3\n  B.4                                                                                                     0.8 pt\n                       𝛾\n          𝑎 = 2, ℓ = √\n                       𝜌𝑔\n\n\nB.5    The derivative of the water surface coordinate 𝑧, denoted by 𝑧 ′ , is associated with the angle of\ninclination 𝜃, given by the equation: 𝑧′ = tan 𝜃. This relation yields\n\n                      1\n        cos 𝜃 =                ,                                                                          (S3.10)\n                  √1 + (𝑧 ′ )2\n\nwhich leads to\n                   1\n        cos 𝜃 ≃ 1 − (𝑧 ′ )2 .                                                                             (S3.11)\n                   2\nPlugging this into Eq. (S3.9), we obtain\n\n        𝑧2\n           − 𝑧 ′2 = const.                                                                                (S3.12)\n        ℓ2\nTaking the derivative of both sides with respect to 𝑥, we have\n               𝑧\n        𝑧″ =      ,                                                                                       (S3.13)\n               ℓ2\nwhich is the differential equation that determines the water surface form.\n\nIts general solution is\n\n        𝑧 = 𝐴𝑒𝑥/ℓ + 𝐵𝑒−𝑥/ℓ .                                                                              (S3.14)\n\nThe boundary condition, 𝑧(∞) = 0, leads to 𝐴 = 0.\nThe boundary condition, 𝑧′ (0) = tan 𝜃0 , leads to 𝐵 = −ℓ tan 𝜃0 .\n\n\n  B.5                                                                                                     1.5 pt\n          𝑧 (𝑥) = −ℓ tan 𝜃0 𝑒−𝑥/ℓ\n\n\n\nPart C. Interaction between two rods (3.5 pt)\nC.1     The horizontal component of the force due to the pressure is\n          𝑧b\n                             1\n        ∫ (𝜌𝑔𝑧) 𝑑𝑧 =           𝜌𝑔 (𝑧b2 − 𝑧a2 )                                                            (S3.15)\n         𝑧a                  2\n\nLet 𝑧bottom be the 𝑧-coordinate at the bottom of the rod. Then, we have\n                  𝑧a                             𝑧b                    𝑧b\n        𝐹𝑥 = ∫            (−𝜌𝑔𝑧)𝑑𝑧 + (− ∫              (−𝜌𝑔𝑧)𝑑𝑧) = ∫ (𝜌𝑔𝑧)𝑑𝑧                              (S3.16)\n                𝑧bottom                      𝑧bottom               𝑧a\n\n        ▷ Note: The fact that the contribution due to the pressure does not depend on the shape of the cross-\n        section can be demonstrated as follows. The pressure at the point 𝑠 on the contour 𝐶 along the cross-\n        sectional boundary is\n\n               −𝑃 𝑛𝑑𝑠\n                   ̂ = (−𝑃0 +𝜌𝑔𝑧)𝑛𝑑𝑠.\n                                  ̂                                                                  (S3.17)\n\n\n\n                                                                   3\n\fSolutions to Theory Problems\n\n\n                                                                                                            S3‒4\n        Let 𝑥̂ be the unit vector pointing the positive 𝑥-direction and noting 𝑥̂ ⋅ 𝑛𝑑𝑠\n                                                                                     ̂ = 𝑑𝑧 (see Fig. S3-3), we obtain\n        its horizontal component as\n\n              −𝑃 𝑛̂ ⋅ 𝑥𝑑𝑠\n                       ̂ = −𝑃0 𝑑𝑧+𝜌𝑔𝑧𝑑𝑧.                                                                      (S3.18)\n\n        Integrating along the contour 𝐶.1 We obtain\n                𝑧b\n                              1\n              ∫ (𝜌𝑔𝑧)𝑑𝑧 =       𝜌𝑔 (𝑧b2 − 𝑧a2 )                                                               (S3.19)\n               𝑧a             2\n\n\n\n\n                                                                Fig. S3‒3\n\n\n  C.1                                                                                                              1.0 pt\n             1\n         𝐹𝑥 = 𝜌𝑔 (𝑧b2 − 𝑧a2 ) + 𝛾 (cos 𝜃b − cos 𝜃a )\n             2\n\n\nC.2     By applying the boundary conditions to Eq. (S3.8), we obtain\n\n        1                   1\n          𝜌𝑔𝑧a2 + 𝛾 cos 𝜃a = 𝜌𝑔𝑧02 + 𝛾                                                                             (S3.20)\n        2\n        ⏟⏟⏟⏟⏟⏟⏟             ⏟\n                            2⏟⏟⏟⏟\n               𝑥=𝑥a                𝑥=0\n\n\n\n        1\n          𝜌𝑔𝑧b2 + 𝛾 cos 𝜃b = 𝛾⏟                                                                                    (S3.21)\n        2\n        ⏟⏟⏟⏟⏟⏟⏟             𝑥→∞\n               𝑥=𝑥b\n\n            1\nThen, 𝐹𝑥 = − 𝜌𝑔𝑧02 is obtained by subtracting (S3.20) from (S3.21).\n            2\n        ▷ Note: The physical background of this problem is as follows. When a single rod is placed on the water\n        surface, the shape of the water surface on both sides of the rod remains the same. In other words, the\n        rod is placed in an environment that exhibits the left-right symmetry. Then, there is no force acting on\n        the rod. On the other hand, when two rods are placed on the water surface, the left-right symmetry of\n        the water surface is broken from the perspective of each rod. As a result, an attractive force is generated.\n        The displacement of the water surface at the midpoint between the two rods differs from that of a hori-\n        zontal water surface. This deviation is represented by 𝑧0 . That is to say, 𝑧0 plays the role of a symmetry-\n        breaking parameter (see Fig. S3-4).\n\n        The fact that the attractive force between the two rods is determined solely by this parameter suggests\n        that the symmetry breaking directly becomes the origin of the force. This corresponds to the fundamen-\n        tal principle in physics that relates symmetry breaking to force generation.\n\n\n  1 This integral is symbolically written as ∮ (−𝑃 𝑛̂ ⋅ 𝑥𝑑𝑠).\n                                                         ̂\n                                                  𝐶\n\n\n\n\n                                                                   4\n\fSolutions to Theory Problems\n\n\n                                                                                     S3‒5\n\n\n                                                  Fig. S3‒4\n\n\n  C.2                                                                                 1.5 pt\n               1\n         𝐹𝑥 = − 𝜌𝑔𝑧02\n               2\n\n\nC.3     The general solution for the water surface height is given by the equation\n\n        𝑧(𝑥) = 𝐴𝑒𝑥/ℓ + 𝐵𝑒−𝑥/ℓ .                                                       (S3.22)\n\nBy considering the left-right symmetry, we find\n\n        𝐴 = 𝐵.                                                                        (S3.23)\n\nApplying the boundary condition 𝑧(0) = 𝑧0 , we obtain\n\n        𝐴 + 𝐵 = 𝑧0 .                                                                  (S3.24)\n\nWe thus have\n\n        𝐴 = 𝑧0 /2, 𝐵 = 𝑧0 /2.                                                         (S3.25)\n\n\n\n\n  C.3                                                                                 1.0 pt\n                  2𝑧\n         𝑧0 = 𝑥 /ℓ a −𝑥 /ℓ\n             𝑒 a +𝑒 a\n\n\n\n\n                                                     5\n\f",
+      "n_chars": 12400,
+      "cost_usd": 0.0,
+      "retries": 0
+    },
+    "faulty": {
+      "rung": "I1",
+      "pdf": "/workspace/verifier_experiments/pdfs/faulty/IPhO_2023_S3_FAULTY.pdf",
+      "text": "Solutions to Theory Problems\n\n\n                                                                                                          S3‒1\nTheory Problem 3: Water and Objects (10 points)\nPart A. Merger of water drops (2.0 pt)\nA.1     The surface energy per drop before the merger is\n        𝐸 = 4𝜋𝑎2 𝛾.                                                                                                (S3.1)\nTherefore, the surface energy difference becomes\n        Δ𝐸 = 4𝜋 (2 − 21/3 ) 𝑎2 𝛾.                                                                                  (S3.2)\nThe transfer of surface energy to kinetic energy is represented by\n        𝑀 𝑣2 /2 = 𝑘Δ𝐸,                                                                                             (S3.3)\nwhere 𝑘 = 0.06 and 𝑀 = 4𝜋𝑎3 𝜌/3 × 2 = 8𝜋𝑎3 𝜌/3 is the mass of the drop after the merger. The numerical\ncomputation gives\n\n               2𝑘Δ𝐸                  𝑘𝛾                       0.06 × (7.27 × 10−2 )\n        𝑣=√         = √3 (2 − 21/3 )    = √3 (2 − 21/3 ) ×                              = 0.311 m/s.               (S3.4)\n                 𝑀                   𝜌𝑎                    (1.0 × 103 ) × (100 × 10−6 )\n\n        ▷ Note: We point out an interesting phenomenon related to this question. On a superhydrophobic sur-\n        face, when small droplets merge, they release surface energy, causing the surface area to shrink. This\n        energy release propels the merged droplet to jump up. This phenomenon mirrors the natural mecha-\n        nism seen in cicadas. Cicadas' wings, which possess superhydrophobic surfaces, facilitate the removal\n        of water droplets upon coalescence. This process serves as a natural self-cleaning system, converting\n        surface energy to kinetic energy, as reported in the following paper: Wisdom et. al., Proc. Natl. Acad. Sci.\n        USA 110, 7992−7997 (2013).\n\n\n  A.1                                                                                                            2.0 pt\n         𝑣 = 0.31 m/s\n\n\n\nPart B. A vertically placed board (4.5 pt)\nB.1\nConsider a vertical upright column-shaped water block as shown in the\nhatched area of Fig. S3-1. The vertical force balance with respect to this\nblock per unit area leads to 𝑃 + 𝜌𝑔𝑧 = 𝑃0 .\n\n\n\n                                                                                                   Fig. S3-1\n\n  B.1                                                                                                            0.6 pt\n         𝑃 = 𝑃0 − 𝜌𝑔𝑧\n\n\nB.2\nBecause the atmospheric pressure 𝑃0 exerts no net horizontal force on the water block, we have\n                𝑧1\n                                1\n        𝑓𝑥 = ∫ (−𝜌𝑔𝑧)𝑑𝑧 =         𝜌𝑔 (𝑧22 − 𝑧12 ) .                                                                (S3.5)\n              𝑧2                2\n\nThis force acts in the leftward direction.\n\n\n                                                             1\n\fSolutions to Theory Problems\n\n\n                                                                                                        S3‒2\n        ▷ Note: The reason why 𝑃0 exerts no net horizontal force is understood as follows. Consider a small\n        area (infinitesimally divided piece) near the surface, which is regarded as a right-angled triangle (see\n        Fig. S3-2).\n\n\n\n\n                                                        Fig. S3‒2\n        The horizontal component of the combined force exerted on the right-angled triangle ABC per unit\n        length along the 𝑦-axis by atmospheric pressure is\n\n                                    AB\n              𝑃0 × AB − 𝑃0 × AC ×      =0\n                                    AC\n        Integrating infinitesimal pieces over a finite domain yields a finite volume of water, while the net force\n        remains zero.\n\n\n  B.2                                                                                                          0.8 pt\n             1\n         𝑓𝑥 = 𝜌𝑔 (𝑧22 − 𝑧12 )\n             2\n\nB.3\nThe horizontal component of the surface tension acting on the water block is γcos θ1 −γcos θ2 . Thus,\nthe horizontal force balance is expressed as\n\n        𝑓𝑥 + γcos θ1 −γcos θ2    = 0.                                                                            (S3.6)\n\n\n\n\n  B.3                                                                                                          0.8 pt\n         𝑓𝑥 = γcos θ2 −γcos θ1\n\n\nB.4\nFrom the results of B.2 and B.3, we have\n        1                   1\n          𝜌𝑔𝑧12 + 𝛾 cos 𝜃1 = 𝜌𝑔𝑧22 + 𝛾 cos 𝜃2 .                                                                  (S3.7)\n        2                   2\nSince this equation holds at an arbitrary point (𝑥, 𝑧) on the water surface, we conclude\n        1\n          𝜌𝑔𝑧 2 + 𝛾 cos 𝜃 = constant,                                                                            (S3.8)\n        2\nwhich is written as\n        1 𝑧 𝑎\n         ( ) + cos 𝜃(𝑥) = constant,                                                                              (S3.9)\n        2 ℓ\n                         𝛾\nwith 𝑎 = 2 and ℓ = √       .\n                         𝜌\n        ▷ Note: The equaiton (S3.9) is a kind of conservation law. The constant ℓ is called the capillary length.\n\n\n                                                            2\n\fSolutions to Theory Problems\n\n\n                                                                                                    S3‒3\n  B.4                                                                                                     0.8 pt\n                       𝛾\n          𝑎 = 2, ℓ = √\n                       𝜌\n\n\nB.5    The derivative of the water surface coordinate 𝑧, denoted by 𝑧 ′ , is associated with the angle of\ninclination 𝜃, given by the equation: 𝑧′ = tan 𝜃. This relation yields\n\n                      1\n        cos 𝜃 =                ,                                                                          (S3.10)\n                  √1 + (𝑧 ′ )2\n\nwhich leads to\n                   1\n        cos 𝜃 ≃ 1 − (𝑧 ′ )2 .                                                                             (S3.11)\n                   2\nPlugging this into Eq. (S3.9), we obtain\n\n        𝑧2\n           − 𝑧 ′2 = const.                                                                                (S3.12)\n        ℓ2\nTaking the derivative of both sides with respect to 𝑥, we have\n               𝑧\n        𝑧″ =      ,                                                                                       (S3.13)\n               ℓ2\nwhich is the differential equation that determines the water surface form.\n\nIts general solution is\n\n        𝑧 = 𝐴𝑒𝑥/ℓ + 𝐵𝑒−𝑥/ℓ .                                                                              (S3.14)\n\nThe boundary condition, 𝑧(∞) = 0, leads to B = 0.\nThe boundary condition, 𝑧′ (0) = tan 𝜃0 , leads to A = ℓtan                 𝜃0 .\n\n\n  B.5                                                                                                     1.5 pt\n          𝑧 (𝑥) = ℓtan       𝜃0 𝑒x/ℓ\n\n\n\nPart C. Interaction between two rods (3.5 pt)\nC.1     The horizontal component of the force due to the pressure is\n          𝑧b\n                             1\n        ∫ (𝜌𝑔𝑧) 𝑑𝑧 =           𝜌𝑔 (𝑧b2 − 𝑧a2 )                                                            (S3.15)\n         𝑧a                  2\n\nLet 𝑧bottom be the 𝑧-coordinate at the bottom of the rod. Then, we have\n                  𝑧a                             𝑧b                    𝑧b\n        𝐹𝑥 = ∫            (−𝜌𝑔𝑧)𝑑𝑧 + (− ∫              (−𝜌𝑔𝑧)𝑑𝑧) = ∫ (𝜌𝑔𝑧)𝑑𝑧                              (S3.16)\n                𝑧bottom                      𝑧bottom               𝑧a\n\n        ▷ Note: The fact that the contribution due to the pressure does not depend on the shape of the cross-\n        section can be demonstrated as follows. The pressure at the point 𝑠 on the contour 𝐶 along the cross-\n        sectional boundary is\n\n               −𝑃 𝑛𝑑𝑠\n                   ̂ = (−𝑃0 +𝜌𝑔𝑧)𝑛𝑑𝑠.\n                                  ̂                                                                  (S3.17)\n\n\n\n                                                                   3\n\fSolutions to Theory Problems\n\n\n                                                                                                            S3‒4\n        Let 𝑥̂ be the unit vector pointing the positive 𝑥-direction and noting 𝑥̂ ⋅ 𝑛𝑑𝑠\n                                                                                     ̂ = 𝑑𝑧 (see Fig. S3-3), we obtain\n        its horizontal component as\n\n              −𝑃 𝑛̂ ⋅ 𝑥𝑑𝑠\n                       ̂ = −𝑃0 𝑑𝑧+𝜌𝑔𝑧𝑑𝑧.                                                                      (S3.18)\n\n        Integrating along the contour 𝐶.1 We obtain\n                𝑧b\n                              1\n              ∫ (𝜌𝑔𝑧)𝑑𝑧 =       𝜌𝑔 (𝑧b2 − 𝑧a2 )                                                               (S3.19)\n               𝑧a             2\n\n\n\n\n                                                                Fig. S3‒3\n\n\n  C.1                                                                                                              1.0 pt\n             1\n         𝐹𝑥 = 𝜌𝑔 (𝑧b2 − 𝑧a2 ) + 𝛾 (cos 𝜃b − cos 𝜃a )\n             2\n\n\nC.2     By applying the boundary conditions to Eq. (S3.8), we obtain\n\n        1                   1\n          𝜌𝑔𝑧a2 + 𝛾 cos 𝜃a = 𝜌𝑔𝑧02 + 𝛾                                                                             (S3.20)\n        2\n        ⏟⏟⏟⏟⏟⏟⏟             ⏟\n                            2⏟⏟⏟⏟\n               𝑥=𝑥a                𝑥=0\n\n\n\n        1\n          𝜌𝑔𝑧b2 + 𝛾 cos 𝜃b = 𝛾⏟                                                                                    (S3.21)\n        2\n        ⏟⏟⏟⏟⏟⏟⏟             𝑥→∞\n               𝑥=𝑥b\n\n            1\nThen, 𝐹𝑥 = − 𝜌𝑔𝑧02 is obtained by subtracting (S3.20) from (S3.21).\n            2\n        ▷ Note: The physical background of this problem is as follows. When a single rod is placed on the water\n        surface, the shape of the water surface on both sides of the rod remains the same. In other words, the\n        rod is placed in an environment that exhibits the left-right symmetry. Then, there is no force acting on\n        the rod. On the other hand, when two rods are placed on the water surface, the left-right symmetry of\n        the water surface is broken from the perspective of each rod. As a result, an attractive force is generated.\n        The displacement of the water surface at the midpoint between the two rods differs from that of a hori-\n        zontal water surface. This deviation is represented by 𝑧0 . That is to say, 𝑧0 plays the role of a symmetry-\n        breaking parameter (see Fig. S3-4).\n\n        The fact that the attractive force between the two rods is determined solely by this parameter suggests\n        that the symmetry breaking directly becomes the origin of the force. This corresponds to the fundamen-\n        tal principle in physics that relates symmetry breaking to force generation.\n\n\n  1 This integral is symbolically written as ∮ (−𝑃 𝑛̂ ⋅ 𝑥𝑑𝑠).\n                                                         ̂\n                                                  𝐶\n\n\n\n\n                                                                   4\n\fSolutions to Theory Problems\n\n\n                                                                                     S3‒5\n\n\n                                                   Fig. S3‒4\n\n\n  C.2                                                                                 1.5 pt\n         Fx = −2ρg za² / (e^(xa/ℓ) + e^(−xa/ℓ))²\n\n\nC.3     The general solution for the water surface height is given by the equation\n\n        𝑧(𝑥) = 𝐴𝑒𝑥/ℓ + 𝐵𝑒−𝑥/ℓ .                                                       (S3.22)\n\nBy considering the left-right symmetry, we find\n\n        𝐴 = 𝐵.                                                                        (S3.23)\n\nApplying the boundary condition 𝑧(0) = 𝑧0 , we obtain\n\n        𝐴 + 𝐵 = 𝑧0 .                                                                  (S3.24)\n\nWe thus have\n\n        𝐴 = 𝑧0 /2, 𝐵 = 𝑧0 /2.                                                         (S3.25)\n\n\n\n\n  C.3                                                                                 1.0 pt\n                  2𝑧\n         𝑧0 = 𝑥 /ℓ a −𝑥 /ℓ\n             𝑒 a +𝑒 a\n\n\n\n\n                                                      5\n\f",
+      "n_chars": 12403,
+      "cost_usd": 0.0,
+      "retries": 0
+    },
+    "problem": {
+      "rung": "I1",
+      "pdf": "/workspace/verifier_experiments/pdfs/IPhO_2023_Q3.pdf",
+      "text": "                                                                                 Q3-1\nTheory\n\n\n\n                                                                                             English (Official)\n\nWater and Objects (10 pt)\nIn this problem, we consider the phenomena caused by the interaction between water and objects, re-\nlated to surface tension. Part A treats motion, while Parts B and C are regarding static situations.\nIf necessary, you can use the fact that if the function 𝑦(𝑥) satisfies\n                                                                  √    the differential\n                                                                             √          equation 𝑦″ (𝑥) = 𝑎𝑦(𝑥)\n(𝑎 is a positive constant), then its general solution is 𝑦(𝑥) = 𝐴𝑒 𝑎𝑥 + 𝐵𝑒− 𝑎𝑥 , where 𝐴 and 𝐵 are arbitrary\nconstants.\n\nPart A. Merger of water drops (2.0 points)\nAs shown in Fig.1, we consider two stationary, spherical water drops on the surface of a super-\nhydrophobic material, i.e., very strong repulsive force exists between material and water.\nInitially neighboring two identical spherical water drops are placed on the surface; then these two drops\nare merged after touching each other and form a larger spherical water drop, which suddenly jumps up.\n\n     A.1     The radius 𝑎 of both water drops before the merger is 100 𝜇m. The density of            2.0pt\n             water 𝜌 is 1.00 × 103 kg/m3 . The surface tension 𝛾 is 7.27 × 10−2 J/m2 .\n             A portion 𝑘 of the difference of the surface energy before and after the merger,\n             ΔE, is transformed into the kinetic energy of the jumped water drop. Then, de-\n             termine the initial jump-up velocity, 𝑣, of the merged water drop in two signifi-\n             cant digits under the following assumptions:\n                 • 𝑘 = 0.06\n                 • Before and after merger, the total volume of water is conserved.\n\n\n\n\n                 Fig. 1: Merger of two water drops and jump of the merged water drop.\n\n\n\nPart B. A vertically placed board (4.5 points)\nA flat board is immersed vertically in water. Figures 2(a) and 2(b) respectively show water surface forms\nfor the hydrophilic (attractive) and hydrophobic board materials. We neglect the thickness of the board.\nThe board surface is on the 𝑦𝑧 plane, and the horizontal water surface far away from the board is on\nthe 𝑥𝑦 plane with 𝑧 = 0. The surface shape does not depend on the 𝑦-coordinate. Let 𝜃(𝑥) be the angle\nbetween the water surface and the horizontal plane at a point (𝑥, 𝑧) on the water surface in the 𝑥𝑧 plane.\nHere 𝜃(𝑥) is measured with respect to the positive 𝑥 axis and the counterclockwise rotation is taken as\npositive. Let 𝜃(𝑥) be 𝜃0 at the point of contact between the board and the water surface (𝑥 = 0). In the\nfollowing, 𝜃0 is fixed by the properties of the board material.\nWater density 𝜌 is constant and water surface tension 𝛾 is uniform. The gravitational acceleration con-\nstant is given by 𝑔. The atmospheric pressure, 𝑃0 , is assumed to be always uniform. Let us determine\nthe water surface form in the following steps. Note that the unit of surface tension is J/m2 as well as N/m.\n\f                                                                            Q3-2\nTheory\n\n\n\n                                                                                       English (Official)\n\n\n\n\n  Fig. 2: Boards vertically immersed in the water. (a) hydrophilic board case;\n  (b) hydrophobic board case.\n\n\n  B.1    We consider a hydrophilic board case, as shown in Fig.2(a). We note that the          0.6pt\n         water pressure, 𝑃 , satisfies the conditions 𝑃 < 𝑃0 for 𝑧 > 0 and 𝑃 = 𝑃0 for\n         𝑧 = 0. Then, express 𝑃 at 𝑧 in terms of 𝜌, 𝑔, 𝑧, and 𝑃0 .\n\n\n  B.2    We consider a water block whose cutout is shown as shaded in Fig.3(a). Its 𝑥𝑧         0.8pt\n         plane cross-section is shown in a hatched area in Fig.3(b). Let 𝑧1 and 𝑧2 respec-\n         tively be the left and right edge coordinates of the boundary (water surface)\n         between the water block and the air.\n         Obtain a horizontal component (𝑥 component) of the net force per unit length\n         along the 𝑦-axis, 𝑓𝑥 , which is exerted on the water block due to the pressure, in\n         terms of 𝜌, 𝑔, 𝑧1 , and 𝑧2 . Note that 𝑃0 results in no net horizontal force on the\n         water block.\n\f                                                                                Q3-3\nTheory\n\n\n\n                                                                                            English (Official)\n\n\n\n\n     Fig. 3: Cutout form of water block on the water surface. (a) Bird's eye view and (b) cross-\n     sectional view.\n\n\n    B.3     Surface tension acting on the water block is balanced with the force 𝑓𝑥 discussed       0.8pt\n            in B.2. We respectively define 𝜃1 and 𝜃2 as the angles between the water surface\n            and the horizontal plane at the left and right edges. Express 𝑓𝑥 in terms of 𝛾,\n            𝜃1 , and 𝜃2 .\n\n\n    B.4     The following equation holds at an arbitrary point (𝑥, 𝑧) on the water surface,         0.8pt\n                                     1 𝑧 𝑎\n                                       ( ) + cos 𝜃(𝑥) = constant.                      (1)\n                                     2 ℓ\n            Determine the exponent 𝑎 and express the constant ℓ in terms of 𝛾 and 𝜌. Note\n            that this equation holds regardless of hydrophilic or hydrophobic board mate-\n            rials.\n\n\n    B.5     In Eq. (1) in B.4, we assume that variation of the water surface is slow, i.e.,         1.5pt\n            |𝑧′ (𝑥)| ≪ 1, so that we can expand cos 𝜃(𝑥) with respect to 𝑧 ′ (𝑥) up to the second\n            order. Then, differentiating the resultant equation with respect to 𝑥, we obtain\n            the differential equation satisfied by 𝑧(𝑥). Solve this differential equation and\n            determine 𝑧(𝑥) for 𝑥 ≥ 0 in terms of tan 𝜃0 and ℓ. Note that the vertical directions\n            of Figs. 2 and 3 are exaggerated for better view and they do not satisfy the\n            condition, |𝑧 ′ (𝑥)| ≪ 1.\n\n\nPart C. Interaction between two rods (3.5 points)\nThe identical rods A and B made of the same material floating in parallel on the water surface are placed\nat the same distance away from the 𝑦-axis (Fig.4).\n\f                                                                              Q3-4\nTheory\n\n\n\n                                                                                          English (Official)\n\n\n\n\n                      Fig. 4: Two rods A and B floating on the water surface.\n\n\n  C.1    At the contact points of the rod B and the water surface, we define the 𝑧-               1.0pt\n         coordinates 𝑧a and 𝑧b , and the angles 𝜃a and 𝜃b , as shown in Fig.5. Determine\n         the horizontal force component, 𝐹𝑥 , on the rod B per unit length along the 𝑦-axis\n         in terms of 𝜃a , 𝜃b , 𝑧a , 𝑧b , 𝜌, 𝑔, and 𝛾.\n\n\n\n\n         Fig. 5: Vertical cross-sectional view of two rods floating on the water surface.\n\n\n  C.2    We define the 𝑧-coordinate of the water surface, 𝑧0 , at the midpoint of two rods        1.5pt\n         in the 𝑥𝑧 plane. Express the force 𝐹𝑥 obtained in C.1 without using 𝜃a , 𝜃b , 𝑧a , and\n         𝑧b .\n\n\n  C.3    Let 𝑥a be the 𝑥-coordinate of the contact point between the water surface and            1.0pt\n         the left side of the rod B. Using the differential equation obtained in B.5, express\n         the water level coordinate 𝑧0 of the midpoint of these two rods A and B in terms\n         of 𝑥a and 𝑧a . You can use the constant ℓ introduced in B.4.\n\f",
+      "n_chars": 7601,
+      "cost_usd": 0.0,
+      "retries": 0
+    }
+  },
+  "i4_terra": {
+    "clean": {
+      "rung": "I4",
+      "pdf": "/workspace/verifier_experiments/pdfs/IPhO_2023_S3.pdf",
+      "model": "gpt-5.6-terra",
+      "n_pages": 5,
+      "retries": 0,
+      "cost_usd": 0.1240675,
+      "call_ids": [
+        "05d0438e-6f70-4698-a191-59cde3641fd1"
+      ],
+      "ir": {
+        "sub_parts": [
+          {
+            "id": "A.1",
+            "title": "Merger of water drops",
+            "givens": [
+              {
+                "symbol": "a",
+                "unit": "m",
+                "value": "100\\times10^{-6}",
+                "note": "Initial radius of each water drop, used in numerical calculation."
+              },
+              {
+                "symbol": "\\gamma",
+                "unit": "N/m",
+                "value": "7.27\\times10^{-2}",
+                "note": "Surface tension."
+              },
+              {
+                "symbol": "\\rho",
+                "unit": "kg/m^3",
+                "value": "1.0\\times10^3",
+                "note": "Water density."
+              },
+              {
+                "symbol": "k",
+                "unit": "dimensionless",
+                "value": "0.06",
+                "note": "Fraction of released surface energy transferred to kinetic energy."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "E=4\\pi a^2\\gamma",
+                "label": "S3.1"
+              },
+              {
+                "latex": "\\Delta E=4\\pi\\left(2-2^{2/3}\\right)a^2\\gamma",
+                "label": "S3.2"
+              },
+              {
+                "latex": "Mv^2/2=k\\Delta E",
+                "label": "S3.3"
+              },
+              {
+                "latex": "v=\\sqrt{\\frac{2k\\Delta E}{M}}=\\sqrt{3\\left(2-2^{2/3}\\right)\\frac{k\\gamma}{\\rho a}}=0.232\\ \\mathrm{m/s}",
+                "label": "S3.4"
+              }
+            ],
+            "asked_quantity": "Speed v of the merged drop.",
+            "answer_type": "numeric_with_units",
+            "boxed_answer": "v=0.23\\ \\mathrm{m/s}",
+            "boundary_conditions": [],
+            "figure_refs": [],
+            "provenance_span": "Page S3-1, Part A.1."
+          },
+          {
+            "id": "B.1",
+            "title": "Hydrostatic pressure",
+            "givens": [
+              {
+                "symbol": "P_0",
+                "unit": "Pa",
+                "value": null,
+                "note": "Atmospheric pressure at z=0."
+              },
+              {
+                "symbol": "\\rho",
+                "unit": "kg/m^3",
+                "value": null,
+                "note": "Water density."
+              },
+              {
+                "symbol": "g",
+                "unit": "m/s^2",
+                "value": null,
+                "note": "Gravitational acceleration."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "P+\\rho gz=P_0",
+                "label": null
+              }
+            ],
+            "asked_quantity": "Pressure P at vertical coordinate z.",
+            "answer_type": "symbolic",
+            "boxed_answer": "P=P_0-\\rho gz",
+            "boundary_conditions": [
+              "P=P_0 at z=0."
+            ],
+            "figure_refs": [
+              "Fig. S3-1"
+            ],
+            "provenance_span": "Page S3-1, Part B.1."
+          },
+          {
+            "id": "B.2",
+            "title": "Horizontal hydrostatic force",
+            "givens": [
+              {
+                "symbol": "z_1,z_2",
+                "unit": "m",
+                "value": null,
+                "note": "Vertical endpoints of the water block."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "f_x=\\int_{z_2}^{z_1}(-\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_2^2-z_1^2\\right)",
+                "label": "S3.5"
+              }
+            ],
+            "asked_quantity": "Horizontal force per unit length due to pressure.",
+            "answer_type": "symbolic",
+            "boxed_answer": "f_x=\\frac{1}{2}\\rho g\\left(z_2^2-z_1^2\\right)",
+            "boundary_conditions": [],
+            "figure_refs": [
+              "Fig. S3-1",
+              "Fig. S3-2"
+            ],
+            "provenance_span": "Pages S3-1–S3-2, Part B.2."
+          },
+          {
+            "id": "B.3",
+            "title": "Horizontal surface-tension force balance",
+            "givens": [
+              {
+                "symbol": "\\theta_1,\\theta_2",
+                "unit": "rad",
+                "value": null,
+                "note": "Surface inclination angles at the two endpoints."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "f_x+\\gamma\\cos\\theta_2-\\gamma\\cos\\theta_1=0",
+                "label": "S3.6"
+              }
+            ],
+            "asked_quantity": "Horizontal pressure force expressed through surface-tension angles.",
+            "answer_type": "symbolic",
+            "boxed_answer": "f_x=\\gamma\\cos\\theta_1-\\gamma\\cos\\theta_2",
+            "boundary_conditions": [],
+            "figure_refs": [],
+            "provenance_span": "Page S3-2, Part B.3."
+          },
+          {
+            "id": "B.4",
+            "title": "Capillary conservation relation and capillary length",
+            "givens": [],
+            "equations": [
+              {
+                "latex": "\\frac{1}{2}\\rho gz_1^2+\\gamma\\cos\\theta_1=\\frac{1}{2}\\rho gz_2^2+\\gamma\\cos\\theta_2",
+                "label": "S3.7"
+              },
+              {
+                "latex": "\\frac{1}{2}\\rho gz^2+\\gamma\\cos\\theta=\\text{constant}",
+                "label": "S3.8"
+              },
+              {
+                "latex": "\\frac{1}{2}\\left(\\frac{z}{\\ell}\\right)^a+\\cos\\theta(x)=\\text{constant}",
+                "label": "S3.9"
+              }
+            ],
+            "asked_quantity": "Exponent a and capillary length ell.",
+            "answer_type": "symbolic",
+            "boxed_answer": "a=2,\\qquad \\ell=\\sqrt{\\frac{\\gamma}{\\rho g}}",
+            "boundary_conditions": [],
+            "figure_refs": [],
+            "provenance_span": "Pages S3-2–S3-3, Part B.4."
+          },
+          {
+            "id": "B.5",
+            "title": "Water-surface profile near a vertical board",
+            "givens": [
+              {
+                "symbol": "\\theta_0",
+                "unit": "rad",
+                "value": null,
+                "note": "Inclination angle at x=0."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "\\cos\\theta=\\frac{1}{\\sqrt{1+(z')^2}}",
+                "label": "S3.10"
+              },
+              {
+                "latex": "\\cos\\theta\\simeq1-\\frac{1}{2}(z')^2",
+                "label": "S3.11"
+              },
+              {
+                "latex": "\\frac{z^2}{\\ell^2}-z'^2=\\text{const.}",
+                "label": "S3.12"
+              },
+              {
+                "latex": "z''=\\frac{z}{\\ell^2}",
+                "label": "S3.13"
+              },
+              {
+                "latex": "z=Ae^{x/\\ell}+Be^{-x/\\ell}",
+                "label": "S3.14"
+              }
+            ],
+            "asked_quantity": "Water surface profile z(x).",
+            "answer_type": "symbolic",
+            "boxed_answer": "z(x)=-\\ell\\tan\\theta_0e^{-x/\\ell}",
+            "boundary_conditions": [
+              "z(\\infty)=0",
+              "z'(0)=\\tan\\theta_0"
+            ],
+            "figure_refs": [],
+            "provenance_span": "Page S3-3, Part B.5."
+          },
+          {
+            "id": "C.1",
+            "title": "Force on a rod due to pressure and surface tension",
+            "givens": [
+              {
+                "symbol": "z_a,z_b",
+                "unit": "m",
+                "value": null,
+                "note": "Water-surface contact heights on opposite sides of the rod."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "\\int_{z_a}^{z_b}(\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)",
+                "label": "S3.15"
+              },
+              {
+                "latex": "F_x=\\int_{z_{\\mathrm{bottom}}}^{z_a}(-\\rho gz)\\,dz+\\left(-\\int_{z_{\\mathrm{bottom}}}^{z_b}(-\\rho gz)\\,dz\\right)=\\int_{z_a}^{z_b}(\\rho gz)\\,dz",
+                "label": "S3.16"
+              },
+              {
+                "latex": "-P\\hat{n}\\,ds=(-P_0+\\rho gz)\\hat{n}\\,ds",
+                "label": "S3.17"
+              },
+              {
+                "latex": "-P\\hat{n}\\cdot\\hat{x}\\,ds=-P_0dz+\\rho gzdz",
+                "label": "S3.18"
+              },
+              {
+                "latex": "\\int_{z_a}^{z_b}(\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)",
+                "label": "S3.19"
+              }
+            ],
+            "asked_quantity": "Net horizontal force F_x on a rod.",
+            "answer_type": "symbolic",
+            "boxed_answer": "F_x=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)+\\gamma\\left(\\cos\\theta_b-\\cos\\theta_a\\right)",
+            "boundary_conditions": [],
+            "figure_refs": [
+              "Fig. S3-3"
+            ],
+            "provenance_span": "Pages S3-3–S3-4, Part C.1."
+          },
+          {
+            "id": "C.2",
+            "title": "Attractive force between two rods",
+            "givens": [
+              {
+                "symbol": "z_0",
+                "unit": "m",
+                "value": null,
+                "note": "Water-surface displacement at the midpoint between rods."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "\\frac{1}{2}\\rho gz_a^2+\\gamma\\cos\\theta_a=\\frac{1}{2}\\rho gz_0^2+\\gamma",
+                "label": "S3.20"
+              },
+              {
+                "latex": "\\frac{1}{2}\\rho gz_b^2+\\gamma\\cos\\theta_b=\\gamma",
+                "label": "S3.21"
+              }
+            ],
+            "asked_quantity": "Horizontal attractive force F_x between the rods.",
+            "answer_type": "symbolic",
+            "boxed_answer": "F_x=-\\frac{1}{2}\\rho gz_0^2",
+            "boundary_conditions": [
+              "At x=0: z=z_0 and \\cos\\theta=1.",
+              "As x\\to\\infty: z\\to0 and \\cos\\theta\\to1."
+            ],
+            "figure_refs": [
+              "Fig. S3-4"
+            ],
+            "provenance_span": "Pages S3-4–S3-5, Part C.2."
+          },
+          {
+            "id": "C.3",
+            "title": "Midpoint displacement from symmetry",
+            "givens": [
+              {
+                "symbol": "x_a",
+                "unit": "m",
+                "value": null,
+                "note": "Position of the rod-side contact point relative to the midpoint."
+              },
+              {
+                "symbol": "z_a",
+                "unit": "m",
+                "value": null,
+                "note": "Water-surface height at x=x_a."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "z(x)=Ae^{x/\\ell}+Be^{-x/\\ell}",
+                "label": "S3.22"
+              },
+              {
+                "latex": "A=B",
+                "label": "S3.23"
+              },
+              {
+                "latex": "A+B=z_0",
+                "label": "S3.24"
+              },
+              {
+                "latex": "A=z_0/2,\\qquad B=z_0/2",
+                "label": "S3.25"
+              }
+            ],
+            "asked_quantity": "Midpoint displacement z_0 in terms of z_a, x_a, and ell.",
+            "answer_type": "symbolic",
+            "boxed_answer": "z_0=\\frac{2z_a}{e^{x_a/\\ell}+e^{-x_a/\\ell}}",
+            "boundary_conditions": [
+              "Left-right symmetry: A=B.",
+              "z(0)=z_0.",
+              "z(x_a)=z_a."
+            ],
+            "figure_refs": [
+              "Fig. S3-4"
+            ],
+            "provenance_span": "Page S3-5, Part C.3."
+          }
+        ],
+        "notes": "Transcription is based on the five supplied page images. Equation (S3.17) is reproduced as printed; its vector typography is interpreted as -P\\hat{n}\\,ds=(-P_0+\\rho gz)\\hat{n}\\,ds. In the numerical expression in (S3.4), the printed result reads 0.232 m/s, while the boxed answer rounds to 0.23 m/s.",
+        "markdown_preview": "# Solutions to Theory Problems\n\n## Theory Problem 3: Water and Objects (10 points)\n\n### Part A. Merger of water drops (2.0 pt)\n\n#### A.1\n\nThe surface energy per drop before the merger is\n\n\\[\nE=4\\pi a^2\\gamma. \\tag{S3.1}\n\\]\n\nTherefore, the surface energy difference becomes\n\n\\[\n\\Delta E=4\\pi\\left(2-2^{2/3}\\right)a^2\\gamma. \\tag{S3.2}\n\\]\n\nThe transfer of surface energy to kinetic energy is represented by\n\n\\[\nMv^2/2=k\\Delta E, \\tag{S3.3}\n\\]\n\nwhere \\(k=0.06\\) and \\(M=4\\pi a^3\\rho/3\\times 2=8\\pi a^3\\rho/3\\) is the mass of the drop after the merger. The numerical computation gives\n\n\\[\nv=\\sqrt{\\frac{2k\\Delta E}{M}}\n=\\sqrt{3\\left(2-2^{2/3}\\right)\\frac{k\\gamma}{\\rho a}}\n=\\sqrt{3\\left(2-2^{2/3}\\right)\\times\\frac{0.06\\times(7.27\\times10^{-2})}{(1.0\\times10^3)\\times(100\\times10^{-6})}}\n=0.232\\ \\mathrm{m/s}. \\tag{S3.4}\n\\]\n\n> Note: We point out an interesting phenomenon related to this question. On a superhydrophobic surface, when small droplets merge, they release surface energy, causing the surface area to shrink. This energy release propels the merged droplet to jump up. This phenomenon mirrors the natural mechanism seen in cicadas. Cicadas' wings, which possess superhydrophobic surfaces, facilitate the removal of water droplets upon coalescence. This process serves as a natural self-cleaning system, converting surface energy to kinetic energy, as reported in the following paper: Wisdom *et al.*, Proc. Natl. Acad. Sci. USA 110, 7992–7997 (2013).\n\n\\[\n\\boxed{v=0.23\\ \\mathrm{m/s}}\n\\]\n\n### P"
+      },
+      "sub_parts": [
+        {
+          "id": "A.1",
+          "title": "Merger of water drops",
+          "givens": [
+            {
+              "symbol": "a",
+              "unit": "m",
+              "value": "100\\times10^{-6}",
+              "note": "Initial radius of each water drop, used in numerical calculation."
+            },
+            {
+              "symbol": "\\gamma",
+              "unit": "N/m",
+              "value": "7.27\\times10^{-2}",
+              "note": "Surface tension."
+            },
+            {
+              "symbol": "\\rho",
+              "unit": "kg/m^3",
+              "value": "1.0\\times10^3",
+              "note": "Water density."
+            },
+            {
+              "symbol": "k",
+              "unit": "dimensionless",
+              "value": "0.06",
+              "note": "Fraction of released surface energy transferred to kinetic energy."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "E=4\\pi a^2\\gamma",
+              "label": "S3.1"
+            },
+            {
+              "latex": "\\Delta E=4\\pi\\left(2-2^{2/3}\\right)a^2\\gamma",
+              "label": "S3.2"
+            },
+            {
+              "latex": "Mv^2/2=k\\Delta E",
+              "label": "S3.3"
+            },
+            {
+              "latex": "v=\\sqrt{\\frac{2k\\Delta E}{M}}=\\sqrt{3\\left(2-2^{2/3}\\right)\\frac{k\\gamma}{\\rho a}}=0.232\\ \\mathrm{m/s}",
+              "label": "S3.4"
+            }
+          ],
+          "asked_quantity": "Speed v of the merged drop.",
+          "answer_type": "numeric_with_units",
+          "boxed_answer": "v=0.23\\ \\mathrm{m/s}",
+          "boundary_conditions": [],
+          "figure_refs": [],
+          "provenance_span": "Page S3-1, Part A.1."
+        },
+        {
+          "id": "B.1",
+          "title": "Hydrostatic pressure",
+          "givens": [
+            {
+              "symbol": "P_0",
+              "unit": "Pa",
+              "value": null,
+              "note": "Atmospheric pressure at z=0."
+            },
+            {
+              "symbol": "\\rho",
+              "unit": "kg/m^3",
+              "value": null,
+              "note": "Water density."
+            },
+            {
+              "symbol": "g",
+              "unit": "m/s^2",
+              "value": null,
+              "note": "Gravitational acceleration."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "P+\\rho gz=P_0",
+              "label": null
+            }
+          ],
+          "asked_quantity": "Pressure P at vertical coordinate z.",
+          "answer_type": "symbolic",
+          "boxed_answer": "P=P_0-\\rho gz",
+          "boundary_conditions": [
+            "P=P_0 at z=0."
+          ],
+          "figure_refs": [
+            "Fig. S3-1"
+          ],
+          "provenance_span": "Page S3-1, Part B.1."
+        },
+        {
+          "id": "B.2",
+          "title": "Horizontal hydrostatic force",
+          "givens": [
+            {
+              "symbol": "z_1,z_2",
+              "unit": "m",
+              "value": null,
+              "note": "Vertical endpoints of the water block."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "f_x=\\int_{z_2}^{z_1}(-\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_2^2-z_1^2\\right)",
+              "label": "S3.5"
+            }
+          ],
+          "asked_quantity": "Horizontal force per unit length due to pressure.",
+          "answer_type": "symbolic",
+          "boxed_answer": "f_x=\\frac{1}{2}\\rho g\\left(z_2^2-z_1^2\\right)",
+          "boundary_conditions": [],
+          "figure_refs": [
+            "Fig. S3-1",
+            "Fig. S3-2"
+          ],
+          "provenance_span": "Pages S3-1–S3-2, Part B.2."
+        },
+        {
+          "id": "B.3",
+          "title": "Horizontal surface-tension force balance",
+          "givens": [
+            {
+              "symbol": "\\theta_1,\\theta_2",
+              "unit": "rad",
+              "value": null,
+              "note": "Surface inclination angles at the two endpoints."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "f_x+\\gamma\\cos\\theta_2-\\gamma\\cos\\theta_1=0",
+              "label": "S3.6"
+            }
+          ],
+          "asked_quantity": "Horizontal pressure force expressed through surface-tension angles.",
+          "answer_type": "symbolic",
+          "boxed_answer": "f_x=\\gamma\\cos\\theta_1-\\gamma\\cos\\theta_2",
+          "boundary_conditions": [],
+          "figure_refs": [],
+          "provenance_span": "Page S3-2, Part B.3."
+        },
+        {
+          "id": "B.4",
+          "title": "Capillary conservation relation and capillary length",
+          "givens": [],
+          "equations": [
+            {
+              "latex": "\\frac{1}{2}\\rho gz_1^2+\\gamma\\cos\\theta_1=\\frac{1}{2}\\rho gz_2^2+\\gamma\\cos\\theta_2",
+              "label": "S3.7"
+            },
+            {
+              "latex": "\\frac{1}{2}\\rho gz^2+\\gamma\\cos\\theta=\\text{constant}",
+              "label": "S3.8"
+            },
+            {
+              "latex": "\\frac{1}{2}\\left(\\frac{z}{\\ell}\\right)^a+\\cos\\theta(x)=\\text{constant}",
+              "label": "S3.9"
+            }
+          ],
+          "asked_quantity": "Exponent a and capillary length ell.",
+          "answer_type": "symbolic",
+          "boxed_answer": "a=2,\\qquad \\ell=\\sqrt{\\frac{\\gamma}{\\rho g}}",
+          "boundary_conditions": [],
+          "figure_refs": [],
+          "provenance_span": "Pages S3-2–S3-3, Part B.4."
+        },
+        {
+          "id": "B.5",
+          "title": "Water-surface profile near a vertical board",
+          "givens": [
+            {
+              "symbol": "\\theta_0",
+              "unit": "rad",
+              "value": null,
+              "note": "Inclination angle at x=0."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "\\cos\\theta=\\frac{1}{\\sqrt{1+(z')^2}}",
+              "label": "S3.10"
+            },
+            {
+              "latex": "\\cos\\theta\\simeq1-\\frac{1}{2}(z')^2",
+              "label": "S3.11"
+            },
+            {
+              "latex": "\\frac{z^2}{\\ell^2}-z'^2=\\text{const.}",
+              "label": "S3.12"
+            },
+            {
+              "latex": "z''=\\frac{z}{\\ell^2}",
+              "label": "S3.13"
+            },
+            {
+              "latex": "z=Ae^{x/\\ell}+Be^{-x/\\ell}",
+              "label": "S3.14"
+            }
+          ],
+          "asked_quantity": "Water surface profile z(x).",
+          "answer_type": "symbolic",
+          "boxed_answer": "z(x)=-\\ell\\tan\\theta_0e^{-x/\\ell}",
+          "boundary_conditions": [
+            "z(\\infty)=0",
+            "z'(0)=\\tan\\theta_0"
+          ],
+          "figure_refs": [],
+          "provenance_span": "Page S3-3, Part B.5."
+        },
+        {
+          "id": "C.1",
+          "title": "Force on a rod due to pressure and surface tension",
+          "givens": [
+            {
+              "symbol": "z_a,z_b",
+              "unit": "m",
+              "value": null,
+              "note": "Water-surface contact heights on opposite sides of the rod."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "\\int_{z_a}^{z_b}(\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)",
+              "label": "S3.15"
+            },
+            {
+              "latex": "F_x=\\int_{z_{\\mathrm{bottom}}}^{z_a}(-\\rho gz)\\,dz+\\left(-\\int_{z_{\\mathrm{bottom}}}^{z_b}(-\\rho gz)\\,dz\\right)=\\int_{z_a}^{z_b}(\\rho gz)\\,dz",
+              "label": "S3.16"
+            },
+            {
+              "latex": "-P\\hat{n}\\,ds=(-P_0+\\rho gz)\\hat{n}\\,ds",
+              "label": "S3.17"
+            },
+            {
+              "latex": "-P\\hat{n}\\cdot\\hat{x}\\,ds=-P_0dz+\\rho gzdz",
+              "label": "S3.18"
+            },
+            {
+              "latex": "\\int_{z_a}^{z_b}(\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)",
+              "label": "S3.19"
+            }
+          ],
+          "asked_quantity": "Net horizontal force F_x on a rod.",
+          "answer_type": "symbolic",
+          "boxed_answer": "F_x=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)+\\gamma\\left(\\cos\\theta_b-\\cos\\theta_a\\right)",
+          "boundary_conditions": [],
+          "figure_refs": [
+            "Fig. S3-3"
+          ],
+          "provenance_span": "Pages S3-3–S3-4, Part C.1."
+        },
+        {
+          "id": "C.2",
+          "title": "Attractive force between two rods",
+          "givens": [
+            {
+              "symbol": "z_0",
+              "unit": "m",
+              "value": null,
+              "note": "Water-surface displacement at the midpoint between rods."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "\\frac{1}{2}\\rho gz_a^2+\\gamma\\cos\\theta_a=\\frac{1}{2}\\rho gz_0^2+\\gamma",
+              "label": "S3.20"
+            },
+            {
+              "latex": "\\frac{1}{2}\\rho gz_b^2+\\gamma\\cos\\theta_b=\\gamma",
+              "label": "S3.21"
+            }
+          ],
+          "asked_quantity": "Horizontal attractive force F_x between the rods.",
+          "answer_type": "symbolic",
+          "boxed_answer": "F_x=-\\frac{1}{2}\\rho gz_0^2",
+          "boundary_conditions": [
+            "At x=0: z=z_0 and \\cos\\theta=1.",
+            "As x\\to\\infty: z\\to0 and \\cos\\theta\\to1."
+          ],
+          "figure_refs": [
+            "Fig. S3-4"
+          ],
+          "provenance_span": "Pages S3-4–S3-5, Part C.2."
+        },
+        {
+          "id": "C.3",
+          "title": "Midpoint displacement from symmetry",
+          "givens": [
+            {
+              "symbol": "x_a",
+              "unit": "m",
+              "value": null,
+              "note": "Position of the rod-side contact point relative to the midpoint."
+            },
+            {
+              "symbol": "z_a",
+              "unit": "m",
+              "value": null,
+              "note": "Water-surface height at x=x_a."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "z(x)=Ae^{x/\\ell}+Be^{-x/\\ell}",
+              "label": "S3.22"
+            },
+            {
+              "latex": "A=B",
+              "label": "S3.23"
+            },
+            {
+              "latex": "A+B=z_0",
+              "label": "S3.24"
+            },
+            {
+              "latex": "A=z_0/2,\\qquad B=z_0/2",
+              "label": "S3.25"
+            }
+          ],
+          "asked_quantity": "Midpoint displacement z_0 in terms of z_a, x_a, and ell.",
+          "answer_type": "symbolic",
+          "boxed_answer": "z_0=\\frac{2z_a}{e^{x_a/\\ell}+e^{-x_a/\\ell}}",
+          "boundary_conditions": [
+            "Left-right symmetry: A=B.",
+            "z(0)=z_0.",
+            "z(x_a)=z_a."
+          ],
+          "figure_refs": [
+            "Fig. S3-4"
+          ],
+          "provenance_span": "Page S3-5, Part C.3."
+        }
+      ],
+      "markdown_chars": 8443
+    },
+    "faulty": {
+      "rung": "I4",
+      "pdf": "/workspace/verifier_experiments/pdfs/faulty/IPhO_2023_S3_FAULTY.pdf",
+      "model": "gpt-5.6-terra",
+      "n_pages": 5,
+      "retries": 0,
+      "cost_usd": 0.13435,
+      "call_ids": [
+        "a065eef4-e4bf-4da7-a93d-a1610f366021"
+      ],
+      "ir": {
+        "sub_parts": [
+          {
+            "id": "A.1",
+            "title": "Merger of water drops",
+            "givens": [
+              {
+                "symbol": "a",
+                "unit": "m",
+                "value": null,
+                "note": "Radius of each drop before merger."
+              },
+              {
+                "symbol": "\\gamma",
+                "unit": "N/m",
+                "value": "7.27\\times10^{-2}",
+                "note": "Surface tension used in numerical evaluation."
+              },
+              {
+                "symbol": "\\rho",
+                "unit": "kg/m^3",
+                "value": "1.0\\times10^3",
+                "note": "Water density used in numerical evaluation."
+              },
+              {
+                "symbol": "k",
+                "unit": "dimensionless",
+                "value": "0.06",
+                "note": "Fraction of surface-energy difference transferred to kinetic energy."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "E=4\\pi a^2\\gamma",
+                "label": "S3.1"
+              },
+              {
+                "latex": "\\Delta E=4\\pi\\left(2-2^{1/3}\\right)a^2\\gamma",
+                "label": "S3.2"
+              },
+              {
+                "latex": "Mv^2/2=k\\Delta E",
+                "label": "S3.3"
+              },
+              {
+                "latex": "v=\\sqrt{\\frac{2k\\Delta E}{M}}=\\sqrt{3\\left(2-2^{1/3}\\right)\\frac{k\\gamma}{\\rho a}}=0.311\\ \\mathrm{m/s}",
+                "label": "S3.4"
+              }
+            ],
+            "asked_quantity": "Velocity v of the merged drop.",
+            "answer_type": "numeric_with_units",
+            "boxed_answer": "v=0.31\\ \\mathrm{m/s}",
+            "boundary_conditions": [],
+            "figure_refs": [],
+            "provenance_span": "Page S3-1, Part A.1 boxed result."
+          },
+          {
+            "id": "B.1",
+            "title": "Hydrostatic pressure on a vertically placed board",
+            "givens": [
+              {
+                "symbol": "P_0",
+                "unit": "Pa",
+                "value": null,
+                "note": "Atmospheric pressure."
+              },
+              {
+                "symbol": "\\rho",
+                "unit": "kg/m^3",
+                "value": null,
+                "note": "Water density."
+              },
+              {
+                "symbol": "g",
+                "unit": "m/s^2",
+                "value": null,
+                "note": "Gravitational acceleration."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "P+\\rho gz=P_0",
+                "label": null
+              },
+              {
+                "latex": "P=P_0-\\rho gz",
+                "label": null
+              }
+            ],
+            "asked_quantity": "Pressure P at vertical coordinate z.",
+            "answer_type": "symbolic",
+            "boxed_answer": "P=P_0-\\rho gz",
+            "boundary_conditions": [],
+            "figure_refs": [
+              "Fig. S3-1"
+            ],
+            "provenance_span": "Page S3-1, Part B.1."
+          },
+          {
+            "id": "B.2",
+            "title": "Horizontal hydrostatic force",
+            "givens": [
+              {
+                "symbol": "z_1",
+                "unit": "m",
+                "value": null,
+                "note": "Upper vertical endpoint."
+              },
+              {
+                "symbol": "z_2",
+                "unit": "m",
+                "value": null,
+                "note": "Lower vertical endpoint."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "f_x=\\int_{z_2}^{z_1}(-\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_2^2-z_1^2\\right)",
+                "label": "S3.5"
+              }
+            ],
+            "asked_quantity": "Horizontal force per unit length due to hydrostatic pressure.",
+            "answer_type": "symbolic",
+            "boxed_answer": "f_x=\\frac{1}{2}\\rho g\\left(z_2^2-z_1^2\\right)",
+            "boundary_conditions": [],
+            "figure_refs": [
+              "Fig. S3-2"
+            ],
+            "provenance_span": "Pages S3-1–S3-2, Part B.2."
+          },
+          {
+            "id": "B.3",
+            "title": "Horizontal force balance including surface tension",
+            "givens": [
+              {
+                "symbol": "\\theta_1",
+                "unit": "rad",
+                "value": null,
+                "note": "Surface inclination angle at endpoint 1."
+              },
+              {
+                "symbol": "\\theta_2",
+                "unit": "rad",
+                "value": null,
+                "note": "Surface inclination angle at endpoint 2."
+              },
+              {
+                "symbol": "\\gamma",
+                "unit": "N/m",
+                "value": null,
+                "note": "Surface tension."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "f_x+\\gamma\\cos\\theta_1-\\gamma\\cos\\theta_2=0",
+                "label": "S3.6"
+              }
+            ],
+            "asked_quantity": "Horizontal pressure force expressed in terms of surface tension.",
+            "answer_type": "symbolic",
+            "boxed_answer": "f_x=\\gamma\\cos\\theta_2-\\gamma\\cos\\theta_1",
+            "boundary_conditions": [],
+            "figure_refs": [],
+            "provenance_span": "Page S3-2, Part B.3."
+          },
+          {
+            "id": "B.4",
+            "title": "Capillary conservation relation and capillary length",
+            "givens": [
+              {
+                "symbol": "\\ell",
+                "unit": "m",
+                "value": null,
+                "note": "Capillary length."
+              },
+              {
+                "symbol": "a",
+                "unit": "dimensionless",
+                "value": "2",
+                "note": "Exponent in the dimensionless capillary relation."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "\\frac{1}{2}\\rho gz_1^2+\\gamma\\cos\\theta_1=\\frac{1}{2}\\rho gz_2^2+\\gamma\\cos\\theta_2",
+                "label": "S3.7"
+              },
+              {
+                "latex": "\\frac{1}{2}\\rho gz^2+\\gamma\\cos\\theta=\\text{constant}",
+                "label": "S3.8"
+              },
+              {
+                "latex": "\\frac{1}{2}\\left(\\frac{z}{\\ell}\\right)^a+\\cos\\theta(x)=\\text{constant}",
+                "label": "S3.9"
+              },
+              {
+                "latex": "\\ell=\\sqrt{\\frac{\\gamma}{\\rho g}}",
+                "label": null
+              }
+            ],
+            "asked_quantity": "Exponent a and capillary length ell.",
+            "answer_type": "symbolic",
+            "boxed_answer": "a=2,\\qquad \\ell=\\sqrt{\\frac{\\gamma}{\\rho g}}",
+            "boundary_conditions": [],
+            "figure_refs": [],
+            "provenance_span": "Pages S3-2–S3-3, Part B.4."
+          },
+          {
+            "id": "B.5",
+            "title": "Water surface profile near a board",
+            "givens": [
+              {
+                "symbol": "\\theta_0",
+                "unit": "rad",
+                "value": null,
+                "note": "Inclination angle at x=0."
+              },
+              {
+                "symbol": "\\ell",
+                "unit": "m",
+                "value": null,
+                "note": "Capillary length."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "\\cos\\theta=\\frac{1}{\\sqrt{1+(z')^2}}",
+                "label": "S3.10"
+              },
+              {
+                "latex": "\\cos\\theta\\simeq1-\\frac{1}{2}(z')^2",
+                "label": "S3.11"
+              },
+              {
+                "latex": "\\frac{z^2}{\\ell^2}-(z')^2=\\text{const}",
+                "label": "S3.12"
+              },
+              {
+                "latex": "z''=\\frac{z}{\\ell^2}",
+                "label": "S3.13"
+              },
+              {
+                "latex": "z=Ae^{x/\\ell}+Be^{-x/\\ell}",
+                "label": "S3.14"
+              }
+            ],
+            "asked_quantity": "Water surface height profile z(x).",
+            "answer_type": "symbolic",
+            "boxed_answer": "z(x)=\\ell\\tan\\theta_0e^{x/\\ell}",
+            "boundary_conditions": [
+              "z(\\infty)=0",
+              "z'(0)=\\tan\\theta_0"
+            ],
+            "figure_refs": [],
+            "provenance_span": "Page S3-3, Part B.5."
+          },
+          {
+            "id": "C.1",
+            "title": "Force on a rod due to pressure and surface tension",
+            "givens": [
+              {
+                "symbol": "z_a",
+                "unit": "m",
+                "value": null,
+                "note": "Water-contact height on side a of the rod."
+              },
+              {
+                "symbol": "z_b",
+                "unit": "m",
+                "value": null,
+                "note": "Water-contact height on side b of the rod."
+              },
+              {
+                "symbol": "z_{\\mathrm{bottom}}",
+                "unit": "m",
+                "value": null,
+                "note": "z-coordinate at the bottom of the rod."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "\\int_{z_a}^{z_b}(\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)",
+                "label": "S3.15"
+              },
+              {
+                "latex": "F_x=\\int_{z_{\\mathrm{bottom}}}^{z_a}(-\\rho gz)\\,dz+\\left(-\\int_{z_{\\mathrm{bottom}}}^{z_b}(-\\rho gz)\\,dz\\right)=\\int_{z_a}^{z_b}(\\rho gz)\\,dz",
+                "label": "S3.16"
+              },
+              {
+                "latex": "-P\\hat{n}\\,ds=(-P_0+\\rho gz)\\hat{n}\\,ds",
+                "label": "S3.17"
+              },
+              {
+                "latex": "-P\\hat{n}\\cdot\\hat{x}\\,ds=-P_0dz+\\rho gz\\,dz",
+                "label": "S3.18"
+              },
+              {
+                "latex": "\\int_{z_a}^{z_b}(\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)",
+                "label": "S3.19"
+              }
+            ],
+            "asked_quantity": "Net horizontal force F_x on a rod.",
+            "answer_type": "symbolic",
+            "boxed_answer": "F_x=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)+\\gamma\\left(\\cos\\theta_b-\\cos\\theta_a\\right)",
+            "boundary_conditions": [],
+            "figure_refs": [
+              "Fig. S3-3"
+            ],
+            "provenance_span": "Pages S3-3–S3-4, Part C.1."
+          },
+          {
+            "id": "C.2",
+            "title": "Attractive force between two rods",
+            "givens": [
+              {
+                "symbol": "z_0",
+                "unit": "m",
+                "value": null,
+                "note": "Water-surface displacement at the midpoint between rods."
+              },
+              {
+                "symbol": "x_a",
+                "unit": "m",
+                "value": null,
+                "note": "Horizontal coordinate of the contact point a."
+              },
+              {
+                "symbol": "z_a",
+                "unit": "m",
+                "value": null,
+                "note": "Water-contact height at x=x_a."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "\\frac{1}{2}\\rho gz_a^2+\\gamma\\cos\\theta_a=\\frac{1}{2}\\rho gz_0^2+\\gamma",
+                "label": "S3.20"
+              },
+              {
+                "latex": "\\frac{1}{2}\\rho gz_b^2+\\gamma\\cos\\theta_b=\\gamma",
+                "label": "S3.21"
+              },
+              {
+                "latex": "F_x=-\\frac{1}{2}\\rho gz_0^2",
+                "label": null
+              }
+            ],
+            "asked_quantity": "Attractive horizontal force between two rods.",
+            "answer_type": "symbolic",
+            "boxed_answer": "F_x=-\\frac{2\\rho g z_a^2}{\\left(e^{x_a/\\ell}+e^{-x_a/\\ell}\\right)^2}",
+            "boundary_conditions": [
+              "At x=x_a: \\frac{1}{2}\\rho gz_a^2+\\gamma\\cos\\theta_a=\\frac{1}{2}\\rho gz_0^2+\\gamma",
+              "As x\\to\\infty: \\frac{1}{2}\\rho gz_b^2+\\gamma\\cos\\theta_b=\\gamma"
+            ],
+            "figure_refs": [
+              "Fig. S3-4"
+            ],
+            "provenance_span": "Pages S3-4–S3-5, Part C.2."
+          },
+          {
+            "id": "C.3",
+            "title": "Midpoint water-surface displacement",
+            "givens": [
+              {
+                "symbol": "z_a",
+                "unit": "m",
+                "value": null,
+                "note": "Water surface height at x=x_a."
+              },
+              {
+                "symbol": "x_a",
+                "unit": "m",
+                "value": null,
+                "note": "Contact-point coordinate."
+              },
+              {
+                "symbol": "\\ell",
+                "unit": "m",
+                "value": null,
+                "note": "Capillary length."
+              }
+            ],
+            "equations": [
+              {
+                "latex": "z(x)=Ae^{x/\\ell}+Be^{-x/\\ell}",
+                "label": "S3.22"
+              },
+              {
+                "latex": "A=B",
+                "label": "S3.23"
+              },
+              {
+                "latex": "A+B=z_0",
+                "label": "S3.24"
+              },
+              {
+                "latex": "A=z_0/2,\\qquad B=z_0/2",
+                "label": "S3.25"
+              }
+            ],
+            "asked_quantity": "Midpoint displacement z_0 in terms of z_a and x_a.",
+            "answer_type": "symbolic",
+            "boxed_answer": "z_0=\\frac{2z_a}{e^{x_a/\\ell}+e^{-x_a/\\ell}}",
+            "boundary_conditions": [
+              "Left-right symmetry: A=B",
+              "z(0)=z_0",
+              "z(x_a)=z_a"
+            ],
+            "figure_refs": [
+              "Fig. S3-4"
+            ],
+            "provenance_span": "Page S3-5, Part C.3."
+          }
+        ],
+        "notes": "The source is a solutions document rather than a problem statement. The boxed B.5 expression is transcribed exactly as printed, including the positive exponent e^{x/\\ell}, although its accompanying condition z(\\infty)=0 would ordinarily suggest a decaying exponential under the usual positive-x convention. In the C.2 boxed result, the PDF typesets ordinary e-based exponentials; they are normalized here as e^{x_a/\\ell} and e^{-x_a/\\ell}.",
+        "markdown_preview": "# Solutions to Theory Problems — IPhO 2023 Tokyo Japan\n\n# Theory Problem 3: Water and Objects (10 points)\n\n## Part A. Merger of water drops (2.0 pt)\n\n### A.1\n\nThe surface energy per drop before the merger is\n\n\\[\nE=4\\pi a^2\\gamma. \\tag{S3.1}\n\\]\n\nTherefore, the surface energy difference becomes\n\n\\[\n\\Delta E=4\\pi\\left(2-2^{1/3}\\right)a^2\\gamma. \\tag{S3.2}\n\\]\n\nThe transfer of surface energy to kinetic energy is represented by\n\n\\[\nMv^2/2=k\\Delta E, \\tag{S3.3}\n\\]\n\nwhere \\(k=0.06\\) and \\(M=4\\pi a^3\\rho/3\\times 2=8\\pi a^3\\rho/3\\) is the mass of the drop after the merger. The numerical computation gives\n\n\\[\nv=\\sqrt{\\frac{2k\\Delta E}{M}}\n=\\sqrt{3\\left(2-2^{1/3}\\right)\\frac{k\\gamma}{\\rho a}}\n=\\sqrt{3\\left(2-2^{1/3}\\right)\\times\\frac{0.06\\times(7.27\\times10^{-2})}{(1.0\\times10^3)\\times(100\\times10^{-6})}}\n=0.311\\ \\mathrm{m/s}. \\tag{S3.4}\n\\]\n\n> Note: We point out an interesting phenomenon related to this question. On a superhydrophobic surface, when small droplets merge, they release surface energy, causing the surface area to shrink. This energy release propels the merged droplet to jump up. This phenomenon mirrors the natural mechanism seen in cicadas. Cicadas' wings, which possess superhydrophobic surfaces, facilitate the removal of water droplets upon coalescence. This process serves as a natural self-cleaning system, converting surface energy to kinetic energy, as reported in the following paper: Wisdom *et al.*, Proc. Natl. Acad. Sci. USA 110, 7992–7997 (2013).\n\n\\[\n\\boxed{v=0.31\\ \\m"
+      },
+      "sub_parts": [
+        {
+          "id": "A.1",
+          "title": "Merger of water drops",
+          "givens": [
+            {
+              "symbol": "a",
+              "unit": "m",
+              "value": null,
+              "note": "Radius of each drop before merger."
+            },
+            {
+              "symbol": "\\gamma",
+              "unit": "N/m",
+              "value": "7.27\\times10^{-2}",
+              "note": "Surface tension used in numerical evaluation."
+            },
+            {
+              "symbol": "\\rho",
+              "unit": "kg/m^3",
+              "value": "1.0\\times10^3",
+              "note": "Water density used in numerical evaluation."
+            },
+            {
+              "symbol": "k",
+              "unit": "dimensionless",
+              "value": "0.06",
+              "note": "Fraction of surface-energy difference transferred to kinetic energy."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "E=4\\pi a^2\\gamma",
+              "label": "S3.1"
+            },
+            {
+              "latex": "\\Delta E=4\\pi\\left(2-2^{1/3}\\right)a^2\\gamma",
+              "label": "S3.2"
+            },
+            {
+              "latex": "Mv^2/2=k\\Delta E",
+              "label": "S3.3"
+            },
+            {
+              "latex": "v=\\sqrt{\\frac{2k\\Delta E}{M}}=\\sqrt{3\\left(2-2^{1/3}\\right)\\frac{k\\gamma}{\\rho a}}=0.311\\ \\mathrm{m/s}",
+              "label": "S3.4"
+            }
+          ],
+          "asked_quantity": "Velocity v of the merged drop.",
+          "answer_type": "numeric_with_units",
+          "boxed_answer": "v=0.31\\ \\mathrm{m/s}",
+          "boundary_conditions": [],
+          "figure_refs": [],
+          "provenance_span": "Page S3-1, Part A.1 boxed result."
+        },
+        {
+          "id": "B.1",
+          "title": "Hydrostatic pressure on a vertically placed board",
+          "givens": [
+            {
+              "symbol": "P_0",
+              "unit": "Pa",
+              "value": null,
+              "note": "Atmospheric pressure."
+            },
+            {
+              "symbol": "\\rho",
+              "unit": "kg/m^3",
+              "value": null,
+              "note": "Water density."
+            },
+            {
+              "symbol": "g",
+              "unit": "m/s^2",
+              "value": null,
+              "note": "Gravitational acceleration."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "P+\\rho gz=P_0",
+              "label": null
+            },
+            {
+              "latex": "P=P_0-\\rho gz",
+              "label": null
+            }
+          ],
+          "asked_quantity": "Pressure P at vertical coordinate z.",
+          "answer_type": "symbolic",
+          "boxed_answer": "P=P_0-\\rho gz",
+          "boundary_conditions": [],
+          "figure_refs": [
+            "Fig. S3-1"
+          ],
+          "provenance_span": "Page S3-1, Part B.1."
+        },
+        {
+          "id": "B.2",
+          "title": "Horizontal hydrostatic force",
+          "givens": [
+            {
+              "symbol": "z_1",
+              "unit": "m",
+              "value": null,
+              "note": "Upper vertical endpoint."
+            },
+            {
+              "symbol": "z_2",
+              "unit": "m",
+              "value": null,
+              "note": "Lower vertical endpoint."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "f_x=\\int_{z_2}^{z_1}(-\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_2^2-z_1^2\\right)",
+              "label": "S3.5"
+            }
+          ],
+          "asked_quantity": "Horizontal force per unit length due to hydrostatic pressure.",
+          "answer_type": "symbolic",
+          "boxed_answer": "f_x=\\frac{1}{2}\\rho g\\left(z_2^2-z_1^2\\right)",
+          "boundary_conditions": [],
+          "figure_refs": [
+            "Fig. S3-2"
+          ],
+          "provenance_span": "Pages S3-1–S3-2, Part B.2."
+        },
+        {
+          "id": "B.3",
+          "title": "Horizontal force balance including surface tension",
+          "givens": [
+            {
+              "symbol": "\\theta_1",
+              "unit": "rad",
+              "value": null,
+              "note": "Surface inclination angle at endpoint 1."
+            },
+            {
+              "symbol": "\\theta_2",
+              "unit": "rad",
+              "value": null,
+              "note": "Surface inclination angle at endpoint 2."
+            },
+            {
+              "symbol": "\\gamma",
+              "unit": "N/m",
+              "value": null,
+              "note": "Surface tension."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "f_x+\\gamma\\cos\\theta_1-\\gamma\\cos\\theta_2=0",
+              "label": "S3.6"
+            }
+          ],
+          "asked_quantity": "Horizontal pressure force expressed in terms of surface tension.",
+          "answer_type": "symbolic",
+          "boxed_answer": "f_x=\\gamma\\cos\\theta_2-\\gamma\\cos\\theta_1",
+          "boundary_conditions": [],
+          "figure_refs": [],
+          "provenance_span": "Page S3-2, Part B.3."
+        },
+        {
+          "id": "B.4",
+          "title": "Capillary conservation relation and capillary length",
+          "givens": [
+            {
+              "symbol": "\\ell",
+              "unit": "m",
+              "value": null,
+              "note": "Capillary length."
+            },
+            {
+              "symbol": "a",
+              "unit": "dimensionless",
+              "value": "2",
+              "note": "Exponent in the dimensionless capillary relation."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "\\frac{1}{2}\\rho gz_1^2+\\gamma\\cos\\theta_1=\\frac{1}{2}\\rho gz_2^2+\\gamma\\cos\\theta_2",
+              "label": "S3.7"
+            },
+            {
+              "latex": "\\frac{1}{2}\\rho gz^2+\\gamma\\cos\\theta=\\text{constant}",
+              "label": "S3.8"
+            },
+            {
+              "latex": "\\frac{1}{2}\\left(\\frac{z}{\\ell}\\right)^a+\\cos\\theta(x)=\\text{constant}",
+              "label": "S3.9"
+            },
+            {
+              "latex": "\\ell=\\sqrt{\\frac{\\gamma}{\\rho g}}",
+              "label": null
+            }
+          ],
+          "asked_quantity": "Exponent a and capillary length ell.",
+          "answer_type": "symbolic",
+          "boxed_answer": "a=2,\\qquad \\ell=\\sqrt{\\frac{\\gamma}{\\rho g}}",
+          "boundary_conditions": [],
+          "figure_refs": [],
+          "provenance_span": "Pages S3-2–S3-3, Part B.4."
+        },
+        {
+          "id": "B.5",
+          "title": "Water surface profile near a board",
+          "givens": [
+            {
+              "symbol": "\\theta_0",
+              "unit": "rad",
+              "value": null,
+              "note": "Inclination angle at x=0."
+            },
+            {
+              "symbol": "\\ell",
+              "unit": "m",
+              "value": null,
+              "note": "Capillary length."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "\\cos\\theta=\\frac{1}{\\sqrt{1+(z')^2}}",
+              "label": "S3.10"
+            },
+            {
+              "latex": "\\cos\\theta\\simeq1-\\frac{1}{2}(z')^2",
+              "label": "S3.11"
+            },
+            {
+              "latex": "\\frac{z^2}{\\ell^2}-(z')^2=\\text{const}",
+              "label": "S3.12"
+            },
+            {
+              "latex": "z''=\\frac{z}{\\ell^2}",
+              "label": "S3.13"
+            },
+            {
+              "latex": "z=Ae^{x/\\ell}+Be^{-x/\\ell}",
+              "label": "S3.14"
+            }
+          ],
+          "asked_quantity": "Water surface height profile z(x).",
+          "answer_type": "symbolic",
+          "boxed_answer": "z(x)=\\ell\\tan\\theta_0e^{x/\\ell}",
+          "boundary_conditions": [
+            "z(\\infty)=0",
+            "z'(0)=\\tan\\theta_0"
+          ],
+          "figure_refs": [],
+          "provenance_span": "Page S3-3, Part B.5."
+        },
+        {
+          "id": "C.1",
+          "title": "Force on a rod due to pressure and surface tension",
+          "givens": [
+            {
+              "symbol": "z_a",
+              "unit": "m",
+              "value": null,
+              "note": "Water-contact height on side a of the rod."
+            },
+            {
+              "symbol": "z_b",
+              "unit": "m",
+              "value": null,
+              "note": "Water-contact height on side b of the rod."
+            },
+            {
+              "symbol": "z_{\\mathrm{bottom}}",
+              "unit": "m",
+              "value": null,
+              "note": "z-coordinate at the bottom of the rod."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "\\int_{z_a}^{z_b}(\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)",
+              "label": "S3.15"
+            },
+            {
+              "latex": "F_x=\\int_{z_{\\mathrm{bottom}}}^{z_a}(-\\rho gz)\\,dz+\\left(-\\int_{z_{\\mathrm{bottom}}}^{z_b}(-\\rho gz)\\,dz\\right)=\\int_{z_a}^{z_b}(\\rho gz)\\,dz",
+              "label": "S3.16"
+            },
+            {
+              "latex": "-P\\hat{n}\\,ds=(-P_0+\\rho gz)\\hat{n}\\,ds",
+              "label": "S3.17"
+            },
+            {
+              "latex": "-P\\hat{n}\\cdot\\hat{x}\\,ds=-P_0dz+\\rho gz\\,dz",
+              "label": "S3.18"
+            },
+            {
+              "latex": "\\int_{z_a}^{z_b}(\\rho gz)\\,dz=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)",
+              "label": "S3.19"
+            }
+          ],
+          "asked_quantity": "Net horizontal force F_x on a rod.",
+          "answer_type": "symbolic",
+          "boxed_answer": "F_x=\\frac{1}{2}\\rho g\\left(z_b^2-z_a^2\\right)+\\gamma\\left(\\cos\\theta_b-\\cos\\theta_a\\right)",
+          "boundary_conditions": [],
+          "figure_refs": [
+            "Fig. S3-3"
+          ],
+          "provenance_span": "Pages S3-3–S3-4, Part C.1."
+        },
+        {
+          "id": "C.2",
+          "title": "Attractive force between two rods",
+          "givens": [
+            {
+              "symbol": "z_0",
+              "unit": "m",
+              "value": null,
+              "note": "Water-surface displacement at the midpoint between rods."
+            },
+            {
+              "symbol": "x_a",
+              "unit": "m",
+              "value": null,
+              "note": "Horizontal coordinate of the contact point a."
+            },
+            {
+              "symbol": "z_a",
+              "unit": "m",
+              "value": null,
+              "note": "Water-contact height at x=x_a."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "\\frac{1}{2}\\rho gz_a^2+\\gamma\\cos\\theta_a=\\frac{1}{2}\\rho gz_0^2+\\gamma",
+              "label": "S3.20"
+            },
+            {
+              "latex": "\\frac{1}{2}\\rho gz_b^2+\\gamma\\cos\\theta_b=\\gamma",
+              "label": "S3.21"
+            },
+            {
+              "latex": "F_x=-\\frac{1}{2}\\rho gz_0^2",
+              "label": null
+            }
+          ],
+          "asked_quantity": "Attractive horizontal force between two rods.",
+          "answer_type": "symbolic",
+          "boxed_answer": "F_x=-\\frac{2\\rho g z_a^2}{\\left(e^{x_a/\\ell}+e^{-x_a/\\ell}\\right)^2}",
+          "boundary_conditions": [
+            "At x=x_a: \\frac{1}{2}\\rho gz_a^2+\\gamma\\cos\\theta_a=\\frac{1}{2}\\rho gz_0^2+\\gamma",
+            "As x\\to\\infty: \\frac{1}{2}\\rho gz_b^2+\\gamma\\cos\\theta_b=\\gamma"
+          ],
+          "figure_refs": [
+            "Fig. S3-4"
+          ],
+          "provenance_span": "Pages S3-4–S3-5, Part C.2."
+        },
+        {
+          "id": "C.3",
+          "title": "Midpoint water-surface displacement",
+          "givens": [
+            {
+              "symbol": "z_a",
+              "unit": "m",
+              "value": null,
+              "note": "Water surface height at x=x_a."
+            },
+            {
+              "symbol": "x_a",
+              "unit": "m",
+              "value": null,
+              "note": "Contact-point coordinate."
+            },
+            {
+              "symbol": "\\ell",
+              "unit": "m",
+              "value": null,
+              "note": "Capillary length."
+            }
+          ],
+          "equations": [
+            {
+              "latex": "z(x)=Ae^{x/\\ell}+Be^{-x/\\ell}",
+              "label": "S3.22"
+            },
+            {
+              "latex": "A=B",
+              "label": "S3.23"
+            },
+            {
+              "latex": "A+B=z_0",
+              "label": "S3.24"
+            },
+            {
+              "latex": "A=z_0/2,\\qquad B=z_0/2",
+              "label": "S3.25"
+            }
+          ],
+          "asked_quantity": "Midpoint displacement z_0 in terms of z_a and x_a.",
+          "answer_type": "symbolic",
+          "boxed_answer": "z_0=\\frac{2z_a}{e^{x_a/\\ell}+e^{-x_a/\\ell}}",
+          "boundary_conditions": [
+            "Left-right symmetry: A=B",
+            "z(0)=z_0",
+            "z(x_a)=z_a"
+          ],
+          "figure_refs": [
+            "Fig. S3-4"
+          ],
+          "provenance_span": "Page S3-5, Part C.3."
+        }
+      ],
+      "markdown_chars": 8711
+    }
+  },
+  "i2_mini": {
+    "clean": {
+      "rung": "I2",
+      "pdf": "/workspace/verifier_experiments/pdfs/IPhO_2023_S3.pdf",
+      "model": "gpt-5.4-mini",
+      "n_pages": 5,
+      "retries": 0,
+      "cost_usd": 0.0216915,
+      "call_ids": [
+        "8e06234b-4f31-4ced-b070-21fbf34c6ea3"
+      ],
+      "ir": {
+        "sub_parts": null,
+        "notes": "Transcribed all visible text and equations from the 5-page solution PDF screenshot. Figure artwork was not redrawn, but figure captions, equation numbers, boxed answers, footnote, and note text were preserved. Minor OCR-ambiguous notation was normalized to standard LaTeX where clear.",
+        "markdown_preview": "# Solutions to Theory Problems\n\n## IPhO 2023 Tokyo Japan\n\n# S3-1\n\n# Theory Problem 3: Water and Objects (10 points)\n\n## Part A. Merger of water drops (2.0 pt)\n\n### A.1\nThe surface energy per drop before the merger is\n\n$$\nE = 4\\pi a^2\\gamma.\n$$\n\nTherefore, the surface energy difference becomes\n\n$$\n\\Delta E = 4\\pi\\left(2-2^{2/3}\\right)a^2\\gamma.\n$$\n\nThe transfer of surface energy to kinetic energy is represented by\n\n$$\nMv^2/2 = k\\Delta E,\n$$\n\nwhere $k=0.06$ and $M=4\\pi a^3\\rho/3\\times 2 = 8\\pi a^3\\rho/3$ is the mass of the drop after the merger. The numerical computation gives\n\n$$\nv = \\sqrt{\\frac{2k\\Delta E}{M}} = \\sqrt{\\frac{3\\left(2-2^{2/3}\\right)k\\gamma}{\\rho a}} = \\sqrt{\\frac{3\\left(2-2^{2/3}\\right)\\times \\dfrac{0.06\\times (7.27\\times 10^{-2})}{(1.0\\times 10^3)\\times (100\\times 10^{-6})}} = 0.232\\ \\mathrm{m/s}.\n$$\n\n> Note: We point out an interesting phenomenon related to this question. On a superhydrophobic surface, when small droplets merge, they release surface energy, causing the surface area to shrink. This energy release propels the merged droplet to jump up. This phenomenon mirrors the natural mechanism seen in cicadas. Cicadas' wings, which possess superhydrophobic surfaces, facilitate the removal of water droplets upon coalescence. This process serves as a natural self-cleaning system, converting surface energy to kinetic energy, as reported in the following paper: Wisdom *et. al.*, Proc. Natl. Acad. Sci. USA 110, 7992–7997 (2013).\n\n**A.1**\n\n$$\nv = 0.23\\ \\mathrm{m/"
+      },
+      "sub_parts": [],
+      "markdown_chars": 7634
+    },
+    "faulty": {
+      "rung": "I2",
+      "pdf": "/workspace/verifier_experiments/pdfs/faulty/IPhO_2023_S3_FAULTY.pdf",
+      "model": "gpt-5.4-mini",
+      "n_pages": 5,
+      "retries": 0,
+      "cost_usd": 0.02245425,
+      "call_ids": [
+        "5daa1015-1703-4cf7-86b7-16f9d49398f2"
+      ],
+      "ir": {
+        "sub_parts": null,
+        "notes": "Transcribed from the provided 5-page solution PDF image. A few expressions are OCR-ambiguous in the source images; I preserved them as closely as possible. Notably, the boxed answer on page 5 appears as a fraction with a leading minus sign; the exact variable in the numerator is rendered as $z_a$ in the image box, matching the nearby context. Also, the boxed C.2 answer on page 5 was transcribed in the visible simplified form rather than re-deriving it. Equation numbers and boxed answers were preserved where visible.",
+        "markdown_preview": "# Solutions to Theory Problems\n\n## Theory Problem 3: Water and Objects (10 points)\n\n### Part A. Merger of water drops (2.0 pt)\n\n**A.1** The surface energy per drop before the merger is\n\n$$E = 4\\pi a^2\\gamma. \\tag{S3.1}$$\n\nTherefore, the surface energy difference becomes\n\n$$\\Delta E = 4\\pi\\left(2-2^{1/3}\\right)a^2\\gamma. \\tag{S3.2}$$\n\nThe transfer of surface energy to kinetic energy is represented by\n\n$$Mv^2/2 = k\\Delta E, \\tag{S3.3}$$\n\nwhere $k=0.06$ and $M=4\\pi a^3\\rho/3\\times 2 = 8\\pi a^3\\rho/3$ is the mass of the drop after the merger. The numerical computation gives\n\n$$v = \\sqrt{\\frac{2k\\Delta E}{M}} = \\sqrt{\\frac{3\\left(2-2^{1/3}\\right)k\\gamma}{\\rho a}} = \\sqrt{\\frac{3\\left(2-2^{1/3}\\right)\\times \\frac{0.06\\times (7.27\\times 10^{-2})}{(1.0\\times 10^3)\\times (100\\times 10^{-6})}}} = 0.311\\,\\mathrm{m/s}. \\tag{S3.4}$$\n\n> Note: We point out an interesting phenomenon related to this question. On a superhydrophobic surface, when small droplets merge, they release surface energy, causing the surface area to shrink. This energy release propels the merged droplet to jump up. This phenomenon mirrors the natural mechanism seen in cicadas. Cicadas' wings, which possess superhydrophobic surfaces, facilitate the removal of water droplets upon coalescence. This process serves as a natural self-cleaning system, converting surface energy to kinetic energy, as reported in the following paper: Wisdom *et. al.*, Proc. Natl. Acad. Sci. USA 110, 7992–7997 (2013).\n\n**A.1** $v=0.31\\,\\mathrm{m/s"
+      },
+      "sub_parts": [],
+      "markdown_chars": 7895
+    }
+  },
+  "notes": [],
+  "i4_mean_cost_usd": 0.12920874999999998,
+  "i4_total_cost_usd": 0.25841749999999997,
+  "spend_after_phase": {
+    "hard_cap_usd": 25.0,
+    "spent_usd": 0.302563,
+    "remaining_usd": 24.697437,
+    "n_calls": 4,
+    "by_model_usd": {
+      "gpt-5.6-terra": 0.258417,
+      "gpt-5.4-mini": 0.044146
+    },
+    "by_purpose_usd": {
+      "ingest.I4.terra": 0.258417,
+      "ingest.I2.mini": 0.044146
+    },
+    "input_tokens": 45000,
+    "cached_tokens": 0,
+    "output_tokens": 19538,
+    "reasoning_tokens": 235
+  }
+}

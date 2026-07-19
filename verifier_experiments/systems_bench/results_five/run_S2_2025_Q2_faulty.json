@@ -1,0 +1,192 @@
+{
+  "system": "S2",
+  "problem_id": "2025_Q2",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure relation and vertical force equilibrium: P_w = P_0 - rho g h and m g_vec + (P_w - P_0) S u_z + F_vec = 0.",
+        "regime_assumed": "Case b, with the tube fully filled with water up to its closed top and its lower end still connected to the bath.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style dimensional: [P0]=[rho*g*h]=Pa; [(m+rho*S*h)*g]=N.",
+          "Limiting cases: h->0 gives Pw=P0 and F=m*g*u_z; increasing h lowers Pw and increases required upward pull.",
+          "Force residual: substitute Pw=P0-rho*g*h and F=(m+rho*S*h)*g*u_z into m*(-g*u_z)+(Pw-P0)*S*u_z+F => 0.",
+          "BC/root-branch: valid for case b while the top remains water-filled and hydrostatically connected to the bath; no competing algebraic root.",
+          "Symbol whitelist: final expressions use only P0,rho,m,S,h,g,u_z (with Pw as requested); Pa appears only in the equivalent intermediate relation Pa=P0.",
+          "Faithfulness to P: pressure reference is bath surface z=0; pressure-force resultant (Pw-P0)S*u_z and gravity direction agree with the stated convention."
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.995,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.031842999999999996
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "B.2"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "faithfulness: `assert section(S,'B.2').answer is not None` -> FAIL; the supplied solution stops before any B.2 sketch or piecewise expression",
+          "symbol-whitelist: no B.2 candidate symbols/equations are present to validate",
+          "dimensional/limiting/conservation/BC-root checks: blocked because S provides no B.2 result"
+        ],
+        "refutation": "The supplied reference solution contains only the statement/introduction of Part B and equation (1); it does not provide an answer, graph, or piecewise formula for B.2. Therefore it cannot satisfy P's request to sketch m_add(h_t) and label the expressions over h_t∈[-H_b,H_t].",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "B.2 answer absent from S immediately after the Part-B introduction/equation (1).",
+        "fault_type_guess": "incomplete_reference_solution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "B.2 answer absent from S immediately after the Part-B introduction/equation (1).",
+      "cost_usd": 0.049931500000000004
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and static force balance on the tube",
+        "regime_assumed": "The tube remains completely filled with liquid, with no vapor/cavitation; quasi-static equilibrium and uniform atmospheric pressure are assumed.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "faithfulness-to-P/subpart identification",
+          "symbol whitelist",
+          "dimensional applicability",
+          "limiting-case applicability",
+          "conservation-residual applicability",
+          "BC/root-branch applicability"
+        ],
+        "refutation": "The supplied material labeled SUB-PART C.1 contains only the beginning of Part A.1 and no C.1 prompt, proposed answer, or reference-solution expression. Therefore no verification of C.1 is executable. The prior judge concerns A.1, not C.1, and cannot establish correctness for C.1.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Input/subpart mismatch: requested C.1 is absent; the provided excerpt is A.1.",
+        "fault_type_guess": "wrong_subpart_or_truncated_payload"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Input/subpart mismatch: requested C.1 is absent; the provided excerpt is A.1.",
+      "cost_usd": 0.034809
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure variation and vertical force equilibrium: P_w = P_0 - rho g h, with the net pressure force on the closed top equal to (P_w - P_0) S in the upward direction.",
+        "regime_assumed": "Configuration b: the tube is partially submerged, contains liquid with no gas, and 0 <= h <= H.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Partially submerged tube (case b)"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.010813
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law, P(z)=P0-rho g z, together with vertical force equilibrium",
+        "regime_assumed": "Quasi-static equilibrium; incompressible liquid; atmospheric pressure P0; no vapor or gas effects in the tube",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.011047
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "B.2",
+    "C.1"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "B.2",
+    "C.1"
+  ],
+  "cost_usd": 0.138443,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "F2025-1": {
+        "subpart": "C.1",
+        "caught": true,
+        "caught_at": "escalation",
+        "type": "dropped_factor"
+      },
+      "F2025-2": {
+        "subpart": "C.3",
+        "caught": false,
+        "caught_at": null,
+        "type": "dropped_factor"
+      }
+    },
+    "faults_caught": 1,
+    "faults_total": 2
+  },
+  "wall_s": 70.57120180130005,
+  "problem_name": "Cox's Timepiece"
+}

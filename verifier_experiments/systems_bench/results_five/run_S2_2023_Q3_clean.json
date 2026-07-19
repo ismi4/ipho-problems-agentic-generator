@@ -1,0 +1,191 @@
+{
+  "system": "S2",
+  "problem_id": "2023_Q3",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.23 m/s; exponent_fingerprint 2/3=True 1/3=False; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "pass",
+        "detail": "f_x = γ cos θ1 − γ cos θ2"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "pass",
+        "detail": "ℓ=√(γ/(ρg)) dimensionally OK"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "pass",
+        "detail": "decaying branch e^{-x/ℓ} retained"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "pass",
+        "detail": "F_x uses z0 only"
+      }
+    ],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Conservation of water volume and conversion of a fraction k of the decrease in surface energy into translational kinetic energy: (1/2)Mv^2 = kΔE",
+        "regime_assumed": "Two identical spherical drops of radius a merge into one spherical drop; total volume is conserved; only the specified fraction k of the surface-energy decrease becomes kinetic energy",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: gamma/(rho*a) -> m^2/s^2; v has m/s",
+          "limiting_case: k->0 gives v->0; gamma->0 gives v->0; a increases gives v proportional to a^(-1/2)",
+          "conservation_residual: 2*(4*pi*a^3/3)=(4*pi*R^3/3) gives R=2^(1/3)*a, hence DeltaE=4*pi*a^2*gamma*(2-2^(2/3))",
+          "BC/root_branch: selected positive square-root branch for jump-up speed",
+          "symbol_whitelist: all physical symbols are supplied by P or explicitly defined intermediate quantities",
+          "faithfulness_to_P: uses spherical drops, volume conservation, and k*DeltaE=(1/2)*M*v^2; numeric evaluation gives 0.232... m/s -> 0.23 m/s"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.998,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0326995
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Static horizontal force balance: the pressure force is balanced by the horizontal components of surface tension at the two edges.",
+        "regime_assumed": "Static equilibrium of the water block, with uniform surface tension and forces evaluated per unit length along the y-axis.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.007521
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "Hydrostatic pressure balance combined with surface-tension force balance, yielding (1/2)ρgz^2 + γ cosθ = constant",
+        "regime_assumed": "Static, translationally invariant surface with uniform surface tension and atmospheric pressure; board thickness neglected",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.008746
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Small-slope expansion of the capillary first integral gives z''(x) = z(x)/ell^2; imposing z(infinity)=0 and z'(0)=tan(theta0) yields the decaying solution.",
+        "regime_assumed": "|z'(x)| << 1, with x >= 0 and the water surface approaching z = 0 as x approaches infinity.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Growing branch A exp(x/ell), excluded by z(infinity)=0",
+          "Decaying branch B exp(-x/ell), retained",
+          "Zero-slope special case tan(theta0)=0, giving z(x)=0"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.010636
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance with surface-tension force, using the conserved quantity (1/2)rho g z^2 + gamma cos(theta) along the water surface",
+        "regime_assumed": "Static water surface, left-right symmetry about the midpoint between the rods, horizontal surface at the midpoint (theta = 0), and a flat far-field surface",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.010527
+    }
+  ],
+  "escalated_subparts": [
+    "A.1"
+  ],
+  "escalation_rate": 0.2,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.070129,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 24.689380407333374,
+  "problem_name": "Water and Objects"
+}

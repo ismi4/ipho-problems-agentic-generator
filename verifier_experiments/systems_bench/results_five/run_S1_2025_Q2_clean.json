@@ -1,0 +1,140 @@
+{
+  "system": "S1",
+  "problem_id": "2025_Q2",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure variation and static force balance: P_w = P_0 - rho g h, with net pressure force (P_w - P_0) S in the vertical direction.",
+        "regime_assumed": "Quasistatic equilibrium with the tube filled by liquid water and no vapor formation; atmospheric pressure is P_0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0042805
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic equilibrium and the geometry-dependent volume of mercury contributing to the effective added mass m_add",
+        "regime_assumed": "Mercury with P_a = P_0 and P_sat = 0; tube lifted quasistatically from fully submerged until its base is flush with the bath",
+        "dimensional_check": "unknown",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": "The supplied solution is truncated before the B.2 solution, so its graph, expressions, and numerical breakpoints cannot be verified.",
+        "verdict": "UNCERTAIN",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "The requested qualitative, piecewise graph for B.2 is absent from the provided reference text."
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "UNCERTAIN",
+      "first_point_of_failure": "The supplied solution is truncated before the B.2 solution, so its graph, expressions, and numerical breakpoints cannot be verified.",
+      "cost_usd": 0.0041525
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and vertical force equilibrium",
+        "regime_assumed": "Tube in the configuration of Fig. 2(b), with the liquid pressure at altitude h given by P_w = P_0 - rho g h; neglect surface tension and atmospheric-pressure variation with altitude.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0046625
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic equilibrium and vertical force balance on the tube",
+        "regime_assumed": "The liquid is incompressible, the tube is in static equilibrium, and the water column remains connected to the bath through the open bottom; atmospheric pressure is P0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0049745
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure law and static force balance on the tube",
+        "regime_assumed": "Configuration b: the tube top is at altitude h, the water column inside reaches the top, and the external pressure is P0",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0038285
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "UNCERTAIN",
+  "failed_subparts": [],
+  "cost_usd": 0.021898,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "UNCERTAIN",
+    "doc_correct": false,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 19.34342908859253,
+  "problem_name": "Cox's Timepiece"
+}

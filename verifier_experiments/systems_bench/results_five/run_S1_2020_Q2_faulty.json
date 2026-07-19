@@ -1,0 +1,170 @@
+{
+  "system": "S1",
+  "problem_id": "2020_Q2",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "The friction power is P = -mgv(\\mu_x\\cos^2\\alpha + \\mu_y\\sin^2\\alpha), so |P| is maximized by maximizing the bracket.",
+        "regime_assumed": "Fixed nonzero speed v, with \\mu_x = 0.75 > \\mu_y = 0.50.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "\\alpha = 0 \\pmod{\\pi}"
+        ],
+        "refutation": "At \\alpha=0, |P|=\\mu_xmgv=0.75mgv, whereas at the stated answer \\alpha=\\pi/2, |P|=\\mu_ymgv=0.50mgv; thus the stated answer is not maximal.",
+        "first_point_of_failure": "The final answer contradicts the preceding reasoning: it states \\alpha=\\pi/2 even though \\mu_x>\\mu_y implies the maximum occurs along the X axis.",
+        "verdict": "FAIL",
+        "confidence": 1.0,
+        "escalate": true,
+        "escalate_reason": "The result is a bare geometric angle and the supplied conclusion directly contradicts the governing expression."
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The final answer contradicts the preceding reasoning: it states \\alpha=\\pi/2 even though \\mu_x>\\mu_y implies the maximum occurs along the X axis.",
+      "cost_usd": 0.003386
+    },
+    {
+      "id": "A3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Using dvx/dt = -μx g vx/v and dvy/dt = -μy g vy/v gives dvx/dvy = (μx vx)/(μy vy), hence vx = v0x (vy/v0y)^(μx/μy).",
+        "regime_assumed": "Sliding motion with positive velocity components, μx = 0.75, μy = 0.50, and constant normal force N = mg.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "The intermediate statement vx = 0.250 m/s is incorrect: vx = (0.25)^(0.75/0.50) = 0.125 m/s. Nevertheless, the stated final speed is correct because sqrt(0.125^2 + 0.25^2) = 0.2795 m/s ≈ 0.28 m/s.",
+        "first_point_of_failure": "The calculation of vx after integrating the differential equations; the correct exponent is μx/μy = 1.5.",
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": "The calculation of vx after integrating the differential equations; the correct exponent is μx/μy = 1.5.",
+      "cost_usd": 0.004218
+    },
+    {
+      "id": "A4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The normal friction component provides centripetal acceleration: v^2/R = g|mu_x - mu_y||sin(alpha)cos(alpha)|.",
+        "regime_assumed": "Moving body with fixed speed v=1.0 m/s, mu_x=0.75, mu_y=0.50, and alpha restricted to the first quadrant.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "The minimum occurs when |sin(alpha)cos(alpha)|=1/2.",
+          "For unrestricted angles, equivalent directions are alpha=pi/4, 3pi/4, 5pi/4, and 7pi/4."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.97,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.003897
+    },
+    {
+      "id": "C2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The stationary mass can remain at rest only if the rod force does not exceed the maximum static friction force along the rod. Initially the rod is aligned with the Y axis, so the limiting condition is m v_0^2/L <= mu_y m g, giving v_0max = sqrt(mu_y g L).",
+        "regime_assumed": "The second mass remains stationary; the rod force at the initial instant is the centripetal force m v_0^2/L, and the maximum opposing friction along Y is mu_y m g. Given mu_x = 0.75, mu_y = 0.50, and L = 1 m.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For the stated coefficients mu_x > mu_y, the initial Y-direction condition is the limiting one.",
+          "If a different static-friction yield model were intended, the admissible force envelope would need to be specified; under the stated anisotropic model, the result is v_0max = sqrt(mu_y g L)."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.84,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0058865
+    },
+    {
+      "id": "C3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Tangential work-energy relation: v\\,dv/ds=-g(\\mu_x\\cos^2\\varphi+\\mu_y\\sin^2\\varphi), with ds=L\\,d\\varphi",
+        "regime_assumed": "The second mass remains at rest and the first mass decelerates under anisotropic kinetic friction until v=0",
+        "dimensional_check": "unknown",
+        "case_branches_found": [],
+        "refutation": "The supplied reference excerpt contains no C.3 derivation or result; it ends during C.1. Therefore it does not provide the requested travel distance for v0=v0max.",
+        "first_point_of_failure": "C.3 is unanswered in the supplied solution",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "C.3 is unanswered in the supplied solution",
+      "cost_usd": 0.0054695
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A1",
+    "C3"
+  ],
+  "cost_usd": 0.022857,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "F2020-1": {
+        "subpart": "A1",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "wrong_extremum"
+      },
+      "F2020-2": {
+        "subpart": "A3",
+        "caught": false,
+        "caught_at": null,
+        "type": "dropped_factor"
+      },
+      "F2020-3": {
+        "subpart": "C2",
+        "caught": false,
+        "caught_at": null,
+        "type": "wrong_parameter"
+      }
+    },
+    "faults_caught": 1,
+    "faults_total": 3
+  },
+  "wall_s": 34.20360541343689,
+  "problem_name": "Anisotropic Friction"
+}

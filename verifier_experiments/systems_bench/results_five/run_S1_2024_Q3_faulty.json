@@ -1,0 +1,157 @@
+{
+  "system": "S1",
+  "problem_id": "2024_Q3",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A-3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "The equilibrium point is found from dφ/dx = 0 in the rotating-frame effective potential.",
+        "regime_assumed": "M2 = M1/3; the relevant root is the collinear equilibrium point between the two masses.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "The middle Lagrange-point root between the masses is selected."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.005983
+    },
+    {
+      "id": "A-5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of energy for steady accretion: the decrease in orbital specific energy, GM1/(2r), across an annulus is emitted as blackbody radiation from both disk faces.",
+        "regime_assumed": "Infinitesimally thin, steady Keplerian disk; constant mass flow rate β; negligible gravitational influence of M2; radiation from both faces with flux σT^4.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0049875
+    },
+    {
+      "id": "A-6",
+      "judge": {
+        "subpart_id": "A.6",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Kepler's third law together with the steady-state accretion-disc temperature relation T = [G M_NS beta/(8 pi sigma r^3)]^(1/4), evaluated at r = 10a",
+        "regime_assumed": "Circular binary orbit; negligible companion gravity in the disc; steady mass flow; blackbody radiation; r = 10a",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Using a^3 = G(M_S + M_NS)P^2/(4 pi^2) and r = 10a gives T^4 = pi M_NS beta/[2000 sigma (M_S + M_NS)P^2]. With the supplied values, this yields T approximately 2.8e2 K, not 9e3 K. The reference incorrectly replaces the coefficient 1/2000 by 500, introducing a factor of 10^6 in T^4.",
+        "first_point_of_failure": "The algebraic substitution from r = 10a into the A-5 temperature formula: the coefficient should be pi/2000, not 500 pi.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The algebraic substitution from r = 10a into the A-5 temperature formula: the coefficient should be pi/2000, not 500 pi.",
+      "cost_usd": 0.007459
+    },
+    {
+      "id": "B-1",
+      "judge": {
+        "subpart_id": "B-1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Newton's law of gravitation with spherical symmetry: g(r) = -G M(r)/r^2, where M(r) = 4π∫₀ʳ ρ(r')r'^2 dr'",
+        "regime_assumed": "Near the center, the density is approximately constant and equal to the central density ρc; outward direction is positive",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.004673
+    },
+    {
+      "id": "B-7",
+      "judge": {
+        "subpart_id": "B-7",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of enclosed mass under the homologous radial displacement \\(\\tilde r=r(1+\\epsilon)\\), together with Newtonian gravity \\(g=GM(r)/r^2\\).",
+        "regime_assumed": "Small uniform radial perturbation with \\(|\\epsilon|\\ll1\\), preserving the enclosed mass.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.004918
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A-6"
+  ],
+  "cost_usd": 0.028021,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "F2024-1": {
+        "subpart": "A-3",
+        "caught": false,
+        "caught_at": null,
+        "type": "wrong_root"
+      },
+      "F2024-2": {
+        "subpart": "A-6",
+        "caught": true,
+        "caught_at": "bulk_judge",
+        "type": "wrong_numeric"
+      }
+    },
+    "faults_caught": 1,
+    "faults_total": 2
+  },
+  "wall_s": 21.262941122055054,
+  "problem_name": "Black Widow Pulsar"
+}
