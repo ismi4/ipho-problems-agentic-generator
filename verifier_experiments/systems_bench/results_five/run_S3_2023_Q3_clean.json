@@ -1,0 +1,196 @@
+{
+  "system": "S3",
+  "problem_id": "2023_Q3",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.23 m/s; exponent_fingerprint 2/3=True 1/3=False; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "pass",
+        "detail": "f_x = γ cos θ1 − γ cos θ2"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "pass",
+        "detail": "ℓ=√(γ/(ρg)) dimensionally OK"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "pass",
+        "detail": "decaying branch e^{-x/ℓ} retained"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "pass",
+        "detail": "F_x uses z0 only"
+      }
+    ],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Conservation of volume fixes the merged-drop radius R=2^(1/3)a; the decrease in surface energy, kγ(A_initial-A_final), is converted into translational kinetic energy Mv^2/2.",
+        "regime_assumed": "Drops are spherical before and after merger, total water volume is conserved, surface energy is γ times the full spherical free-surface area, and the prescribed fraction k=0.06 of released surface energy becomes jump kinetic energy.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For two identical initial drops, R=2^(1/3)a.",
+          "Released energy is positive because 2-2^(2/3)>0."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: sqrt(gamma/(rho*a)) has units m/s",
+          "limiting-case: k→0 or gamma→0 gives v→0; a→infinity gives v→0",
+          "conservation residual: 2*(4*pi*a^3/3)-(4*pi/3)*(2^(1/3)*a)^3 = 0",
+          "BC/root-branch: positive square-root selected for jump-up speed; released energy is positive since 2-2^(2/3)>0",
+          "symbol-whitelist: all introduced symbols M and DeltaE are explicitly defined and use only quantities from P",
+          "faithfulness-to-P: uses spherical areas, conserved volume, and prescribed kinetic conversion fraction k"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.999,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.043859999999999996
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Horizontal force balance on the cutout water block, with surface-tension forces acting tangentially at its left and right boundary edges.",
+        "regime_assumed": "Static equilibrium; uniform surface tension; forces evaluated per unit length along the y-axis.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0222525
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "Hydrostatic pressure P=P0-rho g z combined with horizontal force balance between pressure forces and the horizontal components of surface tension on an arbitrary surface segment.",
+        "regime_assumed": "Static two-dimensional meniscus; constant density, uniform surface tension, uniform gravity, and a flat vertical board of negligible thickness. No small-slope approximation is used in this sub-part.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "hydrophilic board (z>0 near the board)",
+          "hydrophobic board (z<0 near the board)"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.02134
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Small-slope expansion of the capillary first integral from B.4, followed by the linear capillary equation z'' = z/ell^2.",
+        "regime_assumed": "|z'(x)| << 1, so cos(theta) = 1/sqrt(1+z'^2) is expanded as 1 - z'^2/2; the far-field surface is horizontal with z(infinity)=0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "The growing solution A exp(x/ell) is excluded for x >= 0 by z(infinity)=0.",
+          "The remaining decaying solution applies for either sign of tan(theta0), representing elevation or depression within the small-slope regime."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.021625
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure combined with the capillary first integral (1/2)rho g z^2 + gamma cos(theta) = constant along each connected free-surface segment.",
+        "regime_assumed": "Static, two-dimensional cross-section; identical rods arranged symmetrically, so the interface slope at the midpoint is zero, while the exterior interface becomes horizontal with z -> 0 at infinity.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0221625
+    }
+  ],
+  "escalated_subparts": [
+    "A.1"
+  ],
+  "escalation_rate": 0.2,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.13124,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 26.33503484725952,
+  "problem_name": "Water and Objects"
+}

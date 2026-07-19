@@ -1,0 +1,372 @@
+{
+  "system": "S3",
+  "instance_id": "faulty",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.31 m/s; exponent_fingerprint 2/3=False 1/3=True; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "fail",
+        "detail": "sign of f_x flipped vs force balance / B.2 leftward"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "fail",
+        "detail": "ℓ=√(γ/ρ) is dimensionally inconsistent (missing g)"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "fail",
+        "detail": "retained growing branch e^{+x/ℓ}; diverges as x→∞, contradicting z(∞)=0"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "fail",
+        "detail": "boxed F_x reintroduces za/xa (violates demanded symbol set; algebraically equivalent trap)"
+      }
+    ],
+    "n_fail": 4,
+    "failed_subparts": [
+      "B.3",
+      "B.4",
+      "B.5",
+      "C.2"
+    ],
+    "verdict_hint": "REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Conservation of water volume determines the merged-drop radius, and k times the decrease in surface energy is equated to the translational kinetic energy of the merged drop.",
+        "regime_assumed": "Initially two identical isolated spherical drops of radius a merge into one spherical drop; total volume is conserved; surface energy is gamma times free surface area; a fraction k of released surface energy becomes jump kinetic energy.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": "Volume conservation gives the final radius R=(2a^3)^(1/3)=2^(1/3)a, hence its area is 4πR^2=4π2^(2/3)a^2. Therefore ΔE=4π[2-2^(2/3)]a^2γ, not 4π[2-2^(1/3)]a^2γ. The resulting speed is v=sqrt{3k[2-2^(2/3)]γ/(ρa)}=0.23 m/s (two significant digits), rather than 0.31 m/s.",
+        "first_point_of_failure": "S3.2 incorrectly uses 2^(1/3) for the final surface-area factor; the radius scales as 2^(1/3), but the area scales as 2^(2/3).",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": true,
+        "escalate_reason": "The error is in a dimensionless geometric factor arising from volume-to-area scaling, although it is concretely falsified by direct volume conservation."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "sympy: R=(2*a**3)**Rational(1,3)=2**Rational(1,3)*a from 4*pi*R**3/3=2*(4*pi*a**3/3)",
+          "sympy: DeltaE=2*(4*pi*a**2*gamma)-4*pi*R**2*gamma=4*pi*a**2*gamma*(2-2**Rational(2,3))",
+          "dimensional: gamma/(rho*a) has units m^2/s^2, so v=sqrt(3*k*(2-2^(2/3))*gamma/(rho*a)) has units m/s",
+          "limiting: k->0 or gamma->0 gives v->0; rho->infinity or a->infinity gives v->0",
+          "conservation residual: substituted R=2^(1/3)*a gives Vfinal-2*Vinitial=0, while S3.2 uses the radius factor as an area factor",
+          "BC/root-branch: positive square-root branch is required for jump-up speed; no ambiguity affects the geometric factor",
+          "symbol-whitelist: only P-defined symbols a,rho,gamma,k,v and derived M,DeltaE,R are needed",
+          "faithfulness-to-P: P explicitly requires conserved total volume and spherical drops, which fixes final area proportional to 2^(2/3), not 2^(1/3)"
+        ],
+        "refutation": "S3.2 is geometrically incorrect. Volume conservation gives merged radius R=2^(1/3)a, hence final surface area 4*pi*R^2=4*pi*2^(2/3)*a^2. Therefore DeltaE=4*pi*a^2*gamma*(2-2^(2/3)), and v=sqrt(3*k*(2-2^(2/3))*gamma/(rho*a))=0.232... m/s=0.23 m/s (two significant digits), not 0.31 m/s.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "S3.2: it subtracts 2^(1/3) as though the final surface area scaled like the final radius; area instead scales as 2^(2/3).",
+        "fault_type_guess": "volume-to-surface-area scaling / geometric exponent error"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "S3.2: it subtracts 2^(1/3) as though the final surface area scaled like the final radius; area instead scales as 2^(2/3).",
+      "cost_usd": 0.0517575
+    },
+    {
+      "id": "B.1",
+      "judge": {
+        "subpart_id": "B.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic equilibrium: dP/dz = -rho g, with boundary condition P(z=0)=P0.",
+        "regime_assumed": "Static incompressible water of constant density in a uniform gravitational field; z is positive upward.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For the hydrophilic raised surface z>0, P<P0.",
+          "The same hydrostatic expression also applies for z<0, giving P>P0."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0185875
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure variation P = P0 - rho g z, with the uniform atmospheric-pressure contribution cancelling in the net horizontal force.",
+        "regime_assumed": "Static fluid, constant density, uniform gravitational field, and force evaluated per unit length along the y-axis.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For z1 > z2, fx = (rho g/2)(z2^2 - z1^2) < 0, i.e. the force is leftward.",
+          "For z1 < z2, the same signed expression gives a rightward force."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0238625
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Horizontal force equilibrium of the cut-out water block, with surface-tension forces at its two free-surface endpoints.",
+        "regime_assumed": "Static two-dimensional meniscus; forces are per unit length along y; +x is to the right.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For a block bounded by a free-surface segment from left endpoint 1 to right endpoint 2, the surface-tension resultant is gamma(cos(theta2)-cos(theta1)) in the +x direction."
+        ],
+        "refutation": "Take theta1 = 60 degrees and theta2 = 0 degrees. The surface-tension force on the block is gamma[cos(0)-cos(60)] = +gamma/2, i.e. rightward. Equilibrium therefore requires f_x = -gamma/2. The reference instead gives f_x = gamma[cos(0)-cos(60)] = +gamma/2, which has the same sign as the surface-tension force and cannot satisfy horizontal equilibrium.",
+        "first_point_of_failure": "The horizontal surface-tension component is reversed: it should be gamma cos(theta2) - gamma cos(theta1), not gamma cos(theta1) - gamma cos(theta2).",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The horizontal surface-tension component is reversed: it should be gamma cos(theta2) - gamma cos(theta1), not gamma cos(theta1) - gamma cos(theta2).",
+      "cost_usd": 0.0307625
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "Horizontal force balance on an arbitrary surface segment: (1/2)rho*g*z^2 + gamma*cos(theta) = constant.",
+        "regime_assumed": "Static hydrostatic equilibrium with uniform surface tension; valid for both hydrophilic and hydrophobic boards, with no small-slope approximation.",
+        "dimensional_check": "fail",
+        "case_branches_found": [
+          "hydrophilic board",
+          "hydrophobic board"
+        ],
+        "refutation": "Dividing the correct conservation law by gamma gives (1/2)[z^2/(gamma/(rho*g))] + cos(theta) = constant. Therefore ell^2 = gamma/(rho*g), so ell = sqrt(gamma/(rho*g)). The proposed ell = sqrt(gamma/rho) omits g and does not have dimensions of length.",
+        "first_point_of_failure": "The identification of ell from (1/2)rho*g*z^2 + gamma*cos(theta) = constant incorrectly drops the factor g.",
+        "verdict": "FAIL",
+        "confidence": 1.0,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "sympy_dimcheck: [rho*g*z**2] == [gamma] == force/length; ell**2 must equal gamma/(rho*g)",
+          "sympy_simplify: (rho*g/2)*z**2 + gamma*cos(theta) -> gamma*(z**2/(2*ell**2)+cos(theta)) only if ell**2=gamma/(rho*g)",
+          "limiting_case: g->0 implies ell->infinity; proposed sqrt(gamma/rho) incorrectly remains finite",
+          "conservation_residual: ell=sqrt(gamma/rho) gives gamma*z**2/(2*ell**2)=rho*z**2/2, which cannot equal rho*g*z**2/2",
+          "root_branch: physical capillary length requires positive ell=sqrt(gamma/(rho*g)); exponent a=2 is correct",
+          "symbol_whitelist: no unsupported symbols or assumptions introduced",
+          "faithfulness_to_P: P explicitly supplies gravitational acceleration g, which must enter the length scale"
+        ],
+        "refutation": "The conserved first integral is (rho*g/2) z^2 + gamma cos(theta)=constant. After division by gamma, comparison with (1/2)(z/ell)^a+cos(theta)=constant gives a=2 and ell^2=gamma/(rho*g), hence ell=sqrt(gamma/(rho*g)) (positive root). S instead states ell=sqrt(gamma/rho), omitting g; it is dimensionally not a length and does not reproduce the conservation law.",
+        "verdict": "FAIL",
+        "confidence": 1.0,
+        "first_point_of_failure": "The conversion of (rho*g/2)z^2+gamma cos(theta)=constant into the normalized form incorrectly identifies ell as sqrt(gamma/rho), dropping g.",
+        "fault_type_guess": "algebraic/dimensional omission of gravitational acceleration"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The conversion of (rho*g/2)z^2+gamma cos(theta)=constant into the normalized form incorrectly identifies ell as sqrt(gamma/rho), dropping g.",
+      "cost_usd": 0.0441125
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Small-slope capillary-gravity balance obtained from the first integral z^2/(2ℓ^2)+cosθ=constant, with cosθ≈1-(z')^2/2, giving z''=z/ℓ^2.",
+        "regime_assumed": "|z'(x)|≪1, x≥0, with the water surface approaching the undisturbed level z(∞)=0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "General solution: z=Ae^(x/ℓ)+Be^(-x/ℓ)",
+          "The far-field condition z(∞)=0 requires A=0, not B=0",
+          "The contact-slope condition z'(0)=tanθ0 then gives B=-ℓ tanθ0"
+        ],
+        "refutation": "For any nonzero tanθ0, e.g. tanθ0=0.1, the stated result z=ℓ tanθ0 e^(x/ℓ) diverges as x→∞ rather than satisfying z(∞)=0. The decaying solution is z(x)=-ℓ tanθ0 e^(-x/ℓ).",
+        "first_point_of_failure": "The boundary condition z(∞)=0 is applied to the wrong exponential coefficient: it requires A=0, whereas the solution states B=0.",
+        "verdict": "FAIL",
+        "confidence": 1.0,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style: solve(z.diff(x,2)-z/ell**2,z) -> A*exp(x/ell)+B*exp(-x/ell)",
+          "Dimensional: [z'']=L^-1 and [z/ell^2]=L^-1; pass",
+          "Limiting/far-field: limit(A*exp(x/ell)+B*exp(-x/ell),x,oo)=0 requires A=0",
+          "BC/root-branch: z'(0)=tan(theta0) with A=0 gives B=-ell*tan(theta0)",
+          "Residual: z=-ell*tan(theta0)*exp(-x/ell) satisfies z''-z/ell**2=0 and both BCs",
+          "Faithfulness-to-P: P explicitly requires x>=0 and the surface approaches the horizontal far-away level; the submitted growing branch violates this",
+          "Symbol-whitelist: only z,x,ell,theta0 and standard exp/tan are needed; no symbol issue"
+        ],
+        "refutation": "The solution applies the far-field boundary condition to the wrong coefficient. For x>=0, exp(x/ell) grows, so z(infinity)=0 requires A=0, not B=0. The submitted z=ell*tan(theta0)*exp(x/ell) diverges for any nonzero tan(theta0). The BC-consistent result is z(x)=-ell*tan(theta0)*exp(-x/ell).",
+        "verdict": "FAIL",
+        "confidence": 1.0,
+        "first_point_of_failure": "“The boundary condition, z(∞)=0, leads to B=0.”",
+        "fault_type_guess": "wrong exponential root branch / swapped integration coefficient"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "“The boundary condition, z(∞)=0, leads to B=0.”",
+      "cost_usd": 0.0460275
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "C.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Static hydrostatic pressure P=P0-rho g z integrated over the wetted rod boundary, together with the horizontal components of the two surface-tension forces at the contact lines.",
+        "regime_assumed": "Static two-dimensional cross-section, force per unit length along y, uniform surface tension, constant density, and uniform atmospheric-pressure contributions cancel.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Signed contact heights za, zb and signed interface angles theta_a, theta_b under the problem's angle convention."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0284175
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Static capillary first integral: (rho g/2) z^2 + gamma cos(theta) = constant, combined with the horizontal force expression from C.1.",
+        "regime_assumed": "Static equilibrium, uniform surface tension and density; identical rods arranged symmetrically, so the midpoint has theta = 0 and the outer free surface is flat. No small-slope approximation is required for C.2.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Symmetric two-identical-rod configuration",
+          "Midpoint between rods: theta = 0",
+          "Far outside the rods: z -> 0 and theta -> 0"
+        ],
+        "refutation": "The required result without theta_a, theta_b, z_a, or z_b is F_x = -(rho g/2) z_0^2. Although the derivation states this correct result, the boxed answer instead gives F_x = -2 rho g z_a^2/(exp(x_a/ell)+exp(-x_a/ell))^2, which explicitly reintroduces forbidden variables z_a and x_a and relies on the later small-slope C.3 relation rather than answering C.2 as requested.",
+        "first_point_of_failure": "The boxed C.2 answer does not satisfy the stipulated symbol elimination; it replaces the correct z_0-only result by a C.3-dependent expression involving z_a and x_a.",
+        "verdict": "FAIL",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "The boxed C.2 answer does not satisfy the stipulated symbol elimination; it replaces the correct z_0-only result by a C.3-dependent expression involving z_a and x_a.",
+      "cost_usd": 0.03542
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Using the small-slope capillary equation from B.5, z'' = z/ℓ², together with left-right symmetry about the midpoint between the rods.",
+        "regime_assumed": "Small surface-slope approximation |z'| << 1, as required for the differential equation obtained in B.5.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Symmetric inter-rod meniscus about x = 0: z(x) = z0 cosh(x/ℓ)"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0205475
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "B.4",
+    "B.5"
+  ],
+  "escalation_rate": 0.3333333333333333,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "A.1",
+    "B.3",
+    "B.4",
+    "B.5",
+    "C.2"
+  ],
+  "cost_usd": 0.299495,
+  "scoring": {
+    "expected_label": "REJECT",
+    "doc_verdict": "REJECT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {
+      "ERR-1": {
+        "subpart": "A.1",
+        "caught": true,
+        "caught_at": "escalation",
+        "expected_cheapest": "Tier2"
+      },
+      "ERR-2": {
+        "subpart": "B.3",
+        "caught": true,
+        "caught_at": "deterministic",
+        "expected_cheapest": "Tier0.3"
+      },
+      "ERR-3": {
+        "subpart": "B.4",
+        "caught": true,
+        "caught_at": "deterministic",
+        "expected_cheapest": "Tier0.1"
+      },
+      "ERR-4": {
+        "subpart": "B.5",
+        "caught": true,
+        "caught_at": "deterministic",
+        "expected_cheapest": "Tier1.2"
+      },
+      "ERR-5": {
+        "subpart": "C.2",
+        "caught": true,
+        "caught_at": "deterministic",
+        "expected_cheapest": "Tier0.5"
+      }
+    },
+    "faults_caught": 5,
+    "faults_total": 5
+  },
+  "wall_s": 78.68533039093018
+}

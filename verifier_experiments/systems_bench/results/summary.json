@@ -1,0 +1,461 @@
+{
+  "corpus": {
+    "problem": "/workspace/verifier_experiments/pdfs/IPhO_2023_Q3.pdf",
+    "clean": "/workspace/verifier_experiments/pdfs/IPhO_2023_S3.pdf",
+    "faulty": "/workspace/verifier_experiments/pdfs/faulty/IPhO_2023_S3_FAULTY.pdf",
+    "injected_errors": [
+      "ERR-1",
+      "ERR-2",
+      "ERR-3",
+      "ERR-4",
+      "ERR-5"
+    ],
+    "held_out": "2021 pair not run (per SYSTEMS.md + user scope)"
+  },
+  "ingestion": {
+    "i4_mean_cost_usd": 0.12920874999999998,
+    "i4_total_cost_usd": 0.25841749999999997,
+    "i2_costs": {
+      "clean": 0.0216915,
+      "faulty": 0.02245425
+    },
+    "notes": []
+  },
+  "sol_vs_terra_arm": {
+    "gpt-5.6-terra": {
+      "prior_verdict": "FAIL",
+      "escalation_verdict": "FAIL",
+      "refutation": "S3.2 is not faithful to volume conservation. Two initial drops have total area 8*pi*a^2. The merged spherical drop has radius R=2^(1/3)*a and therefore area 4*pi*R^2=4*pi*2^(2/3)*a^2, not 4*pi*2^(1/3)*a^2. Hence DeltaE=4*pi*a^2*gamma*(2-2^(2/3)) and v=sqrt(3*k*gamma*(2-2^(2/3))/(rho*a))=0.232... m/s, i.e. 0.23 m/s (two significant digits), not 0.31 m/s.",
+      "first_point_of_failure": "S3.2: final surface area is scaled by 2^(1/3) rather than 2^(2/3).",
+      "fault_type_guess": "volume-conservation/surface-area exponent error",
+      "cost_usd": 0.0382525
+    },
+    "gpt-5.6-sol": {
+      "prior_verdict": "FAIL",
+      "escalation_verdict": "FAIL",
+      "refutation": "Volume conservation gives the merged radius R=2^(1/3)a, hence its area is 4πR²=4π·2^(2/3)a². Therefore ΔE=4πa²γ(2−2^(2/3)), not 4πa²γ(2−2^(1/3)). The corrected speed is v=sqrt[3kγ(2−2^(2/3))/(ρa)]=0.2324 m/s, or 0.23 m/s to two significant digits.",
+      "first_point_of_failure": "S3.2: the final-drop surface-area factor is incorrectly written as 2^(1/3) instead of 2^(2/3).",
+      "fault_type_guess": "volume-conservation propagation / exponent error in spherical surface area",
+      "cost_usd": 0.0564738
+    },
+    "spend_after_phase": {
+      "hard_cap_usd": 25.0,
+      "spent_usd": 0.39729,
+      "remaining_usd": 24.60271,
+      "n_calls": 8,
+      "by_model_usd": {
+        "gpt-5.6-terra": 0.286085,
+        "gpt-5.4-mini": 0.044146,
+        "gpt-5.6-luna": 0.016084,
+        "gpt-5.6-sol": 0.050975
+      },
+      "by_purpose_usd": {
+        "ingest.I4.terra": 0.258417,
+        "ingest.I2.mini": 0.044146,
+        "arm.prior_luna": 0.016084,
+        "arm.escalate.gpt-5.6-terra": 0.027668,
+        "arm.escalate.gpt-5.6-sol": 0.050975
+      },
+      "input_tokens": 70296,
+      "cached_tokens": 6238,
+      "output_tokens": 22482,
+      "reasoning_tokens": 1500
+    }
+  },
+  "per_run": [
+    {
+      "system": "S3",
+      "instance": "clean",
+      "doc_verdict": "ACCEPT",
+      "expected": "ACCEPT",
+      "doc_correct": true,
+      "false_reject": false,
+      "false_accept": false,
+      "escalation_rate": 0.3333333333333333,
+      "escalated_subparts": [
+        "A.1",
+        "B.4",
+        "B.5"
+      ],
+      "failed_subparts": [],
+      "faults_caught": 0,
+      "fault_hits": {},
+      "cost_usd": 0.263253,
+      "deterministic_fails": []
+    },
+    {
+      "system": "S3",
+      "instance": "faulty",
+      "doc_verdict": "REJECT",
+      "expected": "REJECT",
+      "doc_correct": true,
+      "false_reject": false,
+      "false_accept": false,
+      "escalation_rate": 0.3333333333333333,
+      "escalated_subparts": [
+        "A.1",
+        "B.4",
+        "B.5"
+      ],
+      "failed_subparts": [
+        "A.1",
+        "B.3",
+        "B.4",
+        "B.5",
+        "C.2"
+      ],
+      "faults_caught": 5,
+      "fault_hits": {
+        "ERR-1": {
+          "subpart": "A.1",
+          "caught": true,
+          "caught_at": "escalation",
+          "expected_cheapest": "Tier2"
+        },
+        "ERR-2": {
+          "subpart": "B.3",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.3"
+        },
+        "ERR-3": {
+          "subpart": "B.4",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.1"
+        },
+        "ERR-4": {
+          "subpart": "B.5",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier1.2"
+        },
+        "ERR-5": {
+          "subpart": "C.2",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.5"
+        }
+      },
+      "cost_usd": 0.299495,
+      "deterministic_fails": [
+        "B.3",
+        "B.4",
+        "B.5",
+        "C.2"
+      ]
+    },
+    {
+      "system": "S2",
+      "instance": "clean",
+      "doc_verdict": "ACCEPT",
+      "expected": "ACCEPT",
+      "doc_correct": true,
+      "false_reject": false,
+      "false_accept": false,
+      "escalation_rate": 0.1111111111111111,
+      "escalated_subparts": [
+        "A.1"
+      ],
+      "failed_subparts": [],
+      "faults_caught": 0,
+      "fault_hits": {},
+      "cost_usd": 0.115852,
+      "deterministic_fails": []
+    },
+    {
+      "system": "S2",
+      "instance": "faulty",
+      "doc_verdict": "REJECT",
+      "expected": "REJECT",
+      "doc_correct": true,
+      "false_reject": false,
+      "false_accept": false,
+      "escalation_rate": 0.2222222222222222,
+      "escalated_subparts": [
+        "A.1",
+        "B.5"
+      ],
+      "failed_subparts": [
+        "A.1",
+        "B.3",
+        "B.4",
+        "B.5",
+        "C.2"
+      ],
+      "faults_caught": 5,
+      "fault_hits": {
+        "ERR-1": {
+          "subpart": "A.1",
+          "caught": true,
+          "caught_at": "escalation",
+          "expected_cheapest": "Tier2"
+        },
+        "ERR-2": {
+          "subpart": "B.3",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.3"
+        },
+        "ERR-3": {
+          "subpart": "B.4",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.1"
+        },
+        "ERR-4": {
+          "subpart": "B.5",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier1.2"
+        },
+        "ERR-5": {
+          "subpart": "C.2",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.5"
+        }
+      },
+      "cost_usd": 0.148864,
+      "deterministic_fails": [
+        "B.3",
+        "B.4",
+        "B.5",
+        "C.2"
+      ]
+    },
+    {
+      "system": "S1",
+      "instance": "clean",
+      "doc_verdict": "ACCEPT",
+      "expected": "ACCEPT",
+      "doc_correct": true,
+      "false_reject": false,
+      "false_accept": false,
+      "escalation_rate": 0.0,
+      "escalated_subparts": [],
+      "failed_subparts": [],
+      "faults_caught": 0,
+      "fault_hits": {},
+      "cost_usd": 0.040434,
+      "deterministic_fails": []
+    },
+    {
+      "system": "S1",
+      "instance": "faulty",
+      "doc_verdict": "REJECT",
+      "expected": "REJECT",
+      "doc_correct": true,
+      "false_reject": false,
+      "false_accept": false,
+      "escalation_rate": 0.0,
+      "escalated_subparts": [],
+      "failed_subparts": [
+        "A.1",
+        "B.3",
+        "B.4",
+        "B.5",
+        "C.2"
+      ],
+      "faults_caught": 5,
+      "fault_hits": {
+        "ERR-1": {
+          "subpart": "A.1",
+          "caught": true,
+          "caught_at": "bulk_judge",
+          "expected_cheapest": "Tier2"
+        },
+        "ERR-2": {
+          "subpart": "B.3",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.3"
+        },
+        "ERR-3": {
+          "subpart": "B.4",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.1"
+        },
+        "ERR-4": {
+          "subpart": "B.5",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier1.2"
+        },
+        "ERR-5": {
+          "subpart": "C.2",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.5"
+        }
+      },
+      "cost_usd": 0.040313,
+      "deterministic_fails": [
+        "B.3",
+        "B.4",
+        "B.5",
+        "C.2"
+      ]
+    }
+  ],
+  "cost_quality_by_system": {
+    "S3": {
+      "mean_cost_usd": 0.281374,
+      "clean_accept_ok": true,
+      "faulty_reject_ok": true,
+      "faults_caught": 5,
+      "fault_hits": {
+        "ERR-1": {
+          "subpart": "A.1",
+          "caught": true,
+          "caught_at": "escalation",
+          "expected_cheapest": "Tier2"
+        },
+        "ERR-2": {
+          "subpart": "B.3",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.3"
+        },
+        "ERR-3": {
+          "subpart": "B.4",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.1"
+        },
+        "ERR-4": {
+          "subpart": "B.5",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier1.2"
+        },
+        "ERR-5": {
+          "subpart": "C.2",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.5"
+        }
+      },
+      "mean_escalation_rate": 0.3333333333333333,
+      "cost_vs_S3": 1.0,
+      "savings_vs_S3": 0.0
+    },
+    "S2": {
+      "mean_cost_usd": 0.132358,
+      "clean_accept_ok": true,
+      "faulty_reject_ok": true,
+      "faults_caught": 5,
+      "fault_hits": {
+        "ERR-1": {
+          "subpart": "A.1",
+          "caught": true,
+          "caught_at": "escalation",
+          "expected_cheapest": "Tier2"
+        },
+        "ERR-2": {
+          "subpart": "B.3",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.3"
+        },
+        "ERR-3": {
+          "subpart": "B.4",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.1"
+        },
+        "ERR-4": {
+          "subpart": "B.5",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier1.2"
+        },
+        "ERR-5": {
+          "subpart": "C.2",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.5"
+        }
+      },
+      "mean_escalation_rate": 0.16666666666666666,
+      "cost_vs_S3": 0.47039882860534377,
+      "savings_vs_S3": 0.5296011713946562
+    },
+    "S1": {
+      "mean_cost_usd": 0.0403735,
+      "clean_accept_ok": true,
+      "faulty_reject_ok": true,
+      "faults_caught": 5,
+      "fault_hits": {
+        "ERR-1": {
+          "subpart": "A.1",
+          "caught": true,
+          "caught_at": "bulk_judge",
+          "expected_cheapest": "Tier2"
+        },
+        "ERR-2": {
+          "subpart": "B.3",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.3"
+        },
+        "ERR-3": {
+          "subpart": "B.4",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.1"
+        },
+        "ERR-4": {
+          "subpart": "B.5",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier1.2"
+        },
+        "ERR-5": {
+          "subpart": "C.2",
+          "caught": true,
+          "caught_at": "deterministic",
+          "expected_cheapest": "Tier0.5"
+        }
+      },
+      "mean_escalation_rate": 0.0,
+      "cost_vs_S3": 0.1434869604156745,
+      "savings_vs_S3": 0.8565130395843255
+    }
+  },
+  "spend": {
+    "hard_cap_usd": 25.0,
+    "spent_usd": 1.3055,
+    "remaining_usd": 23.6945,
+    "n_calls": 71,
+    "by_model_usd": {
+      "gpt-5.6-terra": 0.922925,
+      "gpt-5.4-mini": 0.044146,
+      "gpt-5.6-luna": 0.287454,
+      "gpt-5.6-sol": 0.050975
+    },
+    "by_purpose_usd": {
+      "ingest.I4.terra": 0.258417,
+      "ingest.I2.mini": 0.044146,
+      "arm.prior_luna": 0.016084,
+      "arm.escalate.gpt-5.6-terra": 0.027668,
+      "arm.escalate.gpt-5.6-sol": 0.050975,
+      "S3.judge": 0.430208,
+      "S3.escalate": 0.13254,
+      "S2.judge": 0.190623,
+      "S2.escalate": 0.074092,
+      "S1.judge": 0.080747
+    },
+    "input_tokens": 456864,
+    "cached_tokens": 12476,
+    "output_tokens": 60132,
+    "reasoning_tokens": 23796
+  },
+  "systems_md_estimates": {
+    "S4": 2.79,
+    "S3": 1.24,
+    "S2": 0.63,
+    "S1": 0.2
+  }
+}

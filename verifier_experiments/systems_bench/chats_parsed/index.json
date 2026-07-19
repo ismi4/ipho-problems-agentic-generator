@@ -1,0 +1,26 @@
+[
+  {
+    "id": "3",
+    "title": "Assignment framing",
+    "n_messages": 8,
+    "n_chars": 13571
+  },
+  {
+    "id": "1",
+    "title": "Designing Experiments (1)",
+    "n_messages": 17,
+    "n_chars": 33584
+  },
+  {
+    "id": "2",
+    "title": "Defining Correctness (2)",
+    "n_messages": 45,
+    "n_chars": 74521
+  },
+  {
+    "id": "4",
+    "title": "IPHO solution PDFs with test errors",
+    "n_messages": 37,
+    "n_chars": 10413
+  }
+]

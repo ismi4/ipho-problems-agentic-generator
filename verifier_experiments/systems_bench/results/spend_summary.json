@@ -1,0 +1,28 @@
+{
+  "hard_cap_usd": 25.0,
+  "spent_usd": 1.3055,
+  "remaining_usd": 23.6945,
+  "n_calls": 71,
+  "by_model_usd": {
+    "gpt-5.6-terra": 0.922925,
+    "gpt-5.4-mini": 0.044146,
+    "gpt-5.6-luna": 0.287454,
+    "gpt-5.6-sol": 0.050975
+  },
+  "by_purpose_usd": {
+    "ingest.I4.terra": 0.258417,
+    "ingest.I2.mini": 0.044146,
+    "arm.prior_luna": 0.016084,
+    "arm.escalate.gpt-5.6-terra": 0.027668,
+    "arm.escalate.gpt-5.6-sol": 0.050975,
+    "S3.judge": 0.430208,
+    "S3.escalate": 0.13254,
+    "S2.judge": 0.190623,
+    "S2.escalate": 0.074092,
+    "S1.judge": 0.080747
+  },
+  "input_tokens": 456864,
+  "cached_tokens": 12476,
+  "output_tokens": 60132,
+  "reasoning_tokens": 23796
+}

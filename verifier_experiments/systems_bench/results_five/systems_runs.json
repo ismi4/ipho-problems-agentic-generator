@@ -1,0 +1,1017 @@
+{
+  "runs": [
+    {
+      "system": "S3",
+      "problem_id": "2020_Q2",
+      "instance_id": "clean",
+      "deterministic": {
+        "checks": [],
+        "n_fail": 0,
+        "failed_subparts": [],
+        "verdict_hint": "NO_DETERMINISTIC_REJECT"
+      },
+      "per_subpart": [
+        {
+          "id": "A1",
+          "judge": {
+            "subpart_id": "A.1",
+            "answer_type": "symbolic",
+            "governing_law_identified": "|P| = -F\u00b7v = mgv(\u03bcx cos\u00b2\u03b1 + \u03bcy sin\u00b2\u03b1), with \u03bcx = 0.75 > \u03bcy = 0.50.",
+            "regime_assumed": "Horizontal plane, kinetic anisotropic friction, nonzero velocity, and \u03b1 treated as a directed velocity angle.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "Maximum occurs for sin\u00b2\u03b1 = 0.",
+              "Thus \u03b1 = n\u03c0, i.e. motion parallel to the X axis in either direction."
+            ],
+            "refutation": "At \u03b1 = \u03c0, the velocity is along the negative X direction and |P| = mgv\u03bcx, equal to the maximum. The stated answer \u03b1 = 0 alone omits this equally valid direction.",
+            "first_point_of_failure": "The maximization condition was not stated completely: \u03b1 = 0 is not the only directed angle giving the maximum.",
+            "verdict": "FAIL",
+            "confidence": 0.84,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "sympy: simplify(-F.dot(v)) -> Abs(P)=m*g*v*(mu_x*cos(alpha)**2+mu_y*sin(alpha)**2)",
+              "dimensional: [P]=M*L^2*T^-3; m*g*v*mu has identical units",
+              "limit: alpha=0 -> mu_x*m*g*v; alpha=pi/2 -> mu_y*m*g*v, hence mu_x>mu_y selects X axis",
+              "derivative/root: d|P|/dalpha=2*m*g*v*(mu_y-mu_x)*sin(alpha)*cos(alpha); maxima at sin(alpha)=0",
+              "conservation residual: not applicable; prescribed kinetic-friction power law has no conserved mechanical energy",
+              "BC/branch: directed-angle roots are alpha=n*pi; as an angle to the unoriented X axis this is alpha=0 (motion along either X direction)",
+              "symbol-whitelist: uses only P,F,v,m,g,mu_x,mu_y,alpha supplied by P",
+              "faithfulness: S derives the correct power expression and correctly identifies the X-axis direction as maximizing it"
+            ],
+            "refutation": null,
+            "verdict": "PASS",
+            "confidence": 0.91,
+            "first_point_of_failure": null,
+            "fault_type_guess": null
+          },
+          "final_verdict": "PASS",
+          "first_point_of_failure": "The maximization condition was not stated completely: \u03b1 = 0 is not the only directed angle giving the maximum.",
+          "cost_usd": 0.03418
+        },
+        {
+          "id": "A3",
+          "judge": {
+            "subpart_id": "A.3",
+            "answer_type": "numeric_with_units",
+            "governing_law_identified": "Newton's second law with anisotropic kinetic friction: dv_x/dt=-g mu_x v_x/v and dv_y/dt=-g mu_y v_y/v.",
+            "regime_assumed": "Both velocity components remain positive up to the stated instant; kinetic sliding friction model applies.",
+            "dimensional_check": "pass",
+            "case_branches_found": [],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.0131525
+        },
+        {
+          "id": "A4",
+          "judge": {
+            "subpart_id": "A.4",
+            "answer_type": "numeric_with_units",
+            "governing_law_identified": "The curvature is set by the component of anisotropic friction perpendicular to velocity: m v^2/R = |F_perp|, with F_perp = m g (mu_x-mu_y) sin(alpha) cos(alpha).",
+            "regime_assumed": "Sliding motion on a horizontal plane, with positive speed v=1.0 m/s and the given anisotropic kinetic-friction model.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "Minimum positive radius occurs when |sin(2 alpha)|=1, i.e. alpha=pi/4 modulo pi/2.",
+              "For an angle convention restricted to the first quadrant, alpha=pi/4."
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.0174075
+        },
+        {
+          "id": "C2",
+          "judge": {
+            "verdict": "UNCERTAIN",
+            "parse_error": "",
+            "subpart_id": "C2"
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "dimensional: expected C2 threshold follows from T(0)=m*v0**2/L <= mu_y*m*g, hence v0max=sqrt(mu_y*g*L) has units m/s",
+              "limiting-case: mu_y->0 gives v0max->0; L->infinity gives v0max->infinity, consistent with initial centripetal-force requirement",
+              "conservation_residual: using C1 tangential work, v(phi)**2=v0**2-g*L*((mu_x+mu_y)*phi+(mu_x-mu_y)*sin(phi)*cos(phi)); radial balance gives T/m=v0**2/L-g*((mu_x+mu_y)*phi+2*(mu_x-mu_y)*sin(phi)*cos(phi)), whose maximum for mu_x=0.75, mu_y=0.5 is at phi=0",
+              "BC/root-branch: at phi=0, static support of the resting mass is limited by mu_y*m*g, selecting the physical positive root v0max=sqrt(mu_y*g*L)=sqrt(4.9)=2.21 m/s",
+              "symbol-whitelist: the expected result uses only P symbols {mu_y,g,L,v0,m,T,phi}; S supplies no C2 expression to inspect",
+              "faithfulness_to_P: the supplied S excerpt stops during C1 ('Integrating this equ...') and contains no C2 derivation, condition, or numerical answer"
+            ],
+            "refutation": "C2 is absent from S. Therefore it does not establish the required maximum initial velocity. A faithful solution must at least impose the initial radial condition m*v0^2/L <= mu_y*m*g and report v0max=sqrt(mu_y*g*L)=2.21 m/s for L=1 m.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "first_point_of_failure": "No solution content for sub-part C2 is present in S.",
+            "fault_type_guess": "missing_subpart_answer"
+          },
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "No solution content for sub-part C2 is present in S.",
+          "cost_usd": 0.07756
+        },
+        {
+          "id": "C3",
+          "judge": {
+            "verdict": "UNCERTAIN",
+            "parse_error": "",
+            "subpart_id": "C3"
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "symbol-whitelist: no C3 candidate expression or numerical distance is present to inspect",
+              "dimensional: not executable; S provides no C3 distance formula with length dimension",
+              "limiting-case: not executable; no C3 result to test against isotropic/friction limits",
+              "conservation-residual: expected C1-derived relation would determine stop angle via v(phi_stop)=0 and C3 distance s=L*phi_stop, but S never supplies this specialization",
+              "BC/root-branch: no stopping root phi_stop>=0 or physical first-root selection is given",
+              "faithfulness-to-P: C3 explicitly asks the travel distance for v0=v0max; S excerpt stops during C1 and contains neither C2 vmax nor a C3 answer"
+            ],
+            "refutation": "The submitted reference material contains no solution for C3: it ends mid-C1 ('Integrating this equ...'). Therefore it does not provide the required distance, its dependence on v0max, or a numerical answer for L=1 m and the specified friction coefficients.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "first_point_of_failure": "Missing C3 derivation and final distance answer.",
+            "fault_type_guess": "incomplete/truncated reference solution"
+          },
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "Missing C3 derivation and final distance answer.",
+          "cost_usd": 0.0723725
+        }
+      ],
+      "escalated_subparts": [
+        "A1",
+        "C2",
+        "C3"
+      ],
+      "escalation_rate": 0.6,
+      "doc_verdict": "REJECT",
+      "failed_subparts": [
+        "C2",
+        "C3"
+      ],
+      "cost_usd": 0.214672,
+      "scoring": {
+        "expected_label": "ACCEPT",
+        "doc_verdict": "REJECT",
+        "doc_correct": false,
+        "false_reject": true,
+        "false_accept": false,
+        "fault_hits": {},
+        "faults_caught": 0,
+        "faults_total": 0
+      },
+      "wall_s": 106.64044237136841,
+      "problem_name": "Anisotropic Friction"
+    },
+    {
+      "system": "S3",
+      "problem_id": "2020_Q2",
+      "instance_id": "faulty",
+      "deterministic": {
+        "checks": [],
+        "n_fail": 0,
+        "failed_subparts": [],
+        "verdict_hint": "NO_DETERMINISTIC_REJECT"
+      },
+      "per_subpart": [
+        {
+          "id": "A1",
+          "judge": {
+            "subpart_id": "A.1",
+            "answer_type": "symbolic",
+            "governing_law_identified": "The friction power is P = F\u00b7v = -mgv(\u03bcx cos\u00b2\u03b1 + \u03bcy sin\u00b2\u03b1), so its absolute value is mgv(\u03bcx cos\u00b2\u03b1 + \u03bcy sin\u00b2\u03b1).",
+            "regime_assumed": "Given \u03bcx = 0.75 > \u03bcy = 0.50, with velocity direction allowed relative to the X axis.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "For \u03bcx > \u03bcy, maximum occurs at \u03b1 = n\u03c0.",
+              "For \u03bcy > \u03bcx, maximum occurs at \u03b1 = \u03c0/2 + n\u03c0.",
+              "For \u03bcx = \u03bcy, all angles give the same power magnitude."
+            ],
+            "refutation": "At \u03b1 = 0, |P| = \u03bcx mgv = 0.75mgv; at the stated answer \u03b1 = \u03c0/2, |P| = \u03bcy mgv = 0.50mgv. Thus \u03c0/2 does not maximize the friction-power magnitude.",
+            "first_point_of_failure": "The displayed final answer \u03b1 = \u03c0/2 contradicts both the preceding reasoning ('\u03b1 = 0') and the maximization of the stated power expression.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "dimensional: |P|=mgv(\u03bcx cos(alpha)^2+\u03bcy sin(alpha)^2) has units of power",
+              "limiting-case: eval(alpha=0)=0.75mgv > eval(alpha=pi/2)=0.50mgv",
+              "conservation-residual: not applicable; dissipative friction means mechanical energy is not conserved",
+              "BC/root-branch: d|P|/dalpha=2mgv(\u03bcy-\u03bcx)sin(alpha)cos(alpha); for \u03bcx>\u03bcy, maxima are alpha=n*pi, while pi/2+n*pi are minima",
+              "symbol-whitelist: uses only P,F,v,m,g,\u03bcx,\u03bcy,alpha from P/S",
+              "faithfulness-to-P: S's displayed formula and sentence 'maximum ... alpha=0' agree with P, but its boxed answer alpha=pi/2 contradicts both"
+            ],
+            "refutation": "SymPy-style: Q=mg*v*(mux*cos(a)**2+muy*sin(a)**2); simplify(Q.subs({mux:Rational(3,4),muy:Rational(1,2),a:0})-Q.subs({mux:Rational(3,4),muy:Rational(1,2),a:pi/2}))=mg*v/4>0. Therefore alpha=pi/2 is not a maximizing direction; the answer is alpha=0 modulo pi (or alpha=0 in the usual principal-angle convention).",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "first_point_of_failure": "The final stated answer alpha=pi/2 contradicts the preceding correct maximization statement alpha=0 and gives the minimum rather than maximum friction-power magnitude.",
+            "fault_type_guess": "final-answer transcription/typographical error"
+          },
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "The final stated answer alpha=pi/2 contradicts the preceding correct maximization statement alpha=0 and gives the minimum rather than maximum friction-power magnitude.",
+          "cost_usd": 0.03121
+        },
+        {
+          "id": "A3",
+          "judge": {
+            "subpart_id": "A.3",
+            "answer_type": "numeric_with_units",
+            "governing_law_identified": "For kinetic anisotropic friction, dvx/dt = -mu_x g vx/v and dvy/dt = -mu_y g vy/v. Hence dvx/dvy = (mu_x vx)/(mu_y vy), giving vx = vx0 (vy/vy0)^(mu_x/mu_y).",
+            "regime_assumed": "Sliding motion with vx>0 and vy>0, before either velocity component reaches zero.",
+            "dimensional_check": "pass",
+            "case_branches_found": [],
+            "refutation": "Using mu_x/mu_y = 0.75/0.50 = 3/2 and vx0=vy0=1 m/s, at vy=0.25 m/s one obtains vx=(0.25)^(3/2)=0.125 m/s, not 0.250 m/s as claimed. The stated intermediate value would instead give speed sqrt(0.25^2+0.25^2)=0.354 m/s, not 0.28 m/s.",
+            "first_point_of_failure": "The solution evaluates the integrated relation incorrectly: vx should be 0.125 m/s, not 0.250 m/s.",
+            "verdict": "FAIL",
+            "confidence": 0.98,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "The solution evaluates the integrated relation incorrectly: vx should be 0.125 m/s, not 0.250 m/s.",
+          "cost_usd": 0.018465
+        },
+        {
+          "id": "A4",
+          "judge": {
+            "subpart_id": "A.4",
+            "answer_type": "numeric_with_units",
+            "governing_law_identified": "The normal component of anisotropic friction is |F_perp| = mg|mu_x-mu_y||sin(alpha)cos(alpha)|, and the curvature relation is mv^2/R = |F_perp|.",
+            "regime_assumed": "Sliding motion with velocity direction alpha; for alpha restricted to the first quadrant, 0 <= alpha <= pi/2.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "For unrestricted velocity directions, minimum radius occurs at alpha = pi/4 + k*pi/2, k integer.",
+              "For alpha in the first quadrant, alpha_3 = pi/4."
+            ],
+            "refutation": null,
+            "first_point_of_failure": "The result for the radius is left symbolic despite all numerical data being supplied. It should state R_min = 2(1.0 m/s)^2/[9.8 m/s^2(0.75-0.50)] = 0.816 m (approximately 0.82 m).",
+            "verdict": "FAIL",
+            "confidence": 0.95,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "The result for the radius is left symbolic despite all numerical data being supplied. It should state R_min = 2(1.0 m/s)^2/[9.8 m/s^2(0.75-0.50)] = 0.816 m (approximately 0.82 m).",
+          "cost_usd": 0.020385
+        },
+        {
+          "id": "C2",
+          "judge": {
+            "verdict": "UNCERTAIN",
+            "parse_error": "",
+            "subpart_id": "C2"
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "sympy-style oracle: v0max=sqrt(g*L*(mu_x+mu_y))=sqrt(9.8*1*(0.75+0.50))=3.5 m/s, obtained from the initial-angle static-friction boundary T(0)=m(v0^2/L-g*mu_x)<=m*g*mu_y",
+              "dimensional: g*L*(mu_x+mu_y) has units m^2/s^2, hence v0max has units m/s",
+              "limiting/BC: at v0=v0max, required holding friction at phi=0 equals mu_y*m*g, i.e. the stationary mass is exactly at its static threshold; lower v0 satisfies it",
+              "conservation residual: the C1 tangential work/energy relation must be used to verify holding throughout rotation, but no C2 derivation/result is present to test",
+              "root-branch: physical branch is v0max>0, namely 3.5 m/s",
+              "symbol-whitelist: no C2 expression is supplied, so there are no unsupported symbols but also no answer to validate",
+              "faithfulness to P: supplied S ends during C1 and contains no solution text or numerical answer for requested sub-part C2"
+            ],
+            "refutation": "The supplied reference solution contains no C2 answer. Independent check gives v0max=3.5 m/s (positive root), but S neither states nor derives this result.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "first_point_of_failure": "C2 is absent from the provided solution S; the text truncates during C1.",
+            "fault_type_guess": "missing/truncated sub-part solution"
+          },
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "C2 is absent from the provided solution S; the text truncates during C1.",
+          "cost_usd": 0.07572999999999999
+        },
+        {
+          "id": "C3",
+          "judge": {
+            "verdict": "UNCERTAIN",
+            "parse_error": "",
+            "subpart_id": "C3"
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "faithfulness_to_P: C3 asks distance traveled at v0=v0max, but supplied S contains no C3 derivation or answer",
+              "symbol_whitelist: no C3-specific expression is present to validate",
+              "dimensional/limiting/conservation/BC-root checks: not executable because the alleged reference solution is truncated before C3"
+            ],
+            "refutation": "The provided solution text ends during C1 and supplies neither v0max from C2 nor the distance requested in C3. Therefore it cannot serve as a reference solution for sub-part C3.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "first_point_of_failure": "Missing C3 solution/answer in S.",
+            "fault_type_guess": "incomplete_or_truncated_reference_solution"
+          },
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "Missing C3 solution/answer in S.",
+          "cost_usd": 0.0589825
+        }
+      ],
+      "escalated_subparts": [
+        "A1",
+        "C2",
+        "C3"
+      ],
+      "escalation_rate": 0.6,
+      "doc_verdict": "REJECT",
+      "failed_subparts": [
+        "A1",
+        "A3",
+        "A4",
+        "C2",
+        "C3"
+      ],
+      "cost_usd": 0.204772,
+      "scoring": {
+        "expected_label": "REJECT",
+        "doc_verdict": "REJECT",
+        "doc_correct": true,
+        "false_reject": false,
+        "false_accept": false,
+        "fault_hits": {
+          "F2020-1": {
+            "subpart": "A1",
+            "caught": true,
+            "caught_at": "escalation",
+            "type": "wrong_extremum"
+          },
+          "F2020-2": {
+            "subpart": "A3",
+            "caught": true,
+            "caught_at": "bulk_judge",
+            "type": "dropped_factor"
+          },
+          "F2020-3": {
+            "subpart": "C2",
+            "caught": true,
+            "caught_at": "escalation",
+            "type": "wrong_parameter"
+          }
+        },
+        "faults_caught": 3,
+        "faults_total": 3
+      },
+      "wall_s": 97.10090804100037,
+      "problem_name": "Anisotropic Friction"
+    },
+    {
+      "system": "S3",
+      "problem_id": "2021_Q1",
+      "instance_id": "clean",
+      "deterministic": {
+        "checks": [],
+        "n_fail": 0,
+        "failed_subparts": [],
+        "verdict_hint": "NO_DETERMINISTIC_REJECT"
+      },
+      "per_subpart": [
+        {
+          "id": "A.1",
+          "judge": {
+            "subpart_id": "A.1",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Hydrostatic pressure p = p_atm + rho g d, pressure continuity at the oil-water interface, and horizontal resultant force F = integral p dA on each plate face.",
+            "regime_assumed": "Static, incompressible and immiscible fluids; negligible surface tension; rho_oil < rho_0; atmospheric pressure contributions cancel.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "For rho_oil < rho_0, the resultant acts to the right.",
+              "If rho_oil = rho_0, the resultant would vanish."
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "SymPy-style: h0 = solve(rho_oil*g*h0 - rho0*g*h, h0)[0] = rho0*h/rho_oil.",
+              "Hydrostatic/resultant: F = integrate(rho_oil*g*y*w,(y,0,h0)) - integrate(rho0*g*y*w,(y,0,h)) = rho0*g*h**2*w*(rho0/rho_oil - 1)/2.",
+              "Dimensional: [rho*g*h^2*w] = N.",
+              "Limiting cases: rho_oil -> rho0 gives F -> 0; rho_oil < rho0 gives F > 0, hence rightward.",
+              "Pressure-continuity residual: rho_oil*g*h0-rho0*g*h -> 0 after substitution.",
+              "BC/root branch: choose positive h0 because oil-column height is physical; no alternate physical root.",
+              "Symbol whitelist: rho0, rho_oil, g, h, w are defined in P; h0 is an internal auxiliary.",
+              "Faithfulness: integrates gauge pressures on the oil-facing and water-facing sides; atmospheric contributions cancel."
+            ],
+            "refutation": null,
+            "verdict": "PASS",
+            "confidence": 0.995,
+            "first_point_of_failure": null,
+            "fault_type_guess": null
+          },
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.049409999999999996
+        },
+        {
+          "id": "A.4",
+          "judge": {
+            "subpart_id": "A.4",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Hydrostatic pressure in the mantle and water, with the horizontal resultant on the right-hand crust obtained from pressure tractions on its limiting boundaries.",
+            "regime_assumed": "Leading order for k << 1, with D = 2(1-rho0/rho1)h/k and physical positive crust thickness requiring rho1 > rho0.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "For rho1 > rho0 and k > 0, D is positive and the D^2 term is the leading O(k^-2) contribution.",
+              "At rho1 = rho0, D = 0 and the stated leading-order hierarchy is degenerate.",
+              "For rho1 < rho0, the A.3 expression gives an unphysical negative D under the stated geometry."
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.93,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.0471125
+        },
+        {
+          "id": "A.5",
+          "judge": {
+            "subpart_id": "A.5",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Thermal diffusion governed by Fourier conduction, with thermal diffusivity alpha = kappa/(rho c), so a slab of thickness D equilibrates on a scale tau ~ D^2/alpha.",
+            "regime_assumed": "Order-of-magnitude thermal equilibration of a planar crustal slab of thickness D, with constant kappa and c and density approximated by rho1; the numerical eigenmode factor is not specified.",
+            "dimensional_check": "pass",
+            "case_branches_found": [],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.98,
+            "escalate": true,
+            "escalate_reason": "The result is an estimate and contains an undetermined dimensionless factor A, whose precise value depends on the definition of characteristic time and thermal boundary/initial conditions."
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "dimensional: [rho c D^2/kappa]=T; exponent system solves (alpha,beta,gamma,delta)=(1,1,-1,2)",
+              "limiting-case: tau increases as D^2, rho1, c and decreases as kappa, consistent with diffusion",
+              "conservation-residual: stored thermal energy ~rho1 c S D DeltaT and conducted energy over tau ~tau S kappa DeltaT/D give tau~rho1 c D^2/kappa",
+              "BC/root-branch: no boundary-condition-dependent numerical factor is required because P requests an estimate; A remains unspecified",
+              "symbol-whitelist: rho1,c,kappa,D,tau are given/defined in P; DeltaT and S are auxiliary scale-analysis symbols",
+              "faithfulness-to-P: uses constant c,kappa and planar far-distance thickness D, and correctly notes independence from initial temperature difference"
+            ],
+            "refutation": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "first_point_of_failure": null,
+            "fault_type_guess": null
+          },
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.050089999999999996
+        },
+        {
+          "id": "B.2",
+          "judge": {
+            "subpart_id": "B.2",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Conservation of ray energy: for a uniform angular emission distribution, the energy deposited in a surface interval is related by \u03b5(x)|dx| = (E/\u03c0)|d\u03b80|, using the ray-map x = 2z0 cot \u03b80.",
+            "regime_assumed": "Two-dimensional ray optics for a line source; uniform emission over the downward half-plane; complete absorption upon the first return to the surface; signed horizontal coordinate x with symmetric contributions on the two sides.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "x > 0 corresponds to initial rays directed toward positive x",
+              "x < 0 gives the symmetric result \u03b5(-x) = \u03b5(x)",
+              "x = 0 is finite, with \u03b5(0) = E/(2\u03c0z0)"
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.027585
+        },
+        {
+          "id": "B.3",
+          "judge": {
+            "subpart_id": "B.3",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Successive specular surface reflections preserve the horizontal advance per surface-to-surface arc, x1(theta)=2 z0 cot(theta). Thus after n reflections, the angular-band signal covers the interval [n x_plus, n x_minus], where x_minus=x1(theta0-delta_theta0/2) and x_plus=x1(theta0+delta_theta0/2).",
+            "regime_assumed": "Narrow angular band: delta_theta0 << theta0 and delta_theta0 << 1; result is retained to leading order in delta_theta0.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "Exact discrete coverage involves integer reflection number: adjacent intervals cease to have a gap once n(x_minus-x_plus) >= x_plus.",
+              "To leading order, the integer-rounding ambiguity changes xmax only by O(x1), subleading relative to xmax~1/delta_theta0.",
+              "The leading asymptotic result is xmax approximately x1(theta0)^2/(x_minus-x_plus)=2 z0 cos^2(theta0)/delta_theta0."
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.93,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.042605
+        }
+      ],
+      "escalated_subparts": [
+        "A.1",
+        "A.5"
+      ],
+      "escalation_rate": 0.4,
+      "doc_verdict": "ACCEPT",
+      "failed_subparts": [],
+      "cost_usd": 0.216803,
+      "scoring": {
+        "expected_label": "ACCEPT",
+        "doc_verdict": "ACCEPT",
+        "doc_correct": true,
+        "false_reject": false,
+        "false_accept": false,
+        "fault_hits": {},
+        "faults_caught": 0,
+        "faults_total": 0
+      },
+      "wall_s": 72.56927061080933,
+      "problem_name": "Planetary Physics"
+    },
+    {
+      "system": "S3",
+      "problem_id": "2021_Q1",
+      "instance_id": "faulty",
+      "deterministic": {
+        "checks": [],
+        "n_fail": 0,
+        "failed_subparts": [],
+        "verdict_hint": "NO_DETERMINISTIC_REJECT"
+      },
+      "per_subpart": [
+        {
+          "id": "A.1",
+          "judge": {
+            "subpart_id": "A.1",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Hydrostatic pressure balance, including continuity of pressure at the oil-water interface, followed by integration of pressure over each face of the right plate.",
+            "regime_assumed": "Static, immiscible fluids; negligible surface tension; oil-water interface is at the lower plate edges; both free surfaces are at atmospheric pressure.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "Given branch: rho_oil < rho_0, so the oil free surface lies above the external water free surface.",
+              "Pressure continuity gives rho_oil g h' = rho_0 g h, hence h' = (rho_0/rho_oil) h, not h."
+            ],
+            "refutation": "Take rho_oil = rho_0/2. Pressure balance requires h' = 2h. The oil force is (1/2)(rho_0/2)g(2h)^2 w = rho_0 g h^2 w, whereas the external-water force is (1/2)rho_0 g h^2 w. Thus the net force is +(1/2)rho_0 g h^2 w, to the right. The proposed result gives -(1/4)rho_0 g h^2 w, to the left.",
+            "first_point_of_failure": "The solution incorrectly asserts that the oil free surface is level with the water free surface, h' = h. Hydrostatic equilibrium instead requires h' = rho_0 h/rho_oil.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "SymPy.dimensions((rho_oil-rho0)*g*h**2*w/2) -> force: pass",
+              "BC/hydrostatic residual: Eq(rho_oil*g*hprime,rho0*g*h) => hprime=rho0*h/rho_oil, not h",
+              "limiting_case: rho_oil->rho0 gives Fx->0; rho_oil<rho0 gives hprime>h and force must be toward +x",
+              "conservation_residual: pressure mismatch at the oil-water interface if hprime=h is (rho0-rho_oil)*g*h != 0",
+              "symbol_whitelist: rho_oil,rho0,g,h,w,hprime all are defined by P/S",
+              "faithfulness_to_P: P states oil is poured until its lower level reaches the plate bottoms; it does not impose equal oil and external-water free-surface levels"
+            ],
+            "refutation": "The first assertion h'=h violates hydrostatic pressure continuity at the oil-water interface at the lower plate edges. With atmospheric pressure at both free surfaces, rho_oil*g*hprime=rho0*g*h, hence hprime=(rho0/rho_oil)h>h. Therefore Fx=(w/2)[rho_oil*g*hprime**2-rho0*g*h**2]=(rho0*g*h**2*w/2)(rho0/rho_oil-1), directed to the right. For rho_oil=rho0/2, this is +(rho0*g*h^2*w)/2, while S gives -(rho0*g*h^2*w)/4.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "first_point_of_failure": "The solution imposes equal free-surface elevations, h'=h, instead of enforcing pressure continuity at the oil-water interface.",
+            "fault_type_guess": "incorrect hydrostatic boundary condition / omitted free-surface-height adjustment"
+          },
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "The solution imposes equal free-surface elevations, h'=h, instead of enforcing pressure continuity at the oil-water interface.",
+          "cost_usd": 0.063865
+        },
+        {
+          "id": "A.4",
+          "judge": {
+            "verdict": "UNCERTAIN",
+            "parse_error": "",
+            "subpart_id": "A.4"
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "dimensional: claimed F=2gLh^2(rho1-rho0)/k has force units",
+              "limiting-case/asymptotic: with D=2(1-rho0/rho1)h/k, the displayed preceding expression contains (rho1 g L/2)D^2=O(k^-2), not O(k^-1)",
+              "SymPy-style residual: simplify(F_exact-F_claim) with F_exact=L*(p0*D+rho1*g*(h+D)^2/2-rho0*g*h^2/2) leaves a nonzero leading term 2*L*g*rho1*(1-rho0/rho1)^2*h^2/k^2",
+              "conservation/gauge check: F_exact retains p0*L*D, so the stated pressure-force construction depends on the common pressure p(0,0)=p(infinity,0); a closed-body net force cannot depend on an arbitrary uniform pressure offset",
+              "BC/root-branch: no root/branch choice is involved; hydrostatic relations used are compatible with A.3",
+              "symbol-whitelist: final symbols are all defined in P; p0 is only an introduced intermediate pressure",
+              "faithfulness to P: using A.3 is appropriate, but the claimed leading-order reduction contradicts the solution's own exact integrated expression"
+            ],
+            "refutation": "The step claiming that hD is the leading term is false: D is proportional to k^(-1), hence D^2 in (h+D)^2 is O(k^(-2)) and dominates hD=O(k^(-1)). Direct substitution into the displayed formula cannot yield F\u22482gLh^2(rho1-rho0)/k. Moreover, the intermediate force depends on the arbitrary common pressure p(0,0), indicating missing boundary/pressure contributions if it is intended as a physical net force.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "first_point_of_failure": "\"Since k << 1, and D \u221d k^\u22121, the term with hD \u221d k^\u22121 is of the leading order\"",
+            "fault_type_guess": "asymptotic-order error, with likely missing pressure-boundary contribution in the force construction"
+          },
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "\"Since k << 1, and D \u221d k^\u22121, the term with hD \u221d k^\u22121 is of the leading order\"",
+          "cost_usd": 0.0978225
+        },
+        {
+          "id": "A.5",
+          "judge": {
+            "subpart_id": "A.5",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Thermal diffusion/conduction, with diffusivity alpha = kappa/(rho c), giving a relaxation timescale of order D^2/alpha.",
+            "regime_assumed": "Order-of-magnitude thermal equilibration across a slab of far-distance crust of thickness D, with constant thermal conductivity and specific heat.",
+            "dimensional_check": "pass",
+            "case_branches_found": [],
+            "refutation": "The dimensional-analysis claim delta = 3 is false: with alpha = beta = 1 and gamma = -1, length balance gives -3 + 2 - 1 + delta = 0, hence delta = 2. Indeed rho c D^3/kappa has dimensions T\u00b7L, not time.",
+            "first_point_of_failure": "The stated dimensional-analysis solution incorrectly obtains delta = 3, although its displayed final result uses the correct power D^2.",
+            "verdict": "FAIL",
+            "confidence": 0.96,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "dimensional: solve([-3*a+2*b+g+d, a+g, -2*b-3*g-1, -b-g],[a,b,g,d]) -> {a:1,b:1,g:-1,d:2}; claimed d=3 is inconsistent",
+              "limiting-case: D->0 gives tau->0; kappa->infinity gives tau->0; rho*c->infinity gives tau->infinity, consistent with tau~rho*c*D^2/kappa",
+              "conservation-residual: stored heat ~rho*c*S*D*DeltaT and conducted energy in time tau ~kappa*S*DeltaT*tau/D; residual=0 implies tau~rho*c*D^2/kappa",
+              "BC/root-branch: diffusion across a slab has lowest relaxation mode tau=C*D^2/alpha, C dimensionless and BC-dependent; no branch ambiguity affects scaling",
+              "symbol-whitelist: rho1,c,kappa,D are all given/defined in P; dimensionless prefactor is admissible",
+              "faithfulness-to-P: P requests an estimate and permits dimensional/order analysis; the final scaling satisfies this, but the displayed dimensional-analysis exponent statement does not"
+            ],
+            "refutation": "The first method explicitly states delta=3, but dimensional balance gives delta=2: -3(1)+2(1)-1+delta=0 => delta=2. Thus rho1*c*D^3/kappa has dimensions T*L, not time. The subsequently printed final result rho1*c*D^2/kappa is correct, so S is internally inconsistent.",
+            "verdict": "FAIL",
+            "confidence": 0.98,
+            "first_point_of_failure": "\"This gives alpha = beta = 1, gamma = -1, delta = 3\"; the correct exponent is delta=2.",
+            "fault_type_guess": "algebraic/dimensional-analysis exponent typo or derivation inconsistency"
+          },
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "\"This gives alpha = beta = 1, gamma = -1, delta = 3\"; the correct exponent is delta=2.",
+          "cost_usd": 0.05586
+        },
+        {
+          "id": "B.2",
+          "judge": {
+            "subpart_id": "B.2",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Conservation of ray energy under the angular-to-surface-coordinate mapping: \u03b5(x)|dx| = (dE/d\u03b80)|d\u03b80|.",
+            "regime_assumed": "Geometrical-ray approximation; isotropic uniform emission into the downward half-plane (positive z component); complete absorption at the first return to the surface.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "x > 0 corresponds to initial angles 0 < \u03b80 < \u03c0/2.",
+              "x < 0 corresponds symmetrically to rays emitted toward negative x.",
+              "The stated total energy E is distributed over an angular interval of \u03c0, not 2\u03c0."
+            ],
+            "refutation": "Integrating the proposed \u03b5(x) over both surface sides gives only E/2: 2\u222b_0^\u221e [E z0/(\u03c0(4z0^2+x^2))] dx = E/2, whereas all of the stated P-wave energy E is emitted into and absorbed at the surface. Uniform emission over the downward semicircle requires dE/d\u03b80 = E/\u03c0, not E/(2\u03c0).",
+            "first_point_of_failure": "The solution assigns E/(2\u03c0) d\u03b80 to a downward-going angular interval whose total width is \u03c0.",
+            "verdict": "FAIL",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "FAIL",
+          "first_point_of_failure": "The solution assigns E/(2\u03c0) d\u03b80 to a downward-going angular interval whose total width is \u03c0.",
+          "cost_usd": 0.0301375
+        },
+        {
+          "id": "B.3",
+          "judge": {
+            "subpart_id": "B.3",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Geometrical-ray propagation with specular reflection at the surface. A ray launched at angle theta has successive surface encounters at x = n x1(theta), where x1(theta) = A cot(b theta). The angular interval maps at the nth encounter into an interval whose width grows as n |dx1/dtheta| delta_theta0.",
+            "regime_assumed": "delta_theta0 << 1 and delta_theta0 << theta0; leading-order asymptotics in delta_theta0, with the discrete reflection number treated continuously because N is of order 1/delta_theta0.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "For the stated 0 < theta0 < pi/2, x1(theta) is positive and decreases monotonically with theta, so x_- > x_+.",
+              "Integer-rounding corrections to the first overlapping reflection band change x_max only by order x1, subleading relative to the order x1^2/(|dx1/dtheta| delta_theta0) result."
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.97,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.0301
+        }
+      ],
+      "escalated_subparts": [
+        "A.1",
+        "A.4",
+        "A.5"
+      ],
+      "escalation_rate": 0.6,
+      "doc_verdict": "REJECT",
+      "failed_subparts": [
+        "A.1",
+        "A.4",
+        "A.5",
+        "B.2"
+      ],
+      "cost_usd": 0.277785,
+      "scoring": {
+        "expected_label": "REJECT",
+        "doc_verdict": "REJECT",
+        "doc_correct": true,
+        "false_reject": false,
+        "false_accept": false,
+        "fault_hits": {
+          "ERR-6": {
+            "subpart": "A.1",
+            "caught": true,
+            "caught_at": "escalation",
+            "type": "faithfulness_drift"
+          },
+          "ERR-7": {
+            "subpart": "A.4",
+            "caught": true,
+            "caught_at": "escalation",
+            "type": "wrong_retained_order"
+          },
+          "ERR-8": {
+            "subpart": "A.5",
+            "caught": true,
+            "caught_at": "escalation",
+            "type": "provenance"
+          },
+          "ERR-9": {
+            "subpart": "B.2",
+            "caught": true,
+            "caught_at": "bulk_judge",
+            "type": "conservation"
+          },
+          "ERR-10": {
+            "subpart": "B.3",
+            "caught": false,
+            "caught_at": null,
+            "type": "completeness"
+          }
+        },
+        "faults_caught": 4,
+        "faults_total": 5
+      },
+      "wall_s": 100.2761583328247,
+      "problem_name": "Planetary Physics"
+    },
+    {
+      "system": "S3",
+      "problem_id": "2023_Q3",
+      "instance_id": "clean",
+      "deterministic": {
+        "checks": [
+          {
+            "check_id": "2_dimless_factor_A1",
+            "subpart": "A.1",
+            "status": "skip",
+            "detail": "observed v=0.23 m/s; exponent_fingerprint 2/3=True 1/3=False; dimensionless geometric factor not decidable by Tier-0/1"
+          },
+          {
+            "check_id": "0.3_sign_direction",
+            "subpart": "B.3",
+            "status": "pass",
+            "detail": "f_x = \u03b3 cos \u03b81 \u2212 \u03b3 cos \u03b82"
+          },
+          {
+            "check_id": "0.1_dimensional",
+            "subpart": "B.4",
+            "status": "pass",
+            "detail": "\u2113=\u221a(\u03b3/(\u03c1g)) dimensionally OK"
+          },
+          {
+            "check_id": "1.2_plugback_root_branch",
+            "subpart": "B.5",
+            "status": "pass",
+            "detail": "decaying branch e^{-x/\u2113} retained"
+          },
+          {
+            "check_id": "0.5_symbol_whitelist",
+            "subpart": "C.2",
+            "status": "pass",
+            "detail": "F_x uses z0 only"
+          }
+        ],
+        "n_fail": 0,
+        "failed_subparts": [],
+        "verdict_hint": "NO_DETERMINISTIC_REJECT"
+      },
+      "per_subpart": [
+        {
+          "id": "A.1",
+          "judge": {
+            "subpart_id": "A.1",
+            "answer_type": "numeric_with_units",
+            "governing_law_identified": "Conservation of volume fixes the merged-drop radius R=2^(1/3)a; the decrease in surface energy, k\u03b3(A_initial-A_final), is converted into translational kinetic energy Mv^2/2.",
+            "regime_assumed": "Drops are spherical before and after merger, total water volume is conserved, surface energy is \u03b3 times the full spherical free-surface area, and the prescribed fraction k=0.06 of released surface energy becomes jump kinetic energy.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "For two identical initial drops, R=2^(1/3)a.",
+              "Released energy is positive because 2-2^(2/3)>0."
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": true,
+          "escalation": {
+            "checks_run": [
+              "dimensional: sqrt(gamma/(rho*a)) has units m/s",
+              "limiting-case: k\u21920 or gamma\u21920 gives v\u21920; a\u2192infinity gives v\u21920",
+              "conservation residual: 2*(4*pi*a^3/3)-(4*pi/3)*(2^(1/3)*a)^3 = 0",
+              "BC/root-branch: positive square-root selected for jump-up speed; released energy is positive since 2-2^(2/3)>0",
+              "symbol-whitelist: all introduced symbols M and DeltaE are explicitly defined and use only quantities from P",
+              "faithfulness-to-P: uses spherical areas, conserved volume, and prescribed kinetic conversion fraction k"
+            ],
+            "refutation": null,
+            "verdict": "PASS",
+            "confidence": 0.999,
+            "first_point_of_failure": null,
+            "fault_type_guess": null
+          },
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.043859999999999996
+        },
+        {
+          "id": "B.3",
+          "judge": {
+            "subpart_id": "B.3",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Horizontal force balance on the cutout water block, with surface-tension forces acting tangentially at its left and right boundary edges.",
+            "regime_assumed": "Static equilibrium; uniform surface tension; forces evaluated per unit length along the y-axis.",
+            "dimensional_check": "pass",
+            "case_branches_found": [],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.0222525
+        },
+        {
+          "id": "B.4",
+          "judge": {
+            "subpart_id": "B.4",
+            "answer_type": "dimensionless_exponent",
+            "governing_law_identified": "Hydrostatic pressure P=P0-rho g z combined with horizontal force balance between pressure forces and the horizontal components of surface tension on an arbitrary surface segment.",
+            "regime_assumed": "Static two-dimensional meniscus; constant density, uniform surface tension, uniform gravity, and a flat vertical board of negligible thickness. No small-slope approximation is used in this sub-part.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "hydrophilic board (z>0 near the board)",
+              "hydrophobic board (z<0 near the board)"
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.02134
+        },
+        {
+          "id": "B.5",
+          "judge": {
+            "subpart_id": "B.5",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Small-slope expansion of the capillary first integral from B.4, followed by the linear capillary equation z'' = z/ell^2.",
+            "regime_assumed": "|z'(x)| << 1, so cos(theta) = 1/sqrt(1+z'^2) is expanded as 1 - z'^2/2; the far-field surface is horizontal with z(infinity)=0.",
+            "dimensional_check": "pass",
+            "case_branches_found": [
+              "The growing solution A exp(x/ell) is excluded for x >= 0 by z(infinity)=0.",
+              "The remaining decaying solution applies for either sign of tan(theta0), representing elevation or depression within the small-slope regime."
+            ],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.98,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.021625
+        },
+        {
+          "id": "C.2",
+          "judge": {
+            "subpart_id": "C.2",
+            "answer_type": "symbolic",
+            "governing_law_identified": "Hydrostatic pressure combined with the capillary first integral (1/2)rho g z^2 + gamma cos(theta) = constant along each connected free-surface segment.",
+            "regime_assumed": "Static, two-dimensional cross-section; identical rods arranged symmetrically, so the interface slope at the midpoint is zero, while the exterior interface becomes horizontal with z -> 0 at infinity.",
+            "dimensional_check": "pass",
+            "case_branches_found": [],
+            "refutation": null,
+            "first_point_of_failure": null,
+            "verdict": "PASS",
+            "confidence": 0.99,
+            "escalate": false,
+            "escalate_reason": null
+          },
+          "escalated": false,
+          "escalation": null,
+          "final_verdict": "PASS",
+          "first_point_of_failure": null,
+          "cost_usd": 0.0221625
+        }
+      ],
+      "escalated_subparts": [
+        "A.1"
+      ],
+      "escalation_rate": 0.2,
+      "doc_verdict": "ACCEPT",
+      "failed_subparts": [],
+      "cost_usd": 0.13124,
+      "scoring": {
+        "expected_label": "ACCEPT",
+        "doc_verdict": "ACCEPT",
+        "doc_correct": true,
+        "false_reject": false,
+        "false_accept": false,
+        "fault_hits": {},
+        "faults_caught": 0,
+        "faults_total": 0
+      },
+      "wall_s": 26.33503484725952,
+      "problem_name": "Water and Objects"
+    }
+  ],
+  "aborted": true,
+  "missing": [
+    "S3/2023_Q3/faulty",
+    "S3/2024_Q3/clean",
+    "S3/2024_Q3/faulty",
+    "S3/2025_Q2/clean",
+    "S3/2025_Q2/faulty",
+    "S2/2020_Q2/clean",
+    "S2/2020_Q2/faulty",
+    "S2/2021_Q1/clean",
+    "S2/2021_Q1/faulty",
+    "S2/2023_Q3/clean",
+    "S2/2023_Q3/faulty",
+    "S2/2024_Q3/clean",
+    "S2/2024_Q3/faulty",
+    "S2/2025_Q2/clean",
+    "S2/2025_Q2/faulty",
+    "S1/2020_Q2/clean",
+    "S1/2020_Q2/faulty",
+    "S1/2021_Q1/clean",
+    "S1/2021_Q1/faulty",
+    "S1/2023_Q3/clean",
+    "S1/2023_Q3/faulty",
+    "S1/2024_Q3/clean",
+    "S1/2024_Q3/faulty",
+    "S1/2025_Q2/clean",
+    "S1/2025_Q2/faulty"
+  ]
+}

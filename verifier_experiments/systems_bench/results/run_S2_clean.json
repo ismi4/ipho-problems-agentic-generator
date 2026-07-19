@@ -1,0 +1,281 @@
+{
+  "system": "S2",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.23 m/s; exponent_fingerprint 2/3=True 1/3=False; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "pass",
+        "detail": "f_x = γ cos θ1 − γ cos θ2"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "pass",
+        "detail": "ℓ=√(γ/(ρg)) dimensionally OK"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "pass",
+        "detail": "decaying branch e^{-x/ℓ} retained"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "pass",
+        "detail": "F_x uses z0 only"
+      }
+    ],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Conservation of volume and conversion of a fraction k of the released surface energy into translational kinetic energy: (1/2)Mv^2 = kΔE",
+        "regime_assumed": "Two identical spherical drops merge into one spherical drop; total water volume is conserved; gravitational and other losses are neglected except for the specified efficiency factor k",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "sympy: R=(2*a**3)**Rational(1,3)=2**Rational(1,3)*a; simplify(2*(4*pi*a**2*gamma)-4*pi*R**2*gamma)=4*pi*a**2*gamma*(2-2**Rational(2,3))",
+          "sympy: M=rho*(2*4*pi*a**3/3); v2=simplify(2*k*DeltaE/M)=3*k*(2-2**Rational(2,3))*gamma/(rho*a); dimensions(v2)=L**2/T**2",
+          "numeric: sqrt(3*0.06*(2-2**(2/3))*7.27e-2/(1.00e3*100e-6))=0.232... m/s -> 0.23 m/s",
+          "limiting: k->0 or gamma->0 gives v->0; a->infinity gives v->0; rho->infinity gives v->0",
+          "conservation residual: 2*(4*pi*a**3/3)-4*pi*(2**(1/3)*a)**3/3 = 0",
+          "BC/root branch: kinetic-energy equation gives v=±sqrt(v2); stated jump-up velocity selects positive branch",
+          "symbol-whitelist: uses only a,rho,gamma,k,M,v,DeltaE and mathematical constants/operators; no unsupported physical parameters",
+          "faithfulness: correctly applies P's spherical-drop and volume-conservation assumptions and specified fraction k of released surface energy"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.999,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0341835
+    },
+    {
+      "id": "B.1",
+      "judge": {
+        "subpart_id": "B.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic equilibrium: dP/dz = -rho g, with boundary condition P(0) = P0",
+        "regime_assumed": "Static incompressible water of constant density in a uniform gravitational field",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.007473
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure P = P0 - ρgz and integration of pressure forces over the water-block boundary; the uniform atmospheric pressure P0 gives zero net horizontal force.",
+        "regime_assumed": "Static hydrostatic water, constant density, per-unit-length cross-section along the y-axis, with the stated water-surface geometry.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.013339
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Static horizontal force balance on the water block, including horizontal components of surface tension at the two edges",
+        "regime_assumed": "Static equilibrium with uniform surface tension and negligible board thickness",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.008308
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance with horizontal surface-tension force balance, yielding the capillary first integral",
+        "regime_assumed": "Static incompressible fluid, uniform surface tension, negligible board thickness, and two-dimensional surface shape",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.008763
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Small-slope expansion of the capillary first integral gives z''(x)=z(x)/ell^2, with z'(x)=tan(theta(x)); imposing z(infinity)=0 and z'(0)=tan(theta0) yields z(x)=-ell tan(theta0)e^{-x/ell}.",
+        "regime_assumed": "Small-slope regime |z'(x)| << 1 on x >= 0, with the surface approaching the undisturbed level z(infinity)=0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Growing branch A e^{x/ell}, rejected by z(infinity)=0",
+          "Decaying branch B e^{-x/ell}, retained",
+          "Degenerate z'=0 branch, compatible only with the zero-slope special case"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.010843
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure force on the submerged rod boundary combined with horizontal components of surface tension at the two contact points.",
+        "regime_assumed": "Static equilibrium; uniform atmospheric pressure, hydrostatic water pressure P = P0 - rho g z, and uniform surface tension gamma.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.012215
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance and the capillary first integral, (1/2)ρgz^2 + γ cosθ = constant, applied at the rod contacts, the symmetric midpoint, and the flat far field.",
+        "regime_assumed": "Static, symmetric two-rod configuration with a horizontal tangent at the midpoint (cosθ = 1) and a flat water surface far from the rods (z = 0, cosθ = 1).",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Force on rod B is directed toward rod A; with +x directed away from A, F_x is negative."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.01085
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "The linearized capillary equation z'' = z/ℓ^2, together with reflection symmetry about the midpoint, gives z(x) = z0 cosh(x/ℓ). Applying z(xa) = za yields z0 = za/cosh(xa/ℓ) = 2za/(e^(xa/ℓ) + e^(-xa/ℓ)).",
+        "regime_assumed": "Small-slope approximation from B.5 and left-right symmetry of two identical rods about x = 0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.009877
+    }
+  ],
+  "escalated_subparts": [
+    "A.1"
+  ],
+  "escalation_rate": 0.1111111111111111,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.115852,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 54.49332022666931
+}

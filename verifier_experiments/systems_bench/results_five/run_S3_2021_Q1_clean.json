@@ -1,0 +1,188 @@
+{
+  "system": "S3",
+  "problem_id": "2021_Q1",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure p = p_atm + rho g d, pressure continuity at the oil-water interface, and horizontal resultant force F = integral p dA on each plate face.",
+        "regime_assumed": "Static, incompressible and immiscible fluids; negligible surface tension; rho_oil < rho_0; atmospheric pressure contributions cancel.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For rho_oil < rho_0, the resultant acts to the right.",
+          "If rho_oil = rho_0, the resultant would vanish."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "SymPy-style: h0 = solve(rho_oil*g*h0 - rho0*g*h, h0)[0] = rho0*h/rho_oil.",
+          "Hydrostatic/resultant: F = integrate(rho_oil*g*y*w,(y,0,h0)) - integrate(rho0*g*y*w,(y,0,h)) = rho0*g*h**2*w*(rho0/rho_oil - 1)/2.",
+          "Dimensional: [rho*g*h^2*w] = N.",
+          "Limiting cases: rho_oil -> rho0 gives F -> 0; rho_oil < rho0 gives F > 0, hence rightward.",
+          "Pressure-continuity residual: rho_oil*g*h0-rho0*g*h -> 0 after substitution.",
+          "BC/root branch: choose positive h0 because oil-column height is physical; no alternate physical root.",
+          "Symbol whitelist: rho0, rho_oil, g, h, w are defined in P; h0 is an internal auxiliary.",
+          "Faithfulness: integrates gauge pressures on the oil-facing and water-facing sides; atmospheric contributions cancel."
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.995,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.049409999999999996
+    },
+    {
+      "id": "A.4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure in the mantle and water, with the horizontal resultant on the right-hand crust obtained from pressure tractions on its limiting boundaries.",
+        "regime_assumed": "Leading order for k << 1, with D = 2(1-rho0/rho1)h/k and physical positive crust thickness requiring rho1 > rho0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "For rho1 > rho0 and k > 0, D is positive and the D^2 term is the leading O(k^-2) contribution.",
+          "At rho1 = rho0, D = 0 and the stated leading-order hierarchy is degenerate.",
+          "For rho1 < rho0, the A.3 expression gives an unphysical negative D under the stated geometry."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.93,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0471125
+    },
+    {
+      "id": "A.5",
+      "judge": {
+        "subpart_id": "A.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Thermal diffusion governed by Fourier conduction, with thermal diffusivity alpha = kappa/(rho c), so a slab of thickness D equilibrates on a scale tau ~ D^2/alpha.",
+        "regime_assumed": "Order-of-magnitude thermal equilibration of a planar crustal slab of thickness D, with constant kappa and c and density approximated by rho1; the numerical eigenmode factor is not specified.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": true,
+        "escalate_reason": "The result is an estimate and contains an undetermined dimensionless factor A, whose precise value depends on the definition of characteristic time and thermal boundary/initial conditions."
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: [rho c D^2/kappa]=T; exponent system solves (alpha,beta,gamma,delta)=(1,1,-1,2)",
+          "limiting-case: tau increases as D^2, rho1, c and decreases as kappa, consistent with diffusion",
+          "conservation-residual: stored thermal energy ~rho1 c S D DeltaT and conducted energy over tau ~tau S kappa DeltaT/D give tau~rho1 c D^2/kappa",
+          "BC/root-branch: no boundary-condition-dependent numerical factor is required because P requests an estimate; A remains unspecified",
+          "symbol-whitelist: rho1,c,kappa,D,tau are given/defined in P; DeltaT and S are auxiliary scale-analysis symbols",
+          "faithfulness-to-P: uses constant c,kappa and planar far-distance thickness D, and correctly notes independence from initial temperature difference"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.050089999999999996
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Conservation of ray energy: for a uniform angular emission distribution, the energy deposited in a surface interval is related by ε(x)|dx| = (E/π)|dθ0|, using the ray-map x = 2z0 cot θ0.",
+        "regime_assumed": "Two-dimensional ray optics for a line source; uniform emission over the downward half-plane; complete absorption upon the first return to the surface; signed horizontal coordinate x with symmetric contributions on the two sides.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "x > 0 corresponds to initial rays directed toward positive x",
+          "x < 0 gives the symmetric result ε(-x) = ε(x)",
+          "x = 0 is finite, with ε(0) = E/(2πz0)"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.027585
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "B.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Successive specular surface reflections preserve the horizontal advance per surface-to-surface arc, x1(theta)=2 z0 cot(theta). Thus after n reflections, the angular-band signal covers the interval [n x_plus, n x_minus], where x_minus=x1(theta0-delta_theta0/2) and x_plus=x1(theta0+delta_theta0/2).",
+        "regime_assumed": "Narrow angular band: delta_theta0 << theta0 and delta_theta0 << 1; result is retained to leading order in delta_theta0.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Exact discrete coverage involves integer reflection number: adjacent intervals cease to have a gap once n(x_minus-x_plus) >= x_plus.",
+          "To leading order, the integer-rounding ambiguity changes xmax only by O(x1), subleading relative to xmax~1/delta_theta0.",
+          "The leading asymptotic result is xmax approximately x1(theta0)^2/(x_minus-x_plus)=2 z0 cos^2(theta0)/delta_theta0."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.93,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.042605
+    }
+  ],
+  "escalated_subparts": [
+    "A.1",
+    "A.5"
+  ],
+  "escalation_rate": 0.4,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.216803,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 72.56927061080933,
+  "problem_name": "Planetary Physics"
+}
