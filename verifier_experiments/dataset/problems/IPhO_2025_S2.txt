@@ -1,0 +1,1143 @@
+                                                                                     Q2-1
+Theory
+
+
+
+                                                                                                   English (Official)
+
+Cox's Timepiece (10 points)
+In 1765, British clockmaker James Cox invented a clock whose only source of energy is the fluctuations
+in atmospheric pressure. Cox's clock used two vessels containing mercury. Changes in atmospheric
+pressure caused mercury to move between the vessels, and the two vessels to move relative to each
+other. This movement acted as an energy source for the actual clock.
+
+
+
+
+We propose an analysis of this device. Throughout,
+we assume that
+                                     →
+                                     −       −
+                                             →
+   • the Earth's gravitational field 𝑔 = − 𝑔 𝑢𝑧 is uni-
+                                  −→
+     form with 𝑔 = 9.8 m ⋅ s and 𝑢𝑧 a unit vector;
+                            −2
+
+   • all liquids are incompressible and their density
+     is denoted 𝜌;
+   • no capillary :::::::
+                   surface::::::::
+                           tension effects will be con-
+     sidered;
+   • the variations of atmospheric pressure with al-
+     titude are neglected;
+   • the surrounding temperature 𝑇a is uniform
+     and all transformations are isothermal.
+                                                                    Fig. 1. Artistic view of Cox's clock 1
+
+
+
+Part A - Pulling on a submerged tube
+We first consider a bath of water that occupies the semi-infinite space 𝑧 ≤ 0. The air above it is at a
+pressure 𝑃a = 𝑃0 . A cylindrical vertical tube of length 𝐻 = 1 m, cross-sectional area 𝑆 = 10 cm2 and mass
+𝑚 = 0.5 kg is dipped into the bath. The bottom end of the tube is open, and the top end of the tube is
+closed. We denote ℎ the altitude of the top of the tube and 𝑧ℓ that of the water inside the tube. The
+thickness of the tube walls is neglected.
+
+           𝑧                                  𝑧                                 𝑧
+
+                               a                                b                                   c
+                                                                                               →
+                                                                                               −
+                                                                                               𝐹
+                              →
+                              −
+                              𝑔
+                                                            →
+                                                            −                 ℎ−           •
+                                                            𝐹                𝑧ℓ −
+                                       ℎ = 𝑧ℓ −         •
+                          →
+                          −
+                          𝐹
+ ℎ = 𝑧ℓ = 0 −         •                     0−                                0−
+
+
+                               𝐻
+
+
+
+
+                              Fig. 2. Sketch of the tube in different configurations
+                                                                                    Q2-2
+Theory
+
+
+
+                                                                                                    English (Official)
+
+We start from the situation where the tube in Fig. 2 contains no gas and its top is at the bath level: in
+other words, ℎ = 0 and 𝑧ℓ = 0 (case a). The tube is then slowly lifted until its bottom end reaches the bath
+                                                          →
+                                                          −    −
+                                                               →
+level. The pulling force exerted on the tube is denoted 𝐹 = 𝐹 𝑢𝑧 .
+
+    A.1      For the configuration shown in Fig. 2 (case b), express the pressure 𝑃w in the                 0.2pt
+                                                                  →
+                                                                  −
+             water at the top of the tube. Also express the force 𝐹 necessary to maintain the
+             tube at this position. Expressions must be written in terms of 𝑃0 , 𝜌, 𝑚, 𝑆, ℎ, 𝑔
+                  −
+                  →
+             and 𝑢𝑧 .
+
+SOLUTION:
+According to the hydrostatic law, one has
+
+
+                                         𝑃w = 𝑃a − 𝜌 𝑔 ℎ = 𝑃0 − 𝜌 𝑔 ℎ
+
+In the configuration shown in Fig. 2 (case b), the tube is submitted to three forces: its weight, the resul-
+tant of the pressure forces and the force exerted by the operator. Thus, at equilibrium, one has
+
+                                         →
+                                         −    →−                → →
+                                                                −    −
+                                         0 = 𝑚 𝑔 + ⒧𝑃w − 𝑃0 ⒭ 𝑆 𝑢𝑧 + 𝐹
+
+which leads to
+
+                                    →
+                                    −                →−                 −
+                                                                        →
+                                    𝐹 = − 𝑚 + 𝜌 𝑆 ℎ 𝑔 = 𝑚 + 𝜌 𝑆 ℎ 𝑔 𝑢𝑧
+
+MARKING SCHEME:
+
+
+                   Expression of 𝑃w (as a function of 𝑃a or 𝑃0 )                              0.1
+                                 →
+                                 −
+                   Expression of 𝐹                                                            0.1
+
+
+Three experiments are performed. In each, the tube is lifted from the initial state shown in Fig. 2(a)
+under the conditions specified in Table 1.
+
+
+                      Experiment        Liquid       𝑇a (°C)    𝜌 (kg ⋅ m−3 )     𝑃sat (Pa)
+                                                                             3
+                           1            Water           20         1.00 × 10     2.34 × 103
+                           2            Water           80         0.97 × 103    47.4 × 103
+                           3            Water           99         0.96 × 103    99.8 × 103
+
+  Table 1. Experimental conditions and numerical values of physical quantities for each experiment
+                    (𝑃sat designates the saturated vapour pressure of the pure fluid)
+
+
+In each case, we study the evolution of the force 𝐹 that must be applied in order to maintain the tube
+in equilibrium at an altitude ℎ, the external pressure being fixed at 𝑃a = 𝑃0 = 1.000 × 105 Pa. Two different
+behaviours are possible
+                                                                                                 Q2-3
+Theory
+
+
+
+                                                                                                               English (Official)
+
+                     Behaviour A                                                              Behaviour B
+            𝐹                                                                       𝐹
+
+     𝐹max −
+                                                                             𝐹max −
+
+
+       𝐹0                                                                      𝐹0
+                                        |     ℎ                                                           |        |     ℎ
+            0                          𝐻                                            0                     ℎ⋆      𝐻
+
+
+    A.2         For each experiment, complete the table in the answer sheet to indicate the ex-                        0.8pt
+                pected behaviour and the numerical values for 𝐹max and for ℎ⋆ (when pertinent),
+                where 𝐹max and ℎ⋆ are defined in the figures illustrating the two behaviours.
+
+SOLUTION:
+Physically, the altitude ℎ⋆ corresponds to the threshold at which saturated vapour appears in the tube.
+This altitude can be expressed using the hydrostatic law, writing
+
+
+                                            𝑃w = 𝑃0 − 𝜌 𝑔 ℎ⋆ = 𝑃sat ⒧𝑇a ⒭ .
+
+One can find
+
+                                                         𝑃0 − 𝑃sat ⒧𝑇a ⒭
+                                                  ℎ⋆ =                   ,
+                                                              𝜌𝑔
+
+and calculate its numerical value for each experiment. If the value obtained is higher than 𝐻 , behaviour
+A is observed; otherwise, behaviour B is observed. According to the previous question, the force 𝐹 is
+related to ℎ by
+
+
+                                                  𝐹 = 𝑚 + 𝜌 𝑆 ℎ 𝑔
+
+which leads to
+
+
+                                          ⎪𝑚 + 𝜌 𝑆 𝐻  𝑔
+                                          ⎧                         for behaviour A
+                                   𝐹max = ⎨
+                                          ⎪
+                                          ⎩𝑚 + 𝜌 𝑆 ℎ⋆  𝑔          for behaviour B
+
+One can deduce the following predictions:
+
+
+                          Experiment        Behaviour (A or B ?)                ℎ⋆ (cm)        𝐹max (N)
+                               1                         A                                      14.7
+                               2                         A                                      14.4
+                               3                         B                              2.1       5.1
+                                                                                          Q2-4
+Theory
+
+
+
+                                                                                                English (Official)
+
+MARKING SCHEME:
+
+
+                   All behaviours are correct (*all or nothing*): A/A/B                   0.2
+                   Experiment 1: Numerical value of 𝐹max in 14.6, 15 (N)                0.1
+                   Experiment 2: Numerical value of 𝐹max in 14, 14.5 (N)                0.1
+                   Experiment 3: Numerical value of ℎ in 2, 2.2 (cm) (0.1 pt if
+                                                              ⋆
+                                                                                          0.2
+                   only literal expression is correct)
+                   Experiment 3: Numerical value of 𝐹max in 5, 5.2 (N) (0.1 pt if       0.2
+                   only literal expression is correct)
+
+
+When we replace the water with liquid mercury (whose properties are given below), behaviour B is ob-
+served.
+
+
+                                   Liquid         𝑇a (°C)     𝜌 (kg ⋅ m−3 )   𝑃sat (Pa)
+                                                                         3
+                                 Mercury            20        13.5 × 10        0.163
+
+
+     A.3     Express the relative error, denoted 𝜀, committed when we evaluate the maximal              0.3pt
+             force 𝐹max neglecting 𝑃sat compared to 𝑃0 . Give the numerical value of 𝜀.
+
+SOLUTION:
+For behaviour B, the expression of 𝐹max previously obtained can be reformulated as
+
+
+                                            𝐹max = 𝑚 𝑔 + ⒧𝑃0 − 𝑃sat ⒭ 𝑆
+
+Neglecting the saturated vapour pressure compared to the atmospheric pressure, one obtains
+
+
+                                                  𝐹max ≃ 𝑚 𝑔 + 𝑃0 𝑆
+
+Thus, the relative error 𝜀 is given by
+
+                                                     𝑃sat
+                                            𝜀=              ≃ 1.6 × 10−6
+                                                 𝑃0 + 𝑚 𝑔/𝑆
+
+MARKING SCHEME:
+
+
+                   Literal expression of 𝜀 (with or without 𝑃sat in denominator)          0.2
+                   Numerical value of 𝜀 in 1, 2 × 10   −6
+                                                                                          0.1
+
+
+
+Part B - Two-part barometric tube
+                                                                                   Q2-5
+Theory
+
+
+
+                                                                                            English (Official)
+
+                                                                𝑧
+
+From now on, we work with mercury (density
+𝜌 = 13.5 × 103 kg ⋅ m−3 ) at the ambient tempera-                                  →
+                                                                                   −        →
+                                                                                            −
+                                                                                            𝑔
+                                                                                   𝐹
+ture 𝑇a = 20 °C and we take 𝑃sat = 0.
+
+Let us consider a tube with a reservoir on top,                                •
+modeled as two superposed cylinders of differ-                                         𝐻b = 20 cm
+ent dimensions, as shown in Fig. 3.                          𝑧ℓ −
+                                                             ℎt −
+   • the bottom part (still called the tube)
+     has cross-sectional area 𝑆t and height
+     𝐻t = 80 cm ;                                             0−
+   • the top part (called the bulb) has                                                𝐻t = 80 cm
+     cross-sectional area 𝑆b > 𝑆t and height
+     𝐻b = 20 cm.
+
+This two-part tube is dipped into a semi-infinite
+liquid bath.
+
+                                                         Fig. 3. Sketch of the two-part barometric tube
+
+
+As in Part A, the system is prepared such that the tube contains no air. We identify the vertical position
+of the tube by the altitude ℎt of the junction between the lower part of the tube and the bulb. The height
+                                                           →
+                                                           −
+of the column of mercury is again denoted 𝑧ℓ . The force 𝐹 that must be exerted to maintain the tube in
+equilibrium in the configuration shown in Fig. 3 can now be written as
+
+                                              →
+                                              −                   −
+                                                                  →
+                                              𝐹 = ⒧𝑚tb + 𝑚add ⒭ 𝑔 𝑢𝑧                                        (1)
+
+where 𝑚tb is the total mass of the two-part tube (when empty of mercury).
+
+    B.1      On the answer sheet, color the area corresponding to the volume of liquid mer-         0.3pt
+             cury that is responsible for the term 𝑚add appearing in equation (1).
+
+SOLUTION:
+By adapting the reasoning used at part A, one can deduce that the mass 𝑚add corresponds to the liquid
+mass in the two-part tube which is above the outside surface of the liquid bath, as shown below.
+                                          𝑧
+
+
+
+
+                                       𝑧ℓ −                            𝑚add
+
+
+
+                                        0−
+                                                                                           Q2-6
+Theory
+
+
+
+                                                                                                         English (Official)
+
+MARKING SCHEME:
+
+
+                   Coloring of the correct area (0.1 pt only if a correct                         0.3
+                   expression of 𝑚add is provided but the colored area is
+                   incorrect)
+
+
+The mass 𝑚add depends both on the height ℎt and the atmospheric pressure 𝑃a . For the next question,
+assume that the atmospheric pressure is fixed at 𝑃a = 𝑃0 = 1.000×105 Pa. Starting from the situation where
+the system is completely submerged, the tube is slowly lifted until its base is flush with the liquid bath.
+
+    B.2     Sketch the evolution of the mass 𝑚add as a function of ℎt for ℎt ∈ −𝐻b , 𝐻t . On                   1.4pt
+            the graph, provide the expression for the slopes of the different segments, as
+            well as the ℎt analytical value of any angular points, in terms of 𝑃0 , 𝜌, 𝑔, 𝑆b , 𝑆t ,
+            𝐻b and 𝐻t .
+
+SOLUTION:
+Using the same reasoning as in question A2, one can determine that saturated vapour appears in the
+two-part barometric tube when the altitude of the liquid column in the tube reaches the critical value
+
+                                                  𝑃0 − 𝑃sat   𝑃
+                                          𝑧ℓ⋆ =             = 0 = 76 cm
+                                                     𝜌𝑔      𝜌𝑔
+
+taking 𝑃sat = 0. Combining this result with that of the previous question, one obtains the following graph:
+                                   𝑚add
+
+                                                     slope : 𝜌𝑆t
+                                                                                slope : − 𝜌 ⒧𝑆b − 𝑆t ⒭
+                  slope : 𝜌𝑆b
+
+                                                                                           slope : 0
+                           |                                        |             | |           ℎt
+                         − 𝐻b      0                            𝑧ℓ⋆ − 𝐻b         𝑧ℓ⋆ 𝐻t
+                                                                   (= 56 cm)   (= 76 cm)
+
+
+MARKING SCHEME:
+                                                                                               Q2-7
+Theory
+
+
+
+                                                                                                           English (Official)
+
+                   Qualitative aspect: Graph with 4 straight pieces (0.1pt only if                   0.2
+                   there are 3 pieces; 0 else)
+                   Qualitative aspect: For the 1st & 2nd pieces, the slopes are                      0.2
+                   positive *and* the slope of 2nd piece is less than that of 1st
+                   (*all or nothing*)
+                   Qualitative aspect: The 3rd piece has a negative slope                            0.2
+                   Qualitative aspect: The 4th piece has a null slope                                0.2
+                   Expressions of the two first slopes (*all or nothing*)                            0.1
+                   Expression of the negative slope                                                  0.2
+                   ℎt analytical values of the 3 intermediate angular points                         0.3
+                   (0.1pt per value)
+
+
+As the system is lifted while 𝑃a = 𝑃0 = 105 Pa, we stop when the free surface of the liquid is in the middle
+of the bulb. The value of ℎt is fixed and then we observe variations in the mass 𝑚add due to variations in
+the atmospheric pressure described by
+
+
+                                                𝑃a (𝑡) = 𝑃0 + 𝑃1 (𝑡)                                                       (2)
+
+where 𝑃0 designates the average value and 𝑃1 is a perturbative term. We model 𝑃1 by a periodic triangular
+function of amplitude 𝐴 = 5 × 102 Pa and period 𝜏1 of 1 week.
+                                𝑃1 (𝑡)
+                                              𝜏1
+                                𝐴−
+
+                                0                                                          𝑡
+
+                              −𝐴 −
+
+                         Fig. 4. Simplified model of the perturbative term 𝑃1 (𝑡)
+
+
+    B.3     Given that 𝑆t = 5 cm2 and 𝑆b = 200 cm2 , express the amplitude 𝛥𝑚add of the varia-                     0.3pt
+            tions of the mass 𝑚add over time, then give its numerical value. Assume that the
+            liquid surface always stays in the bulb.
+
+SOLUTION:
+By neglecting the saturated vapour pressure in the bulb, the altitude 𝑧ℓ of the free surface of the liquid
+in the tube is given by
+
+                                     𝑃a (𝑡)   𝑃  𝑃 (𝑡)           𝐻                    𝑃1 (𝑡)
+                          𝑧ℓ (𝑡) =          = 0 + 1    =     ℎt + b          +
+                                      𝜌𝑔     𝜌𝑔   𝜌𝑔         
+                                                                  2                    𝜌𝑔
+                                                                                      
+                                                           mean value 𝑧ℓ,0       perturbative term
+
+
+which leads to
+                                                                                               Q2-8
+Theory
+
+
+
+                                                                                                            English (Official)
+
+
+                                                                                               𝑆b 𝑃1 (𝑡)
+                    𝑚add (𝑡) = 𝜌𝑆t ℎt + 𝑆b ⒧𝑧ℓ (𝑡) − ℎt ⒭  = 𝜌 𝑆t ℎt + 𝑆b ⒧𝑧ℓ,0 − ℎt ⒭ +
+                                                                                                  𝑔
+
+The first term gives the mean value of the mass 𝑚add (𝑡), while the last term characterizes its temporal
+variations. One can deduce the magnitude
+
+                                                            𝑆b 𝐴
+                                                 𝛥𝑚add =         ≃ 1 kg
+                                                             𝑔
+
+MARKING SCHEME:
+
+
+                  Literal expression of 𝛥𝑚add                                                         0.2
+                  Numerical value *with unit*, in 1 kg, 1.1 kg                                      0.1
+
+
+
+Part C - Cox's timepiece
+The real mechanism developed by Cox is complex (Fig. 5). We study a simplified version, depicted in Fig.
+6, and described below
+   • a cylindrical bottom cistern containing a mercury bath ;
+   • a two-part barometric tube identical to that studied in part B, which is still completely emptied of
+     any air, is dipped into the bath ;
+   • the cistern and the two-part tube are each suspended by a cable. Both cables (assumed to be
+     inextensible and of negligible mass) pass through a system of ideal pullies and finish attached to
+     either side of the same mass 𝑀 , which can slide on a horizontal surface ;
+   • the total volume of liquid mercury contained in the system is 𝑉ℓ = 5 L.
+The height, cross-section and masses of each part are given in Table 2. The position of mass 𝑀 is ref-
+erenced by the coordinate 𝑥 of its center of mass. We consider solid friction between the horizontal
+support and the mass 𝑀 , without distinction between static and dynamic coefficients; the magnitude of
+this force when sliding occurs is denoted 𝐹s .
+Two stops limit the displacement of the mass 𝑀 such that −𝑋 ≤ 𝑥 ≤ 𝑋 (with 𝑋 > 0). Assume that the value
+of 𝑋 guarantees that
+   • the bottom of the two-part tube never touches the bottom of the cistern nor comes out of the liquid
+     bath;
+   • the altitude 𝑧ℓ of the mercury column is always in the upper bulb.
+                                                                                         Q2-9
+Theory
+
+
+
+                                                                                                     English (Official)
+
+
+
+                                                                                   𝑥
+                                                                             −𝑋      𝑋
+                                                                                  | |        𝑥
+
+
+                                                                  •            •𝑀 •              •
+
+                                                                  •                              •
+                                                                               • •
+
+                                                                     →
+                                                                     −
+                                                                     𝑔             •
+                                                                                         2′
+
+
+                                                                                         2
+
+
+                                                                 1
+
+
+                                                      liquid mercury
+
+
+  Fig. 5. Real Cox's timepiece 2 (without         Fig. 6. Sketch of the system modeling the timepiece
+  mercury)
+
+
+
+       Reference              Name                 Height             Section :::::
+                                                                               Cross             Empty mass
+                                                                       section
+                                                                      ::::::::
+                                                                               area
+            1                 cistern             𝐻c = 30 cm             𝑆c = 210 cm2                 𝑚c
+            2          tubular part of the        𝐻t = 80 cm              𝑆t = 5 cm2
+                        barometric tube                                                       total mass of
+                                                                                             the barometric
+            2′             bulb of the            𝐻b = 20 cm           𝑆b = 200 cm2             tube : 𝑚tb
+                         barometric tube
+
+                        Table 2. Dimensions and notations for the model system
+
+
+The system evolves in contact with the atmosphere, whose pressure fluctuates as in Fig. 4 (still with
+amplitude 𝐴 = 5 × 102 Pa and period 𝜏1 = 1 week). At the start 𝑡 = 0, the mass 𝑀 is at rest at 𝑥 = 0 and the
+tensions exerted by the two cables on either side of the mass 𝑀 are in balance while 𝑃1 (0) = 0. We define
+
+                                             𝑆b + 𝑆c − 𝑆t 𝐹s 𝑆b + 𝑆c 𝐹s
+                                        𝜉=                  ≃                                                       (3)
+                                                𝑆b 𝑆c     𝐴   𝑆b 𝑆c 𝐴
+
+where the last expression uses that 𝑆t ≪ 𝑆b , 𝑆c (which we will assume is valid until the end of the problem).
+                                                                                 Q2-10
+Theory
+
+
+
+                                                                                              English (Official)
+
+
+    C.1       Determine the threshold 𝜉⋆ such that 𝑀 remains indefinitely at rest when 𝜉 > 𝜉⋆ .       1pt
+
+
+SOLUTION:
+Consider the case in which the mass 𝑀 stays at rest at 𝑥 = 0. At the start 𝑡 = 0, the tensions exerted
+by the two cables on either side of the mass 𝑀 are in balance: the force 𝐹0 required to suspend the
+barometric tube (with the fluid it contains) is equal to that required to suspend the cistern (with the fluid
+it contains). When the atmospheric pressure increases from 𝑃a = 𝑃0 , the fluid rises in the barometric tube
+while it descends in the cistern. As a result, the added mass in the tube increases, while the added mass
+in the cistern decreases. We denote 𝑚1,tb and 𝑚1,c the (algebraic) variation of the apparent masses of
+each container. Thus, the tensions exerted by the two cables can be written:
+                      −
+                      →
+     • 𝐹0 + 𝑚1,tb 𝑔 𝑢𝑥 for the cable on the right, suspending the tube;
+                     −
+                     →
+   • − 𝐹0 + 𝑚1,c 𝑔 𝑢𝑥 for the cable on the left, suspending the cistern.
+According to the principle of mass conservation, one can immediately state that 𝑚1,tb = − 𝑚1,c . Subse-
+quently, we choose to keep only 𝑚1,c in the expressions (but all the calculations can be carried out while
+keeping 𝑚1,tb ).
+
+                     When 𝑃a = 𝑃0                                         When 𝑃a increases
+
+
+
+                           0                                                         0
+                           |              𝑥                                          |        𝑥
+
+                −
+                →                        −
+                                         →                                  −
+                                                                            →                         −
+                                                                                                      →
+           − 𝐹0 𝑢𝑥                  + 𝐹0 𝑢𝑥                 − ⒧𝐹0 + 𝑚1,c 𝑔⒭ 𝑢𝑥       + ⒧𝐹0 + 𝑚1,tb 𝑔⒭ 𝑢𝑥
+       •               • 𝑀 •                   •               •              •  𝑀 •             •
+                                                                                 •
+                                                                              →
+                                                                              −
+                                                                              𝑅t
+
+       •                                       •                •                                 •
+                       •   •                                                     •   •
+                                                   →
+                                                   −
+                                                   𝑔
+
+                           •                                                         •
+                                                       𝛿b
+
+
+
+
+                                               𝑃0                       𝑃a
+                                     𝛥𝑧ℓ,0 =                𝛥𝑧ℓ (𝑡) =      (𝑡)
+                                               𝜌𝑔                       𝜌𝑔
+
+
+
+
+                                                       𝛿c
+                                                                                  Q2-11
+Theory
+
+
+
+                                                                                                      English (Official)
+
+The friction force between the support and the mass 𝑀 needed to maintain the equilibrium is therefore
+given by
+
+                              →
+                              −                    −
+                                                   →                  −
+                                                                      →             −
+                                                                                    →
+                              𝑅t = − 𝐹0 − 𝑚1,c 𝑔 𝑢𝑥 + 𝐹0 + 𝑚1,c 𝑔 𝑢𝑥 = 2 𝑚1,c 𝑔 𝑢𝑥
+
+In addition, according to the sketch above (where displacements 𝛿b and 𝛿c are algebraic), we have
+𝑚1,c = 𝜌 𝑆c 𝛿c .
+It is now necessary to determine 𝛿c . One can use
+                                             𝑃1
+   • the hydrostatic law :      𝛿b − 𝛿 c =
+                                             𝜌𝑔
+   • the conservation of the total volume/mass of mercury :               𝑆b 𝛿b = − 𝑆c − 𝑆t  𝛿c ≃ −𝑆c 𝛿c   (given that
+     𝑆t ≪ 𝑆b , 𝑆c )
+Solving the system formed by those equations, one finds
+
+                                                   𝑆b       𝑃1       𝑆b 𝑃1
+                                      𝛿c = −                    ≃−
+                                               𝑆b + 𝑆c − 𝑆t 𝜌 𝑔    𝑆b + 𝑆 c 𝜌 𝑔
+
+which finally yields
+
+                                    →
+                                    −          2 𝑆 b 𝑆c        −
+                                                               →     2𝑆 𝑆    −
+                                                                             →
+                                    𝑅t = −                  𝑃1 𝑢𝑥 ≃ − b c 𝑃1 𝑢𝑥
+                                             𝑆b + 𝑆 c − 𝑆 t          𝑆b + 𝑆c
+
+With the triangular model for 𝑃1 (𝑡), the maximum static friction force is obtained when 𝑃1 = ± 𝐴. There-
+fore, according to the Coulomb's law of friction, the mass 𝑀 stays at rest if and only if
+
+                                                    2 𝑆b 𝑆c
+                                                               𝐴 < 𝐹s
+                                                  𝑆b + 𝑆c − 𝑆t
+
+This inequality can be rewritten as
+
+                                                    𝑆b + 𝑆c − 𝑆t 𝐹s
+                                               2<                   =𝜉
+                                                       𝑆b 𝑆c     𝐴
+
+which allows us to identify
+
+
+                                                        𝜉⋆ = 2
+
+MARKING SCHEME:
+                                                                       Q2-12
+Theory
+
+
+
+                                                                                           English (Official)
+
+                  Introduction of geometric parameters to locate the positions       0.1
+                  of the fluid surfaces in each vessel
+                  Expression of mass or volume variation of fluid in at least        0.1
+                  one of the vessels, in terms of those geometric parameters
+                  (with or without using 𝑆t ≪ 𝑆b , 𝑆c )
+                  Physical law: Conservation of the total mass/volume                0.2
+                  Physical law: Expression of barometric difference of heights       0.2
+                  between the two surfaces
+                  Physical law: Expression of the friction force at equilibrium      0.1
+                  (with or without using 𝑆t ≪ 𝑆b , 𝑆c )
+                  Physical law: Use of Coulomb's law in sticky situation             0.1
+                  Conclusion: Obtaining 𝜉   ⋆
+                                                                                     0.2
+
+
+For the next question only, suppose that the mass 𝑀 is temporarily blocked at 𝑥 = 𝑋.
+
+                                                             →
+                                                             −    −→
+    C.2     Give an expression for the total tension force 𝑇 = 𝑇 𝑢𝑥 acting on the mass 𝑀           1pt
+            due to the tension in two cables at this position, when 𝑃1 = 0, in terms of 𝜌, 𝑔, 𝑋
+            and pertinent cross-sections.
+
+SOLUTION:
+Let us compare the configurations of the system when 𝑥 = 0 and when 𝑥 = 𝑋.
+                                                                                             Q2-13
+Theory
+
+
+
+                                                                                                                     English (Official)
+
+                    At 𝑥 = 0                                                                 At 𝑥 = 𝑋
+
+
+
+                        0                                                                         0𝑋
+                        |                  𝑥                                                      | |                𝑥
+
+               −
+               →                        −
+                                        →                                                 −
+                                                                                          →                                     −
+                                                                                                                                →
+          − 𝐹0 𝑢𝑥                  + 𝐹0 𝑢𝑥                                − ⒧𝐹0 + 𝑚1,c 𝑔⒭ 𝑢𝑥                   + ⒧𝐹0 + 𝑚1,tb 𝑔⒭ 𝑢𝑥
+      •             • 𝑀 •                      •                           •                 • 𝑀 •                      •
+
+
+      •                                        •                           •                                             •
+                    •   •                                                                     •       •
+                                                   →
+                                                   −
+                                                   𝑔
+
+                        •                                𝛿b                                       •
+
+
+                                                     −𝑋
+
+
+                                               𝑃0                                 𝛥𝑧ℓ,0
+                                     𝛥𝑧ℓ,0 =
+                                               𝜌𝑔
+
+
+
+                                                           𝛿c
+
+
+
+
+                                                       𝑋
+
+Assuming that the atmospheric pressure is temporarily fixed at 𝑃0 , the difference 𝛥𝑧ℓ of fluid heights be-
+tween the cistern and the barometric tube is the same in both configurations. It is given by 𝛥𝑧ℓ,0 = 𝑃0 /𝜌 𝑔
+and leads to
+
+
+                                                                𝛿b = 𝛿c
+
+The total volume/mass of mercury is also conserved. This conservation can be expressed by the equation
+
+                                ⒧𝑆c − 𝑆t ⒭ 𝛿c − ⒧𝑆c + 𝑆t ⒭ 𝑋
+                                         +            𝑆b ⒧𝛿b + 𝑋⒭
+                                                                                               =0
+                                     volume of mercury                     volume of mercury
+                               algebraically won by the cistern       algebraically won by the bulb
+
+
+which can be reformulated as
+
+
+                                             𝑆b 𝛿b + ⒧𝑆c − 𝑆t ⒭ 𝛿c = ⒧𝑆c − 𝑆b + 𝑆t ⒭ 𝑋
+
+One obtains
+                                                                               Q2-14
+Theory
+
+
+
+                                                                                                 English (Official)
+
+
+                                                           𝑆c − 𝑆 b + 𝑆 t
+                                              𝛿b = 𝛿c =                   𝑋
+                                                           𝑆b + 𝑆 c − 𝑆 t
+
+Thus, the supplementary added mass in the cistern is given by
+
+                                                           2𝑆c ⒧𝑆b − 𝑆t ⒭      2𝑆 𝑆
+                              𝑚1,c = 𝜌 𝑆c ⒧𝛿c − 𝑋⒭ = − 𝜌                  𝑋 ≃ − b c 𝜌𝑋
+                                                           𝑆c + 𝑆 b − 𝑆 t      𝑆b + 𝑆 c
+
+and, as explained in C1, we still have 𝑚1,tb = − 𝑚1,c .
+                                                                         →
+                                                                         −                     −
+                                                                                               →               −
+                                                                                                               →
+Finally, according to the sketch, one obtain the resultant tension force 𝑇 = ⒧𝑚1,tb − 𝑚1,c ⒭ 𝑔 𝑢𝑥 = − 2 𝑚1,c 𝑔 𝑢𝑥 ,
+that is
+
+                                   − 4𝑆c ⒧𝑆b − 𝑆t ⒭
+                                   →                       → 4 𝑆 b 𝑆c
+                                                           −                   −
+                                                                               →
+                                   𝑇=                𝜌 𝑔 𝑋 𝑢𝑥 ≃          𝜌 𝑔 𝑋 𝑢𝑥
+                                      𝑆b + 𝑆 c − 𝑆 t            𝑆b + 𝑆 c
+
+MARKING SCHEME:
+
+
+                    Introduction of geometric parameters to locate the positions           0.1
+                    of the fluid surfaces in each vessel
+                    Expressions of mass or volume variations of fluid in one of            0.3
+                    the vessels in terms of 𝑋 and those geometric parameters
+                    (with or without using 𝑆t ≪ 𝑆b , 𝑆c )
+                    Physical law: Conservation of the total mass/volume                    0.2
+                    Physical law: Expression of barometric difference of heights           0.2
+                    between the two surfaces
+                                                          →
+                                                          −
+                    Expression of the total tension force 𝑇 (with or without using         0.2
+                    𝑆t ≪ 𝑆 b , 𝑆 c )
+
+
+When 𝜉 < 𝜉⋆ , starting again from 𝑥 = 0 and 𝑃1 = 0, two different behaviours can be observed for 𝑡 ≥ 0. To
+distinguish them, we need to introduce another parameter
+
+                                               2 ⒧𝑆b − 𝑆t ⒭ 𝜌 𝑔 𝑋 2 𝜌 𝑔 𝑋
+                                          𝜆=                     ≃                                              (4)
+                                                   𝑆b         𝐴      𝐴
+
+     C.3     Complete the table in the answer sheet to indicate the condition under which                2pt
+             each regime is obtained. Conditions must be expressed as inequalities on 𝜉
+             and/or 𝜆. In addition, sketch the variations of 𝑥 (𝑡) /𝑋 for 𝑡 ∈ 0, 3 𝜏1  that are con-
+             sistent with the variations of 𝑃1 (𝑡) /𝐴 already present. Specification of remarkable
+             points coordinates is not required.
+
+SOLUTION:
+When 𝜉 < 𝜉⋆ , there necessarily exists an instant from which the mass 𝑀 begins to sweep on the right.
+                                                                        →
+                                                                        −
+From there, the mass 𝑀 is continuously accelerated by the total tension 𝑇 until it is blocked by the stop
+at 𝑥 = 𝑋. According to Fig. 5, one can assume that 𝑋 is of the order of a few centimeters, so the time
+                                                                                      Q2-15
+Theory
+
+
+
+                                                                                                        English (Official)
+
+needed to switch between the two positions 𝑥 = 0 and 𝑥 = 𝑋 can reasonably be neglected in front of the
+period 𝜏1 .
+                                             →
+                                             −
+Once blocked at 𝑥 = 𝑋, the resultant tension 𝑇 can be determined by generalizing the reasoning carried
+out in the two previous questions. One obtains the following equations:
+                                         𝑃1
+   • hydrostatic law :      𝛿b − 𝛿 c =
+                                         𝜌𝑔
+   • conservation of the volume/mass :             𝑆b 𝛿b + ⒧𝑆c − 𝑆t ⒭ 𝛿c = ⒧𝑆c − 𝑆b + 𝑆t ⒭ 𝑋
+The resolution of this system gives
+
+                                                𝑆c − 𝑆 b + 𝑆 t        𝑆b       𝑃1
+                                         𝛿c =                  𝑋−
+                                                𝑆b + 𝑆 c − 𝑆 t    𝑆b + 𝑆c − 𝑆t 𝜌 𝑔
+
+from which we deduce the perturbative added mass
+
+                                                     2𝑆c ⒧𝑆b − 𝑆t ⒭       𝑆b 𝑆c       𝑃1
+                      𝑚1,c = 𝜌 𝑆c ⒧𝛿c − 𝑋⒭ = −𝜌                    𝑋+                     = − 𝑚1,tb
+                                                     𝑆b + 𝑆 c − 𝑆 t    𝑆b + 𝑆 c − 𝑆 t 𝜌 𝑔
+
+Then finally
+
+                           →
+                           −              −
+                                          →      4𝑆c ⒧𝑆b − 𝑆t ⒭         2 𝑆 b 𝑆c       −
+                                                                                       →
+                           𝑇 = − 2 𝑚1,c 𝑔 𝑢𝑥 =                 𝜌𝑔𝑋 +               𝑃 𝑢
+                                                 𝑆b + 𝑆c − 𝑆t         𝑆b + 𝑆 c − 𝑆 t 1 𝑥
+
+                                                                                                 →
+                                                                                                 − − →
+According to Coulomb's law of friction, the mass 𝑀 will stay at rest at the position 𝑥 = 𝑋 while 𝑇 ⋅ 𝑢𝑥 > − 𝐹s .
+With the model adopted for 𝑃1 (𝑡), this condition is always satisfied if
+
+                                        4 𝑆c ⒧𝑆b − 𝑆t ⒭         2 𝑆b 𝑆c
+                                                        𝜌𝑔𝑋 −              𝐴 > − 𝐹𝑠
+                                        𝑆b + 𝑆 c − 𝑆 t        𝑆b + 𝑆c − 𝑆t
+
+Hence, using the parameters 𝜉 and 𝜆, one can identify the two possible regimes :
+   • Regime 1 :       𝜉 +2𝜆 > 2         (once at 𝑥 = 𝑋 , the mass 𝑀 stays indefinitely at rest)
+                               𝑥 (𝑡) /𝑋
+
+                                   1−
+
+                                   0                 |              |                 |    𝑡
+                                                    𝜏1             2𝜏1               3𝜏1
+                               −1 −
+
+   • Regime 2 :       𝜉 + 2𝜆 < 2         (once at 𝑥 = 𝑋 , the mass 𝑀 will periodically sweep between the two
+     stops)
+                                                                       Q2-16
+Theory
+
+
+
+                                                                                         English (Official)
+
+                             𝑥 (𝑡) /𝑋
+
+                               1−
+
+                               0             |            |           |    𝑡
+                                            𝜏1           2𝜏1         3𝜏1
+                             −1 −
+
+MARKING SCHEME:
+
+                                 →
+                                 −
+                  Expression for 𝑇 in the general case, containing both 𝑃1 and     0.2
+                  𝑋 terms.
+                  At least one inequality is correct (without considering strict   0.2
+                  or large)
+                  Both inequalities are correct (without considering strict or     0.1
+                  large)
+                  Global appearance of *both* graphs: one seems to show an         0.2
+                  aperiodic behaviour, the other a periodic behaviour (*all or
+                  nothing*)
+                  Global appearance: each graph is in accordance with the          0.2
+                  correct sign of obtained inequality (focus on symbols > / <,
+                  without considering if the inequality is strict or large)
+                  Either graph 1 or 2 shows: A first switch from 𝑥 = 0 to 𝑥 = 𝑋    0.2
+                                                                𝜏
+                  that begins somewhere in the interval 𝑡 ∈ ⒧0, 1 
+                                                                4
+                  Either graph 1 or 2 shows: The switch is instantaneous           0.2
+                  Graph in aperiodic regime: 𝑥 = 𝑋 for all times after the first   0.1
+                  switch
+                  Graph in periodic regime: the behaviour is periodic with         0.1
+                  period 𝜏1 (except for the first switch)
+                  Graph in periodic regime: the positive and negative parts of     0.2
+                  the graph are similar
+                  Graph in periodic regime: 𝑥(𝑡)/𝑋 is described by a               0.2
+                  rectangular function, of magnitude 1 and duty cycle 50% in
+                  steady state
+                  Graph in periodic regime: the first step at 𝑥 = 𝑋 last longer    0.1
+                  than others
+
+
+In the real Cox's timepiece, energy provided by the mechanism is stored using a system of ratchets
+and used to raise a counterweight, like in a traditional clock. In the simplified model studied here, the
+energy recovered by the clock corresponds to the energy dissipated by the friction force exerted by the
+horizontal surface on the mass 𝑀 . From now on, we assume that the system is dimensioned such that
+to work in the regime that allows the clock to recuperate energy. We also assume that the permanent
+regime is established. We denote 𝑊 the energy dissipated by the solid friction force during a period 𝜏1 ,
+which can be expressed only in terms of 𝐹s and 𝑋.
+                                                                                    Q2-17
+Theory
+
+
+
+                                                                                                English (Official)
+
+All else equal, 𝐹s and 𝑋 can be adjusted to maximize the energy 𝑊 ; we denote 𝐹s⋆ and 𝑋 ⋆ their respective
+values in the optimal situation.
+
+    C.4     Considering 𝑆b ≃ 𝑆c and 𝑆t ≪ 𝑆b , determine the expressions for 𝐹s⋆ and 𝑋 ⋆ as              1pt
+            functions of 𝜌, 𝑔, 𝑆c and 𝐴. Express the corresponding maximum energy 𝑊 ⋆ ,
+            then calculate its numerical value with 𝐴 = 5 × 102 Pa.
+
+SOLUTION:
+During a period, there is one motion to the left and one to the right. The total length of the displacement
+is 4𝑋. The total work 𝑊 of the friction force is thus 𝑊 = 4𝐹S 𝑋.
+We have to optimize this quantity with the constraint 𝜉 + 2𝜆 ≤ 2, which can also be written as
+
+                                                    2 𝜌𝑔𝑋   𝐹
+                                                          + s ≤1
+                                                       𝐴   𝑆c 𝐴
+
+The optimum is obtained at the limit of the condition, when 𝐹S = 𝑆c ⒧𝐴 − 2 𝜌𝑔𝑋⒭. The work is then
+𝑊 = 4 𝑋 𝑆c ⒧𝐴 − 2 𝜌𝑔𝑋⒭. It is maximal for
+
+                                          𝐴                                        𝐴 𝑆c
+                                 𝑋⋆ =                      and             𝐹s⋆ =
+                                         4𝜌𝑔                                        2
+
+leading to the following optimal work
+
+                                                          𝐴 2 𝑆c
+                                                   𝑊⋆ =          ≃ 20 mJ
+                                                          2𝜌 𝑔
+
+MARKING SCHEME:
+
+
+                   Starting point: 𝑊 = 4 𝐹s 𝑋                                             0.2
+                   Optimization: 𝜉 + 2𝜆 = 2 or equivalent 𝐹s = 𝑆c ⒧𝐴 − 2𝑔 𝑋⒭              0.3
+                   Expression of 𝑋   ⋆
+                                                                                          0.1
+                   Expression of 𝐹s⋆                                                      0.1
+                   Expression of 𝑊  ⋆
+                                                                                          0.2
+                   Numerical value for 𝑊 *with unit*: in [19 mJ, 21 mJ]
+                                               ⋆
+                                                                                          0.1
+
+
+We denote 𝑊pr ⋆
+                the work of atmospheric pressure forces received by the system in the optimal situation
+during a period 𝜏1 .
+
+    C.5     Express 𝑊pr⋆
+                         , then calculate the ratio 𝑊 ⋆ /𝑊pr
+                                                           ⋆
+                                                             . It could be useful to represent the      1.7pt
+            evolution of the system in a (𝑃, 𝑉 ) diagram, where 𝑉 is the system's volume.
+
+SOLUTION:
+The variations of pressure and of the vessel's position lead to fluid transfer between the cistern and
+the two-part tube. As a consequence, the total volume 𝑉 (𝑡) occupied by the system in the atmosphere
+changes and can be denoted
+                                                                                      Q2-18
+Theory
+
+
+
+                                                                                                      English (Official)
+
+
+                                                 𝑉 (𝑡) = 𝑉0 + 𝑉1 (𝑡)
+
+where 𝑉0 is the volume in the initial state (when 𝑥 = 0 and 𝑃a = 𝑃0 ) whereas 𝑉1 (𝑡) is a perturbation term.
+Physically, 𝑉1 corresponds to the change of the volume of liquid in the cistern, and is thus given by
+
+                                                               𝑚1,c
+                                                        𝑉1 =
+                                                                𝜌
+
+where 𝑚1,c has already been expressed in C3 (just replace 𝑋 with 𝑥 (𝑡)). Given that 𝑆b ≃ 𝑆c and 𝑆t is ne-
+glected, one obtains in any state
+
+                                                       𝑃1 (𝑡)              𝑥(𝑡) 1 𝑃1 (𝑡)
+                              𝑉1 (𝑡) = − 𝑆c 𝑥(𝑡) +            = − 𝑆c 𝑋      +
+                                                       2𝜌 𝑔                 𝑋    𝜆 𝐴 
+
+Over one period, the work of atmospheric pressure forces received by the system is defined as
+
+
+                                   𝑊pr =              − 𝑃a d𝑉 = −              𝑃1 d𝑉1
+                                            1 period                  1 period
+
+
+and can thus be identified to the area of the cycle described by the system in a ⒧𝑃1 , 𝑉1 ⒭ diagram.
+Considering the optimal situation determined in the previous question, one observes the following be-
+haviour once in steady state
+      𝑃1 (𝑡) /𝐴
+
+        1
+
+        0                           𝑡                           State            𝑃1        𝑥         𝑉1
+                                                                  1               𝐴       𝑋   ⋆
+                                                                                                  − 3𝑆c 𝑋 ⋆
+       -1
+                                                                  2              −𝐴       𝑋⋆       𝑆c 𝑋 ⋆
+      𝑥 (𝑡) /𝑋 ⋆
+                                                                  3              −𝐴       −𝑋⋆      3𝑆c 𝑋 ⋆
+        1     1    2      1                                       4               𝐴       −𝑋⋆     − 𝑆c 𝑋 ⋆
+        0                           𝑡
+
+       -1          3      4
+Therefore, one can draw the following cycle in a ⒧𝑃1 , 𝑉1 ⒭ diagram
+                                                                                              Q2-19
+Theory
+
+
+
+                                                                                                         English (Official)
+
+                                                              𝑃1
+
+
+
+                                      1               4          −𝐴
+
+
+                                                                      𝑆c 𝑋 ⋆        3𝑆c 𝑋 ⋆
+                                                             0
+                                       |               |               |               |      𝑉1
+                                                 − 𝑆c 𝑋 ⋆
+                                   − 3𝑆c 𝑋 ⋆
+
+
+                                                            −𝐴 −      2               3
+
+
+
+The work of the pressure force is the surface area inside this parallelogram, that is the product of its base
+2 𝑆c 𝑋 ⋆ by its height 2𝐴. As a consequence
+
+
+                                                  ⋆                        𝑆c 𝐴 2
+                                                 𝑊pr = 4𝑆c 𝑋 ⋆ 𝐴 =
+                                                                            𝜌𝑔
+
+and
+
+                                                             𝑊⋆ 1
+                                                              ⋆ =
+                                                             𝑊pr  2
+
+MARKING SCHEME:
+
+
+                   Physical analysis: In the optimal case, the mass 𝑀 switches                     0.1
+                   between the two positions 𝑥 = ± 𝑋 when 𝑃1 = ± 𝐴
+                   Physical analysis: During a period, the system describes a                      0.2
+                   cycle formed of 2 iso-𝑥 and 2 iso-𝑃 transformations (sketch
+                   of cycle, or a table or any other pertinent description)
+                   Physical analysis: Correct sequence of the successive states                    0.2
+                   and/or direction of the cycle using 𝑥 and 𝑃
+                   General expression of the volume of the system in an (𝑃, 𝑥)                     0.3
+                                        𝑃
+                   state: 𝑉 = − 𝑆c 𝑥 + 1  + Cste
+                                       2𝜌 𝑔
+                   Expressions of the volume in the 4 states of the cycle:                         0.2
+                   − 3𝑆c 𝑋 ⋆ ⟶ 𝑆c 𝑋 ⋆ ⟶ 3𝑆c 𝑋 ⋆ ⟶ − 𝑆c 𝑋 ⋆ (*all or nothing*)
+                   Method used to calculate the work of atmospheric pressure                       0.2
+                   forces: 𝑊pr = −              𝑃a d𝑉 (explicit integral or area of the
+                                      1 period
+                   cycle in (𝑃, 𝑉 ) diagram or other pertinent method)
+                                                       𝑆c 𝐴 2
+                   Obtaining 𝑊pr
+                              ⋆
+                                 = 4𝑆c 𝑋 ⋆ 𝐴 =                                                     0.2
+                                                        𝜌𝑔
+                                   𝑊⋆ 1
+                   Final result:    ⋆ =                                                            0.3
+                                   𝑊pr  2
+                                           Q2-20
+Theory
+
+
+
+                                             English (Official)
+
+Credits:
+[1]: Bruno Vacaro;
+[2]: Victoria and Albert Museum, London.
+

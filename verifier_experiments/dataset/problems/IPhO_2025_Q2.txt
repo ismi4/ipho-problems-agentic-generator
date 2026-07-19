@@ -1,0 +1,367 @@
+                                                                                     Q2-1
+Theory
+
+
+
+                                                                                                   English (Official)
+
+Cox's Timepiece (10 points)
+In 1765, British clockmaker James Cox invented a clock whose only source of energy is the fluctuations
+in atmospheric pressure. Cox's clock used two vessels containing mercury. Changes in atmospheric
+pressure caused mercury to move between the vessels, and the two vessels to move relative to each
+other. This movement acted as an energy source for the actual clock.
+
+
+
+
+We propose an analysis of this device. Throughout,
+we assume that
+                                     →
+                                     −        −
+                                              →
+   • the Earth's gravitational field 𝑔 = − 𝑔 𝑢𝑧 is uni-
+                                   −
+                                   →
+     form with 𝑔 = 9.8 m ⋅ s−2 and 𝑢𝑧 a unit vector;
+   • all liquids are incompressible and their density
+     is denoted 𝜌;
+   • no surface tension effects will be considered;
+   • the variations of atmospheric pressure with al-
+     titude are neglected;
+   • the surrounding temperature 𝑇a is uniform
+     and all transformations are isothermal.
+                                                                    Fig. 1. Artistic view of Cox's clock 1
+
+
+
+Part A - Pulling on a submerged tube
+We first consider a bath of water that occupies the semi-infinite space 𝑧 ≤ 0. The air above it is at a
+pressure 𝑃a = 𝑃0 . A cylindrical vertical tube of length 𝐻 = 1 m, cross-sectional area 𝑆 = 10 cm2 and mass
+𝑚 = 0.5 kg is dipped into the bath. The bottom end of the tube is open, and the top end of the tube is
+closed. We denote ℎ the altitude of the top of the tube and 𝑧ℓ that of the water inside the tube. The
+thickness of the tube walls is neglected.
+
+           𝑧                                  𝑧                                 𝑧
+
+                               a                                b                                   c
+                                                                                               →
+                                                                                               −
+                                                                                               𝐹
+                              →
+                              −
+                              𝑔
+                                                            →
+                                                            −                 ℎ−           •
+                                                            𝐹                𝑧ℓ −
+                                       ℎ = 𝑧ℓ −         •
+                          →
+                          −
+                          𝐹
+ ℎ = 𝑧ℓ = 0 −         •                     0−                                0−
+
+
+                               𝐻
+
+
+
+
+                              Fig. 2. Sketch of the tube in different configurations
+                                                                                                   Q2-2
+Theory
+
+
+
+                                                                                                                  English (Official)
+
+We start from the situation where the tube in Fig. 2 contains no gas and its top is at the bath level: in
+other words, ℎ = 0 and 𝑧ℓ = 0 (case a). The tube is then slowly lifted until its bottom end reaches the bath
+                                                          →
+                                                          −    −
+                                                               →
+level. The pulling force exerted on the tube is denoted 𝐹 = 𝐹 𝑢𝑧 .
+
+    A.1          For the configuration shown in Fig. 2 (case b), express the pressure 𝑃w in the                           0.2pt
+                                                                      →
+                                                                      −
+                 water at the top of the tube. Also express the force 𝐹 necessary to maintain the
+                 tube at this position. Expressions must be written in terms of 𝑃0 , 𝜌, 𝑚, 𝑆, ℎ, 𝑔
+                      −
+                      →
+                 and 𝑢𝑧 .
+
+Three experiments are performed. In each, the tube is lifted from the initial state shown in Fig. 2(a)
+under the conditions specified in Table 1.
+
+
+                         Experiment          Liquid          𝑇a (°C)    𝜌 (kg ⋅ m−3 )            𝑃sat (Pa)
+                                                                                        3
+                               1             Water              20       1.00 × 10            2.34 × 103
+                               2             Water              80       0.97 × 103           47.4 × 103
+                               3             Water              99       0.96 × 103           99.8 × 103
+
+  Table 1. Experimental conditions and numerical values of physical quantities for each experiment
+                        (𝑃sat designates the saturated vapour pressure of the pure fluid)
+
+
+In each case, we study the evolution of the force 𝐹 that must be applied in order to maintain the tube
+in equilibrium at an altitude ℎ, the external pressure being fixed at 𝑃a = 𝑃0 = 1.000 × 105 Pa. Two different
+behaviours are possible
+
+                      Behaviour A                                                             Behaviour B
+             𝐹                                                                   𝐹
+
+     𝐹max −
+                                                                         𝐹max −
+
+
+        𝐹0                                                                  𝐹0
+                                         |      ℎ                                                            |        |     ℎ
+             0                          𝐻                                        0                           ℎ⋆      𝐻
+
+
+    A.2          For each experiment, complete the table in the answer sheet to indicate the ex-                          0.8pt
+                 pected behaviour and the numerical values for 𝐹max and for ℎ⋆ (when pertinent),
+                 where 𝐹max and ℎ⋆ are defined in the figures illustrating the two behaviours.
+
+When we replace the water with liquid mercury (whose properties are given below), behaviour B is ob-
+served.
+
+
+                                      Liquid          𝑇a (°C)    𝜌 (kg ⋅ m−3 )       𝑃sat (Pa)
+                                     Mercury            20       13.5 × 103           0.163
+                                                                                     Q2-3
+Theory
+
+
+
+                                                                                               English (Official)
+
+
+    A.3      Express the relative error, denoted 𝜀, committed when we evaluate the maximal             0.3pt
+             force 𝐹max neglecting 𝑃sat compared to 𝑃0 . Give the numerical value of 𝜀.
+
+
+Part B - Two-part barometric tube
+                                                               𝑧
+
+From now on, we work with mercury (density
+𝜌 = 13.5 × 103 kg ⋅ m−3 ) at the ambient tempera-                                    →
+                                                                                     −        →
+                                                                                              −
+                                                                                              𝑔
+                                                                                     𝐹
+ture 𝑇a = 20 °C and we take 𝑃sat = 0.
+
+Let us consider a tube with a reservoir on top,                                  •
+modeled as two superposed cylinders of differ-                                           𝐻b = 20 cm
+ent dimensions, as shown in Fig. 3.                         𝑧ℓ −
+                                                            ℎt −
+   • the bottom part (still called the tube)
+     has cross-sectional area 𝑆t and height
+     𝐻t = 80 cm ;                                            0−
+   • the top part (called the bulb) has                                                  𝐻t = 80 cm
+     cross-sectional area 𝑆b > 𝑆t and height
+     𝐻b = 20 cm.
+
+This two-part tube is dipped into a semi-infinite
+liquid bath.
+
+                                                        Fig. 3. Sketch of the two-part barometric tube
+
+
+As in Part A, the system is prepared such that the tube contains no air. We identify the vertical position
+of the tube by the altitude ℎt of the junction between the tube and the bulb. The height of the column
+                                            →
+                                            −
+of mercury is again denoted 𝑧ℓ . The force 𝐹 that must be exerted to maintain the tube in equilibrium in
+the configuration shown in Fig. 3 can now be written as
+
+                                             →
+                                             −                   −
+                                                                 →
+                                             𝐹 = ⒧𝑚tb + 𝑚add ⒭ 𝑔 𝑢𝑧                                            (1)
+
+where 𝑚tb is the total mass of the two-part tube (when empty of mercury).
+
+    B.1      On the answer sheet, color the area corresponding to the volume of liquid mer-            0.3pt
+             cury that is responsible for the term 𝑚add appearing in equation (1).
+
+The mass 𝑚add depends both on the height ℎt and the atmospheric pressure 𝑃a . For the next question,
+assume that the atmospheric pressure is fixed at 𝑃a = 𝑃0 = 1.000×105 Pa. Starting from the situation where
+the system is completely submerged, the tube is slowly lifted until its base is flush with the liquid bath.
+
+    B.2      Sketch the evolution of the mass 𝑚add as a function of ℎt for ℎt ∈ −𝐻b , 𝐻t . On        1.4pt
+             the graph, provide the expression for the slopes of the different segments, as
+             well as the ℎt analytical value of any angular points, in terms of 𝑃0 , 𝜌, 𝑔, 𝑆b , 𝑆t ,
+             𝐻b and 𝐻t .
+                                                                                Q2-4
+Theory
+
+
+
+                                                                                          English (Official)
+
+As the system is lifted while 𝑃a = 𝑃0 = 105 Pa, we stop when the free surface of the liquid is in the middle
+of the bulb. The value of ℎt is fixed and then we observe variations in the mass 𝑚add due to variations in
+the atmospheric pressure described by
+
+
+                                             𝑃a (𝑡) = 𝑃0 + 𝑃1 (𝑡)                                         (2)
+
+where 𝑃0 designates the average value and 𝑃1 is a perturbative term. We model 𝑃1 by a periodic triangular
+function of amplitude 𝐴 = 5 × 102 Pa and period 𝜏1 of 1 week.
+                               𝑃1 (𝑡)
+                                            𝜏1
+                                𝐴−
+
+                                0                                           𝑡
+
+                              −𝐴 −
+
+                         Fig. 4. Simplified model of the perturbative term 𝑃1 (𝑡)
+
+
+    B.3     Given that 𝑆t = 5 cm2 and 𝑆b = 200 cm2 , express the amplitude 𝛥𝑚add of the varia-    0.3pt
+            tions of the mass 𝑚add over time, then give its numerical value. Assume that the
+            liquid surface always stays in the bulb.
+
+
+Part C - Cox's timepiece
+The real mechanism developed by Cox is complex (Fig. 5). We study a simplified version, depicted in Fig.
+6, and described below
+   • a cylindrical bottom cistern containing a mercury bath ;
+   • a two-part barometric tube identical to that studied in part B, which is still completely emptied of
+     any air, is dipped into the bath ;
+   • the cistern and the two-part tube are each suspended by a cable. Both cables (assumed to be
+     inextensible and of negligible mass) pass through a system of ideal pullies and finish attached to
+     either side of the same mass 𝑀 , which can slide on a horizontal surface ;
+   • the total volume of liquid mercury contained in the system is 𝑉ℓ = 5 L.
+The height, cross-section and masses of each part are given in Table 2. The position of mass 𝑀 is ref-
+erenced by the coordinate 𝑥 of its center of mass. We consider solid friction between the horizontal
+support and the mass 𝑀 , without distinction between static and dynamic coefficients; the magnitude of
+this force when sliding occurs is denoted 𝐹s .
+Two stops limit the displacement of the mass 𝑀 such that −𝑋 ≤ 𝑥 ≤ 𝑋 (with 𝑋 > 0). Assume that the value
+of 𝑋 guarantees that
+   • the bottom of the two-part tube never touches the bottom of the cistern nor comes out of the liquid
+     bath;
+   • the altitude 𝑧ℓ of the mercury column is always in the upper bulb.
+                                                                                           Q2-5
+Theory
+
+
+
+                                                                                                       English (Official)
+
+
+
+                                                                                   𝑥
+                                                                             −𝑋      𝑋
+                                                                                  | |          𝑥
+
+
+                                                                  •            •𝑀 •                •
+
+                                                                  •                                •
+                                                                               • •
+
+                                                                     →
+                                                                     −
+                                                                     𝑔             •
+                                                                                           2′
+
+
+                                                                                           2
+
+
+                                                                 1
+
+
+                                                      liquid mercury
+
+
+  Fig. 5. Real Cox's timepiece 2 (without         Fig. 6. Sketch of the system modeling the timepiece
+  mercury)
+
+
+
+       Reference              Name                 Height        Cross section area                Empty mass
+            1                 cistern             𝐻c = 30 cm             𝑆c = 210 cm   2
+                                                                                                        𝑚c
+            2          tubular part of the        𝐻t = 80 cm              𝑆t = 5 cm2
+                        barometric tube                                                         total mass of
+                                                                                               the barometric
+            2′             bulb of the            𝐻b = 20 cm          𝑆b = 200 cm2                tube : 𝑚tb
+                         barometric tube
+
+                        Table 2. Dimensions and notations for the model system
+
+
+The system evolves in contact with the atmosphere, whose pressure fluctuates as in Fig. 4 (still with
+amplitude 𝐴 = 5 × 102 Pa and period 𝜏1 = 1 week). At the start 𝑡 = 0, the mass 𝑀 is at rest at 𝑥 = 0 and the
+tensions exerted by the two cables on either side of the mass 𝑀 are in balance while 𝑃1 (0) = 0. We define
+
+                                             𝑆b + 𝑆c − 𝑆t 𝐹s 𝑆b + 𝑆c 𝐹s
+                                        𝜉=                  ≃                                                         (3)
+                                                𝑆b 𝑆c     𝐴   𝑆b 𝑆c 𝐴
+
+where the last expression uses that 𝑆t ≪ 𝑆b , 𝑆c (which we will assume is valid until the end of the problem).
+
+     C.1     Determine the threshold 𝜉⋆ such that 𝑀 remains indefinitely at rest when 𝜉 > 𝜉⋆ .                 1pt
+                                                                                   Q2-6
+Theory
+
+
+
+                                                                                                English (Official)
+
+For the next question only, suppose that the mass 𝑀 is temporarily blocked at 𝑥 = 𝑋.
+
+                                                             →
+                                                             −    −→
+    C.2     Give an expression for the total tension force 𝑇 = 𝑇 𝑢𝑥 acting on the mass 𝑀                1pt
+            due to the tension in two cables at this position, when 𝑃1 = 0, in terms of 𝜌, 𝑔, 𝑋
+            and pertinent cross-sections.
+
+When 𝜉 < 𝜉⋆ , starting again from 𝑥 = 0 and 𝑃1 = 0, two different behaviours can be observed for 𝑡 ≥ 0. To
+distinguish them, we need to introduce another parameter
+
+                                              2 ⒧𝑆b − 𝑆t ⒭ 𝜌 𝑔 𝑋 2 𝜌 𝑔 𝑋
+                                         𝜆=                     ≃                                               (4)
+                                                  𝑆b         𝐴      𝐴
+
+    C.3     Complete the table in the answer sheet to indicate the condition under which                2pt
+            each regime is obtained. Conditions must be expressed as inequalities on 𝜉
+            and/or 𝜆. In addition, sketch the variations of 𝑥 (𝑡) /𝑋 for 𝑡 ∈ 0, 3 𝜏1  that are con-
+            sistent with the variations of 𝑃1 (𝑡) /𝐴 already present. Specification of remarkable
+            points coordinates is not required.
+
+In the real Cox's timepiece, energy provided by the mechanism is stored using a system of ratchets
+and used to raise a counterweight, like in a traditional clock. In the simplified model studied here, the
+energy recovered by the clock corresponds to the energy dissipated by the friction force exerted by the
+horizontal surface on the mass 𝑀 . From now on, we assume that the system is dimensioned such that
+to work in the regime that allows the clock to recuperate energy. We also assume that the permanent
+regime is established. We denote 𝑊 the energy dissipated by the solid friction force during a period 𝜏1 ,
+which can be expressed only in terms of 𝐹s and 𝑋.
+All else equal, 𝐹s and 𝑋 can be adjusted to maximize the energy 𝑊 ; we denote 𝐹s⋆ and 𝑋 ⋆ their respective
+values in the optimal situation.
+
+    C.4     Considering 𝑆b ≃ 𝑆c and 𝑆t ≪ 𝑆b , determine the expressions for 𝐹s⋆ and 𝑋 ⋆ as              1pt
+            functions of 𝜌, 𝑔, 𝑆c and 𝐴. Express the corresponding maximum energy 𝑊 ⋆ ,
+            then calculate its numerical value with 𝐴 = 5 × 102 Pa.
+
+We denote 𝑊pr ⋆
+                the work of atmospheric pressure forces received by the system in the optimal situation
+during a period 𝜏1 .
+
+    C.5     Express 𝑊pr⋆
+                         , then calculate the ratio 𝑊 ⋆ /𝑊pr
+                                                           ⋆
+                                                             . It could be useful to represent the      1.7pt
+            evolution of the system in a (𝑃, 𝑉 ) diagram, where 𝑉 is the system's volume.
+
+
+
+Credits:
+[1]: Bruno Vacaro;
+[2]: Victoria and Albert Museum, London.
+

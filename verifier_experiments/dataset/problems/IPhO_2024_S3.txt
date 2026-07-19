@@ -1,0 +1,444 @@
+                                                                                                     S3-1
+    A. A Binary System
+
+A-1. Assume 𝑎1 and 𝑎2 , are respectively, the distances of 𝑀1 and 𝑀2 from the center of mass:
+
+                              𝑀1 𝑎1 = 𝑀2 𝑎2        𝑀2          𝑀1
+                          {                 → 𝑎1 =    𝑎 , 𝑎2 =    𝑎 ∶ 𝑀 = 𝑀1 + 𝑀2
+                              𝑎1 + 𝑎2 = 𝑎          𝑀           𝑀
+    In the rotating coordinate system, a centrifugal potential has to be added to the gravitational
+    potential of the two masses:
+
+                                               1                                𝐺𝑀
+                                          𝑈 = − 𝜔2 𝑟 2                       𝜔=√ 3
+                                               2                                𝑎
+
+                                               𝐺𝑀1                       𝐺𝑀2               1 2 2
+                 𝜑(𝑥, 𝑦) = −                                   −                       −     𝜔 (𝑥 + 𝑦 2 )
+                                      √(𝑥 + 𝑎1 )2 + 𝑦 2            √(𝑥 − 𝑎2 )2 + 𝑦 2       2
+
+
+
+                                              𝐺𝑀1                            𝐺𝑀2               1 𝐺𝑀 2
+               𝜑(𝑥, 𝑦) = −                                     −                           −        (𝑥 + 𝑦 2 )
+                                                     2                             2           2 𝑎3
+                                 √(𝑥 + 𝑀2 𝑎) + 𝑦 2                 √(𝑥 − 𝑀1 𝑎) + 𝑦 2
+                                       𝑀                                 𝑀
+
+
+A-1 (1.0 pt)
+
+                         𝐺𝑀1                             𝐺𝑀2             1 𝐺(𝑀1 +𝑀2 )
+𝜑(𝑥, 𝑦) = −                               −                             −2            (𝑥 2 + 𝑦 2 )
+                                  2                            2              𝑎3
+                        𝑀2                             𝑀1
+               √(𝑥+             𝑎) +𝑦 2       √(𝑥−             𝑎) +𝑦2
+                      (𝑀1 +𝑀2 )                      (𝑀1 +𝑀2 )
+
+
+
+
+A-2. We set 𝑦 = 0 in the previous equation, and obtain:
+                                                        𝐺𝑀1       𝐺𝑀2     1 𝐺𝑀 2
+                                 𝜑(𝑥, 0) = −                  −         −      𝑥
+                                                          𝑀2        𝑀1       3
+                                                     |𝑥 + 𝑀 𝑎| |𝑥 − 𝑀 𝑎| 2 𝑎
+
+    We draw the diagram noting that:
+    1. The function has asymptotes at 𝑥 = −𝑎1 and 𝑥 = 𝑎2 , and it tends to −∞ at both sides of
+       these asymptotes.
+    2. The function has three maxima which are called Lagrange points.
+    3. The function goes to −∞ for 𝑥 → ±∞
+                                                                                S3-2
+A-2 (0.7 pt)
+
+
+
+
+A-3. Let 𝑥̅ = 𝑥/𝑎, and denote the Lagrange point in the middle (between 𝑥̅ = 0 and 𝑥̅ = 0.75) by 𝑥̅0
+                𝑑𝜑
+    , we have 𝑑𝑥̅ (𝑥̅0 ) = 0. Using the given ratios:
+
+                                                    3        1
+                                          𝐺𝑀        4        4    1
+                              𝜑(𝑥̅ , 0) =    [−         +        − 𝑥̅ 2 ]
+                                           𝑎          1        3
+                                                (𝑥̅ + 4) (𝑥̅ − 4) 2
+                     𝑎 𝑑𝜑
+    Let 𝑓(𝑥̅ ) = 𝐺𝑀 𝑑𝑥̅ , then we have to solve for 𝑓(𝑥̅0 ) = 0 . We have 𝑓(0) > 0 and 𝑓(0.5) < 0, so
+    the answer lies between 0 and 0.5. For the midpoint, we have 𝑓(𝑥̅0 = 0.25) > 0 so 0.25 < 𝑥̅0 <
+    0.5 , so by trial and error:
+          𝑓(0) > 0
+     {              → 𝑓(0.25) > 0 → 0.25 < 𝑥̅0 < 0.5 → 𝑓(0.375) < 0 → ⋯ → 0.358 < 𝑥̅0 < 0.361
+         𝑓(0.5) < 0
+                                                               𝑥0
+                      → 𝑓(0.360) > 0 → 0.360 < 𝑥̅0 < 0.361 →      = 𝑥̅0 ≈ 0.36
+                                                               𝑎
+    So, up to two significant figures the answer is 0.36.
+
+
+A-3 (0.5 pt)
+𝑥0
+𝑎
+   = 0.36
+
+
+
+A-4. The angular momentum of the system is:
+
+                                                   𝑀1 𝑀2 2 𝐺𝑀     𝐺𝑀 2 𝑀 2
+                            𝐽 = 𝜇𝑎𝑉 = 𝜇𝑎2 𝜔 =       𝑀
+                                                        𝑎 √ 𝑎3 = √ 𝑀1 2 𝑎,
+                                                                                   S3-3
+    where 𝜇 is the reduced mass and 𝑉 is the relative velocity of the two point masses. Taking the
+    logarithm of both sides we’ll have:
+
+                                        1   𝐺
+                                  ln 𝐽 = [ln + 2 ln 𝑀1 + 2 ln 𝑀2 + ln 𝑎]
+                                        2   𝑀
+
+    For slowly-varying quantities we’ll obtain:
+
+                                            𝐽 ̇ 𝑀̇1 𝑀̇2 1 𝑎̇
+                                               =   +   +
+                                            𝐽 𝑀1 𝑀2 2 𝑎
+
+    because the total mass is a constant and 𝑀̇1 + 𝑀̇2 = 0; therefore:
+
+                             𝑎̇      𝑀̇1     𝑀1                        1  1
+                                = −2     (1 − )    →     𝑎̇ = −2𝛽𝑎 (     − )
+                             𝑎       𝑀1      𝑀2                        𝑀1 𝑀2
+
+    For the period we’ll have:
+
+                 𝑎3   𝑃̇ 3 𝑎̇      𝑀̇1     𝑀1                              𝑎3   1 1
+         𝑃 = 2𝜋√    →   =     = −3     (1 − ) →                  𝑃̇ = −6𝜋√    𝛽( − )
+                𝐺𝑀    𝑃 2𝑎         𝑀1      𝑀2                             𝐺𝑀 𝑀1 𝑀2
+
+
+A-4 (0.6 pt)
+
+               1   1
+𝑎̇ = −2𝛽𝑎 (       − )
+               𝑀1  𝑀2
+
+
+         𝑎     3
+               1   1
+𝑃̇ = −6𝜋√𝐺𝑀 𝛽 (𝑀 − 𝑀 )
+                    1        2
+
+
+
+
+A-5. In an infinitesimally thin ring with an inner radius of 𝑟 and an outer radius 𝑟 + 𝑑𝑟, energy is
+                         𝐺𝑀1 𝛽                         𝐺𝑀 𝛽   𝐺𝑀 𝛽
+    leaving at a rate of − 2𝑟
+                               and entering at a rate − 2𝑟1 + 2𝑟12 𝑑𝑟 . For the ring to stay in
+                                     𝐺𝑀 𝛽
+    equilibrium, the excess energy of 2𝑟1 𝑑𝑟 per unit time must leave the system as radiation, so:
+
+                                                                                      1
+                        𝐺𝑀1 𝛽                                        𝐺𝑀1 𝛽 4
+                   𝑑𝑃 =     2
+                              𝑑𝑟 = 𝜎𝑇 4 2(2𝜋𝑟𝑑𝑟) = 4𝜋𝜎𝑇 4 𝑑𝑟 → 𝑇 = (        )
+                         2𝑟                                          8𝜋𝜎𝑟 3
+
+
+A-5 (1.0 pt)
+               1
+     𝐺𝑀 𝛽 4
+𝑇 = ( 1 3)
+     8𝜋𝜎𝑟
+
+
+
+
+                        𝑎3
+A-6. From 𝑃 = 2𝜋√𝐺𝑀 we’ll have:
+                                                                               S3-4
+                                                               1
+                                           𝑃2 𝐺(𝑀S + 𝑀NS ) 3
+                                        𝑎=[               ]
+                                                4𝜋 2
+
+    Using the result of Part A.5, the temperature is:
+                                        1                      1
+                              𝐺𝑀NS 𝛽 4      500𝜋 𝑀NS 𝛽 4
+                          T=(        ) = (                ) = 9 × 103 𝐾
+                              8𝜋𝜎𝑟 3       𝜎𝑃2 (𝑀S + 𝑀NS )
+
+
+A-6 (0.5 pt)
+
+𝑇 = 9 × 103 𝐾
+
+
+A.7. For the system to remain bounded, the total mechanical energy of the system must be negative:
+
+
+                           ′
+                             1 ′ ′2 𝐺𝑀1′ 𝑀2             2𝐺(𝑀1′ + 𝑀2 )
+                          𝐸 = 𝜇𝑣 −          < 0 → 𝑣′ < √
+                             2        𝑎                      𝑎
+
+                                                            𝐺𝑀
+    For an isotropic explosion, we would have 𝑣 ′ = 𝑣 = √      therefore:
+                                                             𝑎
+
+
+
+                                     𝐺(𝑀1 + 𝑀2 )    2𝐺(𝑀1′ + 𝑀2 )
+                                    √            < √
+                                         𝑎               𝑎
+
+    and:
+                                               𝑀1 − 𝑀2
+                                                       < 𝑀1′
+                                                  2
+A-7 (0.7 pt)
+
+ ′         2𝐺(𝑀1′ +𝑀2 )
+𝑣max =√         𝑎
+
+
+
+ ′         𝑀1 −𝑀2
+𝑀1min =       2
+
+
+
+
+    B. Analysis of the stability of a star
+
+B-1. Using Newton’s law of gravity:
+                                              𝑟   2
+                                    4𝜋𝐺 ∫0 𝑟 ′ 𝜌𝑑𝑟 ′ 𝜌≅𝜌𝑐 4𝜋𝐺𝜌c 𝑟
+                                𝑔=−                   =
+                                                      ⏞ −
+                                          𝑟2                3
+                                                                                        S3-5
+B-1 (0.2 pt)
+
+         4𝜋𝐺𝜌c 𝑟
+𝑔=−        3
+
+
+
+B-2. Balance of forces for a differential element of volume with a surface area of 𝐴 and thickness Δ𝑟
+    between radii 𝑟 and 𝑟 + Δ𝑟 is as follows:
+
+                                               𝐺𝑀(𝑟⃗)𝜌
+                                      𝐹⃗ = −           A Δ𝑟 − Δ𝑝𝐴 = 0
+                                                 𝑟2
+
+       in which 𝑀(𝑟) is the mass of the part of the star confined within the radius 𝑟. As Δ𝑟 is small, we
+       can write:
+
+                            𝐺𝜌          2                  𝑑𝑝(𝑟)           𝑑𝜌
+                              2
+                                (∫ 4𝜋𝑟 ′ 𝜌(𝑟 ′ )𝑑𝑟 ′ ) = −       = −𝐾𝛾𝜌𝛾−1
+                            𝑟                               𝑑𝑟             𝑑𝑟
+
+                                                    𝑟2
+       Multiplying both sides of the equation by 4𝜋𝐺𝜌 and taking the derivative once again, we get:
+
+                                    𝑑 2 𝛾−2 𝑑𝜌    4𝜋𝐺𝑟 2
+                                       [𝑟 𝜌    ]+        𝜌(𝑟) = 0
+                                    𝑑𝑟      𝑑𝑟     𝐾𝛾
+
+
+B-2 (0.6 pt)
+
+ℎ1 (𝜌, 𝑟) = 𝑟 2 𝜌𝛾−2
+
+            4𝜋𝐺𝑟 2
+ℎ2 (𝑟) =
+             𝐾𝛾
+
+B-3.
+
+                           [𝜌c ] = 𝑀𝐿−3 , [𝑝c ] = 𝑀𝐿−1 𝑇 −2 , [𝐺] = 𝑀−1 𝐿3 𝑇 −2
+
+                          [𝐺 𝑙 𝑝c𝑚 𝜌c𝑛 ] = (𝑀−1 𝐿3 𝑇 −2 )𝑙 (𝑀𝐿−1 𝑇 −2 )𝑚 (𝑀𝐿−3 )𝑛 = 𝐿
+
+                                                    1
+                            −𝑙 + 𝑛 + 𝑚 = 0          𝑙=−
+                                                    2                       1 1
+                           {3𝑙 − 3𝑛 − 𝑚 = 1 →       1          → 𝑟0 = 𝐺 −2 𝑝c2 𝜌c−1
+                             −2𝑙 − 2𝑚 = 0       𝑚=
+                                                    2
+                                              {𝑛 = −1
+
+
+B-3 (0.4 pt)
+
+           1 1
+𝑟0 = 𝐺 −2 𝑝c2 𝜌c−1
+
+
+B-4.
+                                                                            S3-6
+                                     𝛾−1
+                                  𝐾𝛾𝜌𝑐    𝑑 2 𝛾−2 𝑑𝑢
+                                      2 2 𝑑𝑥 [𝑥 𝑢 𝑑𝑥
+                                                     ] = −𝜌c 𝑢(𝑟)
+                                 4𝜋𝐺𝑟0 𝑥
+
+                           𝛾−2
+                        𝐾𝛾𝜌c    𝑑 2 𝛾−2 𝑑𝑢      𝛾 𝑑 2 𝛾−2 𝑑𝑢
+                            2 2 𝑑𝑥 [𝑥 𝑢 𝑑𝑥
+                                           ] =
+                                               4𝜋𝑥 2 𝑑𝑥
+                                                        [𝑥 𝑢
+                                                             𝑑𝑥
+                                                                ] = −𝑢
+                       4𝜋𝐺𝑟0 𝑥
+
+                                    𝑑 2 𝛾−2 𝑑𝑢    4𝜋𝑥 2
+                                       [𝑥 𝑢    ]+       𝑢=0
+                                    𝑑𝑥      𝑑𝑥     𝛾
+
+
+B-4 (0.3 pt)
+
+𝐴1 (𝑢, 𝑥) = 𝑥 2 𝑢𝛾−2
+
+           4𝜋𝑥 2
+𝐴2 (𝑥) =
+            𝛾
+
+B-5.
+
+                     𝑑 2 𝑑𝑢                                                 sin(√2𝜋𝑥)
+         𝛾=2 →          [𝑥    ] = −2𝜋𝑥 2 𝑢(𝑥) → 𝑓 ′′ (𝑥) = −2𝜋𝑓(𝑥) → 𝑓(𝑥) =
+                     𝑑𝑥    𝑑𝑥                                                   √2𝜋
+
+
+B-5 (0.6 pt)
+
+         sin(√2𝜋𝑥)
+𝑓(𝑥) =
+             √2𝜋
+
+
+
+
+B.6.
+
+                           𝑑2 𝑢 (𝛾 − 2) 𝑑𝑢 2 2 𝑑𝑢 4𝜋 3−𝛾
+                              2
+                                +      ( ) + ( )+    𝑢   =0
+                           𝑑𝑥      𝑢    𝑑𝑥   𝑥 𝑑𝑥  𝛾
+
+                                                     𝑢′ (𝑥)
+                                   𝑢′ (0) = 0 ,   lim       = 𝑢″(0)
+                                                  𝑥→0 𝑥
+
+                                                4𝜋                  4𝜋
+                           𝑢″ (0) + 2𝑢″ (0) +      =0 →     𝛾=−
+                                                 𝛾                3𝑢″ (0)
+
+                                            𝛾~[1.64,1.70]
+
+B-6 (0.8 pt)
+
+𝛾 = [1.64,1.70]
+
+
+
+B.7.
+                                                                                             S3-7
+                                         𝑟̃ (𝑟,𝑡)                            𝑟
+                             𝑀(𝑟) = ∫               4𝜋𝑟 𝜌̃(𝑟 , 𝑡)𝑑𝑟′ = ∫ 4𝜋𝑟 ′2 𝜌(𝑟 ′ )𝑑𝑟′
+                                                        ′2      ′
+                                        0                                    0
+
+                                                     𝜕𝑟̃ 𝜌̃ 𝑟 2 𝜕𝑟̃ −1
+                   4𝜋𝑟 2 𝜌(𝑟) = 4𝜋𝑟̃ 2 𝜌̃(𝑟̃ , 𝑡)       → = ( ) = (1 + 𝜖)−3 ≅ 1 − 3𝜖
+                                                     𝜕𝑟 𝜌 𝑟̃ 2 𝜕𝑟
+                                          𝐺𝑀    1
+                                     𝑔̃     2    2
+                                        = 𝑟̃ = 𝑟̃ = (1 + 𝜖)−2 ≅ 1 − 2𝜖
+                                     𝑔    𝐺𝑀    1
+                                          𝑟2   𝑟2
+B-7 (0.9 pt)
+
+𝑔̃ ≃ 𝑔(1 − 2𝜖)
+
+𝜌̃ ≃ 𝜌(1 − 3𝜖)
+
+
+
+
+B-8. we have
+                                                       ∂𝑝̃
+                                                           = 𝜌̃(𝑔̃ − 𝑟̃̈ )
+                                                       ∂𝑟̃
+And
+
+                                                             𝑝̃ = 𝐾𝜌̃𝛾
+So:
+                                                    ∂𝑝̃
+                                                       ()                ∂𝜌̃
+                                                    ∂𝑟̃
+                                         𝑟̃̈ = 𝑔̃ −       = 𝑔̃ − 𝐾𝛾𝜌̃𝛾−2
+                                                    𝜌̃                   ∂𝑟̃
+
+B-8 (0.6 pt)
+
+𝑑2 𝑟̃                ∂𝜌̃
+   2
+      = 𝑔̃ − 𝐾𝛾𝜌̃𝛾−2
+𝑑𝑡                   ∂𝑟̃
+
+
+
+B.9. Using of the results in B.7 and B.8, we have:
+
+                   𝑑2 𝑟̃                       ∂𝜌̃                       ∂𝜌 (1 − 3𝜖)𝛾−1
+                         = 𝑟̃ ̈ = 𝑔̃ − 𝐾𝛾𝜌̃𝛾−2     = 𝑔(1 − 2𝜖) − 𝐾𝛾𝜌 𝛾−2
+                                                                            (           )
+                   𝑑𝑡 2                        ∂𝑟̃                       ∂𝑟   (1 + 𝜖)
+                                                              ∂𝜌
+                                       = 𝑔(1 − 2𝜖) − 𝐾𝛾𝜌𝛾−2 (1 − 3(𝛾 − 1)𝜖 − 𝜖)
+                                                              ∂𝑟
+      Equilibrium requires:
+                                                        ∂𝜌              ∂𝜌
+                                     𝑔 − 𝐾𝛾𝜌𝛾−2            = 0 ⇒ 𝐾𝛾𝜌𝛾−2    =𝑔
+                                                        ∂𝑟              ∂𝑟
+      therefore:
+
+                        𝑟̃̈ = 𝑟𝜖̈ = 𝑔(1 − 2𝜖) − 𝑔(1 − 3(𝛾 − 1)𝜖 − 𝜖) = 𝑔(3𝛾 − 4)𝜖
+                                                                     S3-8
+      and:
+                                                   𝑔
+                                            𝜖̈ =     (3𝛾 − 4)𝜖
+                                                   𝑟
+                                                 4𝜋𝐺𝜌c
+                                        𝜖̈ = −         (3𝛾 − 4)𝜖
+                                                   3
+     Stability requires that:
+                                                                 4
+                                          3𝛾 − 4 > 0 ⇒ γ >
+                                                                 3
+     and the angular velocity of the oscillations will be:
+
+                                           4𝜋𝐺𝜌c
+                                        𝜔=√      (3𝛾 − 4)
+                                             3
+
+B-9 (0.6 pt)
+
+         4𝜋𝐺𝜌c
+𝜖̈ = −         (3𝛾 − 4)𝜖
+           3
+
+          4
+γmin =
+          3
+
+         4𝜋𝐺𝜌c
+𝜔=√            (3𝛾 − 4)
+           3
+

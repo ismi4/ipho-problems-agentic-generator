@@ -1,0 +1,5 @@
+{
+  "cox_timepiece_2025": "Reference answer key for 'Cox's Timepiece' (full marks):\n[A.1] (0.2 pt) Answer (symbolic): (m + rho*S*h)*g\n[A.2] (0.8 pt) Answer (qualitative): Experiments 1,2 -> behaviour A; experiment 3 -> behaviour B (regime classification, all-or-nothing).\n[A.2b] (0.4 pt) Answer (numeric): 14.7 N\n[A.3] (0.3 pt) Answer (numeric): 1.6e-06",
+  "black_widow_pulsar_2024": "Reference answer key for 'Black Widow Pulsar' (full marks):\n[A.3] (0.5 pt) Answer (numeric): 0.36\n[A.4] (0.6 pt) Answer (symbolic): -2*beta*a*(1/M1 - 1/M2)\n[A.5] (1.0 pt) Answer (symbolic): (G*M1*beta/(8*pi*sigma*r**3))**(Rational(1,4))\n[B.3] (0.4 pt) Answer (symbolic): G**(Rational(-1,2))*pc**(Rational(1,2))*rhoc**(-1)\n[B.9] (0.6 pt) Answer (numeric): 1.3333333",
+  "water_and_objects_2023": "Reference answer key for 'Water and Objects' (full marks):\n[A.1] (2.0 pt) Answer (numeric): 0.232 m/s\n[B.2] (0.8 pt) Answer (symbolic): Rational(1,2)*rho*g*(z2**2 - z1**2)\n[B.4] (0.8 pt) Answer (symbolic): sqrt(gamma/(rho*g))\n[B.5] (1.5 pt) Answer (symbolic): -ell*tan(theta0)*exp(-x/ell)\n[C.2] (1.5 pt) Answer (symbolic): -Rational(1,2)*rho*g*z0**2"
+}

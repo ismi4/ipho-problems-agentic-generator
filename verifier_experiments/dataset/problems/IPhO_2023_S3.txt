@@ -1,0 +1,301 @@
+Solutions to Theory Problems
+
+
+                                                                                                          S3‒1
+Theory Problem 3: Water and Objects (10 points)
+Part A. Merger of water drops (2.0 pt)
+A.1     The surface energy per drop before the merger is
+        𝐸 = 4𝜋𝑎2 𝛾.                                                                                                (S3.1)
+Therefore, the surface energy difference becomes
+        Δ𝐸 = 4𝜋 (2 − 22/3 ) 𝑎2 𝛾.                                                                                  (S3.2)
+The transfer of surface energy to kinetic energy is represented by
+        𝑀 𝑣2 /2 = 𝑘Δ𝐸,                                                                                             (S3.3)
+where 𝑘 = 0.06 and 𝑀 = 4𝜋𝑎3 𝜌/3 × 2 = 8𝜋𝑎3 𝜌/3 is the mass of the drop after the merger. The numerical
+computation gives
+
+               2𝑘Δ𝐸                  𝑘𝛾                       0.06 × (7.27 × 10−2 )
+        𝑣=√         = √3 (2 − 22/3 )    = √3 (2 − 22/3 ) ×                              = 0.232 m/s.              (S3.4)
+                 𝑀                   𝜌𝑎                    (1.0 × 103 ) × (100 × 10−6 )
+
+        ▷ Note: We point out an interesting phenomenon related to this question. On a superhydrophobic sur-
+        face, when small droplets merge, they release surface energy, causing the surface area to shrink. This
+        energy release propels the merged droplet to jump up. This phenomenon mirrors the natural mecha-
+        nism seen in cicadas. Cicadas' wings, which possess superhydrophobic surfaces, facilitate the removal
+        of water droplets upon coalescence. This process serves as a natural self-cleaning system, converting
+        surface energy to kinetic energy, as reported in the following paper: Wisdom et. al., Proc. Natl. Acad. Sci.
+        USA 110, 7992−7997 (2013).
+
+
+  A.1                                                                                                            2.0 pt
+         𝑣 = 0.23 m/s
+
+
+
+Part B. A vertically placed board (4.5 pt)
+B.1
+Consider a vertical upright column-shaped water block as shown in the
+hatched area of Fig. S3-1. The vertical force balance with respect to this
+block per unit area leads to 𝑃 + 𝜌𝑔𝑧 = 𝑃0 .
+
+
+
+                                                                                                   Fig. S3-1
+
+  B.1                                                                                                            0.6 pt
+         𝑃 = 𝑃0 − 𝜌𝑔𝑧
+
+
+B.2
+Because the atmospheric pressure 𝑃0 exerts no net horizontal force on the water block, we have
+                𝑧1
+                                1
+        𝑓𝑥 = ∫ (−𝜌𝑔𝑧)𝑑𝑧 =         𝜌𝑔 (𝑧22 − 𝑧12 ) .                                                                (S3.5)
+              𝑧2                2
+
+This force acts in the leftward direction.
+
+
+                                                             1
+Solutions to Theory Problems
+
+
+                                                                                                        S3‒2
+        ▷ Note: The reason why 𝑃0 exerts no net horizontal force is understood as follows. Consider a small
+        area (infinitesimally divided piece) near the surface, which is regarded as a right-angled triangle (see
+        Fig. S3-2).
+
+
+
+
+                                                        Fig. S3‒2
+        The horizontal component of the combined force exerted on the right-angled triangle ABC per unit
+        length along the 𝑦-axis by atmospheric pressure is
+
+                                    AB
+              𝑃0 × AB − 𝑃0 × AC ×      =0
+                                    AC
+        Integrating infinitesimal pieces over a finite domain yields a finite volume of water, while the net force
+        remains zero.
+
+
+  B.2                                                                                                          0.8 pt
+             1
+         𝑓𝑥 = 𝜌𝑔 (𝑧22 − 𝑧12 )
+             2
+
+B.3
+The horizontal component of the surface tension acting on the water block is 𝛾 cos 𝜃2 − 𝛾 cos 𝜃1 . Thus,
+the horizontal force balance is expressed as
+
+        𝑓𝑥 + 𝛾 cos 𝜃2 − 𝛾 cos 𝜃1 = 0.                                                                            (S3.6)
+
+
+
+
+  B.3                                                                                                          0.8 pt
+         𝑓𝑥 = 𝛾 cos 𝜃1 − 𝛾 cos 𝜃2
+
+
+B.4
+From the results of B.2 and B.3, we have
+        1                   1
+          𝜌𝑔𝑧12 + 𝛾 cos 𝜃1 = 𝜌𝑔𝑧22 + 𝛾 cos 𝜃2 .                                                                  (S3.7)
+        2                   2
+Since this equation holds at an arbitrary point (𝑥, 𝑧) on the water surface, we conclude
+        1
+          𝜌𝑔𝑧 2 + 𝛾 cos 𝜃 = constant,                                                                            (S3.8)
+        2
+which is written as
+        1 𝑧 𝑎
+         ( ) + cos 𝜃(𝑥) = constant,                                                                              (S3.9)
+        2 ℓ
+                         𝛾
+with 𝑎 = 2 and ℓ = √        .
+                         𝜌𝑔
+        ▷ Note: The equaiton (S3.9) is a kind of conservation law. The constant ℓ is called the capillary length.
+
+
+                                                            2
+Solutions to Theory Problems
+
+
+                                                                                                    S3‒3
+  B.4                                                                                                     0.8 pt
+                       𝛾
+          𝑎 = 2, ℓ = √
+                       𝜌𝑔
+
+
+B.5    The derivative of the water surface coordinate 𝑧, denoted by 𝑧 ′ , is associated with the angle of
+inclination 𝜃, given by the equation: 𝑧′ = tan 𝜃. This relation yields
+
+                      1
+        cos 𝜃 =                ,                                                                          (S3.10)
+                  √1 + (𝑧 ′ )2
+
+which leads to
+                   1
+        cos 𝜃 ≃ 1 − (𝑧 ′ )2 .                                                                             (S3.11)
+                   2
+Plugging this into Eq. (S3.9), we obtain
+
+        𝑧2
+           − 𝑧 ′2 = const.                                                                                (S3.12)
+        ℓ2
+Taking the derivative of both sides with respect to 𝑥, we have
+               𝑧
+        𝑧″ =      ,                                                                                       (S3.13)
+               ℓ2
+which is the differential equation that determines the water surface form.
+
+Its general solution is
+
+        𝑧 = 𝐴𝑒𝑥/ℓ + 𝐵𝑒−𝑥/ℓ .                                                                              (S3.14)
+
+The boundary condition, 𝑧(∞) = 0, leads to 𝐴 = 0.
+The boundary condition, 𝑧′ (0) = tan 𝜃0 , leads to 𝐵 = −ℓ tan 𝜃0 .
+
+
+  B.5                                                                                                     1.5 pt
+          𝑧 (𝑥) = −ℓ tan 𝜃0 𝑒−𝑥/ℓ
+
+
+
+Part C. Interaction between two rods (3.5 pt)
+C.1     The horizontal component of the force due to the pressure is
+          𝑧b
+                             1
+        ∫ (𝜌𝑔𝑧) 𝑑𝑧 =           𝜌𝑔 (𝑧b2 − 𝑧a2 )                                                            (S3.15)
+         𝑧a                  2
+
+Let 𝑧bottom be the 𝑧-coordinate at the bottom of the rod. Then, we have
+                  𝑧a                             𝑧b                    𝑧b
+        𝐹𝑥 = ∫            (−𝜌𝑔𝑧)𝑑𝑧 + (− ∫              (−𝜌𝑔𝑧)𝑑𝑧) = ∫ (𝜌𝑔𝑧)𝑑𝑧                              (S3.16)
+                𝑧bottom                      𝑧bottom               𝑧a
+
+        ▷ Note: The fact that the contribution due to the pressure does not depend on the shape of the cross-
+        section can be demonstrated as follows. The pressure at the point 𝑠 on the contour 𝐶 along the cross-
+        sectional boundary is
+
+               −𝑃 𝑛𝑑𝑠
+                   ̂ = (−𝑃0 +𝜌𝑔𝑧)𝑛𝑑𝑠.
+                                  ̂                                                                  (S3.17)
+
+
+
+                                                                   3
+Solutions to Theory Problems
+
+
+                                                                                                            S3‒4
+        Let 𝑥̂ be the unit vector pointing the positive 𝑥-direction and noting 𝑥̂ ⋅ 𝑛𝑑𝑠
+                                                                                     ̂ = 𝑑𝑧 (see Fig. S3-3), we obtain
+        its horizontal component as
+
+              −𝑃 𝑛̂ ⋅ 𝑥𝑑𝑠
+                       ̂ = −𝑃0 𝑑𝑧+𝜌𝑔𝑧𝑑𝑧.                                                                      (S3.18)
+
+        Integrating along the contour 𝐶.1 We obtain
+                𝑧b
+                              1
+              ∫ (𝜌𝑔𝑧)𝑑𝑧 =       𝜌𝑔 (𝑧b2 − 𝑧a2 )                                                               (S3.19)
+               𝑧a             2
+
+
+
+
+                                                                Fig. S3‒3
+
+
+  C.1                                                                                                              1.0 pt
+             1
+         𝐹𝑥 = 𝜌𝑔 (𝑧b2 − 𝑧a2 ) + 𝛾 (cos 𝜃b − cos 𝜃a )
+             2
+
+
+C.2     By applying the boundary conditions to Eq. (S3.8), we obtain
+
+        1                   1
+          𝜌𝑔𝑧a2 + 𝛾 cos 𝜃a = 𝜌𝑔𝑧02 + 𝛾                                                                             (S3.20)
+        2
+        ⏟⏟⏟⏟⏟⏟⏟             ⏟
+                            2⏟⏟⏟⏟
+               𝑥=𝑥a                𝑥=0
+
+
+
+        1
+          𝜌𝑔𝑧b2 + 𝛾 cos 𝜃b = 𝛾⏟                                                                                    (S3.21)
+        2
+        ⏟⏟⏟⏟⏟⏟⏟             𝑥→∞
+               𝑥=𝑥b
+
+            1
+Then, 𝐹𝑥 = − 𝜌𝑔𝑧02 is obtained by subtracting (S3.20) from (S3.21).
+            2
+        ▷ Note: The physical background of this problem is as follows. When a single rod is placed on the water
+        surface, the shape of the water surface on both sides of the rod remains the same. In other words, the
+        rod is placed in an environment that exhibits the left-right symmetry. Then, there is no force acting on
+        the rod. On the other hand, when two rods are placed on the water surface, the left-right symmetry of
+        the water surface is broken from the perspective of each rod. As a result, an attractive force is generated.
+        The displacement of the water surface at the midpoint between the two rods differs from that of a hori-
+        zontal water surface. This deviation is represented by 𝑧0 . That is to say, 𝑧0 plays the role of a symmetry-
+        breaking parameter (see Fig. S3-4).
+
+        The fact that the attractive force between the two rods is determined solely by this parameter suggests
+        that the symmetry breaking directly becomes the origin of the force. This corresponds to the fundamen-
+        tal principle in physics that relates symmetry breaking to force generation.
+
+
+  1 This integral is symbolically written as ∮ (−𝑃 𝑛̂ ⋅ 𝑥𝑑𝑠).
+                                                         ̂
+                                                  𝐶
+
+
+
+
+                                                                   4
+Solutions to Theory Problems
+
+
+                                                                                     S3‒5
+
+
+                                                  Fig. S3‒4
+
+
+  C.2                                                                                 1.5 pt
+               1
+         𝐹𝑥 = − 𝜌𝑔𝑧02
+               2
+
+
+C.3     The general solution for the water surface height is given by the equation
+
+        𝑧(𝑥) = 𝐴𝑒𝑥/ℓ + 𝐵𝑒−𝑥/ℓ .                                                       (S3.22)
+
+By considering the left-right symmetry, we find
+
+        𝐴 = 𝐵.                                                                        (S3.23)
+
+Applying the boundary condition 𝑧(0) = 𝑧0 , we obtain
+
+        𝐴 + 𝐵 = 𝑧0 .                                                                  (S3.24)
+
+We thus have
+
+        𝐴 = 𝑧0 /2, 𝐵 = 𝑧0 /2.                                                         (S3.25)
+
+
+
+
+  C.3                                                                                 1.0 pt
+                  2𝑧
+         𝑧0 = 𝑥 /ℓ a −𝑥 /ℓ
+             𝑒 a +𝑒 a
+
+
+
+
+                                                     5
+
