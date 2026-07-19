@@ -1,0 +1,260 @@
+{
+  "system": "S1",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [
+      {
+        "check_id": "2_dimless_factor_A1",
+        "subpart": "A.1",
+        "status": "skip",
+        "detail": "observed v=0.23 m/s; exponent_fingerprint 2/3=True 1/3=False; dimensionless geometric factor not decidable by Tier-0/1"
+      },
+      {
+        "check_id": "0.3_sign_direction",
+        "subpart": "B.3",
+        "status": "pass",
+        "detail": "f_x = γ cos θ1 − γ cos θ2"
+      },
+      {
+        "check_id": "0.1_dimensional",
+        "subpart": "B.4",
+        "status": "pass",
+        "detail": "ℓ=√(γ/(ρg)) dimensionally OK"
+      },
+      {
+        "check_id": "1.2_plugback_root_branch",
+        "subpart": "B.5",
+        "status": "pass",
+        "detail": "decaying branch e^{-x/ℓ} retained"
+      },
+      {
+        "check_id": "0.5_symbol_whitelist",
+        "subpart": "C.2",
+        "status": "pass",
+        "detail": "F_x uses z0 only"
+      }
+    ],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Conservation of water volume, spherical-drop surface energy E=4πR^2γ, and kΔE=½Mv^2",
+        "regime_assumed": "Two identical spherical drops merge into one spherical drop; all water volume is conserved and a fraction k of the released surface energy becomes translational kinetic energy",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0043915
+    },
+    {
+      "id": "B.1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure balance, dP/dz = -rho g, with boundary condition P(0) = P0",
+        "regime_assumed": "Incompressible fluid at rest; z is measured upward from the undisturbed free surface",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0037425
+    },
+    {
+      "id": "B.2",
+      "judge": {
+        "subpart_id": "B.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure P = P0 - ρgz; atmospheric pressure gives no net horizontal force, so integrating the gauge-pressure force over the boundary gives f_x = (ρg/2)(z_2^2 - z_1^2).",
+        "regime_assumed": "Static fluid of constant density with uniform atmospheric pressure; f_x is a signed force component per unit length along y.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.96,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0051365
+    },
+    {
+      "id": "B.3",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Static horizontal force balance: pressure force f_x plus surface-tension components γ cos θ_2 − γ cos θ_1 equals zero.",
+        "regime_assumed": "Static water block with the stated angle convention and uniform surface tension.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.003692
+    },
+    {
+      "id": "B.4",
+      "judge": {
+        "subpart_id": "B.4",
+        "answer_type": "dimensionless_exponent",
+        "governing_law_identified": "Hydrostatic pressure balance with surface-tension force balance, yielding (rho g/2) z^2 + gamma cos(theta) = constant",
+        "regime_assumed": "Static water surface with uniform surface tension and constant density; no small-slope approximation is used",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0040275
+    },
+    {
+      "id": "B.5",
+      "judge": {
+        "subpart_id": "B.5",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Linearized capillary-gravity first integral gives z''(x)=z(x)/ell^2, with z'(0)=tan(theta0) and z(infinity)=0",
+        "regime_assumed": "Small-slope approximation |z'(x)| << 1; decaying far-field branch for x >= 0",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Growing branch A exp(x/ell)",
+          "Decaying branch B exp(-x/ell)"
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0046445
+    },
+    {
+      "id": "C.1",
+      "judge": {
+        "subpart_id": "C.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Hydrostatic pressure P = P0 - rho g z, cancellation of atmospheric-pressure contributions, and horizontal components of surface-tension forces at the two contact points",
+        "regime_assumed": "Static equilibrium; uniform surface tension; force reported per unit length along the y-axis; rod contour has submerged contact points at za and zb",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.98,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0059275
+    },
+    {
+      "id": "C.2",
+      "judge": {
+        "subpart_id": "C.2",
+        "answer_type": "symbolic",
+        "governing_law_identified": "Capillary-hydrostatic invariant along the water surface, combined with horizontal force balance from C.1",
+        "regime_assumed": "Static equilibrium with a symmetric midpoint surface where z = z0 and cos(theta) = 1, and a flat far-field surface with z = 0",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.004579
+    },
+    {
+      "id": "C.3",
+      "judge": {
+        "subpart_id": "C.3",
+        "answer_type": "symbolic",
+        "governing_law_identified": "The linearized capillary-surface equation z'' = z/ℓ^2, with symmetry at the midpoint giving z'(0)=0; hence z(x)=z0 cosh(x/ℓ).",
+        "regime_assumed": "Small-slope approximation and left-right symmetry of the two identical rods; x_a is taken as the positive coordinate of the left contact point of rod B.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0042935
+    }
+  ],
+  "escalated_subparts": [],
+  "escalation_rate": 0.0,
+  "doc_verdict": "ACCEPT",
+  "failed_subparts": [],
+  "cost_usd": 0.040434,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "ACCEPT",
+    "doc_correct": true,
+    "false_reject": false,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 35.55888342857361
+}
