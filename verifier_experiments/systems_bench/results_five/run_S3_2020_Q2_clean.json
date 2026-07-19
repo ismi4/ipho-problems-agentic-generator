@@ -1,0 +1,179 @@
+{
+  "system": "S3",
+  "problem_id": "2020_Q2",
+  "instance_id": "clean",
+  "deterministic": {
+    "checks": [],
+    "n_fail": 0,
+    "failed_subparts": [],
+    "verdict_hint": "NO_DETERMINISTIC_REJECT"
+  },
+  "per_subpart": [
+    {
+      "id": "A1",
+      "judge": {
+        "subpart_id": "A.1",
+        "answer_type": "symbolic",
+        "governing_law_identified": "|P| = -F·v = mgv(μx cos²α + μy sin²α), with μx = 0.75 > μy = 0.50.",
+        "regime_assumed": "Horizontal plane, kinetic anisotropic friction, nonzero velocity, and α treated as a directed velocity angle.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Maximum occurs for sin²α = 0.",
+          "Thus α = nπ, i.e. motion parallel to the X axis in either direction."
+        ],
+        "refutation": "At α = π, the velocity is along the negative X direction and |P| = mgvμx, equal to the maximum. The stated answer α = 0 alone omits this equally valid direction.",
+        "first_point_of_failure": "The maximization condition was not stated completely: α = 0 is not the only directed angle giving the maximum.",
+        "verdict": "FAIL",
+        "confidence": 0.84,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "sympy: simplify(-F.dot(v)) -> Abs(P)=m*g*v*(mu_x*cos(alpha)**2+mu_y*sin(alpha)**2)",
+          "dimensional: [P]=M*L^2*T^-3; m*g*v*mu has identical units",
+          "limit: alpha=0 -> mu_x*m*g*v; alpha=pi/2 -> mu_y*m*g*v, hence mu_x>mu_y selects X axis",
+          "derivative/root: d|P|/dalpha=2*m*g*v*(mu_y-mu_x)*sin(alpha)*cos(alpha); maxima at sin(alpha)=0",
+          "conservation residual: not applicable; prescribed kinetic-friction power law has no conserved mechanical energy",
+          "BC/branch: directed-angle roots are alpha=n*pi; as an angle to the unoriented X axis this is alpha=0 (motion along either X direction)",
+          "symbol-whitelist: uses only P,F,v,m,g,mu_x,mu_y,alpha supplied by P",
+          "faithfulness: S derives the correct power expression and correctly identifies the X-axis direction as maximizing it"
+        ],
+        "refutation": null,
+        "verdict": "PASS",
+        "confidence": 0.91,
+        "first_point_of_failure": null,
+        "fault_type_guess": null
+      },
+      "final_verdict": "PASS",
+      "first_point_of_failure": "The maximization condition was not stated completely: α = 0 is not the only directed angle giving the maximum.",
+      "cost_usd": 0.03418
+    },
+    {
+      "id": "A3",
+      "judge": {
+        "subpart_id": "A.3",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "Newton's second law with anisotropic kinetic friction: dv_x/dt=-g mu_x v_x/v and dv_y/dt=-g mu_y v_y/v.",
+        "regime_assumed": "Both velocity components remain positive up to the stated instant; kinetic sliding friction model applies.",
+        "dimensional_check": "pass",
+        "case_branches_found": [],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0131525
+    },
+    {
+      "id": "A4",
+      "judge": {
+        "subpart_id": "A.4",
+        "answer_type": "numeric_with_units",
+        "governing_law_identified": "The curvature is set by the component of anisotropic friction perpendicular to velocity: m v^2/R = |F_perp|, with F_perp = m g (mu_x-mu_y) sin(alpha) cos(alpha).",
+        "regime_assumed": "Sliding motion on a horizontal plane, with positive speed v=1.0 m/s and the given anisotropic kinetic-friction model.",
+        "dimensional_check": "pass",
+        "case_branches_found": [
+          "Minimum positive radius occurs when |sin(2 alpha)|=1, i.e. alpha=pi/4 modulo pi/2.",
+          "For an angle convention restricted to the first quadrant, alpha=pi/4."
+        ],
+        "refutation": null,
+        "first_point_of_failure": null,
+        "verdict": "PASS",
+        "confidence": 0.99,
+        "escalate": false,
+        "escalate_reason": null
+      },
+      "escalated": false,
+      "escalation": null,
+      "final_verdict": "PASS",
+      "first_point_of_failure": null,
+      "cost_usd": 0.0174075
+    },
+    {
+      "id": "C2",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "C2"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "dimensional: expected C2 threshold follows from T(0)=m*v0**2/L <= mu_y*m*g, hence v0max=sqrt(mu_y*g*L) has units m/s",
+          "limiting-case: mu_y->0 gives v0max->0; L->infinity gives v0max->infinity, consistent with initial centripetal-force requirement",
+          "conservation_residual: using C1 tangential work, v(phi)**2=v0**2-g*L*((mu_x+mu_y)*phi+(mu_x-mu_y)*sin(phi)*cos(phi)); radial balance gives T/m=v0**2/L-g*((mu_x+mu_y)*phi+2*(mu_x-mu_y)*sin(phi)*cos(phi)), whose maximum for mu_x=0.75, mu_y=0.5 is at phi=0",
+          "BC/root-branch: at phi=0, static support of the resting mass is limited by mu_y*m*g, selecting the physical positive root v0max=sqrt(mu_y*g*L)=sqrt(4.9)=2.21 m/s",
+          "symbol-whitelist: the expected result uses only P symbols {mu_y,g,L,v0,m,T,phi}; S supplies no C2 expression to inspect",
+          "faithfulness_to_P: the supplied S excerpt stops during C1 ('Integrating this equ...') and contains no C2 derivation, condition, or numerical answer"
+        ],
+        "refutation": "C2 is absent from S. Therefore it does not establish the required maximum initial velocity. A faithful solution must at least impose the initial radial condition m*v0^2/L <= mu_y*m*g and report v0max=sqrt(mu_y*g*L)=2.21 m/s for L=1 m.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "No solution content for sub-part C2 is present in S.",
+        "fault_type_guess": "missing_subpart_answer"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "No solution content for sub-part C2 is present in S.",
+      "cost_usd": 0.07756
+    },
+    {
+      "id": "C3",
+      "judge": {
+        "verdict": "UNCERTAIN",
+        "parse_error": "",
+        "subpart_id": "C3"
+      },
+      "escalated": true,
+      "escalation": {
+        "checks_run": [
+          "symbol-whitelist: no C3 candidate expression or numerical distance is present to inspect",
+          "dimensional: not executable; S provides no C3 distance formula with length dimension",
+          "limiting-case: not executable; no C3 result to test against isotropic/friction limits",
+          "conservation-residual: expected C1-derived relation would determine stop angle via v(phi_stop)=0 and C3 distance s=L*phi_stop, but S never supplies this specialization",
+          "BC/root-branch: no stopping root phi_stop>=0 or physical first-root selection is given",
+          "faithfulness-to-P: C3 explicitly asks the travel distance for v0=v0max; S excerpt stops during C1 and contains neither C2 vmax nor a C3 answer"
+        ],
+        "refutation": "The submitted reference material contains no solution for C3: it ends mid-C1 ('Integrating this equ...'). Therefore it does not provide the required distance, its dependence on v0max, or a numerical answer for L=1 m and the specified friction coefficients.",
+        "verdict": "FAIL",
+        "confidence": 0.99,
+        "first_point_of_failure": "Missing C3 derivation and final distance answer.",
+        "fault_type_guess": "incomplete/truncated reference solution"
+      },
+      "final_verdict": "FAIL",
+      "first_point_of_failure": "Missing C3 derivation and final distance answer.",
+      "cost_usd": 0.0723725
+    }
+  ],
+  "escalated_subparts": [
+    "A1",
+    "C2",
+    "C3"
+  ],
+  "escalation_rate": 0.6,
+  "doc_verdict": "REJECT",
+  "failed_subparts": [
+    "C2",
+    "C3"
+  ],
+  "cost_usd": 0.214672,
+  "scoring": {
+    "expected_label": "ACCEPT",
+    "doc_verdict": "REJECT",
+    "doc_correct": false,
+    "false_reject": true,
+    "false_accept": false,
+    "fault_hits": {},
+    "faults_caught": 0,
+    "faults_total": 0
+  },
+  "wall_s": 106.64044237136841,
+  "problem_name": "Anisotropic Friction"
+}

@@ -1,0 +1,297 @@
+{
+  "corpus": [
+    {
+      "id": "2020_Q2",
+      "name": "Anisotropic Friction",
+      "year": 2020,
+      "problem_pdf": "IPhO_2020_Q2.pdf",
+      "clean_pdf": "IPhO_2020_S2.pdf",
+      "faulty_pdf": "faulty/IPhO_2020_S2_FAULTY.pdf",
+      "subparts": [
+        "A1",
+        "A3",
+        "A4",
+        "C2",
+        "C3"
+      ],
+      "injected_faults": [
+        {
+          "id": "F2020-1",
+          "subpart": "A1",
+          "type": "wrong_extremum",
+          "summary": "\u03b1=0 \u2192 \u03b1=\u03c0/2 for power maximum"
+        },
+        {
+          "id": "F2020-2",
+          "subpart": "A3",
+          "type": "dropped_factor",
+          "summary": "vx 0.125\u21920.250"
+        },
+        {
+          "id": "F2020-3",
+          "subpart": "C2",
+          "type": "wrong_parameter",
+          "summary": "v0max 2.2\u21923.1 (\u03bcx vs \u03bcy)"
+        }
+      ]
+    },
+    {
+      "id": "2021_Q1",
+      "name": "Planetary Physics",
+      "year": 2021,
+      "problem_pdf": "IPhO_2021_Q1.pdf",
+      "clean_pdf": "IPhO_2021_S1.pdf",
+      "faulty_pdf": "faulty/IPhO_2021_S1_FAULTY.pdf",
+      "subparts": [
+        "A.1",
+        "A.4",
+        "A.5",
+        "B.2",
+        "B.3"
+      ],
+      "injected_faults": [
+        {
+          "id": "ERR-6",
+          "subpart": "A.1",
+          "type": "faithfulness_drift",
+          "summary": "oil fill condition h'=h instead of lower-edge condition"
+        },
+        {
+          "id": "ERR-7",
+          "subpart": "A.4",
+          "type": "wrong_retained_order",
+          "summary": "kept hD ~ k^-1 instead of D^2 ~ k^-2"
+        },
+        {
+          "id": "ERR-8",
+          "subpart": "A.5",
+          "type": "provenance",
+          "summary": "\u03b4=3 claimed but answer uses \u03b4=2"
+        },
+        {
+          "id": "ERR-9",
+          "subpart": "B.2",
+          "type": "conservation",
+          "summary": "E/2\u03c0 instead of E/\u03c0 energy density"
+        },
+        {
+          "id": "ERR-10",
+          "subpart": "B.3",
+          "type": "completeness",
+          "summary": "x_max never delivered in closed form"
+        }
+      ]
+    },
+    {
+      "id": "2023_Q3",
+      "name": "Water and Objects",
+      "year": 2023,
+      "problem_pdf": "IPhO_2023_Q3.pdf",
+      "clean_pdf": "IPhO_2023_S3.pdf",
+      "faulty_pdf": "faulty/IPhO_2023_S3_FAULTY.pdf",
+      "subparts": [
+        "A.1",
+        "B.3",
+        "B.4",
+        "B.5",
+        "C.2"
+      ],
+      "injected_faults": [
+        {
+          "id": "ERR-1",
+          "subpart": "A.1",
+          "type": "dimless_geometric_factor",
+          "summary": "2^(2/3)\u21922^(1/3)"
+        },
+        {
+          "id": "ERR-2",
+          "subpart": "B.3",
+          "type": "sign_flip",
+          "summary": "f_x sign reversed"
+        },
+        {
+          "id": "ERR-3",
+          "subpart": "B.4",
+          "type": "dimensional",
+          "summary": "\u2113=\u221a(\u03b3/\u03c1) missing g"
+        },
+        {
+          "id": "ERR-4",
+          "subpart": "B.5",
+          "type": "wrong_root_branch",
+          "summary": "growing e^{+x/\u2113}"
+        },
+        {
+          "id": "ERR-5",
+          "subpart": "C.2",
+          "type": "symbol_whitelist",
+          "summary": "F_x reintroduces za/xa"
+        }
+      ]
+    },
+    {
+      "id": "2024_Q3",
+      "name": "Black Widow Pulsar",
+      "year": 2024,
+      "problem_pdf": "IPhO_2024_Q3.pdf",
+      "clean_pdf": "IPhO_2024_S3.pdf",
+      "faulty_pdf": "faulty/IPhO_2024_S3_FAULTY.pdf",
+      "subparts": [
+        "A-3",
+        "A-5",
+        "A-6",
+        "B-1",
+        "B-7"
+      ],
+      "injected_faults": [
+        {
+          "id": "F2024-1",
+          "subpart": "A-3",
+          "type": "wrong_root",
+          "summary": "Lagrange x\u03040 0.36\u21920.25"
+        },
+        {
+          "id": "F2024-2",
+          "subpart": "A-6",
+          "type": "wrong_numeric",
+          "summary": "T 9\u00d710^3\u21929\u00d710^2 K"
+        }
+      ]
+    },
+    {
+      "id": "2025_Q2",
+      "name": "Cox's Timepiece",
+      "year": 2025,
+      "problem_pdf": "IPhO_2025_Q2.pdf",
+      "clean_pdf": "IPhO_2025_S2.pdf",
+      "faulty_pdf": "faulty/IPhO_2025_S2_FAULTY.pdf",
+      "subparts": [
+        "A.1",
+        "B.2",
+        "C.1",
+        "C.2",
+        "C.3"
+      ],
+      "injected_faults": [
+        {
+          "id": "F2025-1",
+          "subpart": "C.1",
+          "type": "dropped_factor",
+          "summary": "\u03be\u22c6=2\u21921"
+        },
+        {
+          "id": "F2025-2",
+          "subpart": "C.3",
+          "type": "dropped_factor",
+          "summary": "regime boundary 2\u21921"
+        }
+      ]
+    }
+  ],
+  "systems": [
+    "S3",
+    "S2",
+    "S1"
+  ],
+  "aborted": true,
+  "abort_reason": "OpenAI API insufficient_quota (HTTP 429) after partial S3 sweep; account billing/quota exhausted. Resume with: python -m systems_bench.run_five_problems --hard-cap 25 --resume",
+  "completed_runs": [
+    "S3/2020_Q2/clean",
+    "S3/2020_Q2/faulty",
+    "S3/2021_Q1/clean",
+    "S3/2021_Q1/faulty",
+    "S3/2023_Q3/clean"
+  ],
+  "missing_runs": [
+    "S3/2023_Q3/faulty",
+    "S3/2024_Q3/clean",
+    "S3/2024_Q3/faulty",
+    "S3/2025_Q2/clean",
+    "S3/2025_Q2/faulty",
+    "S2/2020_Q2/clean",
+    "S2/2020_Q2/faulty",
+    "S2/2021_Q1/clean",
+    "S2/2021_Q1/faulty",
+    "S2/2023_Q3/clean",
+    "S2/2023_Q3/faulty",
+    "S2/2024_Q3/clean",
+    "S2/2024_Q3/faulty",
+    "S2/2025_Q2/clean",
+    "S2/2025_Q2/faulty",
+    "S1/2020_Q2/clean",
+    "S1/2020_Q2/faulty",
+    "S1/2021_Q1/clean",
+    "S1/2021_Q1/faulty",
+    "S1/2023_Q3/clean",
+    "S1/2023_Q3/faulty",
+    "S1/2024_Q3/clean",
+    "S1/2024_Q3/faulty",
+    "S1/2025_Q2/clean",
+    "S1/2025_Q2/faulty"
+  ],
+  "cost_quality_by_system": {
+    "S3": {
+      "mean_cost_usd": 0.2090544,
+      "n_instances": 5,
+      "clean_accept_rate": 0.6666666666666666,
+      "faulty_reject_rate": 1.0,
+      "false_rejects": 1,
+      "false_accepts": 0,
+      "faults_caught_total": 7,
+      "faults_total": 8,
+      "mean_escalation_rate": 0.48,
+      "per_problem": {
+        "2020_Q2/clean": {
+          "verdict": "REJECT",
+          "correct": false,
+          "cost": 0.214672,
+          "faults": "0/0"
+        },
+        "2020_Q2/faulty": {
+          "verdict": "REJECT",
+          "correct": true,
+          "cost": 0.204772,
+          "faults": "3/3"
+        },
+        "2021_Q1/clean": {
+          "verdict": "ACCEPT",
+          "correct": true,
+          "cost": 0.216803,
+          "faults": "0/0"
+        },
+        "2021_Q1/faulty": {
+          "verdict": "REJECT",
+          "correct": true,
+          "cost": 0.277785,
+          "faults": "4/5"
+        },
+        "2023_Q3/clean": {
+          "verdict": "ACCEPT",
+          "correct": true,
+          "cost": 0.13124,
+          "faults": "0/0"
+        }
+      }
+    }
+  },
+  "spend": {
+    "hard_cap_usd": 25.0,
+    "spent_usd": 1.138155,
+    "remaining_usd": 23.861845,
+    "n_calls": 40,
+    "by_model_usd": {
+      "gpt-5.6-terra": 1.138155
+    },
+    "input_tokens": 217662,
+    "cached_tokens": 0,
+    "output_tokens": 39600,
+    "reasoning_tokens": 29161
+  },
+  "systems_md_estimates": {
+    "S4": 2.79,
+    "S3": 1.24,
+    "S2": 0.63,
+    "S1": 0.2
+  },
+  "n_runs": 5
+}

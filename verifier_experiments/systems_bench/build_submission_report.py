@@ -531,6 +531,18 @@ def build() -> Path:
         )
     )
 
+    if summary.get("aborted"):
+        story.append(
+            Paragraph(
+                "<b>Run status: incomplete.</b> "
+                + esc(summary.get("abort_reason") or "Aborted before full matrix finished.")
+                + f" Completed {summary.get('n_runs', 0)} / "
+                + f"{summary.get('n_runs', 0) + len(summary.get('missing_runs') or [])} instance×system cells. "
+                "Tables below cover only finished cells.",
+                styles["body"],
+            )
+        )
+
     story.append(Paragraph("S3 / S2 / S1 measured ladder", styles["h2"]))
     story.append(Image(str(plot_path), width=6.4 * inch, height=3.2 * inch))
     story.append(Spacer(1, 6))
@@ -628,7 +640,25 @@ def build() -> Path:
     )
 
     story.append(Paragraph("CONCLUSION", styles["h1"]))
-    if five and "S2" in cq and "S3" in cq:
+    if summary.get("aborted"):
+        s3 = cq.get("S3") or {}
+        story.append(
+            Paragraph(
+                "The five-problem corpus is in place (downloaded official PDFs + injected faulty twins), "
+                "and a partial S3 sweep already shows the cascade is measurable: faulty solutions were rejected "
+                f"({s3.get('faulty_reject_rate', 0)*100:.0f}% of finished faulty cells; "
+                f"{s3.get('faults_caught_total', 0)}/{s3.get('faults_total', 0)} injected faults localized) "
+                f"while clean accepts were {s3.get('clean_accept_rate', 0)*100:.0f}% on finished clean cells "
+                f"(one false reject on 2020 clean — a quality risk the escalation design must watch). "
+                "The OpenAI account then returned <font face='Courier'>insufficient_quota</font>, so S2/S1 "
+                "and the remaining S3 cells could not be finished in this environment. "
+                "Resume with <font face='Courier'>python -m systems_bench.run_five_problems --resume</font> "
+                "once billing/quota is restored; the prior single-pair run (PR #2) already showed S2 ≈53% "
+                "cheaper than S3 at equal catch rate on 2023 — the five-problem matrix is the generalization test.",
+                styles["body"],
+            )
+        )
+    elif five and "S2" in cq and "S3" in cq:
         sav = (cq["S2"].get("savings_vs_S3") or 0) * 100
         story.append(
             Paragraph(

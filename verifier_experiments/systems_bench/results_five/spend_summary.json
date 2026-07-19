@@ -1,0 +1,13 @@
+{
+  "hard_cap_usd": 25.0,
+  "spent_usd": 1.138155,
+  "remaining_usd": 23.861845,
+  "n_calls": 40,
+  "by_model_usd": {
+    "gpt-5.6-terra": 1.138155
+  },
+  "input_tokens": 217662,
+  "cached_tokens": 0,
+  "output_tokens": 39600,
+  "reasoning_tokens": 29161
+}

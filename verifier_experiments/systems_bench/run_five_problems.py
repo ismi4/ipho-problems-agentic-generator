@@ -207,6 +207,7 @@ def main(argv=None) -> int:
     ap.add_argument("--hard-cap", type=float, default=25.0)
     ap.add_argument("--systems", default="S3,S2,S1")
     ap.add_argument("--problems", default="", help="comma ids, default all")
+    ap.add_argument("--resume", action="store_true", help="skip instance cells that already have run_*.json")
     args = ap.parse_args(argv)
 
     OUT.mkdir(parents=True, exist_ok=True)
@@ -243,6 +244,11 @@ def main(argv=None) -> int:
     for system in systems:
         for p in corpus:
             for inst, label in [("clean", "ACCEPT"), ("faulty", "REJECT")]:
+                out_path = OUT / f"run_{system}_{p['id']}_{inst}.json"
+                if args.resume and out_path.exists():
+                    print(f"  skip existing {out_path.name}")
+                    runs.append(json.loads(out_path.read_text()))
+                    continue
                 print(
                     f"\n>>> {system} {p['id']} {inst} | spent ${budget.spent_usd:.4f} remaining ${budget.remaining():.4f}"
                 )
